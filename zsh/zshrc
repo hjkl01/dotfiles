@@ -1,0 +1,71 @@
+
+[[ ! -f ~/.pyenv/py3/bin/activate ]] || source ~/.pyenv/py3/bin/activate
+if type nvim > /dev/null 2>&1; then
+    alias vi='nvim'
+fi
+
+export TERM=xterm
+
+bindkey '^n' end-of-line
+
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+DISABLE_AUTO_UPDATE='true'
+ZSH_DISABLE_COMPFIX='true'
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME='Schminitz'
+
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  zsh-autosuggestions 
+  zsh-syntax-highlighting
+)
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
+
+export LC_ALL="zh_CN.UTF-8"
+
+export BETTER_EXCEPTIONS=1
+export FLASK_APP=app.py
+export FLASK_ENV=development
+alias yy='yarn'
+alias ys='yarn start'
+
+alias rm='trash-put'
+alias scpr='rsync -Pzv --rsh=ssh'
+alias getpass='openssl rand -base64 20'
+alias getpass='openssl rand -hex 20'
+alias www='ifconfig en0 && python -m http.server 80'
+# alias getip='curl ipinfo.io/ip'
+# alias getip='curl -L tool.lu/ip'
+alias getip='curl http://cip.cc'
+alias wt='curl wttr.in/nanjing'
+alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1080'
+alias unsetproxy='unset ALL_PROXY; unset http_proxy; unset https_proxy'
+
+alias gc='git clone'
+alias gs='git status'
+alias ga='git add'
+alias gcmsg='git commit -m'
+alias gco='git checkout'
+alias gd='git diff'
+alias gl='git pull'
+alias gp='git push'
+
+export GOPROXY=https://goproxy.io
+export GO111MODULE=on
+export GOPATH=$HOME/dev/go
+export PATH="$PATH:$HOME/dev/go/bin"
+alias gg='GO111MODULE=on go get'
+alias gr='GO111MODULE=on go run'
+
+alias dp='docker ps -a'
+alias dk='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias dr='docker rmi $(docker images --filter dangling=true -q --no-trunc)'
+alias dc='docker-compose'
+alias di='docker images'
+alias dir='docker rmi'
+
+# git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+# git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
