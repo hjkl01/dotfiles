@@ -1,3 +1,7 @@
+#### my config
+
+> install neovim, git, pip, npm, make
+
 <details>
   <summary>
     git
