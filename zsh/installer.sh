@@ -10,13 +10,13 @@ JudgeZshrcExist(){
 InstallZsh(){
     echo "installing..."
     if which apt-get >/dev/null; then
-        sudo apt-get update -y && sudo apt-get install -y zsh git python3.8
+        sudo apt-get update -y && sudo apt-get install -y zsh git python3.8 neovim npm
     elif which brew >/dev/null;then
-        brew install zsh git python3.8
+        brew install zsh git python3.8 neovim npm
     elif which yum >/dev/null;then
-        sudo yum install zsh git python3.8 -y
+        sudo yum install zsh git python3.8 neovim npm -y
     elif which pacman >/dev/null;then
-        sudo pacman -S zsh git python3.8
+        sudo pacman -S zsh git python3.8 neovim xclip xorg-xclipboard npm
     else
         echo "Does not support system version"
     fi
