@@ -1,6 +1,12 @@
-#### my config
+#### my workspace config
 
-> install neovim, git, pip, npm, make
+> install git, make
+
+```
+git clone https://github.com/formattedd/dotfiles ~/.dotfiles
+cd ~/.dotfiles 
+make install
+```
 
 <details>
   <summary>
