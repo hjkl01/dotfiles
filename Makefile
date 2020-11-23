@@ -1,6 +1,6 @@
 install : 
 	python3 -m venv ~/.pyenv/py3 || echo ""
-	ln -s ~/.dotfiles/pip/pip.conf ~/.pip/pip.conf || mkdir ~/.pip && ln -s ~/.dotfiles/pip/pip.conf ~/.pip/pip.conf || echo ""
+	ln -s ~/.dotfiles/.pip/ ~/ || echo ""
 	sh zsh/installer.sh || echo ""
 	sh nvim/installer.sh || echo ""
 	ln -s ~/.dotfiles/docker/ ~/.docker/ || mkdir ~/.docker && ln -s ~/.dotfiles/docker/ ~/.docker/ || echo ""
