@@ -115,7 +115,7 @@ let g:NERDToggleCheckAllLines = 1
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=30
 let g:NERDTreeDirArrows = 1
