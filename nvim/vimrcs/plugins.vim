@@ -116,8 +116,9 @@ let g:NERDToggleCheckAllLines = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=30
+let g:NERDTreeWinSize=25
 let g:NERDTreeDirArrows = 1
 "当打开vim且没有文件时自动打开NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
