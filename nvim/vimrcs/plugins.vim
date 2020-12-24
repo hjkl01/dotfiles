@@ -3,10 +3,11 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdcommenter' " 注释
-Plug 'scrooloose/nerdtree'
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'preservim/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
+Plug 'dstein64/nvim-scrollview'
+Plug 'leafgarland/typescript-vim'
 
 
 "Plug 'autozimu/LanguageClient-neovim', {
@@ -36,10 +37,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
 " Plug 'pangloss/vim-javascript'
 " Plug 'tpope/vim-surround'
 " Plug 'mattn/emmet-vim' " html
+" Plug 'peitalin/vim-jsx-typescript'
 " Plug 'Yggdroot/indentLine' " displaying thin vertical lines
 
 call plug#end()
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
