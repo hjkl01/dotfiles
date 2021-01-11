@@ -1,6 +1,6 @@
 #### my workspace config
 
-> install git, make
+> install git, make, neovim, python3
 
 ```
 git clone https://github.com/formattedd/dotfiles ~/.dotfiles
