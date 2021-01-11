@@ -9,7 +9,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
 Plug 'dstein64/nvim-scrollview'
 Plug 'leafgarland/typescript-vim'
 
-
 "Plug 'autozimu/LanguageClient-neovim', {
 "    \ 'branch': 'next',
 "    \ 'do': 'bash install.sh',
@@ -28,7 +27,7 @@ Plug 'leafgarland/typescript-vim'
 " Plug 'prabirshrestha/asyncomplete.vim'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "
-" Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'lighttiger2505/deoplete-vim-lsp'
 
 " Plug 'Valloric/YouCompleteMe', { 'do': 'git submodule update --init --recursive && python install.py' }
@@ -41,94 +40,6 @@ Plug 'leafgarland/typescript-vim'
 " Plug 'Yggdroot/indentLine' " displaying thin vertical lines
 
 call plug#end()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => neoclide/coc.nvim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:coc_disable_startup_warning=1
-let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-json',
-            \ 'coc-gitignore', 'coc-translator', 'coc-python', 'coc-jedi',
-            \ 'coc-pairs', 'coc-git', 'coc-highlight', 'coc-marketplace',
-            \ 'coc-snippets']
-
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? coc#_select_confirm() :
-            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" let g:coc_snippet_next = '<tab>'
-nmap <Leader>t :CocCommand translator.popup <CR>
-nmap <Leader>g <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <Leader>f :call CocAction('format')<CR>
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-" nnoremap <Leader>k :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => preservim/nerdcommenter
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader><Space> <plug>NERDCommenterToggle
-
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-
-" Add your own custom formats or override the defaults
-" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=1
-let NERDTreeShowLineNumbers=1
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=25
-let g:NERDTreeDirArrows = 1
-"当打开vim且没有文件时自动打开NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-"" 只剩 NERDTree时自动关闭
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-nmap <Leader>n :NERDTreeToggle<CR>
-nmap <Leader>n <ESC> :NERDTreeToggle<CR>
-"nmap <S-M> :CocCommand explorer --position right --sources=buffer+,file+ <CR>
 
 
 
