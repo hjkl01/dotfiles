@@ -6,6 +6,7 @@ JudgeVimPath(){
         echo $filename
         mv -f ~/.vim ~/.vim_old$filename
     fi
+    mkdir ~/.config/
 }
 
 ConfigVim(){
