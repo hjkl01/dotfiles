@@ -4,34 +4,28 @@ Plug 'bling/vim-airline'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdcommenter' " 注释
 Plug 'preservim/nerdtree'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
 Plug 'dstein64/nvim-scrollview'
 Plug 'leafgarland/typescript-vim'
 
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
-"" (Optional) Multi-entry selection UI.
-"Plug 'junegunn/fzf'
-
-" Plug 'terryma/vim-multiple-cursors'
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
 
 " Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'mattn/vim-lsp-settings'
-"
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-"
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
+" Plug 'davidhalter/jedi-vim'
+" Plug 'Valloric/YouCompleteMe', { 'do': 'git submodule update --init --recursive && python install.py' }
+
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'lighttiger2505/deoplete-vim-lsp'
 
-" Plug 'Valloric/YouCompleteMe', { 'do': 'git submodule update --init --recursive && python install.py' }
 " Plug 'dense-analysis/ale'
+" Plug 'terryma/vim-multiple-cursors'
 " Plug 'suan/vim-instant-markdown'
 " Plug 'pangloss/vim-javascript'
 " Plug 'tpope/vim-surround'
@@ -42,35 +36,10 @@ Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:multi_cursor_next_key="\<C-s>"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-gitgutter
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:gitgutter_highlight_lines = 1
-" let g:gitgutter_highlight_linenrs = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => lsp pls
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:lsp_settings = {
-"             \   'pyls': {
-"             \     'workspace_config': {
-"             \       'pyls': {
-"             \         'configurationSources': ['flake8']
-"             \       }
-"             \     }
-"             \   },
-"             \}
-" nmap <S-K> :LspPeekDefinition<CR>
-" nmap <silent> gd :LspDefinition<CR>
-" "map <S-F> :LspDocumentFormat<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
