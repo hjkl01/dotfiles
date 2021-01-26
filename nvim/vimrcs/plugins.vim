@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'bling/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdcommenter' " 注释
 Plug 'preservim/nerdtree'
@@ -48,22 +49,6 @@ call plug#end()
 " => vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:multi_cursor_next_key="\<C-s>"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => autozimu/LanguageClient-neovim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" note that if you are using Plug mapping you should not use `noremap` mappings.
-"nmap <F5> <Plug>(lcn-menu)
-"" Or map each action separately
-"nmap <silent>K <Plug>(lcn-hover)
-"nmap <silent> gd <Plug>(lcn-definition)
-"nmap <silent> <F2> <Plug>(lcn-rename)
-"
-"set hidden
-"
-"let g:LanguageClient_serverCommands = {'python': ['/Users/jinlong/.pyenv/py3/bin/pyls']}
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ale
