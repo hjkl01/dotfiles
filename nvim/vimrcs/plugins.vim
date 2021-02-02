@@ -6,18 +6,20 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdcommenter' " 注释
 Plug 'preservim/nerdtree'
 Plug 'dstein64/nvim-scrollview'
-Plug 'leafgarland/typescript-vim'
 
-Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Plug 'autozimu/LanguageClient-neovim', {
+"             \ 'branch': 'next',
+"             \ 'do': 'bash install.sh',
+"             \ }
+" " (Optional) Multi-entry selection UI.
+" Plug 'junegunn/fzf'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/vim-lsp'
@@ -26,7 +28,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
 " Plug 'davidhalter/jedi-vim'
 " Plug 'Valloric/YouCompleteMe', { 'do': 'git submodule update --init --recursive && python install.py' }
 
@@ -34,6 +35,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'lighttiger2505/deoplete-vim-lsp'
 
 " Plug 'dense-analysis/ale'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'leafgarland/typescript-vim'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'suan/vim-instant-markdown'
 " Plug 'pangloss/vim-javascript'
