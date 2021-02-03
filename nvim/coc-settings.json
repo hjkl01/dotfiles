@@ -1,5 +1,14 @@
 {
     "python.pythonPath": "~/.pyenv/py3/bin/python3",
     "python.formatting.provider": "black",
-    "python.jediEnabled": false
+    "python.linting.enabled": true,
+    "python.jediEnabled": true,
+    "python.autoUpdateLanguageServer": true,
+    "explorer.icon.enableNerdfont": true,
+    "explorer.file.showHiddenFiles": true,
+    "explorer.position": "right",
+    "explorer.width": 35,
+    "explorer.keyMappings.global": {
+        "s": "open:vsplit"
+    }
 }

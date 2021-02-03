@@ -5,11 +5,10 @@
 
 let g:coc_disable_startup_warning=1
 let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-json',
-            \ 'coc-gitignore', 'coc-translator', 
+            \ 'coc-gitignore', 'coc-translator', 'coc-python', 'coc-jedi',
             \ 'coc-pairs', 'coc-git', 'coc-highlight', 'coc-marketplace',
-            \ 'coc-snippets', 'coc-vimlsp']
+            \ 'coc-snippets', 'coc-vimlsp', 'coc-explorer']
 
-"'coc-python', 'coc-jedi',
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? coc#_select_confirm() :
             \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -39,3 +38,4 @@ function! s:show_documentation()
     endif
 endfunction
 
+nmap <Space>n :CocCommand explorer<CR>
