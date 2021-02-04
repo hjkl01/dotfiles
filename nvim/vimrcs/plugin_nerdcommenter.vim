@@ -2,7 +2,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => preservim/nerdcommenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader><Space> <plug>NERDCommenterToggle
+nmap <Space><Space> <plug>NERDCommenterToggle
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1

@@ -1,6 +1,6 @@
 "以下是改键
 
-let mapleader = " "
+" let mapleader = " "
 
 " autocmd BufWritePre *.py execute 'YAPF'
 "command Formatpy :execute 'r !yapf -i %'
@@ -8,8 +8,8 @@ let mapleader = " "
 
 
 " nmap <S-V> :vs<CR>
-nmap <Leader>v :vs<CR>
-map <Leader>r <Esc> :call RunFile()<cr>
+nmap <Space>v :vs<CR>
+map <Space>r <Esc> :call RunFile()<cr>
 map ff :call FormatFile()<CR>
 
 

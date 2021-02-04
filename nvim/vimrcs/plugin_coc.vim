@@ -21,14 +21,14 @@ function! s:check_back_space() abort
 endfunction
 
 " let g:coc_snippet_next = '<tab>'
-nmap <Leader>t :CocCommand translator.popup <CR>
+nmap <Space>t :CocCommand translator.popup <CR>
 nmap gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <Leader>f :call CocAction('format')<CR>
+nmap <Space>f :call CocAction('format')<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-" nnoremap <Leader>k :call <SID>show_documentation()<CR>
+" nnoremap <Space>k :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)

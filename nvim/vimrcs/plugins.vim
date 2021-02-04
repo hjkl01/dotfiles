@@ -4,14 +4,12 @@ Plug 'bling/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdcommenter' " 注释
-Plug 'preservim/nerdtree'
 Plug 'dstein64/nvim-scrollview'
 
-Plug 'airblade/vim-gitgutter'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 
 " Plug 'autozimu/LanguageClient-neovim', {
 "             \ 'branch': 'next',
@@ -34,6 +32,8 @@ Plug 'junegunn/fzf.vim'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'lighttiger2505/deoplete-vim-lsp'
 
+" Plug 'preservim/nerdtree'
+" Plug 'airblade/vim-gitgutter'
 " Plug 'dense-analysis/ale'
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'leafgarland/typescript-vim'
