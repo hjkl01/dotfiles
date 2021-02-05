@@ -1,15 +1,11 @@
+
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'bling/vim-airline'
+    for f in glob('~/.config/nvim/plugins/plugin_*.vim', 0, 1)
+        execute 'source' f
+    endfor
+
 " Plug 'vim-airline/vim-airline-themes'
-Plug 'Chiel92/vim-autoformat'
-Plug 'preservim/nerdcommenter' " 注释
-Plug 'dstein64/nvim-scrollview'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 " Plug 'autozimu/LanguageClient-neovim', {
 "             \ 'branch': 'next',

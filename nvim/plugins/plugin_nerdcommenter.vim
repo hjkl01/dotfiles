@@ -2,6 +2,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => preservim/nerdcommenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'preservim/nerdcommenter' " 注释
+
 nmap <Space><Space> <plug>NERDCommenterToggle
 
 " Add spaces after comment delimiters by default

@@ -1,3 +1,5 @@
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 if has("nvim")
     " Escape inside a FZF terminal window should exit the terminal window

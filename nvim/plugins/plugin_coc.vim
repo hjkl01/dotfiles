@@ -2,6 +2,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => neoclide/coc.nvim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
 
 let g:coc_disable_startup_warning=1
 let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-json',
