@@ -13,7 +13,8 @@ bash  <(wget -qO- https://gitee.com/formateddd/vimrc/raw/master/setup.sh) nvim #
 
 > in arch/manjaro use cliopboard
 ```
-sudo pacman -Sy xclip xorg-xclipboard
+<!-- sudo pacman -Sy xclip xorg-xclipboard -->
+sudo pacman -Sy xsel
 ```
 
 > reference from [ma6174](https://github.com/ma6174/vim-deprecated) and [Coc-extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions)
