@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'prabirshrestha/asyncomplete.vim'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'davidhalter/jedi-vim'
 " Plug 'Valloric/YouCompleteMe', { 'do': 'git submodule update --init --recursive && python install.py' }
 
@@ -53,12 +52,6 @@ call plug#end()
 " => ale
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let b:ale_linters = ['flake8', 'pylint']
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fatih/vim-go
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:go_version_warning = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
