@@ -53,7 +53,7 @@ alias gd='git diff'
 alias gl='git pull'
 alias gp='git push'
 
-export GOPROXY=https://goproxy.io
+export GOPROXY=https://mirrors.aliyun.com/goproxy/
 export GO111MODULE=on
 export GOPATH=$HOME/dev/go
 export PATH="$PATH:$HOME/dev/go/bin"
