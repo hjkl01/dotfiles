@@ -5,10 +5,24 @@
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommend)
 
 let g:coc_disable_startup_warning=1
-let g:coc_global_extensions = ['coc-html', 'coc-tsserver', 'coc-json',
-            \ 'coc-gitignore', 'coc-translator', 'coc-python', 'coc-jedi',
-            \ 'coc-pairs', 'coc-git', 'coc-highlight', 'coc-marketplace',
-            \ 'coc-snippets', 'coc-vimlsp', 'coc-explorer']
+let g:coc_global_extensions = [
+            \ 'coc-tsserver',
+            \ 'coc-json',
+            \ 'coc-gitignore',
+            \ 'coc-translator',
+            \ 'coc-python',
+            \ 'coc-fzf-preview',
+            \ 'coc-html',
+            \ 'coc-css',
+            \ 'coc-cssmodules',
+            \ 'coc-jedi',
+            \ 'coc-pairs',
+            \ 'coc-git',
+            \ 'coc-highlight',
+            \ 'coc-marketplace',
+            \ 'coc-snippets',
+            \ 'coc-vimlsp',
+            \ 'coc-explorer']
 
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? coc#_select_confirm() :
