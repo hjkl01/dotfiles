@@ -1,4 +1,12 @@
-" Required for operations modifying multiple buffers like rename.
+" Plug 'autozimu/LanguageClient-neovim', {
+"             \ 'branch': 'next',
+"             \ 'do': 'bash install.sh',
+"             \ }
+" " (Optional) Multi-entry selection UI.
+" Plug 'junegunn/fzf'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"
+" " Required for operations modifying multiple buffers like rename.
 " set hidden
 "
 " let g:LanguageClient_serverCommands = {
@@ -30,5 +38,5 @@
 "     endif
 " endfunction
 " autocmd FileType * call LC_maps()
-
+"
 " set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
