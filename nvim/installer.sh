@@ -38,6 +38,7 @@ ConfigNvim(){
     cp -r ~/.config/nvim/autoload ~/.local/share/nvim/site/
 
     nvim +PlugInstall +qall
+    # nvim -es -u init.vim -i NONE -c "PlugInstall" -c "qa"
     echo "vim plugins install success"
 
     # default python virtualenv
