@@ -8,6 +8,7 @@
 
 
 " nmap <S-V> :vs<CR>
+nmap q :q<CR>
 nmap <Space>v :vs<CR>
 map <Space>r <Esc> :call RunFile()<cr>
 map ff :call FormatFile()<CR>
