@@ -54,3 +54,4 @@ function! s:show_documentation()
 endfunction
 
 nmap <Space>n :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
