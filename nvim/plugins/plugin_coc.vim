@@ -11,7 +11,6 @@ let g:coc_global_extensions = [
             \ 'coc-gitignore',
             \ 'coc-translator',
             \ 'coc-python',
-            \ 'coc-jedi',
             \ 'coc-go',
             \ 'coc-fzf-preview',
             \ 'coc-html',
