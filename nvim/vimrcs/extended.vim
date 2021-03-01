@@ -10,6 +10,7 @@
 " nmap <S-V> :vs<CR>
 nmap q :q<CR>
 nmap <Space>v :vs<CR>
+nmap <Space>s :sp<CR>
 map <Space>r <Esc> :call RunFile()<cr>
 map ff :call FormatFile()<CR>
 
