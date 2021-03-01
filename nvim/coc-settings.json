@@ -7,8 +7,9 @@
     "explorer.icon.enableNerdfont": true,
     "explorer.file.showHiddenFiles": true,
     "explorer.position": "right",
-    "explorer.width": 35,
+    "explorer.width": 25,
     "explorer.keyMappings.global": {
-        "s": "open:vsplit"
+        "s": "open:vsplit",
+        "v": "open:split"
     }
 }
