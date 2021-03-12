@@ -29,8 +29,8 @@ filetype indent on
 " set foldmethod=manual
 set foldmethod=indent
 " set foldmethod=syntax
-set foldenable 
-" set nofoldenable "打开文件是默认不折叠代码
+" set foldenable
+set nofoldenable "打开文件是默认不折叠代码
 
 " Set to auto read when a file is changed from the outside
 set autoread
