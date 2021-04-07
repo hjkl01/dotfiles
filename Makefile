@@ -5,4 +5,5 @@ install :
 	ln -s ~/.dotfiles/js/npmrc ~/.npmrc || echo ""
 	ln -s ~/.dotfiles/js/yarnrc ~/.yarnrc || echo ""
 	sh zsh/installer.sh || echo ""
+	git submodule update --remote
 	sh nvim/installer.sh || echo ""
