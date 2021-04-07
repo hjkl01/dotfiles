@@ -32,7 +32,7 @@ export FLASK_ENV=development
 alias yy='yarn'
 alias ys='yarn start'
 
-[[ ! -f ~/.pyenv/py3/bin/trash-put ]] || alias rm='trash-put'
+[[ ! -f ~/.pyenv/py3/bin/trash-put ]] || alias rr='trash-put'
 
 alias pc='proxychains4'
 alias scpr='rsync -Pzv --rsh=ssh'
