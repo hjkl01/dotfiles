@@ -4,9 +4,10 @@
 
 ```
 git clone https://github.com/formattedd/dotfiles ~/.dotfiles
+or
+git clone https://gitee.com/formattedd/dotfiles ~/.dotfiles
 cd ~/.dotfiles 
-git submodule update --init --recursive
-make install
+make github or make gitee
 ```
 
 <details>
