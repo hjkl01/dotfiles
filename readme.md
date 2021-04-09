@@ -5,6 +5,7 @@
 ```
 git clone https://github.com/formattedd/dotfiles ~/.dotfiles
 cd ~/.dotfiles 
+git submodule update --init --recursive
 make install
 ```
 
