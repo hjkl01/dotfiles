@@ -11,12 +11,11 @@ link: ;@echo "Symbolic links"
 github: pyenv link
 	@echo "Installing ohmyzsh and neovim config using github address"
 	sh zsh/installer.sh || echo ""
-	git submodule update --remote --recursive
+	git clone https://github.com/formattedd/vimrc nvim
 	sh nvim/installer.sh || echo ""
 
 gitee: pyenv link
 	@echo "Installing ohmyzsh and neovim config using gitee address"
 	sh zsh/gitee_installer.sh || echo ""
-	cp .gitmodules_gitee .gitmodules
-	git submodule update --remote --recursive
+	git clone https://gitee.com/formattedd/vimrc nvim
 	sh nvim/installer.sh || echo ""
