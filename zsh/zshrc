@@ -41,6 +41,7 @@ alias getpass='openssl rand -hex 20'
 alias www='ifconfig en0 && python -m http.server 80 -d $1 '
 # alias getip='curl ipinfo.io/ip'
 # alias getip='curl -L tool.lu/ip'
+# alias getip='curl http://api.ipify.org'
 alias getip='curl http://cip.cc'
 alias wt='curl wttr.in/nanjing'
 alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1080'
@@ -57,7 +58,7 @@ alias gp='git push'
 
 # export GOPROXY=https://mirrors.aliyun.com/goproxy/
 export GOPROXY=https://goproxy.cn
-export GO111MODULE=on
+export GO111MODULE=auto
 export GOPATH=$HOME/dev/go
 export PATH="$PATH:$HOME/dev/go/bin"
 alias gg='GO111MODULE=on go get'
