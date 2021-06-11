@@ -8,7 +8,7 @@ link: ;@echo "Symbolic links"
 	ln -s ~/.dotfiles/js/npmrc ~/.npmrc || echo ""
 	ln -s ~/.dotfiles/js/yarnrc ~/.yarnrc || echo ""
 
-github: pyenv link
+github: pyenv
 	@echo "Installing ohmyzsh and neovim config using github address"
 	sh zsh/installer.sh || echo ""
 	git clone https://github.com/formattedd/vimrc nvim
