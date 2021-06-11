@@ -34,6 +34,11 @@ alias ys='yarn start'
 
 [[ ! -f ~/.pyenv/py3/bin/trash-put ]] || alias rr='trash-put'
 
+export PIPENV_IGNORE_VIRTUALENVS=1
+export PIPENV_VERBOSITY=-1
+alias pe='pipenv run python'
+alias pi='pipenv run pip install '
+
 alias pc='proxychains4'
 alias scpr='rsync -Pzv --rsh=ssh'
 # alias getpass='openssl rand -base64 20'
