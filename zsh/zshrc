@@ -36,8 +36,14 @@ alias ys='yarn start'
 
 export PIPENV_IGNORE_VIRTUALENVS=1
 export PIPENV_VERBOSITY=-1
-alias pe='pipenv run python'
+alias pv='pipenv run python'
 alias pi='pipenv run pip install '
+
+# alias pv='poetry run python'
+# alias pi='poetry run pip install'
+
+# alias pv='./venv/bin/python'
+# alias pi='./venv/bin/pip install'
 
 alias pc='proxychains4'
 alias scpr='rsync -Pzv --rsh=ssh'
