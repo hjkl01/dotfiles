@@ -1,16 +1,15 @@
 #!/bin/sh
 
 JudgeZshrcExist(){
-    [[ ! -f ~/.zshrc ]] || mv ~/.zshrc ~/.zshrc_back
-    # if [ ! -d "~/.zshrc" ]; then
-    #     mv -f ~/.zshrc ~/.zshrc_back
-    # fi
+    if [ -f "~/.zshrc" ]; then
+        mv ~/.zshrc ~/.zshrc_back
+    fi
 }
 
 InstallZsh(){
     echo "installing..."
     if which apt-get >/dev/null; then
-        sudo apt-get update -y && sudo apt-get install -y zsh git python3 neovim npm
+        sudo apt-get update -y && sudo apt-get install -y zsh git python3 python3-venv make neovim npm
     elif which brew >/dev/null;then
         brew install zsh git python3 neovim npm
     elif which yum >/dev/null;then
@@ -24,7 +23,6 @@ InstallZsh(){
 
 InstallOhMyZsh(){
     git clone https://gitee.com/formattedd/ohmyzsh ~/.oh-my-zsh
-    # cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
     ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
     chsh -s $(which zsh)
 }

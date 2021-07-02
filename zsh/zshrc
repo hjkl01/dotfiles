@@ -1,8 +1,9 @@
 
-[[ ! -f ~/.pyenv/py3/bin/activate ]] || source ~/.pyenv/py3/bin/activate
-
-if type nvim > /dev/null 2>&1; then
-    alias vi='nvim'
+if [ -f ~/.pyenv/py3/bin/activate ];then
+  source ~/.pyenv/py3/bin/activate
+fi
+if [ -f ~/.pyenv/py3/bin/trash-put ];then
+  alias rr='trash-put'
 fi
 
 export TERM=xterm
@@ -25,26 +26,11 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 export LC_ALL="zh_CN.UTF-8"
 
-# pip install better_exceptions
-export BETTER_EXCEPTIONS=1
-export FLASK_APP=app.py
-export FLASK_ENV=development
-alias yy='yarn'
-alias ys='yarn start'
 
-[[ ! -f ~/.pyenv/py3/bin/trash-put ]] || alias rr='trash-put'
-
-export PIPENV_IGNORE_VIRTUALENVS=1
-export PIPENV_VERBOSITY=-1
-alias pv='pipenv run python'
-alias pi='pipenv run pip install '
-
-# alias pv='poetry run python'
-# alias pi='poetry run pip install'
-
-# alias pv='./venv/bin/python'
-# alias pi='./venv/bin/pip install'
-
+# alias
+if type nvim > /dev/null 2>&1; then
+  alias vi='nvim'
+fi
 alias pc='proxychains4'
 alias scpr='rsync -Pzv --rsh=ssh'
 # alias getpass='openssl rand -base64 20'
@@ -58,6 +44,31 @@ alias wt='curl wttr.in/nanjing'
 alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1080'
 alias unsetproxy='unset ALL_PROXY; unset http_proxy; unset https_proxy'
 
+
+# python config
+# pip install better_exceptions
+export BETTER_EXCEPTIONS=1
+export FLASK_APP=app.py
+export FLASK_ENV=development
+
+export PIPENV_IGNORE_VIRTUALENVS=1
+export PIPENV_VERBOSITY=-1
+alias pv='pipenv run python'
+alias pi='pipenv run pip install '
+
+# alias pv='poetry run python'
+# alias pi='poetry run pip install'
+
+# alias pv='./venv/bin/python'
+# alias pi='./venv/bin/pip install'
+
+
+# yarn config
+alias yy='yarn'
+alias ys='yarn start'
+
+
+# git config
 alias gc='git clone'
 alias gs='git status'
 alias ga='git add'
@@ -67,6 +78,8 @@ alias gd='git diff'
 alias gl='git pull'
 alias gp='git push'
 
+
+# golang config
 # export GOPROXY=https://mirrors.aliyun.com/goproxy/
 export GOPROXY=https://goproxy.cn
 export GO111MODULE=auto
@@ -75,12 +88,15 @@ export PATH="$PATH:$HOME/dev/go/bin"
 alias gg='GO111MODULE=on go get'
 alias gr='GO111MODULE=on go run'
 
+
+# docker config
 alias dp='docker ps -a'
 alias dk='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 alias dr='docker rmi $(docker images --filter dangling=true -q --no-trunc)'
 alias dc='docker-compose'
 alias di='docker images'
 alias dir='docker rmi'
+
 
 # git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 # git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
