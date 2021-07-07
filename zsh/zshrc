@@ -2,7 +2,7 @@
 if [ -f ~/.pyenv/py3/bin/activate ];then
   source ~/.pyenv/py3/bin/activate
 fi
-if [ -f ~/.pyenv/py3/bin/trash-put ];then
+if [ -f i$(which trash-put) ];then
   alias rr='trash-put'
 fi
 
