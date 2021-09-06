@@ -3,10 +3,11 @@ pyenv: ;@echo "Installing python virtualenv"
 	python3 -m venv ~/.pyenv/py3 || echo ""
 
 link: ;@echo "Symbolic links"
-	ln -s ~/.dotfiles/.pip/ ~/ || echo ""
-	ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig || echo ""
-	ln -s ~/.dotfiles/js/npmrc ~/.npmrc || echo ""
-	ln -s ~/.dotfiles/js/yarnrc ~/.yarnrc || echo ""
+	mkdir -p ~/.config/pip
+	ln -s ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf || echo ""
+	ln -s ~/.dotfiles/config/gitconfig ~/.gitconfig || echo ""
+	ln -s ~/.dotfiles/config/npmrc ~/.npmrc || echo ""
+	ln -s ~/.dotfiles/config/yarnrc ~/.yarnrc || echo ""
 
 github: pyenv
 	@echo "Installing ohmyzsh and neovim config using github address"
