@@ -1,9 +1,0 @@
-[http "https://github.com"]
-proxy = socks5://127.0.0.1:1080
-postBuffer = 524288000
-[https "https://github.com"]
-proxy = socks5://127.0.0.1:1080
-postBuffer = 524288000
-
-[pull]
-	rebase = false
