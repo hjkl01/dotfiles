@@ -41,7 +41,7 @@ alias www='ifconfig en0 && python -m http.server 80 -d $1 '
 alias getip='curl http://cip.cc'
 alias wt='curl wttr.in/nanjing'
 
-set PROXY_URL="socks5://127.0.0.1:1080"
+export PROXY_URL="socks5://127.0.0.1:1080"
 alias setproxy='export ALL_PROXY=$PROXY_URL'
 alias unsetproxy='unset ALL_PROXY; unset http_proxy; unset https_proxy'
 
