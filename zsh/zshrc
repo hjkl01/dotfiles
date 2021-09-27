@@ -71,14 +71,14 @@ export BETTER_EXCEPTIONS=1
 export FLASK_APP=app.py
 export FLASK_ENV=development
 
-alias pv="/usr/local/bin/python3.9 -m venv .venv"
-alias pi="./.venv/bin/pip install"
-alias p="./.venv/bin/python"
+# alias pv="/usr/local/bin/python3.9 -m venv .venv"
+# alias pi="./.venv/bin/pip install"
+# alias p="./.venv/bin/python"
 
-# export PIPENV_IGNORE_VIRTUALENVS=1
-# export PIPENV_VERBOSITY=-1
-# alias pv='pipenv run python'
-# alias pi='pipenv run pip install '
+export PIPENV_IGNORE_VIRTUALENVS=1
+export PIPENV_VERBOSITY=-1
+alias pv='pipenv run python'
+alias pi='pipenv run pip install '
 
 # alias pv='poetry run python'
 # alias pi='poetry run pip install'
