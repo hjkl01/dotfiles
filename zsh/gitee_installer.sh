@@ -22,14 +22,14 @@ InstallZsh(){
 }
 
 InstallOhMyZsh(){
-    git clone https://gitee.com/formattedd/ohmyzsh ~/.oh-my-zsh
+    git clone https://gitee.com/lesssound/ohmyzsh.git ~/.oh-my-zsh
     ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
     chsh -s $(which zsh)
 }
 
 InstallThemesPlugins(){
-    git clone https://gitee.com/formattedd/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
-    git clone https://gitee.com/formattedd/zsh-syntax-highlighting ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+    git clone https://gitee.com/lesssound/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+    git clone https://gitee.com/lesssound/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
     ln -s ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
 }
 
