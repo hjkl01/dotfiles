@@ -9,9 +9,12 @@ function prompt_char {
 }
 
 function hostname {
-	echo "  MacBook Pro   "
+	echo "  $HOST  "
 }
 
+# show git info
+# %{$reset_color%}$(git_prompt_info)%{$reset_color%}$(git_prompt_ahead)
+
 PROMPT='%(?, ,%{$fg[red]%}FAIL%{$reset_color%})
-%{$fg[green]%} $(hostname) %{$fg[yellow]%}[%~] %{$reset_color%}$(git_prompt_info)%{$reset_color%}$(git_prompt_ahead) %{$fg[green]%}[%D %*]%{$reset_color%}
+%{$fg[green]%} $(hostname) %{$fg[yellow]%}[%~] %{$fg[green]%}[%D %*]%{$reset_color%}
 %_ $(prompt_char) '
