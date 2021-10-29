@@ -3,9 +3,11 @@
 > install git, make, neovim, python3
 
 ```
-git clone https://github.com/formattedd/dotfiles ~/.dotfiles
-or
-git clone https://gitee.com/formattedd/dotfiles ~/.dotfiles
+github: 
+  git clone https://github.com/lesssound/dotfiles ~/.dotfiles
+gitee: 
+  git clone https://gitee.com/lesssound/dotfiles.git ~/.dotfiles
+
 cd ~/.dotfiles 
 make github or make gitee
 ```
