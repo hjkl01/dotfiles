@@ -4,15 +4,13 @@ pyenv: ;@echo "Installing python virtualenv"
 
 link: ;@echo "Symbolic links"
 	mkdir -p ~/.config/pip
-	ln -s ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf || echo ""
-	ln -s ~/.dotfiles/config/gitconfig ~/.gitconfig || echo ""
-	ln -s ~/.dotfiles/config/npmrc ~/.npmrc || echo ""
-	ln -s ~/.dotfiles/config/yarnrc ~/.yarnrc || echo ""
+	sh zsh/softlinks.sh
 
-github: pyenv
+install: pyenv
 	@echo "Installing ohmyzsh and neovim config using github address"
-	sh zsh/installer.sh || echo ""
-	git clone https://github.com/lesssound/vimrc nvim
+	export DOMAIN="https://github.com"
+	sh zsh/installer.sh ${DOMAIN} || echo ""
+	git clone ${DOMAIN}/lesssound/vimrc nvim
 	sh nvim/installer.sh || echo ""
 
 gitee: pyenv link
@@ -20,3 +18,10 @@ gitee: pyenv link
 	sh zsh/gitee_installer.sh || echo ""
 	git clone https://gitee.com/lesssound/vimrc.git nvim
 	sh nvim/installer.sh || echo ""
+
+cnpmjs: pyenv link
+	@echo "Installing ohmyzsh and neovim config using gitee address"
+	export DOMAIN="https://github.com.cnpmjs.org"
+	sh zsh/installer.sh || echo ""
+	# git clone https://gitee.com/lesssound/vimrc.git nvim
+	# sh nvim/installer.sh || echo ""
