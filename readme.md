@@ -7,9 +7,15 @@ github:
   git clone https://github.com/lesssound/dotfiles ~/.dotfiles
 gitee: 
   git clone https://gitee.com/lesssound/dotfiles.git ~/.dotfiles
+cnpmjs:
+  git clone https://github.com.cnpmjs.org/lesssound/dotfiles.git ~/.dotfiles
 
 cd ~/.dotfiles 
-make github or make gitee
+make github 
+# or 
+make gitee
+# or
+make cnpmjs
 ```
 
 <details>
