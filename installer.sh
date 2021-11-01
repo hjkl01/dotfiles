@@ -37,7 +37,7 @@ InstallOhMyZsh(){
     if [ -e ~/.oh-my-zsh ]; then
         echo "~/.oh-my-zsh exists"
     else
-        git clone $1/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+        git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
     fi
 
     if [ -e ~/.zshrc ];then
@@ -49,14 +49,18 @@ InstallOhMyZsh(){
 }
 
 InstallThemesPlugins(){
-    echo $1
-    git clone $1/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
-    git clone $1/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
     ln -s ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
 }
 
+InstallNeovim(){
+    git clone https://github.com/lesssound/vimrc nvim
+    sh nvim/installer.sh
+}
 
-echo $@
+
+# echo $@
 
 # if [ $1 = 'y' ];
 # then
@@ -74,8 +78,9 @@ SoftLinks
 python3 -m venv ~/.pyenv/py3
 
 InstallZsh
-InstallOhMyZsh $1
-InstallThemesPlugins $1
+InstallOhMyZsh
+InstallThemesPlugins
+InstallNeovim
 
 echo "edit ~/.oh-my-zsh/themes/Schminitz.zsh-themes to update themes"
 echo "finish ! logout and relogin"

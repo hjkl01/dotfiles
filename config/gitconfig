@@ -1,6 +1,21 @@
 [http "https://github.com"]
-	proxy = socks5://127.0.0.1:1080
+	; proxy = http://127.0.0.1:1080
 	postBuffer = 524288000
+	insteadOf = https://gitclone.com
 [https "https://github.com"]
-	proxy = socks5://127.0.0.1:1080
+	# proxy = http://127.0.0.1:1080
 	postBuffer = 524288000
+	insteadOf = https://gitclone.com
+
+[pull]
+	rebase = false
+[user]
+	email = xxx@example.com
+	name = The handsome boy
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = master
