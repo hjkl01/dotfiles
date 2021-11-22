@@ -53,7 +53,7 @@ InstallThemesPlugins(){
 }
 
 InstallNeovim(){
-    git clone https://github.com/lesssound/vimrc nvim
+    git clone https://github.com/lesssound/nvim-config nvim
     sh nvim/installer.sh
 }
 
