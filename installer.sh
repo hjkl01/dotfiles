@@ -19,7 +19,9 @@ SoftLinks(){
 InstallZsh(){
     echo "installing..."
     if which apt-get >/dev/null; then
-        sudo apt-get update -y && sudo apt-get install -y zsh git python3 python3-venv neovim npm && curl -sL https://deb.nodesource.com/setup | sudo bash -
+        sudo apt-get update -y && sudo apt-get install -y zsh git python3 python3-venv neovim npm
+        # npm install -g n
+        # && curl -sL https://deb.nodesource.com/setup | sudo bash -
     elif which brew >/dev/null;then
         brew install zsh git python3 neovim npm trash-cli
     elif which yum >/dev/null;then
