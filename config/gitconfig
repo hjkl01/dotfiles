@@ -1,11 +1,15 @@
 [http "https://github.com"]
-	; proxy = http://127.0.0.1:1080
 	postBuffer = 524288000
-	insteadOf = https://gitclone.com
+	; proxy = socks5://127.0.0.1:1080
+	; insteadOf = https://hub.fastgit.org
+	; insteadOf = https://gitclone.com/github.com
+	insteadOf = https://github.com.cnpmjs.org
 [https "https://github.com"]
-	# proxy = http://127.0.0.1:1080
 	postBuffer = 524288000
-	insteadOf = https://gitclone.com
+	; proxy = socks5://127.0.0.1:1080
+	; insteadOf = https://hub.fastgit.org
+	; insteadOf = https://gitclone.com/github.com
+	insteadOf = https://github.com.cnpmjs.org
 
 [pull]
 	rebase = false
