@@ -21,23 +21,22 @@ fi
 alias_if_program_exists trash-put rr
 alias_if_program_exists nvim vi
 
-export TERM=xterm
-
+# ZSH config
 bindkey '^n' end-of-line
-
+export TERM=xterm
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 DISABLE_AUTO_UPDATE='true'
 ZSH_DISABLE_COMPFIX='true'
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME='Schminitz'
-
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
+
 
 export LC_ALL="zh_CN.UTF-8"
 
@@ -65,15 +64,15 @@ run_cmd(){
 }
 alias px=run_cmd $*
 
+# asdf
+# http://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+# asdf list all nodejs
+
 # python config
 # pip install better_exceptions
 export BETTER_EXCEPTIONS=1
-export FLASK_APP=app.py
-export FLASK_ENV=development
-
-# alias pv="/usr/local/bin/python3.9 -m venv .venv"
-# alias pi="./.venv/bin/pip install"
-# alias p="./.venv/bin/python"
+# export FLASK_APP=app.py
+# export FLASK_ENV=development
 
 export PIPENV_IGNORE_VIRTUALENVS=1
 export PIPENV_VERBOSITY=-1
@@ -121,6 +120,10 @@ alias dc='docker-compose'
 alias di='docker images'
 alias dir='docker rmi'
 
+# git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git
+# git -C "$(brew --repo homebrew/core)" remote set-url origin https://github.com/Homebrew/homebrew-core.git
+# git -C "$(brew --repo homebrew/cask)" remote set-url origin https://github.com/Homebrew/homebrew-cask
+# brew update
 
 # git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 # git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
