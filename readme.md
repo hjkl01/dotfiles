@@ -1,6 +1,7 @@
 ## my workspace config
 
 <details><summary> config ~/.gitconfig and ~/.ssh/config </summary>
+```sh
 # ~/.gitconfig
 [http "https://github.com"]
 	postBuffer = 524288000
@@ -55,6 +56,7 @@ Host archServer
 
 # 转发服务器到本机的1082端口
 # ssh -D 1082 -f -C -q -N archServer
+```
 </details>
 
 ```sh
