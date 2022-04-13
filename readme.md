@@ -1,6 +1,7 @@
 ## my workspace config
 
 <details><summary> config ~/.gitconfig and ~/.ssh/config </summary>
+
 ```sh
 # ~/.gitconfig
 [http "https://github.com"]
@@ -57,9 +58,10 @@ Host archServer
 # 转发服务器到本机的1082端口
 # ssh -D 1082 -f -C -q -N archServer
 ```
+
 </details>
 
-```sh
+```shell
 # install git, neovim, python3-dev
 git clone https://github.com/lesssound/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
