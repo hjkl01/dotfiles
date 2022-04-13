@@ -1,6 +1,6 @@
 ## my workspace config
 
-{% codeblock "config ~/.gitconfig and ~/.ssh/config" lang:sh >folded %}
+<details><summary> config ~/.gitconfig and ~/.ssh/config </summary>
 # ~/.gitconfig
 [http "https://github.com"]
 	postBuffer = 524288000
@@ -55,10 +55,10 @@ Host archServer
 
 # 转发服务器到本机的1082端口
 # ssh -D 1082 -f -C -q -N archServer
-{% endcodeblock %}
+</details>
 
-{% codeblock "instal" lang:sh %}
+```sh
 # install git, neovim, python3-dev
 git clone https://github.com/lesssound/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
-{% endcodeblock %}
+```
