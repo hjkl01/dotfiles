@@ -1,6 +1,5 @@
 ## my workspace config
 
-###
 {% codeblock "config ~/.gitconfig and ~/.ssh/config" lang:sh >folded %}
 # ~/.gitconfig
 [http "https://github.com"]
@@ -40,10 +39,10 @@ Host github
 
 Host archServer
     HostName 192.168.xx.xx
-    User xxx
-    Port xxx
+    User username
+    Port 22
     # use ipv4
-    # AddressFamily inet
+    AddressFamily inet
     IdentitiesOnly yes
     IdentityFile ~/.ssh/id_rsa
     ServerAliveInterval 120
@@ -58,8 +57,8 @@ Host archServer
 # ssh -D 1082 -f -C -q -N archServer
 {% endcodeblock %}
 
-```
+{% codeblock "instal" lang:sh %}
 # install git, neovim, python3-dev
-  git clone https://github.com/lesssound/dotfiles ~/.dotfiles
-  cd ~/.dotfiles && sh ./installer.sh
-```
+git clone https://github.com/lesssound/dotfiles ~/.dotfiles
+cd ~/.dotfiles && sh ./installer.sh
+{% endcodeblock %}
