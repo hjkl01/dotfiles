@@ -54,8 +54,9 @@ InstallThemesPlugins(){
 }
 
 InstallNeovim(){
-    git clone https://github.com/lesssound/nvim-config nvim
-    sh nvim/installer.sh
+    git clone https://github.com/hjkl01/init.lua nvim
+    ln -s ~/.dotfiles/nvim ~/.config
+    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
 
 
