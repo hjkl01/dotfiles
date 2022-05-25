@@ -18,15 +18,15 @@ SoftLinks(){
 InstallZsh(){
     echo "installing..."
     if which apt-get >/dev/null; then
-        sudo apt-get update -y && sudo apt-get install -y zsh git python3 python3-venv neovim npm
+        sudo apt-get update -y && sudo apt-get install -y zsh git python3 python3-venv neovim
         # npm install -g n
         # && curl -sL https://deb.nodesource.com/setup | sudo bash -
     elif which brew >/dev/null;then
-        brew install zsh git python3 neovim npm trash-cli
+        brew install zsh git python3 neovim trash-cli
     elif which yum >/dev/null;then
-        sudo yum install zsh git python3 neovim npm -y
+        sudo yum install zsh git python3 neovim -y
     elif which pacman >/dev/null;then
-        sudo pacman -Syy && sudo pacman -S --noconfirm zsh git python3 neovim xclip xorg-xclipboard npm trash-cli
+        sudo pacman -Syy && sudo pacman -S --noconfirm zsh git python3 neovim xclip xorg-xclipboard trash-cli
     else
         echo "Does not support system version"
     fi
