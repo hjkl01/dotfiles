@@ -77,7 +77,7 @@ InstallNeovim(){
 # 如果可以正常访问GitHub、pip等 注释此行
 SoftLinks
 # install python env
-python3 -m venv ~/.pyenv/py3
+python3 -m venv ~/.venv/py3
 
 InstallZsh
 InstallOhMyZsh
