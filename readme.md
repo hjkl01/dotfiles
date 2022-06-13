@@ -63,6 +63,6 @@ Host archServer
 
 ```shell
 # install git, neovim, python3-dev
-git clone https://github.com/lesssound/dotfiles ~/.dotfiles
+git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
 ```
