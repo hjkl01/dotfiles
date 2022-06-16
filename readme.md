@@ -33,6 +33,7 @@
 </details>
 
 <details><summary> config ~/.ssh/config </summary>
+
 ```sh
 # ~/.ssh/config
 Host github
@@ -62,6 +63,7 @@ Host archServer
 # 转发服务器到本机的1082端口
 # ssh -D 1082 -f -C -q -N archServer
 ```
+
 </details>
 
 ```shell
