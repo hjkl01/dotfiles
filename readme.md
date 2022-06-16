@@ -1,6 +1,6 @@
 ## my workspace config
 
-<details><summary> config ~/.gitconfig and ~/.ssh/config </summary>
+<details><summary> config ~/.gitconfig </summary>
 
 ```sh
 # ~/.gitconfig
@@ -29,7 +29,11 @@
 	required = true
 [init]
 	defaultBranch = master
+```
+</details>
 
+<details><summary> config ~/.ssh/config </summary>
+```sh
 # ~/.ssh/config
 Host github
    HostName github.com
@@ -58,7 +62,6 @@ Host archServer
 # 转发服务器到本机的1082端口
 # ssh -D 1082 -f -C -q -N archServer
 ```
-
 </details>
 
 ```shell
