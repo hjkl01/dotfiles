@@ -71,3 +71,9 @@ Host archServer
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
 ```
+
+```sh
+# corntab
+10 * * * * cd /home/user/.dotfiles/ && git pull
+10 * * * * cd /home/user/.dotfiles/nvim && git pull && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+```
