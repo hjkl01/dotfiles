@@ -23,6 +23,7 @@ alias_if_program_exists nvim vi
 
 
 # alias
+alias fd='find . -name '
 alias pc='proxychains4'
 alias scpr='rsync -Pzv --exclude "logs" --rsh=ssh'
 # alias getpass='openssl rand -base64 20'
@@ -35,8 +36,7 @@ alias getip='curl http://cip.cc'
 alias wt='curl wttr.in/nanjing'
 
 
-export PROXY_URL="socks5://127.0.0.1:1080"
-export PROXY_URL="http://127.0.0.1:7890"
+export PROXY_URL="socks5://127.0.0.1:7890"
 alias setproxy='export ALL_PROXY=$PROXY_URL'
 alias unsetproxy='unset ALL_PROXY; unset http_proxy; unset https_proxy'
 
@@ -57,10 +57,10 @@ export BETTER_EXCEPTIONS=1
 # export FLASK_APP=app.py
 # export FLASK_ENV=development
 
-export PIPENV_IGNORE_VIRTUALENVS=1
-export PIPENV_VERBOSITY=-1
-alias pv='pipenv run python'
-alias pi='pipenv run pip install '
+# export PIPENV_IGNORE_VIRTUALENVS=1
+# export PIPENV_VERBOSITY=-1
+# alias pv='pipenv run python'
+# alias pi='pipenv run pip install '
 
 # alias pv='poetry run python'
 # alias pi='poetry run pip install'
@@ -82,11 +82,11 @@ alias gp='git push'
 
 
 # golang config
-# export GOPROXY=https://mirrors.aliyun.com/goproxy/
+export GOPROXY=https://mirrors.aliyun.com/goproxy/
 # export GOPROXY=https://goproxy.cn
-# export GO111MODULE=auto
-# export GOPATH=$HOME/dev/go
-# export PATH="$PATH:$HOME/dev/go/bin"
+export GO111MODULE=auto
+export GOPATH=$HOME/dev/go
+export PATH="$PATH:$HOME/dev/go/bin"
 # alias gg='GO111MODULE=on go get'
 # alias gr='GO111MODULE=on go run'
 
