@@ -3,4 +3,7 @@
 # asdf list all nodejs
 
 # mac
-. /usr/local/opt/asdf/libexec/asdf.sh 
+# . /usr/local/opt/asdf/libexec/asdf.sh
+
+# linux
+. $HOME/.asdf/asdf.sh

@@ -3,8 +3,19 @@ alias yy='yarn'
 alias ys='yarn start'
 
 # yrm
-# yarn config set registry https://registry.npm.taobao.org/
+
+# 查询源
 # yarn config get registry
+
+# 更换国内源
+# yarn config set registry https://registry.npmmirror.com
+
+# 恢复官方源
+# yarn config set registry https://registry.yarnpkg.com
+
+# 删除注册表
+# yarn config delete registry
+
 
 # HUAWEI
 # https://repo.huaweicloud.com/repository/npm/
