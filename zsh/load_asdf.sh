@@ -6,4 +6,7 @@
 # . /usr/local/opt/asdf/libexec/asdf.sh
 
 # linux
-. $HOME/.asdf/asdf.sh
+ASDFSH=$HOME/.asdf/asdf.sh
+if [ -f $ASDFSH ];then
+    . $ASDFSH
+fi
