@@ -54,13 +54,9 @@ InstallThemesPlugins(){
 }
 
 InstallNeovim(){
-   git clone --depth 1 https://github.com/NvChad/NvChad init.lua
-   ln -s ~/.dotfiles/nvim_custom ~/.dotfiles/init.lua/lua/custom
+   git clone --depth 1 https://github.com/hjkl01/init.lua init.lua
    ln -s ~/.dotfiles/init.lua ~/.config/nvim
    ln -s ~/.dotfiles/config/pycodestyle ~/.config
-   # git clone --depth 1 https://github.com/hjkl01/init.lua nvim
-   # ln -s ~/.dotfiles/nvim ~/.config
-   # ln -s ~/.dotfiles/nvim/pycodestyle ~/.config
    ~/.venv/py3/bin/pip install better_exceptions neovim black -i https://pypi.tuna.tsinghua.edu.cn/simple
    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
