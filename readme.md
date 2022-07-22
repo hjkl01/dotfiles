@@ -7,15 +7,9 @@
 [http "https://github.com"]
 	postBuffer = 524288000
 	proxy = socks5://127.0.0.1:1080
-	; insteadOf = https://hub.fastgit.org
-	; insteadOf = https://gitclone.com/github.com
-	; insteadOf = https://github.com.cnpmjs.org
 [https "https://github.com"]
 	postBuffer = 524288000
 	proxy = socks5://127.0.0.1:1080
-	; insteadOf = https://hub.fastgit.org
-	; insteadOf = https://gitclone.com/github.com
-	; insteadOf = https://github.com.cnpmjs.org
 
 [pull]
 	rebase = false
@@ -29,6 +23,10 @@
 	required = true
 [init]
 	defaultBranch = master
+
+; [url "https://ghproxy.com/https://github.com/"]
+; 	insteadOf = https://github.com
+
 ```
 </details>
 
