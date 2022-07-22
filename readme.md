@@ -27,6 +27,9 @@
 ; [url "https://ghproxy.com/https://github.com/"]
 ; 	insteadOf = https://github.com
 
+; [url "https://gitclone.com/github.com/"]
+; 	insteadOf = https://github.com
+
 ```
 </details>
 
