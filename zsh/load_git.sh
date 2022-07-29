@@ -1,5 +1,6 @@
 # git config
-alias gc='git clone --depth=1'
+alias gc='git clone'
+alias gcc='git clone --depth=1'
 alias gs='git status'
 alias ga='git add'
 alias gcmsg='git commit -m'
