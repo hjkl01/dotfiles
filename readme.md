@@ -29,8 +29,8 @@
 
 ; [url "https://gitclone.com/github.com/"]
 ; 	insteadOf = https://github.com
-
 ```
+
 </details>
 
 <details><summary> config ~/.ssh/config </summary>
@@ -75,6 +75,6 @@ cd ~/.dotfiles && sh ./installer.sh
 
 ```sh
 # corntab
-10 * * * * cd /home/user/.dotfiles/ && git pull
-10 * * * * cd /home/user/.dotfiles/nvim && git pull && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+*/10 * * * * cd /home/user/.dotfiles/ && git pull
+*/10 * * * * cd /home/user/.dotfiles/init.lua && git pull && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 ```
