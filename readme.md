@@ -67,6 +67,25 @@ Host archServer
 
 </details>
 
+<details><summary> asdf install neovim python3 </summary>
+
+```shell
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
+. $HOME/.asdf/asdf.sh
+asdf plugin add neovim python
+# asdf list all python
+
+# install neovim stable
+asdf install neovim stable
+asdf global neovim stable
+
+# install python3.9
+asdf install python 3.9
+asdf global python 3.9
+```
+
+</details>
+
 ```shell
 # install git, neovim, python3-dev
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
