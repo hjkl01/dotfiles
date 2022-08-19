@@ -94,6 +94,7 @@ cd ~/.dotfiles && sh ./installer.sh
 
 ```sh
 # corntab
-*/10 * * * * cd /home/user/.dotfiles/ && git pull
-*/10 * * * * cd /home/user/.dotfiles/init.lua && git pull && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+# nvim /var/spool/cron/$USER
+*/10 * * * * cd $HOME/.dotfiles/ && git pull
+*/10 * * * * cd $HOME/.dotfiles/init.lua && git pull && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 ```
