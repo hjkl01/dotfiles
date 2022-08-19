@@ -1,18 +1,36 @@
 #!/bin/sh
 
-judgeIfExists(){
+beforeInstall(){
+   if [ -f ~/.zshrc ];then 
+       echo "~/.zshrc exists"
+       exit
+   fi
+
+   if [ -d ~/.oh-my-zsh ];then 
+       echo "~/.oh-my-zsh exists"
+       exit
+   fi
+
+   if [ -d ~/.~/.config/nvim ];then 
+       echo "~/.config/nvim exists"
+       exit
+   fi
+}
+
+linkFile(){
    if [ -e $2 ]; then
       echo "$2 exists"
+      exit
    else
       echo "run $1 $2"
       ln -s $1 $2
    fi
 }
 
-
 SoftLinks(){
+   linkFile ~/.dotfiles/zsh/.zshrc ~/.zshrc
    mkdir -p ~/.config/pip
-   judgeIfExists ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
+   linkFile ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
 }
 
 InstallZsh(){
@@ -33,30 +51,24 @@ InstallZsh(){
 }
 
 InstallOhMyZsh(){
-   if [ -e ~/.oh-my-zsh ]; then
-      echo "~/.oh-my-zsh exists"
-   else
-      git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-   fi
+    git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-   if [ -e ~/.zshrc ];then
-      echo "~/.zshrc exists"
-   else
-      ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-      chsh -s $(which zsh)
-   fi
+    chsh -s $(which zsh)
 }
 
 InstallThemesPlugins(){
    git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
    git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-   ln -s ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
+   linkFile -s ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
 }
 
 InstallNeovim(){
    git clone --depth 1 https://github.com/hjkl01/init.lua init.lua
-   ln -s ~/.dotfiles/init.lua ~/.config/nvim
-   ln -s ~/.dotfiles/config/pycodestyle ~/.config
+   linkFile -s ~/.dotfiles/init.lua ~/.config/nvim
+   linkFile -s ~/.dotfiles/config/pycodestyle ~/.config
+
+   # install python env
+   python3 -m venv ~/.venv/py3
    ~/.venv/py3/bin/pip install better_exceptions neovim black -i https://pypi.tuna.tsinghua.edu.cn/simple
    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
@@ -74,10 +86,9 @@ InstallNeovim(){
 #     SoftLinks
 # fi
 
+beforeInstall
 # 如果可以正常访问GitHub、pip等 注释此行
 SoftLinks
-# install python env
-python3 -m venv ~/.venv/py3
 
 InstallZsh
 InstallOhMyZsh
