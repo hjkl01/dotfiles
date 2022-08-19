@@ -1,8 +1,8 @@
-## my workspace config
+## dotfiles
 
 <details><summary> config ~/.gitconfig </summary>
 
-```sh
+```shell
 # ~/.gitconfig
 [http "https://github.com"]
 	postBuffer = 524288000
@@ -35,7 +35,7 @@
 
 <details><summary> config ~/.ssh/config </summary>
 
-```sh
+```shell
 # ~/.ssh/config
 Host github
    HostName github.com
@@ -86,13 +86,17 @@ asdf global python 3.9
 
 </details>
 
+### install
+
 ```shell
 # install git, neovim, python3-dev
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
 ```
 
-```sh
+### crontab setting
+
+```shell
 # corntab
 # nvim /var/spool/cron/$USER
 */10 * * * * cd $HOME/.dotfiles/ && git pull
