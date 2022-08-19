@@ -86,7 +86,7 @@ asdf global python 3.9
 
 </details>
 
-### install
+#### install
 
 ```shell
 # install git, neovim, python3-dev
@@ -94,10 +94,9 @@ git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
 ```
 
-### crontab setting
+#### crontab setting
 
 ```shell
-# corntab
 # nvim /var/spool/cron/$USER
 */10 * * * * cd $HOME/.dotfiles/ && git pull
 */10 * * * * cd $HOME/.dotfiles/init.lua && git pull && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
