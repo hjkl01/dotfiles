@@ -12,7 +12,9 @@ M.plugins = {
     ["kyazdani42/nvim-tree.lua"] = pluginConfs.nvimtree,
     ["williamboman/mason.nvim"] = pluginConfs.mason,
   },
+
   remove = {},
+
   user = {
     ['voldikss/vim-translator'] = {
         config = function()
@@ -35,6 +37,11 @@ M.plugins = {
       end,
     },
 
+    ["neovim/nvim-lspconfig"] = {
+        config = function()
+          require "custom.plugins.lspconfig"
+        end,
+    },
   },
 }
 
