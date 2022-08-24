@@ -5,7 +5,7 @@ M.onedark = function()
     require('onedark').setup {
         -- Main options --
         style = 'dark', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-        transparent = false, -- Show/hide background
+        transparent = true, -- Show/hide background
         term_colors = true, -- Change terminal color as per the selected theme style
         ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
         cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
@@ -39,20 +39,28 @@ M.onedark = function()
     require('onedark').load()
 end
 
+M.mason = {
+  ensure_installed = { 
+    "python-lsp-server",
+    "lua-language-server",
+    "typescript-language-server",
+    "bash-language-server"
+  }, -- not an option from mason.nvim
+}
+
 M.treesitter = {
    ensure_installed = {
-      "python",
-      "bash",
+     "lua",
+     "python",
+     "bash",
+     "javascript",
+     "typescript",
    },
 }
 
 M.nvimtree = {
-   -- git = {
-   --    enable = true,
-   -- },
    view = {
-        width = 30,
-        height = 30,
+        width = 25,
         hide_root_folder = false,
         side = "right",
         preserve_window_proportions = false,

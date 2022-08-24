@@ -10,6 +10,7 @@ M.plugins = {
   override = {
     ["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
     ["kyazdani42/nvim-tree.lua"] = pluginConfs.nvimtree,
+    ["williamboman/mason.nvim"] = pluginConfs.mason,
   },
   remove = {},
   user = {
@@ -26,6 +27,14 @@ M.plugins = {
     },
 
     ['sbdchd/neoformat'] = {},
+
+    ["jose-elias-alvarez/null-ls.nvim"] = {
+      after = "nvim-lspconfig",
+      config = function()
+         require "custom.plugins.null-ls"
+      end,
+    },
+
   },
 }
 
