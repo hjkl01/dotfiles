@@ -225,25 +225,25 @@ M.lspconfig = {
             "   diagnostic setloclist",
         },
 
-        ["<space>f"] = {
-          function()
-            vim.lsp.buf.formatting {}
-          end,
-          "lsp formatting",
-        },
-
-        -- ["<leader>f"] = {
-        --     function()
-        --         if (vim.version()["minor"] < 8) then
-        --             -- if vim.version().minor > 7 then
-        --             -- if vim.fn.has('nvim-0.8') == 0 then
-        --             vim.lsp.buf.formatting()
-        --         else
-        --             vim.lsp.buf.format()
-        --         end
-        --     end,
-        --     "   lsp formatting ",
+        -- ["<space>f"] = {
+        --   function()
+        --     vim.lsp.buf.formatting {}
+        --   end,
+        --   "lsp formatting",
         -- },
+
+        [" f"] = {
+            function()
+                if (vim.version()["minor"] < 8) then
+                    -- if vim.version().minor > 7 then
+                    -- if vim.fn.has('nvim-0.8') == 0 then
+                    vim.lsp.buf.formatting()
+                else
+                    vim.lsp.buf.format()
+                end
+            end,
+            "   lsp formatting ",
+        },
 
         ["<leader>wa"] = {
             function()
