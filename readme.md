@@ -99,5 +99,5 @@ cd ~/.dotfiles && sh ./installer.sh
 ```shell
 # nvim /var/spool/cron/$USER
 */10 * * * * cd $HOME/.dotfiles/ && git pull
-*/10 * * * * cd $HOME/.dotfiles/init.lua && git pull && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+*/10 * * * * cd $HOME/.dotfiles/init.lua && git pull
 ```
