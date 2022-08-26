@@ -13,8 +13,7 @@ local sources = {
    b.formatting.prettier,
 
    -- Lua
-   -- b.formatting.lua_language_server,
-   b.formatting.stylua,
+   -- b.formatting.stylua,
 
    -- Python
    b.formatting.yapf,

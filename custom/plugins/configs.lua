@@ -44,7 +44,10 @@ M.mason = {
     "python-lsp-server",
     "lua-language-server",
     "typescript-language-server",
-    "bash-language-server"
+    "bash-language-server",
+    "prettier",
+    "pylint",
+    "yapf",
   }, -- not an option from mason.nvim
 }
 
