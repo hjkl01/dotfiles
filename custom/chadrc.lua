@@ -30,18 +30,12 @@ M.plugins = {
 
     ['sbdchd/neoformat'] = {},
 
-    ["jose-elias-alvarez/null-ls.nvim"] = {
-      after = "nvim-lspconfig",
-      config = function()
-         require "custom.plugins.null-ls"
-      end,
-    },
-
     ["neovim/nvim-lspconfig"] = {
         config = function()
           require "custom.plugins.lspconfig"
         end,
     },
+
   },
 }
 
