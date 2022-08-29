@@ -16,7 +16,7 @@ local sources = {
    -- b.formatting.stylua,
 
    -- Python
-   b.formatting.yapf,
+   b.formatting.black,
 
    -- Shell
    b.formatting.shfmt,
