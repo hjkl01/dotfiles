@@ -1,17 +1,15 @@
-[http "https://github.com"]
-	postBuffer = 524288000
-	proxy = socks5://127.0.0.1:7890
-	; insteadOf = https://github.com.cnpmjs.org
-[https "https://github.com"]
-	postBuffer = 524288000
-	proxy = socks5://127.0.0.1:7890
-	; insteadOf = https://github.com.cnpmjs.org
+; [http "https://github.com"]
+; 	postBuffer = 524288000
+; 	proxy = socks5://127.0.0.1:1080
+; [https "https://github.com"]
+; 	postBuffer = 524288000
+; 	proxy = socks5://127.0.0.1:1080
 
 [pull]
 	rebase = false
 [user]
-	email = xxx@example.com
-	name = The handsome boy
+	email = ycm76229@gmail.com
+	name = ycm76229
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -19,3 +17,13 @@
 	required = true
 [init]
 	defaultBranch = master
+
+[alias]
+  lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+
+[url "https://ghproxy.com/https://github.com/"]
+	insteadOf = https://github.com
+
+; [url "https://gitclone.com/github.com/"]
+; 	insteadOf = https://github.com

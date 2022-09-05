@@ -3,19 +3,18 @@
 <details><summary> config ~/.gitconfig </summary>
 
 ```shell
-# ~/.gitconfig
-[http "https://github.com"]
-	postBuffer = 524288000
-	proxy = socks5://127.0.0.1:1080
-[https "https://github.com"]
-	postBuffer = 524288000
-	proxy = socks5://127.0.0.1:1080
+; [http "https://github.com"]
+; 	postBuffer = 524288000
+; 	proxy = socks5://127.0.0.1:1080
+; [https "https://github.com"]
+; 	postBuffer = 524288000
+; 	proxy = socks5://127.0.0.1:1080
 
 [pull]
 	rebase = false
 [user]
-	email = 
-	name = 
+	email = ycm76229@gmail.com
+	name = ycm76229
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -24,8 +23,12 @@
 [init]
 	defaultBranch = master
 
-; [url "https://ghproxy.com/https://github.com/"]
-; 	insteadOf = https://github.com
+[alias]
+  lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+
+[url "https://ghproxy.com/https://github.com/"]
+	insteadOf = https://github.com
 
 ; [url "https://gitclone.com/github.com/"]
 ; 	insteadOf = https://github.com
@@ -70,7 +73,7 @@ Host archServer
 <details><summary> asdf install neovim python3 </summary>
 
 ```shell
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 . $HOME/.asdf/asdf.sh
 asdf plugin add neovim python
 # asdf list all python
@@ -89,7 +92,8 @@ asdf global python 3.9
 #### install
 
 ```shell
-# install git, neovim, python3-dev
+# install zsh python3-venv trash-cli
+# install xclip install arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
 ```

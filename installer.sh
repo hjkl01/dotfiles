@@ -27,6 +27,7 @@ linkFile() {
 }
 
 SoftLinks() {
+  linkFile ~/.dotfiles/config/gitconfig ~/.gitconfig
   linkFile ~/.dotfiles/zsh/.zshrc ~/.zshrc
   mkdir -p ~/.config/pip
   linkFile ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
@@ -35,15 +36,15 @@ SoftLinks() {
 InstallZsh() {
   echo "installing..."
   if which apt-get >/dev/null; then
-    sudo apt-get update -y && sudo apt-get install -y zsh git python3 python3-venv neovim
+    sudo apt-get update -y && sudo apt-get install -y zsh python3 python3-venv 
     # npm install -g n
     # && curl -sL https://deb.nodesource.com/setup | sudo bash -
   elif which brew >/dev/null; then
-    brew install zsh git python3 neovim trash-cli
+    brew install zsh python3 trash-cli
   elif which yum >/dev/null; then
-    sudo yum install zsh git python3 neovim -y
+    sudo yum install zsh python3 -y
   elif which pacman >/dev/null; then
-    sudo pacman -Syy && sudo pacman -S --noconfirm zsh git python3 neovim xclip xorg-xclipboard trash-cli
+    sudo pacman -Syy && sudo pacman -S --noconfirm zsh python3 xclip xorg-xclipboard trash-cli
   else
     echo "Does not support system version"
   fi
@@ -62,8 +63,6 @@ InstallThemesPlugins() {
 }
 
 InstallNeovim() {
-  # git clone --depth 1 https://github.com/hjkl01/init.lua init.lua
-  # linkFile -s ~/.dotfiles/init.lua ~/.config/nvim
   git clone --depth 1 https://github.com/NvChad/NvChad init.lua
   linkFile ~/.dotfiles/custom ~/.dotfiles/init.lua/lua/custom
   linkFile ~/.dotfiles/init.lua ~/.config/nvim
