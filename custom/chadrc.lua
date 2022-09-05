@@ -32,7 +32,7 @@ M.plugins = {
 
     ["neovim/nvim-lspconfig"] = {
         config = function()
-          require "custom.plugins.lspconfig"
+          require "custom.plugins.lsp_config"
         end,
     },
 
