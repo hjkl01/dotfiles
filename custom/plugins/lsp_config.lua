@@ -16,17 +16,16 @@
 local present, lspconfig = pcall(require, "lspconfig")
 
 if not present then
-  return
+	return
 end
 
 local M = {}
 
-local config = require('plugins.configs.lspconfig')
+local config = require("plugins.configs.lspconfig")
 
-lspconfig.pylsp.setup {
-  on_attach = config.on_attach,
-  capabilities = config.capabilities,
-}
-
+lspconfig.pylsp.setup({
+	on_attach = config.on_attach,
+	capabilities = config.capabilities,
+})
 
 return M

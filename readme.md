@@ -92,7 +92,8 @@ asdf global python 3.9
 #### install
 
 ```shell
-# install zsh python3-venv trash-cli
+# install zsh python3-venv trash-cli stylua
+# if system is ubuntu/debian, use asdf install stylua
 # install xclip install arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh

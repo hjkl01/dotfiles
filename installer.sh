@@ -36,15 +36,15 @@ SoftLinks() {
 InstallZsh() {
   echo "installing..."
   if which apt-get >/dev/null; then
-    sudo apt-get update -y && sudo apt-get install -y zsh python3 python3-venv 
+    sudo apt-get update -y && sudo apt-get install -y zsh python3 python3-venv
     # npm install -g n
     # && curl -sL https://deb.nodesource.com/setup | sudo bash -
   elif which brew >/dev/null; then
-    brew install zsh python3 trash-cli
+    brew install zsh python3 trash-cli stylua
   elif which yum >/dev/null; then
     sudo yum install zsh python3 -y
   elif which pacman >/dev/null; then
-    sudo pacman -Syy && sudo pacman -S --noconfirm zsh python3 xclip xorg-xclipboard trash-cli
+    sudo pacman -Syy && sudo pacman -S --noconfirm zsh python3 xclip xorg-xclipboard trash-cli stylua
   else
     echo "Does not support system version"
   fi

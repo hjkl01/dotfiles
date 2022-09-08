@@ -1,75 +1,72 @@
 local M = {}
 
 M.disabled = {
-  n = {
-    ["<leader>h"] = "",
-    ["<C-s>"] = "",
-    ["<C-c>"] = "",
-    ["<leader>n"] = "",
-    ["<leader>rn"] = "",
-    ["<leader>uu"] = "",
-    ["<leader>tt"] = "",
-  }
+	n = {
+		["<leader>h"] = "",
+		["<C-s>"] = "",
+		["<C-c>"] = "",
+		["<leader>n"] = "",
+		["<leader>rn"] = "",
+		["<leader>uu"] = "",
+		["<leader>tt"] = "",
+	},
 }
 
 M.general = {
 
-    i = {
-        -- go to  beginning and end
-        ["<C-b>"] = { "<ESC>^i", "論 beginning of line" },
-        ["<C-e>"] = { "<End>", "壟 end of line" },
+	i = {
+		-- go to  beginning and end
+		["<C-b>"] = { "<ESC>^i", "論 beginning of line" },
+		["<C-e>"] = { "<End>", "壟 end of line" },
 
-        -- navigate within insert mode
-        ["<C-h>"] = { "<Left>", "  move left" },
-        ["<C-l>"] = { "<Right>", " move right" },
-        ["<C-j>"] = { "<Down>", " move down" },
-        ["<C-k>"] = { "<Up>", " move up" },
-    },
+		-- navigate within insert mode
+		["<C-h>"] = { "<Left>", "  move left" },
+		["<C-l>"] = { "<Right>", " move right" },
+		["<C-j>"] = { "<Down>", " move down" },
+		["<C-k>"] = { "<Up>", " move up" },
+	},
 
-    v = {
-        ["H"] = { "0", "Home" },
-        ["L"] = { "$", "End" },
-    },
+	v = {
+		["H"] = { "0", "Home" },
+		["L"] = { "$", "End" },
+	},
 
-    n = {
+	n = {
 
-        -- ["<esc>"] = { ":nohl<cr>", "Home" },
-        ["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
+		-- ["<esc>"] = { ":nohl<cr>", "Home" },
+		["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
 
-        ["H"] = { "0", "Home" },
-        ["L"] = { "$", "End" },
-        -- ["q"] = { ":q<CR>", "quit" },
-        ["q"] = { "<cmd> q <CR>", "﬚  quit file" },
-        -- ["W"] = { ":w<CR>", "save" },
-        ["W"] = { "<cmd> w <CR>", "﬚  save file" },
-        ["#"] = { "* <CR>", "next ident" },
+		["H"] = { "0", "Home" },
+		["L"] = { "$", "End" },
+		-- ["q"] = { ":q<CR>", "quit" },
+		["q"] = { "<cmd> q <CR>", "﬚  quit file" },
+		-- ["W"] = { ":w<CR>", "save" },
+		["W"] = { "<cmd> w <CR>", "﬚  save file" },
+		["#"] = { "* <CR>", "next ident" },
 
-        -- switch between windows
-        ["<C-h>"] = { "<C-w>h", " window left" },
-        ["<C-l>"] = { "<C-w>l", " window right" },
-        ["<C-j>"] = { "<C-w>j", " window down" },
-        ["<C-k>"] = { "<C-w>k", " window up" },
-
-    },
-
+		-- switch between windows
+		["<C-h>"] = { "<C-w>h", " window left" },
+		["<C-l>"] = { "<C-w>l", " window right" },
+		["<C-j>"] = { "<C-w>j", " window down" },
+		["<C-k>"] = { "<C-w>k", " window up" },
+	},
 }
 
-
 M.translate = {
-    n = {
-        ["tt"] = { "<Plug>TranslateW", "TranslateW" },
-    },
-    v = {
-        ["tt"] = { "<Plug>TranslateWV", "TranslateWV" },
-    },
+	n = {
+		["tt"] = { "<Plug>TranslateW", "TranslateW" },
+	},
+	v = {
+		["tt"] = { "<Plug>TranslateWV", "TranslateWV" },
+	},
 }
 
 M.others = {
-    n = {
-        ["ff"] = {
-            function()
-                -- echo &filetype
-                vim.cmd [[
+	n = {
+		["ff"] = {
+			function()
+				-- echo &filetype
+				vim.cmd([[
                     exec "w"
                     if &filetype == 'python'
                         exec "r !black -l 120 -q %"
@@ -81,13 +78,14 @@ M.others = {
                         exec ":Neoformat <CR>"
                         exec "w"
                     endif
-                ]]
-            end,
-            "autoformat" },
+                ]])
+			end,
+			"autoformat",
+		},
 
-        [' r'] = {
-            function()
-                vim.cmd [[ 
+		[" r"] = {
+			function()
+				vim.cmd([[ 
                     exec "w"
                     if &filetype == 'python'
                         "exec "!time python %"
@@ -101,52 +99,50 @@ M.others = {
                     else
                         echo &filetype
                     endif
-                ]]
-            end,
-            "run file"
-        }
-
-    },
+                ]])
+			end,
+			"run file",
+		},
+	},
 }
 
 M.comment = {
 
-    -- toggle comment in both modes
-    n = {
-        -- ["<leader>/"] = {
-        ["//"] = {
-            function()
-                require("Comment.api").toggle.linewise.current()
-            end,
-            "蘒  toggle comment",
-        },
-    },
+	-- toggle comment in both modes
+	n = {
+		-- ["<leader>/"] = {
+		["//"] = {
+			function()
+				require("Comment.api").toggle.linewise.current()
+			end,
+			"蘒  toggle comment",
+		},
+	},
 
-    v = {
-        ["//"] = {
-            '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
-            "蘒  toggle comment",
-        },
-    },
+	v = {
+		["//"] = {
+			'<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
+			"蘒  toggle comment",
+		},
+	},
 }
 
 M.lspconfig = {
 
-  n = {
-    ["<leader>f"] = {
-      function()
-        vim.lsp.buf.formatting {}
-      end,
-      "lsp formatting",
-    },
-    },
-
+	n = {
+		["<leader>f"] = {
+			function()
+				vim.lsp.buf.formatting({})
+			end,
+			"lsp formatting",
+		},
+	},
 }
 
 M.nvimtree = {
-    n = {
-        ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
-    },
+	n = {
+		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
+	},
 }
 
 return M
