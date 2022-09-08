@@ -55,6 +55,7 @@ M.treesitter = {
 	ensure_installed = {
 		"lua",
 		"python",
+		"go",
 		"bash",
 		"javascript",
 		"typescript",
