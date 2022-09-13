@@ -43,11 +43,13 @@ M.mason = {
 	ensure_installed = {
 		"python-lsp-server",
 		"lua-language-server",
+		-- "stylua",
 		"typescript-language-server",
 		"bash-language-server",
 		"prettier",
 		"pylint",
-		"yapf",
+		"black",
+		"shfmt",
 	}, -- not an option from mason.nvim
 }
 

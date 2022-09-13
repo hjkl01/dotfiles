@@ -51,19 +51,19 @@ InstallZsh() {
 }
 
 InstallOhMyZsh() {
-  git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
   chsh -s $(which zsh)
 }
 
 InstallThemesPlugins() {
-  git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
-  git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
   linkFile ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
 }
 
 InstallNeovim() {
-  git clone --depth 1 https://github.com/NvChad/NvChad init.lua
+  git clone --single-branch --depth 1 https://github.com/NvChad/NvChad init.lua
   linkFile ~/.dotfiles/custom ~/.dotfiles/init.lua/lua/custom
   linkFile ~/.dotfiles/init.lua ~/.config/nvim
   linkFile ~/.dotfiles/config/pycodestyle ~/.config
