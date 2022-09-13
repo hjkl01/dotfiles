@@ -30,6 +30,6 @@ alias www='ifconfig en0 && python -m http.server 80 -d $1 '
 # alias getip='curl ipinfo.io/ip'
 # alias getip='curl -L tool.lu/ip'
 # alias getip='curl http://api.ipify.org'
-alias ip='curl http://cip.cc'
+alias gip='curl http://cip.cc'
 alias wt='curl wttr.in/nanjing'
 
