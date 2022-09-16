@@ -42,6 +42,9 @@ M.plugins = {
 				require("custom.plugins.null-ls")
 			end,
 		},
+
+    ["iamcco/markdown-preview.nvim"] = {},
+
 	},
 }
 
