@@ -19,6 +19,8 @@ M.general = {
 		["<C-b>"] = { "<ESC>^i", "論 beginning of line" },
 		["<C-e>"] = { "<End>", "壟 end of line" },
 
+		["<C-d>"] = { "<ESC>", "quit insert mode" },
+
 		-- navigate within insert mode
 		["<C-h>"] = { "<Left>", "  move left" },
 		["<C-l>"] = { "<Right>", " move right" },
@@ -32,10 +34,6 @@ M.general = {
 	},
 
 	n = {
-
-		-- ["<esc>"] = { ":nohl<cr>", "Home" },
-		["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
-
 		["H"] = { "0", "Home" },
 		["L"] = { "$", "End" },
 		-- ["q"] = { ":q<CR>", "quit" },
@@ -44,11 +42,14 @@ M.general = {
 		["W"] = { "<cmd> w <CR>", "﬚  save file" },
 		["#"] = { "* <CR>", "next ident" },
 
+		-- ["<esc>"] = { ":nohl<cr>", "Home" },
+		-- ["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
+
 		-- switch between windows
-		["<C-h>"] = { "<C-w>h", " window left" },
-		["<C-l>"] = { "<C-w>l", " window right" },
-		["<C-j>"] = { "<C-w>j", " window down" },
-		["<C-k>"] = { "<C-w>k", " window up" },
+		-- ["<C-h>"] = { "<C-w>h", " window left" },
+		-- ["<C-l>"] = { "<C-w>l", " window right" },
+		-- ["<C-j>"] = { "<C-w>j", " window down" },
+		-- ["<C-k>"] = { "<C-w>k", " window up" },
 	},
 }
 
