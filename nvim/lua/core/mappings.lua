@@ -212,7 +212,7 @@ M.lspconfig = {
       "diagnostic setloclist",
     },
 
-    ["<leader>fm"] = {
+    ["<space>f"] = {
       function()
         vim.lsp.buf.formatting {}
       end,
