@@ -1,6 +1,15 @@
-## dotfiles
+## 我的配置
 
-<details><summary> config ~/.gitconfig </summary>
+- git
+- zsh
+- neovim
+- asdf
+- python
+  - pip
+  - pycodestyle
+
+
+<details><summary> ~/.gitconfig </summary>
 
 ```shell
 ; [http "https://github.com"]
@@ -36,7 +45,7 @@
 
 </details>
 
-<details><summary> config ~/.ssh/config </summary>
+<details><summary> ~/.ssh/config </summary>
 
 ```shell
 # ~/.ssh/config
@@ -94,7 +103,7 @@ asdf global python 3.9
 ```shell
 # install zsh python3-venv trash-cli stylua
 # if system is ubuntu/debian, use asdf install stylua
-# install xclip install arch
+# install xclip in arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
 ```
@@ -103,6 +112,5 @@ cd ~/.dotfiles && sh ./installer.sh
 
 ```shell
 # nvim /var/spool/cron/$USER
-*/10 * * * * cd $HOME/.dotfiles/ && git pull
-*/10 * * * * cd $HOME/.dotfiles/init.lua && git pull
+*/10 * * * * cd $HOME/.dotfiles/ && git pull && nvim --headless -c 'PackerSync'
 ```
