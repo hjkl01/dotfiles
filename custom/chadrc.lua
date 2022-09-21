@@ -1,5 +1,4 @@
 -- Chadrc overrides this file
-
 local M = {}
 
 M.options = {}
@@ -11,6 +10,7 @@ M.plugins = {
 		["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
 		["kyazdani42/nvim-tree.lua"] = pluginConfs.nvimtree,
 		["williamboman/mason.nvim"] = pluginConfs.mason,
+		["NvChad/ui"] = {},
 	},
 
 	remove = {},
@@ -22,11 +22,10 @@ M.plugins = {
 			end,
 		},
 
-		["navarasu/onedark.nvim"] = {
-			config = function()
-				require("custom.plugins.configs").onedark()
-			end,
-		},
+		["monsonjeremy/onedark.nvim"] = pluginConfs.onedark,
+
+		["feline-nvim/feline.nvim"] = {},
+		["Hitesh-Aggarwal/feline_one_monokai.nvim"] = {},
 
 		["sbdchd/neoformat"] = {},
 
