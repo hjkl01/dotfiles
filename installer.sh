@@ -63,9 +63,9 @@ InstallThemesPlugins() {
 }
 
 InstallNeovim() {
-  git clone --single-branch --depth 1 https://github.com/NvChad/NvChad init.lua
-  linkFile ~/.dotfiles/custom ~/.dotfiles/init.lua/lua/custom
-  linkFile ~/.dotfiles/init.lua ~/.config/nvim
+  # git clone --single-branch --depth 1 https://github.com/NvChad/NvChad ~/.config/nvim
+  # linkFile ~/.dotfiles/custom ~/.config/nvim/lua/custom
+  linkFile ~/.dotfiles/nvim ~/.config
   linkFile ~/.dotfiles/config/pycodestyle ~/.config
 
   # install python env
