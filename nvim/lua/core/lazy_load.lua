@@ -45,17 +45,17 @@ M.on_file_open = function(plugin_name)
 end
 
 M.packer_cmds = {
-  "PackerSnapshot",
-  "PackerSnapshotRollback",
-  "PackerSnapshotDelete",
-  "PackerInstall",
+  -- "PackerSnapshot",
+  -- "PackerSnapshotRollback",
+  -- "PackerSnapshotDelete",
+  -- "PackerInstall",
   "PackerUpdate",
   "PackerSync",
-  "PackerClean",
+  -- "PackerClean",
   "PackerCompile",
   "PackerStatus",
-  "PackerProfile",
-  "PackerLoad",
+  -- "PackerProfile",
+  -- "PackerLoad",
 }
 
 M.treesitter_cmds = {
