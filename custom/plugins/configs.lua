@@ -18,10 +18,10 @@ M.onedark = function()
 		-- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
 		code_style = {
 			comments = "italic",
-			keywords = "bold",
-			functions = "bold",
+			keywords = "italic",
+			functions = "italic",
 			strings = "none",
-			variables = "none",
+			variables = "bold",
 		},
 
 		-- Custom Highlights --
@@ -42,7 +42,7 @@ end
 M.mason = {
 	ensure_installed = {
 		"python-lsp-server",
-		"lua-language-server",
+		-- "lua-language-server",
 		-- "stylua",
 		"typescript-language-server",
 		"bash-language-server",
