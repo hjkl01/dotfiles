@@ -2,6 +2,19 @@ local M = {}
 
 local load_override = require("core.utils").load_override
 
+M.onedark = function()
+  require("onedark").setup {
+    -- :help highlight-args
+    commentStyle = "italic",
+    keywordStyle = "bold",
+    functionStyle = "bold",
+    -- variableStyle = "bold",
+    -- transparent = true,
+    -- hideInactiveStatusline = true,
+    sidebars = { "qf", "vista_kind", "terminal", "packer" },
+  }
+end
+
 M.autopairs = function()
   local present1, autopairs = pcall(require, "nvim-autopairs")
   local present2, cmp = pcall(require, "cmp")
@@ -29,8 +42,6 @@ M.blankline = function()
     return
   end
 
-  require("base46").load_highlight "blankline"
-
   local options = {
     indentLine_enabled = 1,
     filetype_exclude = {
@@ -55,38 +66,6 @@ M.blankline = function()
   blankline.setup(options)
 end
 
-M.colorizer = function()
-  local present, colorizer = pcall(require, "colorizer")
-
-  if not present then
-    return
-  end
-
-  local options = {
-    filetypes = {
-      "*",
-    },
-    user_default_options = {
-      RGB = true, -- #RGB hex codes
-      RRGGBB = true, -- #RRGGBB hex codes
-      names = false, -- "Name" codes like Blue
-      RRGGBBAA = false, -- #RRGGBBAA hex codes
-      rgb_fn = false, -- CSS rgb() and rgba() functions
-      hsl_fn = false, -- CSS hsl() and hsla() functions
-      css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-      css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      mode = "background", -- Set the display mode.
-    },
-  }
-
-  options = load_override(options, "NvChad/nvim-colorizer.lua")
-  colorizer.setup(options)
-  -- execute colorizer as soon as possible
-  vim.defer_fn(function()
-    require("colorizer").attach_to_buffer(0)
-  end, 0)
-end
-
 M.comment = function()
   local present, nvim_comment = pcall(require, "Comment")
 
@@ -99,43 +78,12 @@ M.comment = function()
   nvim_comment.setup(options)
 end
 
-M.luasnip = function()
-  local present, luasnip = pcall(require, "luasnip")
-
-  if not present then
-    return
-  end
-
-  local options = {
-    history = true,
-    updateevents = "TextChanged,TextChangedI",
-  }
-
-  options = load_override(options, "L3MON4D3/LuaSnip")
-  luasnip.config.set_config(options)
-  require("luasnip.loaders.from_vscode").lazy_load()
-  require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.luasnippets_path or "" }
-
-  vim.api.nvim_create_autocmd("InsertLeave", {
-    callback = function()
-      if
-        require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-        and not require("luasnip").session.jump_active
-      then
-        require("luasnip").unlink_current()
-      end
-    end,
-  })
-end
-
 M.gitsigns = function()
   local present, gitsigns = pcall(require, "gitsigns")
 
   if not present then
     return
   end
-
-  require("base46").load_highlight "git"
 
   local options = {
     signs = {

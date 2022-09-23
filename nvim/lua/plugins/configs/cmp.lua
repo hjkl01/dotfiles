@@ -4,8 +4,6 @@ if not present then
   return
 end
 
-require("base46").load_highlight "cmp"
-
 vim.opt.completeopt = "menuone,noselect"
 
 local function border(hl_name)

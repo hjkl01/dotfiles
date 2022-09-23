@@ -4,8 +4,6 @@ if not present then
   return
 end
 
-require("base46").load_highlight "nvimtree"
-
 local options = {
   filters = {
     dotfiles = false,
@@ -40,8 +38,8 @@ local options = {
     },
   },
   git = {
-    enable = false,
-    ignore = true,
+    enable = true,
+    ignore = false,
   },
   filesystem_watchers = {
     enable = true,
