@@ -216,7 +216,14 @@ M.lspconfig = {
 
     ["<space>f"] = {
       function()
-        vim.lsp.buf.formatting {}
+        -- vim.lsp.buf.formatting {}
+        if vim.version()["minor"] < 8 then
+          -- if vim.version().minor > 7 then
+          -- if vim.fn.has('nvim-0.8') == 0 then
+          return vim.lsp.buf.formatting()
+        else
+          return vim.lsp.buf.format()
+        end
       end,
       "lsp formatting",
     },
