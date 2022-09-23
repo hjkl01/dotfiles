@@ -2,7 +2,7 @@ local M = {}
 local merge_tb = vim.tbl_deep_extend
 
 M.load_config = function()
-  local config = require "core.default_config"
+  local config = require "core.default"
   local chadrc_exists, chadrc = pcall(require, "custom.chadrc")
 
   if chadrc_exists then
