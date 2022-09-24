@@ -58,25 +58,29 @@ local options = {
     },
 
     icons = {
+      webdev_colors = true,
+      git_placement = "before",
+      padding = " ",
+      symlink_arrow = " ➛ ",
       show = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = false,
+        git = true,
       },
-
       glyphs = {
         default = "",
         symlink = "",
+        bookmark = "",
         folder = {
-          default = "",
-          empty = "",
-          empty_open = "",
-          open = "",
-          symlink = "",
-          symlink_open = "",
-          arrow_open = "",
           arrow_closed = "",
+          arrow_open = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
         },
         git = {
           unstaged = "✗",
@@ -89,6 +93,39 @@ local options = {
         },
       },
     },
+
+    -- icons = {
+    --   show = {
+    --     file = true,
+    --     folder = true,
+    --     folder_arrow = true,
+    --     git = false,
+    --   },
+    --
+    --   glyphs = {
+    --     default = "",
+    --     symlink = "",
+    --     folder = {
+    --       default = "",
+    --       empty = "",
+    --       empty_open = "",
+    --       open = "",
+    --       symlink = "",
+    --       symlink_open = "",
+    --       arrow_open = "",
+    --       arrow_closed = "",
+    --     },
+    --     git = {
+    --       unstaged = "✗",
+    --       staged = "✓",
+    --       unmerged = "",
+    --       renamed = "➜",
+    --       untracked = "★",
+    --       deleted = "",
+    --       ignored = "◌",
+    --     },
+    --   },
+    -- },
   },
 }
 
