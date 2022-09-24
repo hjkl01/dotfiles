@@ -124,10 +124,6 @@ vim.cmd [[
     " IncSearch 
 ]]
 
-vim.cmd [[
-    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-]]
-
 local LspFormat = function()
   -- return vim.lsp.buf.formatting_sync()
   if vim.version()["minor"] < 8 then
