@@ -1,5 +1,11 @@
+#! /bin/sh
+
 # proxy config
-export PROXY_URL="socks5://127.0.0.1:7890"
+
+# if want auto switch, use clash port 7890 
+# or use proxychains
+
+export PROXY_URL="http://127.0.0.1:1080"
 alias setproxy='export ALL_PROXY=$PROXY_URL'
 alias unsetproxy='unset ALL_PROXY; unset http_proxy; unset https_proxy'
 
