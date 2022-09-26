@@ -46,13 +46,6 @@ local plugins = {
   },
 
   -- lsp stuff
-  ["williamboman/mason.nvim"] = {
-    cmd = require("core.lazy_load").mason_cmds,
-    config = function()
-      require "plugins.configs.mason"
-    end,
-  },
-
   ["neovim/nvim-lspconfig"] = {
     opt = true,
     setup = function()
@@ -60,6 +53,17 @@ local plugins = {
     end,
     config = function()
       require "plugins.configs.lspconfig"
+    end,
+  },
+
+  ["williamboman/mason-lspconfig.nvim"] = {},
+
+  ["williamboman/mason.nvim"] = {
+    cmd = require("core.lazy_load").mason_cmds,
+    module = "mason",
+    after = "mason-lspconfig.nvim",
+    config = function()
+      require "plugins.configs.mason"
     end,
   },
 
@@ -94,15 +98,11 @@ local plugins = {
 
   ["kyazdani42/nvim-web-devicons"] = {
     module = "nvim-web-devicons",
-    config = function()
-      require("plugins.configs.others").devicons()
-    end,
   },
 
   ["kyazdani42/nvim-tree.lua"] = {
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     config = function()
-      require "nvim-web-devicons"
       require "plugins.configs.nvimtree"
     end,
     setup = function()

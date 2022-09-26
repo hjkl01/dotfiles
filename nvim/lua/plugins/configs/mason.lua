@@ -1,14 +1,15 @@
+local present, mason_lspconfig = pcall(require, "mason-lspconfig")
+
+if not present then
+  return
+end
+mason_lspconfig.setup()
+
 local present, mason = pcall(require, "mason")
 
 if not present then
   return
 end
-
-vim.api.nvim_create_augroup("_mason", { clear = true })
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = "mason",
-  group = "_mason",
-})
 
 local options = {
   ensure_installed = {

@@ -114,3 +114,10 @@ cd ~/.dotfiles && sh ./installer.sh
 # nvim /var/spool/cron/$USER
 */10 * * * * cd $HOME/.dotfiles/ && git pull && nvim --headless -c 'PackerSync'
 ```
+
+#### questions
+
+> 如果有报错 清除缓存
+```shell
+rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin
+```
