@@ -24,7 +24,7 @@ opt.shiftwidth = 2
 opt.autoindent = true
 opt.smartindent = true
 opt.tabstop = 2
-opt.softtabstop = 2
+opt.softtabstop = 4
 
 opt.fillchars = { eob = " " }
 opt.ignorecase = true

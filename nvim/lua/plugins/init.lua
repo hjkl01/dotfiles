@@ -2,7 +2,11 @@ local plugins = {
 
   ["nvim-lua/plenary.nvim"] = { module = "plenary" },
 
-  ["lewis6991/impatient.nvim"] = {},
+  ["lewis6991/impatient.nvim"] = {
+    config = function()
+      require "impatient"
+    end,
+  },
 
   ["wbthomason/packer.nvim"] = {
     cmd = require("core.lazy_load").packer_cmds,
@@ -117,19 +121,6 @@ local plugins = {
     end,
     setup = function()
       require("core.utils").load_mappings "telescope"
-    end,
-  },
-
-  -- Only load whichkey after all the gui
-  ["folke/which-key.nvim"] = {
-    disable = true,
-    module = "which-key",
-    keys = { "<leader>", '"', "'", "`" },
-    config = function()
-      require "plugins.configs.whichkey"
-    end,
-    setup = function()
-      require("core.utils").load_mappings "whichkey"
     end,
   },
 
