@@ -84,16 +84,17 @@ Host archServer
 ```shell
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 . $HOME/.asdf/asdf.sh
-asdf plugin add neovim python
-# asdf list all python
 
 # install neovim stable
+asdf plugin add neovim 
 asdf install neovim stable
 asdf global neovim stable
 
-# install python3.9
-asdf install python 3.9
-asdf global python 3.9
+# install python3.9.14
+asdf plugin add python
+asdf list all python
+asdf install python 3.9.14
+asdf global python 3.9.14
 ```
 
 </details>
