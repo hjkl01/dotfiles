@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # asdf
 # http://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 # git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0

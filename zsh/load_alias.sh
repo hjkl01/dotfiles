@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # alias_if_program_exists() {
 #   local ret='0'
 #   command -v $1 >/dev/null 2>&1 || { local ret='1'; }
@@ -19,8 +21,8 @@
 alias rr="trash-put"
 alias vi="nvim"
 
-
 # alias
+alias cc='cd ~/.dotfiles'
 alias fd='find . -name '
 alias pc='proxychains4'
 alias scpr='rsync -Pzv --exclude "logs" --rsh=ssh'

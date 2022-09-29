@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # git config
 alias gc='git clone'
 alias gcd='git clone --depth=1'

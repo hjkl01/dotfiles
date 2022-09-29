@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # docker config
 
 # /etc/docker/daemon.json

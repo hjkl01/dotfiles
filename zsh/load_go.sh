@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # golang config
 
 # Go语言中文网

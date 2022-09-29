@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # python config
 
 virtualenv_path=~/.venv/py3/bin/activate

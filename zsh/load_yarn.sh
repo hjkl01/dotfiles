@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # yarn config
 alias yy='yarn'
 alias ys='yarn start'
