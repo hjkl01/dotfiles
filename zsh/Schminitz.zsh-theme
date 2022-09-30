@@ -12,6 +12,7 @@ function hostname {
 	echo "🀄   $HOST  "
 }
 # echo "🀄 💻 😈 🤓   $HOST  "
+# https://emojiterra.com/
 
 # show git info
 # %{$reset_color%}$(git_prompt_info)%{$reset_color%}$(git_prompt_ahead)
