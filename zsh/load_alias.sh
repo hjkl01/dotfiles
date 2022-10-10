@@ -22,6 +22,7 @@ alias rr="trash-put"
 alias vi="nvim"
 
 # alias
+alias vv='cd ~/dev'
 alias cc='cd ~/.dotfiles'
 alias fd='find . -name '
 alias pc='proxychains4'
