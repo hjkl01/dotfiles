@@ -9,6 +9,7 @@ ZSH_DISABLE_COMPFIX='true'
 ZSH_THEME='Schminitz'
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  git
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
