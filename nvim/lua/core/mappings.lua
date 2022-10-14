@@ -8,7 +8,7 @@ local M = {}
 
 M.general = {
   i = {
-    ["<C-m>"] = { "<ESC>", "exit edit" },
+    ["<C-d>"] = { "<ESC>", "exit edit" },
 
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "beginning of line" },
