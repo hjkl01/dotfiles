@@ -38,7 +38,11 @@ local options = {
       border = border "CmpDocBorder",
     },
   },
-  snippet = {},
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
   formatting = {},
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -53,8 +57,10 @@ local options = {
     },
   },
   sources = {
+    { name = "luasnip" },
     { name = "nvim_lsp" },
     { name = "buffer" },
+    { name = "nvim_lua" },
     { name = "path" },
   },
 }
