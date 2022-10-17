@@ -17,20 +17,11 @@ beforeInstall() {
 	fi
 }
 
-linkFile() {
-	if [ -e $2 ]; then
-		echo "$2 exists"
-	else
-		echo "run $1 $2"
-		ln -s $1 $2
-	fi
-}
-
 SoftLinks() {
-	linkFile ~/.dotfiles/config/gitconfig ~/.gitconfig
-	linkFile ~/.dotfiles/zsh/.zshrc ~/.zshrc
+	ln -s ~/.dotfiles/config/gitconfig ~/.gitconfig
+	ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 	mkdir -p ~/.config/pip
-	linkFile ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
+	ln -s ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
 }
 
 InstallOhMyZsh() {
@@ -40,12 +31,12 @@ InstallOhMyZsh() {
 
 	git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 	git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-	linkFile ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
+	ln -s ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
 }
 
 InstallNeovim() {
-	linkFile ~/.dotfiles/nvim ~/.config/nvim
-	linkFile ~/.dotfiles/config/pycodestyle ~/.config/pycodestyle
+	ln -s ~/.dotfiles/nvim ~/.config/nvim
+	ln -s ~/.dotfiles/config/pycodestyle ~/.config/pycodestyle
 
 	# install python env
 	python3 -m venv ~/.venv/py3
