@@ -44,8 +44,8 @@ InstallOhMyZsh() {
 }
 
 InstallNeovim() {
-	linkFile ~/.dotfiles/nvim ~/.config
-	linkFile ~/.dotfiles/config/pycodestyle ~/.config
+	linkFile ~/.dotfiles/nvim ~/.config/nvim
+	linkFile ~/.dotfiles/config/pycodestyle ~/.config/pycodestyle
 
 	# install python env
 	python3 -m venv ~/.venv/py3
