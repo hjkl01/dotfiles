@@ -151,6 +151,7 @@ local plugins = {
   },
 
   ["feline-nvim/feline.nvim"] = {},
+  ["SmiteshP/nvim-navic"] = {},
   ["Hitesh-Aggarwal/feline_one_monokai.nvim"] = {},
 
   ["sbdchd/neoformat"] = {},
@@ -169,7 +170,6 @@ local plugins = {
     end,
     ft = { "markdown" },
   },
-
 }
 
 -- Load all plugins
