@@ -51,7 +51,7 @@ M.packer_cmds = {
   -- "PackerInstall",
   "PackerUpdate",
   "PackerSync",
-  -- "PackerClean",
+  "PackerClean",
   "PackerCompile",
   "PackerStatus",
   -- "PackerProfile",
