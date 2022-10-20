@@ -150,9 +150,12 @@ local plugins = {
     end,
   },
 
-  ["feline-nvim/feline.nvim"] = {},
-  ["SmiteshP/nvim-navic"] = {},
-  ["Hitesh-Aggarwal/feline_one_monokai.nvim"] = {},
+  ["feline-nvim/feline.nvim"] = {
+    config = function()
+      -- require('feline').setup()
+      require 'plugins.configs.feline'
+    end,
+  },
 
   ["sbdchd/neoformat"] = {},
 
