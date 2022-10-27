@@ -8,20 +8,23 @@ local options = {
   ensure_installed = {
     "lua",
     "python",
-    "go",
     "bash",
     "javascript",
-    "typescript",
+    -- "go",
+    -- "typescript",
   },
+
+  sync_install = false,
+  auto_install = true,
+  -- ignore_install = { "javascript" },
 
   highlight = {
     enable = true,
+    -- disable = { "c", "rust" },
     use_languagetree = true,
   },
+  additional_vim_regex_highlighting = true,
 
-  indent = {
-    enable = true,
-  },
 }
 
 -- check for any override
