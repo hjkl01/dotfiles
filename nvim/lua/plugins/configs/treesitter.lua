@@ -10,6 +10,7 @@ local options = {
     "python",
     "bash",
     "javascript",
+    'markdown',
     -- "go",
     -- "typescript",
   },
