@@ -416,6 +416,8 @@ M.others = {
                     if &filetype == 'python'
                         "exec "!time python %"
                         exec ':bo 20sp | terminal python %'
+                    elseif &filetype == 'lua'
+                        exec ':bo 10sp | terminal lua %'
                     elseif &filetype == 'go'
                         exec ':bo 10sp | terminal go run %'
                     elseif &filetype == 'sh'
