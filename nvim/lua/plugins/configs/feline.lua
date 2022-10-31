@@ -206,3 +206,4 @@ feline.setup {
   vi_mode_colors = vi_mode_colors,
 }
 -- https://github.com/Hitesh-Aggarwal/feline_one_monokai.nvim/blob/093dff1096/plugin/feline_one_monokai.lua
+feline.winbar.setup{}
