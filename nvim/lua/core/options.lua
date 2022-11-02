@@ -17,6 +17,7 @@ opt.showmode = false
 opt.title = true
 opt.clipboard = "unnamedplus"
 opt.cursorline = true
+opt.cursorcolumn = true
 
 -- Indenting
 opt.expandtab = true
