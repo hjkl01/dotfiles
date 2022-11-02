@@ -150,10 +150,16 @@ local plugins = {
     end,
   },
 
+  ["akinsho/bufferline.nvim"] = {
+    config = function()
+      require("bufferline").setup {}
+    end,
+  },
+
   ["feline-nvim/feline.nvim"] = {
     config = function()
       -- require('feline').setup()
-      require 'plugins.configs.feline'
+      require "plugins.configs.feline"
     end,
   },
 
