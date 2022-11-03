@@ -15,30 +15,19 @@ local plugins = {
     end,
   },
 
-  ["lukas-reineke/indent-blankline.nvim"] = {
-    opt = true,
-    setup = function()
-      require("core.lazy_load").on_file_open "indent-blankline.nvim"
-      require("core.utils").load_mappings "blankline"
-    end,
-    config = function()
-      require("plugins.configs.others").blankline()
-    end,
-  },
-
-  ["nvim-treesitter/nvim-treesitter"] = {
-    commit = "4cccb6f",
-    module = "nvim-treesitter",
-    setup = function()
-      require("core.lazy_load").on_file_open "nvim-treesitter"
-    end,
-    run = function()
-      require("nvim-treesitter.install").update { with_sync = true }
-    end,
-    config = function()
-      require "plugins.configs.treesitter"
-    end,
-  },
+  -- ["nvim-treesitter/nvim-treesitter"] = {
+  --   commit = "4cccb6f",
+  --   module = "nvim-treesitter",
+  --   setup = function()
+  --     require("core.lazy_load").on_file_open "nvim-treesitter"
+  --   end,
+  --   run = function()
+  --     require("nvim-treesitter.install").update { with_sync = true }
+  --   end,
+  --   config = function()
+  --     require "plugins.configs.treesitter"
+  --   end,
+  -- },
 
   -- git stuff
   ["lewis6991/gitsigns.nvim"] = {
