@@ -19,12 +19,12 @@ beforeInstall() {
 
 SoftLinks() {
 	ln -s ~/.dotfiles/config/gitconfig ~/.gitconfig
-	ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 	mkdir -p ~/.config/pip
 	ln -s ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
 }
 
 InstallOhMyZsh() {
+	ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 	git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 	chsh -s $(which zsh)
@@ -50,15 +50,12 @@ InstallNeovim() {
 #     SoftLinks
 # fi
 
-# if [[ "$@" =~ "link"  ]];then
-#     echo "link in args, run soft link"
-#     SoftLinks
-# fi
+if [ "$1" =~ "link"  ];then
+    echo "link in args, run soft link"
+    SoftLinks
+fi
 
-beforeInstall
-# 如果可以正常访问GitHub、pip等 注释此行
-SoftLinks
-
+# beforeInstall
 InstallOhMyZsh
 InstallNeovim
 
