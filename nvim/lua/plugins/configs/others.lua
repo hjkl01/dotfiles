@@ -41,17 +41,17 @@ M.autopairs = function()
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
-M.comment = function()
-  local present, nvim_comment = pcall(require, "Comment")
-
-  if not present then
-    return
-  end
-
-  local options = {}
-  options = load_override(options, "numToStr/Comment.nvim")
-  nvim_comment.setup(options)
-end
+-- M.comment = function()
+--   local present, nvim_comment = pcall(require, "Comment")
+--
+--   if not present then
+--     return
+--   end
+--
+--   local options = {}
+--   options = load_override(options, "numToStr/Comment.nvim")
+--   nvim_comment.setup(options)
+-- end
 
 M.gitsigns = function()
   local present, gitsigns = pcall(require, "gitsigns")

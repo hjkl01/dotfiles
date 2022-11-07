@@ -67,58 +67,26 @@ M.general = {
   },
 }
 
-M.tabufline = {
-  plugin = true,
-
-  n = {
-    -- cycle through buffers
-    ["<TAB>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflineNext()
-      end,
-      "goto next buffer",
-    },
-
-    ["<S-Tab>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflinePrev()
-      end,
-      "goto prev buffer",
-    },
-
-    -- pick buffers via numbers
-    ["<Bslash>"] = { "<cmd> TbufPick <CR>", "Pick buffer" },
-
-    -- close buffer + hide terminal buffer
-    ["<leader>x"] = {
-      function()
-        require("nvchad_ui.tabufline").close_buffer()
-      end,
-      "close buffer",
-    },
-  },
-}
-
-M.comment = {
-  plugin = true,
-
-  -- toggle comment in both modes
-  n = {
-    ["//"] = {
-      function()
-        require("Comment.api").toggle.linewise.current()
-      end,
-      "toggle comment",
-    },
-  },
-
-  v = {
-    ["//"] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      "toggle comment",
-    },
-  },
-}
+-- M.comment = {
+--   plugin = true,
+--
+--   -- toggle comment in both modes
+--   n = {
+--     ["//"] = {
+--       function()
+--         require("Comment.api").toggle.linewise.current()
+--       end,
+--       "toggle comment",
+--     },
+--   },
+--
+--   v = {
+--     ["//"] = {
+--       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+--       "toggle comment",
+--     },
+--   },
+-- }
 
 M.lspconfig = {
   plugin = true,

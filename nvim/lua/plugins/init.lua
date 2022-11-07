@@ -15,6 +15,12 @@ local plugins = {
     end,
   },
 
+  ['echasnovski/mini.nvim'] = {
+    config = function()
+      require "plugins.configs.mini"
+    end,
+  },
+
   -- ["nvim-treesitter/nvim-treesitter"] = {
   --   commit = "4cccb6f",
   --   module = "nvim-treesitter",
@@ -84,24 +90,6 @@ local plugins = {
   ["hrsh7th/cmp-nvim-lsp"] = { after = "cmp-nvim-lua" },
   ["hrsh7th/cmp-buffer"] = { after = "cmp-nvim-lsp" },
   ["hrsh7th/cmp-path"] = { after = "cmp-buffer" },
-
-  -- misc plugins
-  ["windwp/nvim-autopairs"] = {
-    config = function()
-      require("plugins.configs.others").autopairs()
-    end,
-  },
-
-  ["numToStr/Comment.nvim"] = {
-    module = "Comment",
-    keys = { "gc", "gb" },
-    config = function()
-      require("plugins.configs.others").comment()
-    end,
-    setup = function()
-      require("core.utils").load_mappings "comment"
-    end,
-  },
 
   -- file managing , picker etc
 
