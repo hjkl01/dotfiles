@@ -55,7 +55,7 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
-g.mapleader = " "
+-- g.mapleader = " "
 
 -- 折叠
 opt.foldenable = false
