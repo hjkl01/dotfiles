@@ -33,6 +33,11 @@ alias www='ifconfig en0 && python -m http.server 80 -d $1 '
 # alias getip='curl ipinfo.io/ip'
 # alias getip='curl -L tool.lu/ip'
 # alias getip='curl http://api.ipify.org'
-alias gip='curl http://cip.cc'
+# alias gip='curl http://cip.cc'
+alias gip='curl -s ipinfo.io'
+alias gip6='curl -6 https://ifconfig.co/ip'
 alias wt='curl wttr.in/nanjing'
 
+# vultr
+export VULTR_API_KEY=''
+alias vc='vultr-cli'
