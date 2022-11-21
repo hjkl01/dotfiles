@@ -7,6 +7,8 @@ import socketserver
 
 import qrcode
 
+PORT = 8000
+
 
 def get_ipaddress():
     cmd = "ifconfig"
@@ -19,10 +21,11 @@ def get_ipaddress():
 
 
 def print_ipaddress():
-    ipaddress = get_ipaddress()
-    print("ipaddress: ", ipaddress)
+    url = f"http://{get_ipaddress()}:{PORT}"
+    print(url)
+
     qr = qrcode.QRCode()
-    qr.add_data(f"http://{ipaddress}:80")
+    qr.add_data(url)
     f = io.StringIO()
     qr.print_ascii(out=f)
     f.seek(0)
@@ -30,7 +33,6 @@ def print_ipaddress():
 
 
 def run_server(dir_path):
-    PORT = 8000
     os.chdir(dir_path)
 
     Handler = http.server.SimpleHTTPRequestHandler
