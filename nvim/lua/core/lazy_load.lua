@@ -49,7 +49,7 @@ M.packer_cmds = {
   -- "PackerSnapshotRollback",
   -- "PackerSnapshotDelete",
   -- "PackerInstall",
-  "PackerUpdate",
+  -- "PackerUpdate",
   "PackerSync",
   "PackerClean",
   "PackerCompile",

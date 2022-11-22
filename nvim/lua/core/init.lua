@@ -35,27 +35,6 @@ autocmd("BufUnload", {
   end,
 })
 
--- open nvim with a dir while still lazy loading nvimtree
--- autocmd("BufEnter", {
---    callback = function()
---       if vim.api.nvim_buf_get_option(0, "buftype") ~= "terminal" then
---          vim.cmd "lcd %:p:h"
---       end
---    end,
--- })
-
--- Use relative & absolute line numbers in 'n' & 'i' modes respectively
--- autocmd("InsertEnter", {
---    callback = function()
---       vim.opt.relativenumber = false
---    end,
--- })
--- autocmd("InsertLeave", {
---    callback = function()
---       vim.opt.relativenumber = true
---    end,
--- })
-
 -- Open a file from its last left off position
 autocmd("BufReadPost", {
   callback = function()
@@ -65,16 +44,16 @@ autocmd("BufReadPost", {
     end
   end,
 })
-
--- File extension specific tabbing
--- autocmd("Filetype", {
---    pattern = "python",
---    callback = function()
---       vim.opt_local.expandtab = true
---       vim.opt_local.tabstop = 4
---       vim.opt_local.shiftwidth = 4
---       vim.opt_local.softtabstop = 4
---    end,
+-- local api = vim.api
+-- autocmd({ "BufRead", "BufReadPost" }, {
+--   callback = function()
+--     local row, column = unpack(api.nvim_buf_get_mark(0, '"'))
+--     local buf_line_count = api.nvim_buf_line_count(0)
+--
+--     if row >= 1 and row <= buf_line_count then
+--       api.nvim_win_set_cursor(0, { row, column })
+--     end
+--   end,
 -- })
 
 -- Highlight yanked text
@@ -84,14 +63,6 @@ autocmd("TextYankPost", {
     vim.highlight.on_yank { higroup = "Cursor", timeout = 500 }
   end,
 })
-
--- Enable spellchecking in markdown, text and gitcommit files
--- autocmd("FileType", {
---    pattern = { "gitcommit", "markdown", "text" },
---    callback = function()
---       vim.opt_local.spell = true
---    end,
--- })
 
 -- nvim-tree 自动关闭
 autocmd("BufEnter", {
