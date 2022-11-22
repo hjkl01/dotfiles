@@ -123,9 +123,10 @@ local plugins = {
     end,
   },
 
-  ["monsonjeremy/onedark.nvim"] = {
+  ["folke/tokyonight.nvim"] = {
     config = function()
-      require("plugins.configs.others").onedark()
+      require "plugins.configs.colorscheme"
+      vim.cmd[[ colorscheme tokyonight ]]
     end,
   },
 

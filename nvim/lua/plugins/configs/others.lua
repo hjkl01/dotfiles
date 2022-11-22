@@ -2,25 +2,6 @@ local M = {}
 
 local load_override = require("core.utils").load_override
 
-M.onedark = function()
-  local present, onedark_config = pcall(require, "onedark")
-
-  if not present then
-    return
-  end
-
-  onedark_config.setup {
-    -- :help highlight-args
-    commentStyle = "italic",
-    keywordStyle = "bold",
-    functionStyle = "bold",
-    -- variableStyle = "bold",
-    -- transparent = true,
-    -- hideInactiveStatusline = true,
-    sidebars = { "qf", "vista_kind", "terminal", "packer" },
-  }
-end
-
 M.autopairs = function()
   local present1, autopairs = pcall(require, "nvim-autopairs")
   local present2, cmp = pcall(require, "cmp")
