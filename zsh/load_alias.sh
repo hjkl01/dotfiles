@@ -40,5 +40,5 @@ alias gip6='curl -6 https://ifconfig.co/ip'
 alias wt='curl wttr.in/nanjing'
 
 # vultr
-export VULTR_API_KEY='Z4MWK6UILQJKYZBCZ4JLAZZJ5PREVWU3JKUQ'
+export VULTR_API_KEY=''
 alias vc='vultr-cli'
