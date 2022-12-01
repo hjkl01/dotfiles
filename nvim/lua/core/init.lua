@@ -90,10 +90,11 @@ autocmd("BufEnter", {
 --     end,
 -- })
 
-vim.cmd [[
-    autocmd CursorMoved * exe printf('match Cursor /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-    " IncSearch 
-]]
+-- 高亮当前单词 影响光标
+-- vim.cmd [[
+--     autocmd CursorMoved * exe printf('match Cursor /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+--     " IncSearch
+-- ]]
 
 local LspFormat = function()
   -- return vim.lsp.buf.formatting_sync()

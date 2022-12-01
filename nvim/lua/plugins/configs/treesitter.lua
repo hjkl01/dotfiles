@@ -20,7 +20,7 @@ local options = {
   -- ignore_install = { "javascript" },
 
   highlight = {
-    enable = true,
+    enable = false,
     -- disable = { "c", "rust" },
     use_languagetree = true,
   },
