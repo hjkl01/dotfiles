@@ -8,7 +8,6 @@
   - pip
   - pycodestyle
 
-
 <details><summary> ~/.gitconfig </summary>
 
 ```shell
@@ -16,8 +15,8 @@
 [pull]
 	rebase = false
 [user]
-	email = 
-	name = 
+	email =
+	name =
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -59,7 +58,7 @@ Host archServer
     IdentityFile ~/.ssh/id_rsa
     ServerAliveInterval 120
     # DynamicForward localhsot:1080
-    # LocalForward localhost:5432 remote-host:5432 
+    # LocalForward localhost:5432 remote-host:5432
     # RemoteForward remote-port target-host:target-port
 
 # 转发跳板机端口
@@ -89,7 +88,7 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 . $HOME/.asdf/asdf.sh
 
 # install neovim stable
-asdf plugin add neovim 
+asdf plugin add neovim
 asdf install neovim stable
 asdf global neovim stable
 
@@ -123,13 +122,14 @@ cd ~/.dotfiles && sh ./installer.sh
 
 ```shell
 # nvim /var/spool/cron/$USER
-*/10 * * * * cd $HOME/.dotfiles/ && git pull 
+*/10 * * * * cd $HOME/.dotfiles/ && git pull
 # && nvim --headless -c 'PackerSync'
 ```
 
 #### questions
 
 > 如果有报错 清除缓存
+
 ```shell
 rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin
 ```
