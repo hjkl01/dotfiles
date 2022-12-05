@@ -93,6 +93,13 @@ local plugins = {
 
   -- file managing , picker etc
 
+  ['smiteshp/nvim-navic'] = {},
+  ["utilyre/barbecue.nvim"] = {
+    config = function()
+      require('barbecue').setup()
+    end,
+  },
+
   ["kyazdani42/nvim-web-devicons"] = {
     module = "nvim-web-devicons",
   },
