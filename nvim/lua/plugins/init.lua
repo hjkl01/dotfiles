@@ -1,7 +1,5 @@
 local plugins = {
 
-  ["nvim-lua/plenary.nvim"] = { module = "plenary" },
-
   ["lewis6991/impatient.nvim"] = {
     config = function()
       require "impatient"
@@ -42,7 +40,7 @@ local plugins = {
       require("core.lazy_load").gitsigns()
     end,
     config = function()
-      require("plugins.configs.others").gitsigns()
+      require "plugins.configs.gitsigns"
     end,
   },
 
@@ -93,10 +91,10 @@ local plugins = {
 
   -- file managing , picker etc
 
-  ['smiteshp/nvim-navic'] = {},
+  ["smiteshp/nvim-navic"] = {},
   ["utilyre/barbecue.nvim"] = {
     config = function()
-      require('barbecue').setup()
+      require("barbecue").setup()
     end,
   },
 
@@ -133,7 +131,7 @@ local plugins = {
   ["folke/tokyonight.nvim"] = {
     config = function()
       require "plugins.configs.colorscheme"
-      vim.cmd[[ colorscheme tokyonight ]]
+      vim.cmd [[ colorscheme tokyonight ]]
     end,
   },
 
