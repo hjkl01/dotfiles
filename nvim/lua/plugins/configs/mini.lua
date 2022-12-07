@@ -35,6 +35,7 @@ cursorword.setup()
 -- fuzzy.setup()
 -- nvim-telescope/telescope.nvim
 
+-- Visualize and operate on indent scope
 local _, indentscope = pcall(require, "mini.indentscope")
 indentscope.setup()
 
