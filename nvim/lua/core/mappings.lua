@@ -67,27 +67,6 @@ M.general = {
   },
 }
 
--- M.comment = {
---   plugin = true,
---
---   -- toggle comment in both modes
---   n = {
---     ["//"] = {
---       function()
---         require("Comment.api").toggle.linewise.current()
---       end,
---       "toggle comment",
---     },
---   },
---
---   v = {
---     ["//"] = {
---       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
---       "toggle comment",
---     },
---   },
--- }
-
 M.lspconfig = {
   plugin = true,
 
@@ -289,7 +268,7 @@ M.others = {
 
     [" r"] = {
       function()
-        vim.cmd [[ 
+        vim.cmd [[
                     exec "w"
                     if &filetype == 'python'
                         "exec "!time python %"

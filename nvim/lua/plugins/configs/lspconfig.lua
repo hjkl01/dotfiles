@@ -21,7 +21,6 @@ M.on_attach = function(client, bufnr)
   end
 
   utils.load_mappings("lspconfig", { buffer = bufnr })
-
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -70,4 +69,17 @@ local servers = { "pylsp" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = M.on_attach, capabilities = M.capabilities }
 end
+
+local LspFormat = function()
+  -- return vim.lsp.buf.formatting_sync()
+  if vim.version()["minor"] < 8 then
+    -- if vim.version().minor > 7 then
+    -- if vim.fn.has('nvim-0.8') == 0 then
+    return vim.lsp.buf.formatting()
+  else
+    return vim.lsp.buf.format()
+  end
+end
+vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
+
 return M

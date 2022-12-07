@@ -4,18 +4,18 @@ if not line_ok then
 end
 
 -- mini.comment.setup(
-options = {
+local options = {
   -- Module mappings. Use `''` (empty string) to disable one.
   mappings = {
     -- Toggle comment (like `gcip` - comment inner paragraph) for both
     -- Normal and Visual modes
-    comment = 'gc',
+    comment = "gc",
 
     -- Toggle comment on current line
-    comment_line = '<C-/>',
+    comment_line = "<C-/>",
 
     -- Define 'comment' textobject (like `dgc` - delete whole comment block)
-    textobject = 'gc',
+    textobject = "gc",
   },
   -- Hook functions to be executed at certain stage of commenting
   hooks = {
@@ -28,33 +28,34 @@ options = {
 
 comment.setup(options)
 
--- local _, cursorword = pcall(require, "mini.cursorword")
--- cursorword.setup()
+local _, cursorword = pcall(require, "mini.cursorword")
+cursorword.setup()
 
 -- local _,fuzzy = pcall(require, "mini.fuzzy")
 -- fuzzy.setup()
+-- nvim-telescope/telescope.nvim
 
-local _,indentscope = pcall(require, "mini.indentscope")
+local _, indentscope = pcall(require, "mini.indentscope")
 indentscope.setup()
 
-local _,map = pcall(require, "mini.map")
+-- local _, map = pcall(require, "mini.map")
+-- map.setup()
 -- lua MiniMap.open()
-map.setup()
 
 -- ["windwp/nvim-autopairs"] = {
 --   config = function()
 --     require("plugins.configs.others").autopairs()
 --   end,
 -- },
-local _,minipairs = pcall(require, "mini.pairs")
+local _, minipairs = pcall(require, "mini.pairs")
 minipairs.setup()
 
-local _,sessions = pcall(require, "mini.sessions")
-sessions.setup({
-  directory = '~/.local/share/nvim/'
-})
+local _, sessions = pcall(require, "mini.sessions")
+sessions.setup {
+  directory = "~/.local/share/nvim/",
+}
 
-local _,starter = pcall(require, "mini.starter")
+local _, starter = pcall(require, "mini.starter")
 starter.setup()
 
 -- local _,statusline = pcall(require, "mini.statusline")
@@ -63,6 +64,6 @@ starter.setup()
 -- local _,surround = pcall(require, "mini.surround")
 -- surround.setup()
 
-
-local _,trailspace = pcall(require, "mini.trailspace")
+-- trailing whitespace
+local _, trailspace = pcall(require, "mini.trailspace")
 trailspace.setup()
