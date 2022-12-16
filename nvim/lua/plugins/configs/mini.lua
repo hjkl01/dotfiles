@@ -12,7 +12,8 @@ local options = {
     comment = "gc",
 
     -- Toggle comment on current line
-    comment_line = "<C-/>",
+    -- comment_line = "<C-/>",
+    comment_line = "//",
 
     -- Define 'comment' textobject (like `dgc` - delete whole comment block)
     textobject = "gc",
