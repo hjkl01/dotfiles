@@ -20,6 +20,7 @@
 # alias_if_program_exists nvim vi
 alias rr="trash-put"
 alias vi="nvim"
+alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
 
 # alias
 alias vv='cd ~/dev'
@@ -38,11 +39,6 @@ alias wqr='python ~/.dotfiles/config/sharefile.py $1'
 alias gip='curl -s ipinfo.io'
 alias gip6='curl -6 https://ifconfig.co/ip'
 alias wt='curl wttr.in/nanjing'
-
-# Mac proxy
-alias macproxysetup='networksetup -setwebproxy Wi-Fi 127.0.0.1 8888 && networksetup -setsecurewebproxy Wi-Fi 127.0.0.1 8888 && networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 8888'
-alias macproxystart='networksetup -setwebproxystate Wi-Fi on && networksetup -setsecurewebproxystate Wi-Fi on && networksetup -setsocksfirewallproxystate Wi-Fi on'
-alias macproxystop='networksetup -setwebproxystate Wi-Fi off && networksetup -setsecurewebproxystate Wi-Fi off && networksetup -setsocksfirewallproxystate Wi-Fi off'
 
 # vultr
 export VULTR_API_KEY=''
