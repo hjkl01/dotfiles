@@ -6,11 +6,11 @@ local plugins_ui = {
     end,
   },
 
-  ["kyazdani42/nvim-web-devicons"] = {
+  ["nvim-tree/nvim-web-devicons"] = {
     module = "nvim-web-devicons",
   },
 
-  ["kyazdani42/nvim-tree.lua"] = {
+  ["nvim-tree/nvim-tree.lua"] = {
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     config = function()
       require "plugins.configs.nvimtree"
@@ -23,7 +23,8 @@ local plugins_ui = {
   ["folke/tokyonight.nvim"] = {
     config = function()
       require "plugins.configs.colorscheme"
-      vim.cmd [[ colorscheme tokyonight ]]
+      -- vim.cmd [[ colorscheme tokyonight ]]
+      vim.cmd [[ colorscheme tokyonight-moon ]]
     end,
   },
 
