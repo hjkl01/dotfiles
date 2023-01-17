@@ -258,7 +258,7 @@ M.others = {
                     elseif &filetype == 'json'
                         exec "%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))'"
                     else
-                        exec ":Neoformat <CR>"
+                        exec ":Neoformat "
                         exec "w"
                     endif
                 ]]
