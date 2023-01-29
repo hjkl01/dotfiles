@@ -30,7 +30,8 @@ opt.softtabstop = 4
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
-opt.mouse = "v"
+-- opt.mouse = "v"
+opt.mouse = "a"
 
 -- Numbers
 opt.number = true

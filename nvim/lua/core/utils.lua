@@ -1,23 +1,8 @@
 local M = {}
 local merge_tb = vim.tbl_deep_extend
 
-M.load_config = function()
-  local config = require "core.default"
-  local chadrc_exists, chadrc = pcall(require, "custom.chadrc")
-
-  if chadrc_exists then
-    -- merge user config if it exists and is a table; otherwise display an error
-    if type(chadrc) == "table" then
-      config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
-      config = merge_tb("force", config, chadrc) or {}
-    else
-      error "chadrc must return a table!"
-    end
-  end
-
-  config.mappings.disabled = nil
-  return config
-end
+M.mappings = require "core.mappings"
+M.plugins = {}
 
 M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
   if not chadrc_mappings then
@@ -75,7 +60,7 @@ M.load_mappings = function(section, mapping_opt)
     end
   end
 
-  local mappings = require("core.utils").load_config().mappings
+  local mappings = M.mappings
 
   if type(section) == "string" then
     mappings[section]["plugin"] = nil
@@ -89,7 +74,7 @@ end
 
 -- merge default/user plugin tables
 M.merge_plugins = function(plugins)
-  local plugin_configs = M.load_config().plugins
+  local plugin_configs = M.plugins
   local user_plugins = plugin_configs
 
   -- old plugin syntax for adding plugins
@@ -122,7 +107,7 @@ end
 
 -- override plugin options table with custom ones
 M.load_override = function(options_table, name)
-  local plugin_configs, plugin_options = M.load_config().plugins, nil
+  local plugin_configs, plugin_options = M.plugins, nil
 
   -- support old plugin syntax for override
   local user_override = plugin_configs.override and plugin_configs.override[name]
@@ -145,6 +130,8 @@ M.load_override = function(options_table, name)
 
   return merge_tb("force", options_table, plugin_options)
 end
+
+
 
 M.packer_sync = function(...)
   local git_exists, git = pcall(require, "nvchad.utils.git")
@@ -179,7 +166,7 @@ M.packer_sync = function(...)
   if packer_exists then
     packer.sync(...)
 
-    local plugins = M.load_config().plugins
+    local plugins = M.plugins
     local old_style_options = plugins.user or plugins.override or plugins.remove
     if old_style_options then
       vim.notify_once("NvChad: This plugin syntax is deprecated, use new style config.", "Error")

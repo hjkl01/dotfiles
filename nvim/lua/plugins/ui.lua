@@ -32,6 +32,9 @@ local plugins_ui = {
     config = function()
       require("bufferline").setup {}
     end,
+    setup = function()
+      require("core.utils").load_mappings "bufferline"
+    end,
   },
 
   ["feline-nvim/feline.nvim"] = {
@@ -48,6 +51,21 @@ local plugins_ui = {
     end,
     setup = function()
       require("core.utils").load_mappings "telescope"
+    end,
+  },
+
+  ["folke/which-key.nvim"] = {
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {
+        window = {
+          border = "shadow", -- none/single/double/shadow
+        },
+      }
+    end,
+    setup = function()
+      require("core.utils").load_mappings "whichkey"
     end,
   },
 }

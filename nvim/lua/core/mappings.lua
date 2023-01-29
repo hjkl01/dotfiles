@@ -46,6 +46,51 @@ M.general = {
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+
+    ["ff"] = {
+      function()
+        -- echo &filetype
+        vim.cmd [[
+                    exec "w"
+                    if &filetype == 'python'
+                        exec "r !black -l 120 -q %"
+                        " exec "r !yapf -i %"
+                        exec "e"
+                    elseif &filetype == 'json'
+                        exec "%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))'"
+                    else
+                        exec ":Neoformat "
+                        exec "w"
+                    endif
+                ]]
+      end,
+      "autoformat",
+    },
+
+    [" r"] = {
+      function()
+        vim.cmd [[
+                    exec "w"
+                    if &filetype == 'python'
+                        "exec "!time python %"
+                        exec ':bo 20sp | terminal python %'
+                    elseif &filetype == 'lua'
+                        exec ':bo 10sp | terminal lua %'
+                    elseif &filetype == 'go'
+                        exec ':bo 10sp | terminal go run %'
+                    elseif &filetype == 'sh'
+                        exec ':bo 10sp | terminal sh %'
+                    elseif &filetype == 'javascript'
+                        exec ':bo 10sp | terminal node %'
+                    elseif &filetype == 'markdown'
+                        exec ':MarkdownPreview '
+                    else
+                        echo &filetype
+                    endif
+                ]]
+      end,
+      "run file",
+    },
   },
 
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
@@ -235,6 +280,36 @@ M.telescope = {
   },
 }
 
+M.bufferline = {
+  plugin = true,
+
+  n = {
+    -- cycle through buffers
+    ["<Tab>"] = { "<cmd> BufferLineCycleNext <CR>", "goto next buffer" },
+    ["<S-TAB>"] = { "<cmd> BufferLineCyclePrev <CR>", "goto prev buffer" },
+  },
+}
+
+M.whichkey = {
+  plugin = true,
+
+  n = {
+    ["<leader>wK"] = {
+      function()
+        vim.cmd "WhichKey"
+      end,
+      "which-key all keymaps",
+    },
+    ["<leader>wk"] = {
+      function()
+        local input = vim.fn.input "WhichKey: "
+        vim.cmd("WhichKey " .. input)
+      end,
+      "which-key query lookup",
+    },
+  },
+}
+
 M.translate = {
   n = {
     ["tt"] = { "<Plug>TranslateW", "TranslateW" },
@@ -245,52 +320,7 @@ M.translate = {
 }
 
 M.others = {
-  n = {
-    ["ff"] = {
-      function()
-        -- echo &filetype
-        vim.cmd [[
-                    exec "w"
-                    if &filetype == 'python'
-                        exec "r !black -l 120 -q %"
-                        " exec "r !yapf -i %"
-                        exec "e"
-                    elseif &filetype == 'json'
-                        exec "%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))'"
-                    else
-                        exec ":Neoformat "
-                        exec "w"
-                    endif
-                ]]
-      end,
-      "autoformat",
-    },
-
-    [" r"] = {
-      function()
-        vim.cmd [[
-                    exec "w"
-                    if &filetype == 'python'
-                        "exec "!time python %"
-                        exec ':bo 20sp | terminal python %'
-                    elseif &filetype == 'lua'
-                        exec ':bo 10sp | terminal lua %'
-                    elseif &filetype == 'go'
-                        exec ':bo 10sp | terminal go run %'
-                    elseif &filetype == 'sh'
-                        exec ':bo 10sp | terminal sh %'
-                    elseif &filetype == 'javascript'
-                        exec ':bo 10sp | terminal node %'
-                    elseif &filetype == 'markdown'
-                        exec ':MarkdownPreview '
-                    else
-                        echo &filetype
-                    endif
-                ]]
-      end,
-      "run file",
-    },
-  },
+  n = {},
 }
 
 return M
