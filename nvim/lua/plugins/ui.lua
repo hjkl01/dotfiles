@@ -23,8 +23,6 @@ local plugins_ui = {
   ["folke/tokyonight.nvim"] = {
     config = function()
       require "plugins.configs.colorscheme"
-      -- vim.cmd [[ colorscheme tokyonight ]]
-      vim.cmd [[ colorscheme tokyonight-moon ]]
     end,
   },
 

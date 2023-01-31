@@ -67,3 +67,4 @@ local options = {
 }
 
 color_config.setup(options)
+vim.cmd [[ colorscheme tokyonight-night ]]
