@@ -1,10 +1,10 @@
 local plugins_ui = {
   ["smiteshp/nvim-navic"] = {},
-  ["utilyre/barbecue.nvim"] = {
-    config = function()
-      require("barbecue").setup()
-    end,
-  },
+  -- ["utilyre/barbecue.nvim"] = {
+  --   config = function()
+  --     require("barbecue").setup()
+  --   end,
+  -- },
 
   ["nvim-tree/nvim-web-devicons"] = {
     module = "nvim-web-devicons",
