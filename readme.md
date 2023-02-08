@@ -46,6 +46,12 @@
 <details><summary> ~/.ssh/config </summary>
 
 ```shell
+
+# generate public key
+git config --global user.name ""
+git config --global user.email ""
+ssh-keygen -t rsa -b 4096 -C ""
+
 # $HOME/.ssh/config
 
 Host archServer
@@ -155,7 +161,6 @@ brew update
 
 </details>
 
-
 #### install
 
 ```shell
@@ -164,7 +169,7 @@ brew update
 # install xclip in arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && sh ./installer.sh
-````
+```
 
 #### crontab setting
 
