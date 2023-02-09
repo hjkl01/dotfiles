@@ -22,7 +22,10 @@ alias rr="trash-put"
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
 
+export EDITOR='nvim'
+
 # alias
+alias pac='sudo pacman --noconfirm'
 alias vv='cd ~/dev'
 alias cc='cd ~/.dotfiles'
 alias fd='find . -name '
