@@ -47,6 +47,7 @@ M.general = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 
+    ["<space>f"] = { "<cmd> LspFormat <CR>", "Format with lsp" },
     ["ff"] = {
       function()
         -- echo &filetype
@@ -209,16 +210,9 @@ M.lspconfig = {
       "diagnostic setloclist",
     },
 
-    ["<space>f"] = {
+    ["<leader>fm"] = {
       function()
-        -- vim.lsp.buf.formatting {}
-        if vim.version()["minor"] < 8 then
-          -- if vim.version().minor > 7 then
-          -- if vim.fn.has('nvim-0.8') == 0 then
-          return vim.lsp.buf.formatting()
-        else
-          return vim.lsp.buf.format()
-        end
+        vim.lsp.buf.format { async = true }
       end,
       "lsp formatting",
     },
