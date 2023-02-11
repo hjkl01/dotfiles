@@ -71,15 +71,9 @@ for _, lsp in ipairs(servers) do
 end
 
 local LspFormat = function()
-  -- return vim.lsp.buf.formatting_sync()
-  if vim.version()["minor"] < 8 then
-    -- if vim.version().minor > 7 then
-    -- if vim.fn.has('nvim-0.8') == 0 then
-    return vim.lsp.buf.formatting()
-  else
-    return vim.lsp.buf.format()
-  end
+  vim.lsp.buf.format { async = true }
 end
 vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
+vim.api.nvim_set_keymap("n", "<space>f", "<cmd> LspFormat <CR>", { silent = true })
 
 return M

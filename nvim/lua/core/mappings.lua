@@ -47,7 +47,6 @@ M.general = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 
-    ["<space>f"] = { "<cmd> LspFormat <CR>", "Format with lsp" },
     ["ff"] = {
       function()
         -- echo &filetype

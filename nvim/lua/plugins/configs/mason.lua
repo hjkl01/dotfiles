@@ -5,7 +5,7 @@ if not present then
 end
 mason_lspconfig.setup()
 
-local present, mason = pcall(require, "mason")
+local _, mason = pcall(require, "mason")
 
 if not present then
   return
@@ -16,12 +16,11 @@ local options = {
     "python-lsp-server",
     "lua-language-server",
     -- "stylua",
-    "typescript-language-server",
+    -- "typescript-language-server",
     "bash-language-server",
     "prettier",
     "pylint",
     "black",
-    "shfmt",
   }, -- not an option from mason.nvim
 
   ui = {
