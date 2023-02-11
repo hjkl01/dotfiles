@@ -5,9 +5,9 @@ if not present then
 end
 mason_lspconfig.setup()
 
-local _, mason = pcall(require, "mason")
+local mason_present, mason = pcall(require, "mason")
 
-if not present then
+if not mason_present then
   return
 end
 
@@ -19,8 +19,6 @@ local options = {
     -- "typescript-language-server",
     "bash-language-server",
     "prettier",
-    "pylint",
-    "black",
   }, -- not an option from mason.nvim
 
   ui = {

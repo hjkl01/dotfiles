@@ -21,6 +21,7 @@ local plugins_code = {
       require "plugins.configs.mason"
     end,
   },
+  ["mfussenegger/nvim-lint"] = {},
 
   ["rafamadriz/friendly-snippets"] = {
     module = { "cmp", "cmp_nvim_lsp" },
