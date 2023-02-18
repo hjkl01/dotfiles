@@ -22,7 +22,7 @@ alias rr="trash-put"
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
 
-export EDITOR='nvim'
+# export EDITOR='nvim'
 
 # alias
 alias pac='sudo pacman --noconfirm'
@@ -30,7 +30,7 @@ alias vv='cd ~/dev'
 alias cc='cd ~/.dotfiles'
 alias fd='find . -name '
 alias pc='proxychains4'
-alias scpr='rsync -zvauP --exclude "logs" --rsh=ssh'
+alias scpr='rsync -zvauP --exclude "logs" --exclude "node_modules" --rsh=ssh'
 # alias getpass='openssl rand -base64 20'
 alias getpass='openssl rand -hex 20'
 alias www='ifconfig en0 && python -m http.server 80 -d $1 '

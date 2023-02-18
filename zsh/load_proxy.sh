@@ -4,6 +4,7 @@
 
 export P_ADDRESS="127.0.0.1"
 export P_PORT="7890"
+# export P_PORT="8888"
 export PROXY_URL="http://$P_ADDRESS:$P_PORT"
 
 alias setproxy='export ALL_PROXY=$PROXY_URL'
