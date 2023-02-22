@@ -18,7 +18,6 @@ alias ys='yarn start'
 # 删除注册表
 # yarn config delete registry
 
-
 # HUAWEI
 # https://repo.huaweicloud.com/repository/npm/
 # Tencent

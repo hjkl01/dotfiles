@@ -9,7 +9,6 @@ local plugins_ui = {
   ["nvim-tree/nvim-web-devicons"] = {
     module = "nvim-web-devicons",
   },
-
   ["nvim-tree/nvim-tree.lua"] = {
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     config = function()
@@ -19,13 +18,11 @@ local plugins_ui = {
       require("core.utils").load_mappings "nvimtree"
     end,
   },
-
   ["folke/tokyonight.nvim"] = {
     config = function()
       require "plugins.configs.colorscheme"
     end,
   },
-
   ["akinsho/bufferline.nvim"] = {
     config = function()
       require("bufferline").setup {}
@@ -34,14 +31,12 @@ local plugins_ui = {
       require("core.utils").load_mappings "bufferline"
     end,
   },
-
   ["feline-nvim/feline.nvim"] = {
     config = function()
       -- require('feline').setup()
       require "plugins.configs.feline"
     end,
   },
-
   ["nvim-telescope/telescope.nvim"] = {
     cmd = "Telescope",
     config = function()
@@ -51,7 +46,6 @@ local plugins_ui = {
       require("core.utils").load_mappings "telescope"
     end,
   },
-
   ["folke/which-key.nvim"] = {
     config = function()
       vim.o.timeout = true

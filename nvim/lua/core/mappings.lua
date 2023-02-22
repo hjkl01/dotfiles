@@ -20,7 +20,6 @@ M.general = {
     ["<C-j>"] = { "<Down>", "move down" },
     ["<C-k>"] = { "<Up>", "move up" },
   },
-
   n = {
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
 
@@ -92,9 +91,7 @@ M.general = {
       "run file",
     },
   },
-
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
-
   v = {
     ["H"] = { "0", "Home" },
     ["L"] = { "$", "End" },
@@ -102,7 +99,6 @@ M.general = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
   },
-
   x = {
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
@@ -114,7 +110,6 @@ M.general = {
 
 M.lspconfig = {
   plugin = true,
-
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
   n = {
@@ -241,7 +236,6 @@ M.lspconfig = {
 
 M.nvimtree = {
   plugin = true,
-
   n = {
     -- toggle
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
@@ -250,7 +244,6 @@ M.nvimtree = {
 
 M.telescope = {
   plugin = true,
-
   n = {
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
@@ -275,7 +268,6 @@ M.telescope = {
 
 M.bufferline = {
   plugin = true,
-
   n = {
     -- cycle through buffers
     ["<Tab>"] = { "<cmd> BufferLineCycleNext <CR>", "goto next buffer" },
@@ -285,7 +277,6 @@ M.bufferline = {
 
 M.whichkey = {
   plugin = true,
-
   n = {
     ["<leader>wK"] = {
       function()

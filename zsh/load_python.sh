@@ -3,7 +3,7 @@
 # python config
 
 virtualenv_path=~/.venv/py3/bin/activate
-if [ -f $virtualenv_path ];then
+if [ -f $virtualenv_path ]; then
   source $virtualenv_path
 fi
 

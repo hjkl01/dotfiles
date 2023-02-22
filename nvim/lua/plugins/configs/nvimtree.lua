@@ -32,7 +32,6 @@ local options = {
     dotfiles = false,
     exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
   },
-
   update_focused_file = {
     enable = true,
     update_cwd = false,

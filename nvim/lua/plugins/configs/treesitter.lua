@@ -7,14 +7,13 @@ end
 local options = {
   ensure_installed = {
     "python",
-    -- "lua", --stylua
+    "lua", --stylua
     -- "bash", --shellcheck
     -- "javascript", --npm
     -- "markdown", --npm
     -- "go",
     -- "typescript",
   },
-
   sync_install = false,
   auto_install = true,
   -- ignore_install = { "javascript" },

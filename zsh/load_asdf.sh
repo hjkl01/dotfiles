@@ -10,6 +10,6 @@
 
 # linux
 ASDFSH=$HOME/.asdf/asdf.sh
-if [ -f $ASDFSH ];then
-    . $ASDFSH
+if [ -f $ASDFSH ]; then
+  . $ASDFSH
 fi

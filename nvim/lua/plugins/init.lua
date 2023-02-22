@@ -7,28 +7,23 @@ local plugins = {
       require "impatient"
     end,
   },
-
   ["wbthomason/packer.nvim"] = {
     cmd = require("core.lazy_load").packer_cmds,
     config = function()
       require "plugins"
     end,
   },
-
   ["nvim-lua/plenary.nvim"] = {},
-
   ["echasnovski/mini.nvim"] = {
     config = function()
       require "plugins.configs.mini"
     end,
   },
-
   ["voldikss/vim-translator"] = {
     config = function()
       vim.g.translator_default_engines = { "haici", "youdao", "bing" }
     end,
   },
-
   ["iamcco/markdown-preview.nvim"] = {
     run = "cd app && npm install",
     setup = function()

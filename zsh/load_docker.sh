@@ -19,7 +19,6 @@ alias dc='docker-compose'
 alias di='docker images'
 alias dir='docker rmi'
 
-
 # podman config
 # alias dp='podman ps -a'
 # alias di='podman images'

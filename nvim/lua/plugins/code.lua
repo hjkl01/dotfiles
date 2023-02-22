@@ -1,5 +1,4 @@
 local plugins_code = {
-
   -- lsp stuff
   ["neovim/nvim-lspconfig"] = {
     opt = true,
@@ -10,9 +9,7 @@ local plugins_code = {
       require "plugins.configs.lspconfig"
     end,
   },
-
   ["williamboman/mason-lspconfig.nvim"] = {},
-
   ["williamboman/mason.nvim"] = {
     cmd = require("core.lazy_load").mason_cmds,
     module = "mason",
@@ -21,39 +18,14 @@ local plugins_code = {
       require "plugins.configs.mason"
     end,
   },
-  ["mfussenegger/nvim-lint"] = {},
-
-  ["rafamadriz/friendly-snippets"] = {
-    module = { "cmp", "cmp_nvim_lsp" },
-    event = "InsertEnter",
-  },
-
-  ["L3MON4D3/LuaSnip"] = {
-    config = function()
-      require("plugins.configs.others").luasnip()
-    end,
-  },
-
-  ["hrsh7th/nvim-cmp"] = {
-    config = function()
-      require "plugins.configs.cmp"
-    end,
-  },
-
-  ["saadparwaiz1/cmp_luasnip"] = { after = "LuaSnip" },
-  ["hrsh7th/cmp-nvim-lua"] = { after = "cmp_luasnip" },
-  ["hrsh7th/cmp-nvim-lsp"] = { after = "cmp-nvim-lua" },
-  ["hrsh7th/cmp-buffer"] = { after = "cmp-nvim-lsp" },
-  ["hrsh7th/cmp-path"] = { after = "cmp-buffer" },
-
+  -- lint format
   ["sbdchd/neoformat"] = {},
-
-  ["jose-elias-alvarez/null-ls.nvim"] = {
-    after = "nvim-lspconfig",
-    config = function()
-      require "plugins.configs.nullls"
-    end,
-  },
+  -- ["jose-elias-alvarez/null-ls.nvim"] = {
+  --   after = "nvim-lspconfig",
+  --   config = function()
+  --     require "plugins.configs.nullls"
+  --   end,
+  -- },
 
   ["nvim-treesitter/nvim-treesitter"] = {
     -- commit = "4cccb6f",
@@ -68,7 +40,27 @@ local plugins_code = {
       require "plugins.configs.treesitter"
     end,
   },
-
+  ["mfussenegger/nvim-lint"] = {},
+  -- snippets
+  ["rafamadriz/friendly-snippets"] = {
+    module = { "cmp", "cmp_nvim_lsp" },
+    event = "InsertEnter",
+  },
+  ["L3MON4D3/LuaSnip"] = {
+    config = function()
+      require("plugins.configs.others").luasnip()
+    end,
+  },
+  ["hrsh7th/nvim-cmp"] = {
+    config = function()
+      require "plugins.configs.cmp"
+    end,
+  },
+  ["saadparwaiz1/cmp_luasnip"] = { after = "LuaSnip" },
+  ["hrsh7th/cmp-nvim-lua"] = { after = "cmp_luasnip" },
+  ["hrsh7th/cmp-nvim-lsp"] = { after = "cmp-nvim-lua" },
+  ["hrsh7th/cmp-buffer"] = { after = "cmp-nvim-lsp" },
+  ["hrsh7th/cmp-path"] = { after = "cmp-buffer" },
   -- git stuff
   ["lewis6991/gitsigns.nvim"] = {
     ft = "gitcommit",

@@ -21,9 +21,11 @@ local options = {
   -- Hook functions to be executed at certain stage of commenting
   hooks = {
     -- Before successful commenting. Does nothing by default.
-    pre = function() end,
+    pre = function()
+    end,
     -- After successful commenting. Does nothing by default.
-    post = function() end,
+    post = function()
+    end,
   },
 }
 

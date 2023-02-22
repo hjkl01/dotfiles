@@ -20,7 +20,6 @@ local options = {
     "bash-language-server",
     "prettier",
   }, -- not an option from mason.nvim
-
   ui = {
     icons = {
       package_pending = " ",
@@ -39,7 +38,6 @@ local options = {
       cancel_installation = "<C-c>",
     },
   },
-
   max_concurrent_installers = 10,
 }
 
