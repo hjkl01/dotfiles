@@ -20,13 +20,12 @@ local plugins_code = {
   },
   -- lint format
   ["sbdchd/neoformat"] = {},
-  -- ["jose-elias-alvarez/null-ls.nvim"] = {
-  --   after = "nvim-lspconfig",
-  --   config = function()
-  --     require "plugins.configs.nullls"
-  --   end,
-  -- },
-
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "plugins.configs.nullls"
+    end,
+  },
   ["nvim-treesitter/nvim-treesitter"] = {
     -- commit = "4cccb6f",
     module = "nvim-treesitter",
