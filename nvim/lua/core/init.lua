@@ -36,14 +36,18 @@ autocmd("BufUnload", {
 })
 
 -- Open a file from its last left off position
-autocmd("BufReadPost", {
-  callback = function()
-    if not vim.fn.expand("%:p"):match ".git" and vim.fn.line "'\"" > 1 and vim.fn.line "'\"" <= vim.fn.line "$" then
-      vim.cmd "normal! g'\""
-      vim.cmd "normal zz"
-    end
-  end,
-})
+autocmd(
+  "BufReadPost",
+  { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif]] }
+)
+-- autocmd("BufReadPost", {
+--   callback = function()
+--     if not vim.fn.expand("%:p"):match ".git" and vim.fn.line "'\"" > 1 and vim.fn.line "'\"" <= vim.fn.line "$" then
+--       vim.cmd "normal! g'\""
+--       vim.cmd "normal zz"
+--     end
+--   end,
+-- })
 -- local api = vim.api
 -- autocmd({ "BufRead", "BufReadPost" }, {
 --   callback = function()
@@ -72,8 +76,8 @@ autocmd("BufEnter", {
       vim.cmd "quit"
     end
     vim.opt.formatoptions = vim.opt.formatoptions
-        - "o" -- O and o, don't continue comments
-        + "r" -- But do continue when pressing enter.
+      - "o" -- O and o, don't continue comments
+      + "r" -- But do continue when pressing enter.
   end,
 })
 
