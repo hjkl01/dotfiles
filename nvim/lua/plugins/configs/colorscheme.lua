@@ -1,28 +1,3 @@
--- ["monsonjeremy/onedark.nvim"] = {
---   config = function()
---     require("plugins.configs.others").onedark()
---     require "plugins.configs.colorscheme"
---   end,
--- },
-
--- local present, color_config = pcall(require, "onedark")
---
--- if not present then
---   return
--- end
-
---   color_config.setup {
---     -- :help highlight-args
---     commentStyle = "italic",
---     keywordStyle = "bold",
---     functionStyle = "bold",
---     -- variableStyle = "bold",
---     -- transparent = true,
---     -- hideInactiveStatusline = true,
---     sidebars = { "qf", "vista_kind", "terminal", "packer" },
---   }
--- end
-
 local present, color_config = pcall(require, "tokyonight")
 
 if not present then

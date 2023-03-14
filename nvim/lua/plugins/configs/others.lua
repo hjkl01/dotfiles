@@ -1,52 +1,59 @@
 local M = {}
+local utils = require "core.utils"
 
-local load_override = require("core.utils").load_override
-
-M.packer_init = function()
-  return {
-    auto_clean = true,
-    compile_on_sync = true,
-    git = { clone_timeout = 6000 },
-    display = {
-      working_sym = "ﲊ",
-      error_sym = "✗ ",
-      done_sym = " ",
-      removed_sym = " ",
-      moved_sym = "",
-      open_fn = function()
-        return require("packer.util").float { border = "single" }
-      end,
-    },
-  }
-end
+M.blankline = {
+  indentLine_enabled = 1,
+  filetype_exclude = {
+    "help",
+    "terminal",
+    "lazy",
+    "lspinfo",
+    "TelescopePrompt",
+    "TelescopeResults",
+    "mason",
+    "nvdash",
+    "nvcheatsheet",
+    "",
+  },
+  buftype_exclude = { "terminal" },
+  show_trailing_blankline_indent = false,
+  show_first_indent_level = false,
+  show_current_context = true,
+  show_current_context_start = true,
+}
 
 M.luasnip = function()
-  local present, luasnip = pcall(require, "luasnip")
+  local options = { history = true, updateevents = "TextChanged,TextChangedI" }
 
-  if not present then
-    return
-  end
+  require("luasnip").config.set_config(options)
 
-  local options = {
-    history = true,
-    updateevents = "TextChanged,TextChangedI",
-  }
-
-  options = load_override(options, "L3MON4D3/LuaSnip")
-  luasnip.config.set_config(options)
   require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.luasnippets_path or "" }
   require("luasnip.loaders.from_vscode").lazy_load()
 
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
       if
-          require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-          and not require("luasnip").session.jump_active
+        require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+        and not require("luasnip").session.jump_active
       then
         require("luasnip").unlink_current()
       end
     end,
   })
 end
+
+M.gitsigns = {
+  signs = {
+    add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
+    change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
+    delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
+    topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+    changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+    untracked = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+  },
+  on_attach = function(bufnr)
+    utils.load_mappings("gitsigns", { buffer = bufnr })
+  end,
+}
 
 return M

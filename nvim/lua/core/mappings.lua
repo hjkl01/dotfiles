@@ -1,12 +1,9 @@
 -- n, v, i, t = mode names
 
-local function termcodes(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
 local M = {}
 
 M.general = {
+
   i = {
     ["<C-d>"] = { "<ESC>", "exit edit" },
 
@@ -91,7 +88,6 @@ M.general = {
       "run file",
     },
   },
-  t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
   v = {
     ["H"] = { "0", "Home" },
     ["L"] = { "$", "End" },
@@ -107,9 +103,9 @@ M.general = {
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
   },
 }
-
 M.lspconfig = {
   plugin = true,
+
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
   n = {
@@ -155,13 +151,6 @@ M.lspconfig = {
       "lsp definition type",
     },
 
-    ["<leader>ra"] = {
-      function()
-        require("nvchad_ui.renamer").open()
-      end,
-      "lsp rename",
-    },
-
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
@@ -176,7 +165,7 @@ M.lspconfig = {
       "lsp references",
     },
 
-    ["<leader>f"] = {
+    ["<leader>fd"] = {
       function()
         vim.diagnostic.open_float()
       end,
@@ -190,7 +179,7 @@ M.lspconfig = {
       "goto prev",
     },
 
-    ["d]"] = {
+    ["]d"] = {
       function()
         vim.diagnostic.goto_next()
       end,
@@ -236,6 +225,7 @@ M.lspconfig = {
 
 M.nvimtree = {
   plugin = true,
+
   n = {
     -- toggle
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
@@ -244,6 +234,7 @@ M.nvimtree = {
 
 M.telescope = {
   plugin = true,
+
   n = {
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
@@ -252,7 +243,6 @@ M.telescope = {
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-    ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
 
     -- git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
@@ -260,23 +250,12 @@ M.telescope = {
 
     -- pick a hidden term
     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
-
-    -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
-  },
-}
-
-M.bufferline = {
-  plugin = true,
-  n = {
-    -- cycle through buffers
-    ["<Tab>"] = { "<cmd> BufferLineCycleNext <CR>", "goto next buffer" },
-    ["<S-TAB>"] = { "<cmd> BufferLineCyclePrev <CR>", "goto prev buffer" },
   },
 }
 
 M.whichkey = {
   plugin = true,
+
   n = {
     ["<leader>wK"] = {
       function()
@@ -294,6 +273,92 @@ M.whichkey = {
   },
 }
 
+M.blankline = {
+  plugin = true,
+
+  n = {
+    ["<leader>cc"] = {
+      function()
+        local ok, start = require("indent_blankline.utils").get_current_context(
+          vim.g.indent_blankline_context_patterns,
+          vim.g.indent_blankline_use_treesitter_scope
+        )
+
+        if ok then
+          vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+          vim.cmd [[normal! _]]
+        end
+      end,
+
+      "Jump to current_context",
+    },
+  },
+}
+
+M.gitsigns = {
+  plugin = true,
+
+  n = {
+    -- Navigation through hunks
+    ["]c"] = {
+      function()
+        if vim.wo.diff then
+          return "]c"
+        end
+        vim.schedule(function()
+          require("gitsigns").next_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      "Jump to next hunk",
+      opts = { expr = true },
+    },
+
+    ["[c"] = {
+      function()
+        if vim.wo.diff then
+          return "[c"
+        end
+        vim.schedule(function()
+          require("gitsigns").prev_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      "Jump to prev hunk",
+      opts = { expr = true },
+    },
+
+    -- Actions
+    ["<leader>rh"] = {
+      function()
+        require("gitsigns").reset_hunk()
+      end,
+      "Reset hunk",
+    },
+
+    ["<leader>ph"] = {
+      function()
+        require("gitsigns").preview_hunk()
+      end,
+      "Preview hunk",
+    },
+
+    ["<leader>gb"] = {
+      function()
+        package.loaded.gitsigns.blame_line()
+      end,
+      "Blame line",
+    },
+
+    ["<leader>td"] = {
+      function()
+        require("gitsigns").toggle_deleted()
+      end,
+      "Toggle deleted",
+    },
+  },
+}
+
 M.translate = {
   n = {
     ["tt"] = { "<Plug>TranslateW", "TranslateW" },
@@ -302,9 +367,4 @@ M.translate = {
     ["tt"] = { "<Plug>TranslateWV", "TranslateWV" },
   },
 }
-
-M.others = {
-  n = {},
-}
-
 return M

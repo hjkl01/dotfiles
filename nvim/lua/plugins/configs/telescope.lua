@@ -1,15 +1,8 @@
-local present, telescope = pcall(require, "telescope")
-
-if not present then
-  return
-end
-
-vim.g.theme_switcher_loaded = true
-
 local options = {
   defaults = {
     vimgrep_arguments = {
       "rg",
+      "-L",
       "--color=never",
       "--no-heading",
       "--with-filename",
@@ -55,16 +48,8 @@ local options = {
       n = { ["q"] = require("telescope.actions").close },
     },
   },
+
   extensions_list = { "themes", "terms" },
 }
 
--- check for any override
-options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
-telescope.setup(options)
-
--- load extensions
-pcall(function()
-  for _, ext in ipairs(options.extensions_list) do
-    telescope.load_extension(ext)
-  end
-end)
+return options

@@ -1,17 +1,11 @@
-local present, lspconfig = pcall(require, "lspconfig")
-
-if not present then
-  return
-end
-
 local M = {}
 local utils = require "core.utils"
 
 -- export on_attach & capabilities for custom lspconfigs
 
 M.on_attach = function(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = true
-  client.server_capabilities.documentRangeFormattingProvider = true
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
 
   utils.load_mappings("lspconfig", { buffer = bufnr })
 end
@@ -36,7 +30,7 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-lspconfig.lua_ls.setup {
+require("lspconfig").lua_ls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 
@@ -49,6 +43,7 @@ lspconfig.lua_ls.setup {
         library = {
           [vim.fn.expand "$VIMRUNTIME/lua"] = true,
           [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
         },
         maxPreload = 100000,
         preloadFileSize = 10000,
@@ -58,6 +53,7 @@ lspconfig.lua_ls.setup {
 }
 
 local servers = { "pylsp" }
+local lspconfig = require "lspconfig"
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = M.on_attach, capabilities = M.capabilities }
@@ -67,6 +63,6 @@ local LspFormat = function()
   vim.lsp.buf.format { async = true }
 end
 vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
-vim.api.nvim_set_keymap("n", "<space>f", "<cmd> LspFormat <CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>f", "<cmd> LspFormat <CR>", { silent = true })
 
 return M
