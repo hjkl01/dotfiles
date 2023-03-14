@@ -1,10 +1,9 @@
 local opt = vim.opt
 local g = vim.g
-local config = require("core.utils").load_config()
 
 -------------------------------------- globals -----------------------------------------
 g.toggle_theme_icon = "   "
-g.transparency = config.ui.transparency
+g.transparency = false
 
 -------------------------------------- options ------------------------------------------
 opt.laststatus = 3 -- global statusline
@@ -81,48 +80,6 @@ autocmd("FileType", {
   pattern = "qf",
   callback = function()
     vim.opt_local.buflisted = false
-  end,
-})
-
-local sep = vim.loop.os_uname().sysname:find "windows" and "\\" or "/"
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = vim.fn.glob(
-    table.concat({
-      vim.fn.stdpath "config",
-      "lua",
-      "custom",
-      "**",
-      "*.lua",
-    }, sep),
-    true,
-    true,
-    true
-  ),
-
-  group = vim.api.nvim_create_augroup("ReloadNvChad", {}),
-
-  callback = function(opts)
-    require("plenary.reload").reload_module "base46"
-    local file = string
-      .gsub(vim.fn.fnamemodify(opts.file, ":r"), vim.fn.stdpath "config" .. sep .. "lua" .. sep, "")
-      :gsub(sep, ".")
-    require("plenary.reload").reload_module(file)
-    require("plenary.reload").reload_module "custom.chadrc"
-
-    config = require("core.utils").load_config()
-
-    vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. config.ui.statusline.theme .. "').run()"
-
-    require("base46").load_all_highlights()
-    -- vim.cmd("redraw!")
-  end,
-})
-
--- wrap the PackerSync command to warn people before using it in NvChadSnapshots
-autocmd("VimEnter", {
-  callback = function()
-    vim.cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerSync lua require('plugins') require('core.utils').packer_sync(<f-args>)"
   end,
 })
 

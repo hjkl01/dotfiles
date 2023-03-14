@@ -1,22 +1,15 @@
 local M = {}
 local merge_tb = vim.tbl_deep_extend
 
+local C = {}
+C.ui = {}
+C.plugins = ""
+C.lazy_nvim = {}
+C.mappings = {}
+
 M.load_config = function()
-  local C = {}
-  C.ui = {}
-  C.plugins = ""
-  C.lazy_nvim = {}
-  C.mappings = {}
-  -- local config = require "core.default_config"
   local config = C
-  local chadrc_path = vim.api.nvim_get_runtime_file("lua/custom/chadrc.lua", false)[1]
-
-  if chadrc_path then
-    local chadrc = dofile(chadrc_path)
-
-    config.mappings = M.remove_disabled_keys(chadrc.mappings, require "core.mappings")
-    config = merge_tb("force", config, chadrc)
-  end
+  -- local config = require "core.default_config"
 
   config.mappings.disabled = nil
   return config
@@ -79,7 +72,8 @@ M.load_mappings = function(section, mapping_opt)
     end
   end
 
-  local mappings = require("core.utils").load_config().mappings
+  -- local mappings = require("core.utils").load_config().mappings
+  local mappings = require "core.mappings"
 
   if type(section) == "string" then
     mappings[section]["plugin"] = nil
