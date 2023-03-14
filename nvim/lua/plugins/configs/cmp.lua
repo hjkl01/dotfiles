@@ -1,10 +1,4 @@
-local present, cmp = pcall(require, "cmp")
-
-if not present then
-  return
-end
-
-vim.opt.completeopt = "menuone,noselect"
+local cmp = require "cmp"
 
 local function border(hl_name)
   return {
@@ -19,23 +13,20 @@ local function border(hl_name)
   }
 end
 
-local cmp_window = require "cmp.utils.window"
-
-cmp_window.info_ = cmp_window.info
-cmp_window.info = function(self)
-  local info = self:info_()
-  info.scrollable = false
-  return info
-end
-
 local options = {
+  completion = {
+    completeopt = "menu,menuone",
+  },
+
   window = {
     completion = {
-      border = border "CmpBorder",
-      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+      side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
+      winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+      scrollbar = false,
     },
     documentation = {
       border = border "CmpDocBorder",
+      winhighlight = "Normal:CmpDoc",
     },
   },
   snippet = {
@@ -43,7 +34,10 @@ local options = {
       require("luasnip").lsp_expand(args.body)
     end,
   },
+
+  -- formatting = formatting_style,
   formatting = {},
+
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -55,6 +49,30 @@ local options = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     },
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif require("luasnip").expand_or_jumpable() then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
+    }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif require("luasnip").jumpable(-1) then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
+    }),
   },
   sources = {
     { name = "luasnip" },
@@ -65,4 +83,8 @@ local options = {
   },
 }
 
-cmp.setup(options)
+if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
+  options.window.completion.border = border "CmpBorder"
+end
+
+return options
