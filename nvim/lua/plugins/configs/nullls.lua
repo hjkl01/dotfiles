@@ -16,7 +16,9 @@ local sources = {
   b.formatting.stylua,
 
   -- Python
-  b.formatting.black,
+  b.formatting.black.with {
+    extra_args = { "--line-length=120" },
+  },
 
   -- Shell
   b.formatting.shfmt,
