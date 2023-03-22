@@ -358,13 +358,3 @@ M.gitsigns = {
     },
   },
 }
-
-M.translate = {
-  n = {
-    ["tt"] = { "<Plug>TranslateW", "TranslateW" },
-  },
-  v = {
-    ["tt"] = { "<Plug>TranslateWV", "TranslateWV" },
-  },
-}
-return M

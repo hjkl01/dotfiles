@@ -1,20 +1,16 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-
   ["lewis6991/impatient.nvim"] = {
     config = function()
       require "impatient"
     end,
   },
-
   "nvim-lua/plenary.nvim",
-
   {
     "smiteshp/nvim-navic",
     lazy = false,
   },
-
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -39,12 +35,10 @@ local default_plugins = {
       require "plugins.configs.feline"
     end,
   },
-
   {
     "nvim-tree/nvim-web-devicons",
     module = "nvim-web-devicons",
   },
-
   {
     "lukas-reineke/indent-blankline.nvim",
     init = function()
@@ -58,7 +52,6 @@ local default_plugins = {
       require("indent_blankline").setup(opts)
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     init = require("core.utils").lazy_load "nvim-treesitter",
@@ -71,7 +64,6 @@ local default_plugins = {
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
-
   -- git stuff
   {
     "lewis6991/gitsigns.nvim",
@@ -98,7 +90,6 @@ local default_plugins = {
       require("gitsigns").setup(opts)
     end,
   },
-
   -- lsp stuff
   {
     "williamboman/mason.nvim",
@@ -124,7 +115,7 @@ local default_plugins = {
       require "plugins.configs.lspconfig"
     end,
   },
-  { "sbdchd/neoformat", lazy = false },
+  { "sbdchd/neoformat",      lazy = false },
   {
     "jose-elias-alvarez/null-ls.nvim",
     lazy = false,
@@ -134,7 +125,6 @@ local default_plugins = {
     end,
   },
   { "mfussenegger/nvim-lint" },
-
   -- load luasnips + cmp related in insert mode only
   {
     "hrsh7th/nvim-cmp",
@@ -158,7 +148,6 @@ local default_plugins = {
         "hrsh7th/cmp-path",
       },
     },
-
     opts = function()
       return require "plugins.configs.cmp"
     end,
@@ -166,7 +155,6 @@ local default_plugins = {
       require("cmp").setup(opts)
     end,
   },
-
   -- file managing , picker etc
   {
     "nvim-tree/nvim-tree.lua",
@@ -179,16 +167,13 @@ local default_plugins = {
       require("nvim-tree").setup(opts)
     end,
   },
-
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     init = require("core.utils").load_mappings "telescope",
-
     opts = function()
       return require "plugins.configs.telescope"
     end,
-
     config = function(_, opts)
       local telescope = require "telescope"
       telescope.setup(opts)
@@ -199,7 +184,6 @@ local default_plugins = {
       end
     end,
   },
-
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
@@ -212,18 +196,11 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
-
   {
     "echasnovski/mini.nvim",
     lazy = false,
     config = function()
       require "plugins.configs.mini"
-    end,
-  },
-  {
-    "voldikss/vim-translator",
-    config = function()
-      vim.g.translator_default_engines = { "haici", "youdao", "bing" }
     end,
   },
   {
