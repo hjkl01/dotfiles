@@ -171,7 +171,7 @@ M.lspconfig = {
       end,
       "diagnostic setloclist",
     },
-    ["<leader>fm"] = {
+    ["<leader>f"] = {
       function()
         vim.lsp.buf.format { async = true }
       end,
