@@ -179,9 +179,9 @@ local default_plugins = {
       telescope.setup(opts)
 
       -- load extensions
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
+      -- for _, ext in ipairs(opts.extensions_list) do
+      --   telescope.load_extension(ext)
+      -- end
     end,
   },
   -- Only load whichkey after all the gui

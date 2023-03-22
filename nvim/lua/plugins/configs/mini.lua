@@ -10,20 +10,20 @@ local options = {
     -- Toggle comment (like `gcip` - comment inner paragraph) for both
     -- Normal and Visual modes
     comment = "gc",
-
     -- Toggle comment on current line
     -- comment_line = "<C-/>",
     comment_line = "//",
-
     -- Define 'comment' textobject (like `dgc` - delete whole comment block)
     textobject = "gc",
   },
   -- Hook functions to be executed at certain stage of commenting
   hooks = {
     -- Before successful commenting. Does nothing by default.
-    pre = function() end,
+    pre = function()
+    end,
     -- After successful commenting. Does nothing by default.
-    post = function() end,
+    post = function()
+    end,
   },
 }
 

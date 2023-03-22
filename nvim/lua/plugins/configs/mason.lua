@@ -11,16 +11,13 @@ local options = {
     "bash-language-server",
     -- "typescript-language-server",
   }, -- not an option from mason.nvim
-
   PATH = "skip",
-
   ui = {
     icons = {
       package_pending = " ",
       package_installed = " ",
       package_uninstalled = " ﮊ",
     },
-
     keymaps = {
       toggle_server_expand = "<CR>",
       install_server = "i",
@@ -32,7 +29,6 @@ local options = {
       cancel_installation = "<C-c>",
     },
   },
-
   max_concurrent_installers = 10,
 }
 

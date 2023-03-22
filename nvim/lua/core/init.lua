@@ -140,8 +140,8 @@ autocmd("BufEnter", {
       vim.cmd "quit"
     end
     vim.opt.formatoptions = vim.opt.formatoptions
-      - "o" -- O and o, don't continue comments
-      + "r" -- But do continue when pressing enter.
+        - "o" -- O and o, don't continue comments
+        + "r" -- But do continue when pressing enter.
   end,
 })
 
