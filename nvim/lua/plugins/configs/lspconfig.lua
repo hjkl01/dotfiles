@@ -64,10 +64,10 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = M.on_attach, capabilities = capabilities }
 end
 
--- local LspFormat = function()
---   vim.lsp.buf.format { async = true }
--- end
--- vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
+local LspFormat = function()
+  vim.lsp.buf.format { async = true }
+end
+vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
 -- vim.api.nvim_set_keymap("n", "<space>f", "<cmd> LspFormat w <CR>", { silent = true })
 
 -- 自动保存文件
