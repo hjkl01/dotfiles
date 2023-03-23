@@ -116,14 +116,14 @@ local default_plugins = {
     end,
   },
   { "sbdchd/neoformat",      lazy = false },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    lazy = false,
-    after = "nvim-lspconfig",
-    config = function()
-      require "plugins.configs.nullls"
-    end,
-  },
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   lazy = false,
+  --   after = "nvim-lspconfig",
+  --   config = function()
+  --     require "plugins.configs.nullls"
+  --   end,
+  -- },
   { "mfussenegger/nvim-lint" },
   -- load luasnips + cmp related in insert mode only
   {
