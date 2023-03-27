@@ -58,7 +58,7 @@ lspconfig.lua_ls.setup {
   },
 }
 
-local servers = { "pylsp" }
+local servers = { "pylsp", "tsserver" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = M.on_attach, capabilities = capabilities }
@@ -71,6 +71,6 @@ vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
 -- vim.api.nvim_set_keymap("n", "<space>f", "<cmd> LspFormat w <CR>", { silent = true })
 
 -- 自动保存文件
-vim.api.nvim_command('autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)')
+vim.api.nvim_command "autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)"
 
 return M
