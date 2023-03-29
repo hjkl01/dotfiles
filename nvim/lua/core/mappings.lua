@@ -70,8 +70,6 @@ M.general = {
                         exec ':bo 10sp | terminal sh %'
                     elseif &filetype == 'javascript'
                         exec ':bo 10sp | terminal node %'
-                    elseif &filetype == 'markdown'
-                        exec ':MarkdownPreview '
                     else
                         echo &filetype
                     endif
