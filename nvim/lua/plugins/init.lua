@@ -11,150 +11,6 @@ local default_plugins = {
     "smiteshp/nvim-navic",
     lazy = false,
   },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require "plugins.configs.colorscheme"
-    end,
-  },
-  {
-    "akinsho/bufferline.nvim",
-    lazy = false,
-    config = true,
-    setup = function()
-      require("core.utils").load_mappings "bufferline"
-    end,
-  },
-  {
-    "feline-nvim/feline.nvim",
-    lazy = false,
-    config = function()
-      -- require('feline').setup()
-      require "plugins.configs.feline"
-    end,
-  },
-  {
-    "nvim-tree/nvim-web-devicons",
-    module = "nvim-web-devicons",
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    init = function()
-      require("core.utils").lazy_load "indent-blankline.nvim"
-    end,
-    opts = function()
-      return require("plugins.configs.others").blankline
-    end,
-    config = function(_, opts)
-      require("core.utils").load_mappings "blankline"
-      require("indent_blankline").setup(opts)
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    init = require("core.utils").lazy_load "nvim-treesitter",
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-    build = ":TSUpdate",
-    opts = function()
-      return require "plugins.configs.treesitter"
-    end,
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end,
-  },
-  -- git stuff
-  {
-    "lewis6991/gitsigns.nvim",
-    ft = "gitcommit",
-    init = function()
-      -- load gitsigns only when a git file is opened
-      vim.api.nvim_create_autocmd({ "BufRead" }, {
-        group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
-        callback = function()
-          vim.fn.system("git -C " .. vim.fn.expand "%:p:h" .. " rev-parse")
-          if vim.v.shell_error == 0 then
-            vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-            vim.schedule(function()
-              require("lazy").load { plugins = { "gitsigns.nvim" } }
-            end)
-          end
-        end,
-      })
-    end,
-    opts = function()
-      return require("plugins.configs.others").gitsigns
-    end,
-    config = function(_, opts)
-      require("gitsigns").setup(opts)
-    end,
-  },
-  -- lsp stuff
-  {
-    "williamboman/mason.nvim",
-    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
-    opts = function()
-      return require "plugins.configs.mason"
-    end,
-    config = function(_, opts)
-      require("mason").setup(opts)
-
-      -- custom cmd to install all mason binaries listed
-      vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
-      end, {})
-    end,
-  },
-  -- { "williamboman/mason-lspconfig.nvim" },
-
-  {
-    "neovim/nvim-lspconfig",
-    init = require("core.utils").lazy_load "nvim-lspconfig",
-    config = function()
-      require "plugins.configs.lspconfig"
-    end,
-  },
-  { "sbdchd/neoformat",      lazy = false },
-  -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   lazy = false,
-  --   after = "nvim-lspconfig",
-  --   config = function()
-  --     require "plugins.configs.nullls"
-  --   end,
-  -- },
-  { "mfussenegger/nvim-lint" },
-  -- load luasnips + cmp related in insert mode only
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      {
-        -- snippet plugin
-        "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
-        config = function()
-          require("plugins.configs.others").luasnip()
-        end,
-      },
-
-      -- cmp sources plugins
-      {
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-      },
-    },
-    opts = function()
-      return require "plugins.configs.cmp"
-    end,
-    config = function(_, opts)
-      require("cmp").setup(opts)
-    end,
-  },
   -- file managing , picker etc
   {
     "nvim-tree/nvim-tree.lua",
@@ -209,23 +65,33 @@ local default_plugins = {
     -- https://github.com/skywind3000/ECDICT-ultimate/releases/download/1.0.0/ecdict-ultimate-sqlite.zip
     keys = {
       -- 可以换成其他你想映射的键
-      { 'tt', mode = { 'n', 'x' }, '<Cmd>Translate<CR>', desc = ' Translate' },
-      { 'ts', mode = { 'n', 'x' }, '<Cmd>TransPlay<CR>', desc = ' 自动发音' },
+      { "tt", mode = { "n", "x" }, "<Cmd>Translate<CR>", desc = " Translate" },
+      { "ts", mode = { "n", "x" }, "<Cmd>TransPlay<CR>", desc = " 自动发音" },
 
       -- 目前这个功能的视窗还没有做好，可以在配置里将view.i改成hover
       -- { 'mi', '<Cmd>TranslateInput<CR>', desc = ' Translate From Input' },
     },
-    dependencies = { 'kkharji/sqlite.lua', lazy = true, },
+    dependencies = { "kkharji/sqlite.lua", lazy = true },
     opts = {
       -- your configuration there
     },
     config = function()
       require("Trans").setup {
-        db_path = '$HOME/.dotfiles/nvim/ultimate.db',
+        db_path = "$HOME/.dotfiles/nvim/ultimate.db",
       }
-    end
+    end,
   },
 }
+
+local ui_plugins, _ = require "plugins.ui"
+for _, v in pairs(ui_plugins) do
+  table.insert(default_plugins, v)
+end
+
+local code_plugins, _ = require "plugins.code"
+for _, v in pairs(code_plugins) do
+  table.insert(default_plugins, v)
+end
 
 local config = require("core.utils").load_config()
 
