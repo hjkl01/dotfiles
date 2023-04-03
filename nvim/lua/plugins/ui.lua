@@ -11,8 +11,9 @@ local ui_plugins = {
   {
     "akinsho/bufferline.nvim",
     lazy = false,
-    config = true,
-    setup = function()
+    config = function()
+      vim.opt.termguicolors = true
+      require("bufferline").setup()
       require("core.utils").load_mappings "bufferline"
     end,
   },
@@ -20,7 +21,7 @@ local ui_plugins = {
     "feline-nvim/feline.nvim",
     lazy = false,
     config = function()
-      -- require('feline').setup()
+      -- require("feline").setup()
       require "plugins.configs.feline"
     end,
   },
