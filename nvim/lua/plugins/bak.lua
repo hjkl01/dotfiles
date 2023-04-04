@@ -20,3 +20,13 @@
 --     }
 --   end,
 -- },
+
+-- {
+--   "hjkl01/translate.nvim",
+--   cmd = "Translate",
+--   lazy = false,
+--   init = require("core.utils").load_mappings "translate",
+--   config = function()
+--     require("translate").setup {}
+--   end,
+-- },

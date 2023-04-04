@@ -60,12 +60,12 @@ local default_plugins = {
     end,
   },
   {
-    "hjkl01/translate.nvim",
+    "voldikss/vim-translator",
     cmd = "Translate",
     lazy = false,
     init = require("core.utils").load_mappings "translate",
     config = function()
-      require("translate").setup {}
+      vim.g.translator_default_engines = { "haici", "youdao", "bing" }
     end,
   },
 }
