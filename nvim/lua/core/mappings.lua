@@ -321,4 +321,9 @@ M.gitsigns = {
   },
 }
 
+M.translate = {
+  n = {
+    ["tt"] = { "<cmd> Translate ZH <CR>", "translate zh" },
+  },
+}
 return M
