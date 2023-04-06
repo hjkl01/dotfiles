@@ -177,7 +177,7 @@ cd ~/.dotfiles && sh ./installer.sh
 ```shell
 # nvim /var/spool/cron/$USER
 */10 * * * * cd $HOME/.dotfiles/ && git pull
-# && nvim --headless -c 'PackerSync'
+# && nvim --headless "+Lazy! sync" +qa
 ```
 
 #### questions
