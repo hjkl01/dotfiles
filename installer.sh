@@ -58,6 +58,25 @@ Installasdf() {
 	asdf global neovim latest
 }
 
+InstallRime() {
+	if [ "$(uname)"=="Darwin" ]; then
+		echo "mac"
+
+		# 按照鼠须管
+		brew install --cask squirrel
+		# 参考配置
+		git clone --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
+
+	# Mac OS X 操作系统
+	elif [ "$(expr substr $(uname -s) 1 5)"=="Linux" ]; then
+		echo "Linux"
+	# GNU/Linux操作系统
+	elif [ "$(expr substr $(uname -s) 1 10)"=="MINGW32_NT" ]; then
+		echo "Windows"
+	# Windows NT操作系统
+	fi
+}
+
 # echo $@
 
 if [ "$1" = "link" ]; then
@@ -65,10 +84,11 @@ if [ "$1" = "link" ]; then
 	SoftLinks
 fi
 
-# beforeInstall
+beforeInstall
 InstallOhMyZsh
 InstallNeovim
 Installasdf
+InstallRime
 
 echo "edit ~/.oh-my-zsh/themes/Schminitz.zsh-themes to update themes"
 echo "finish ! logout and relogin"
