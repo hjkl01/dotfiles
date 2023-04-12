@@ -84,12 +84,12 @@ autocmd("FileType", {
 })
 
 -- Disable statusline in dashboard
-autocmd("FileType", {
-  pattern = "alpha",
-  callback = function()
-    vim.opt.laststatus = 0
-  end,
-})
+-- autocmd("FileType", {
+--   pattern = "alpha",
+--   callback = function()
+--     vim.opt.laststatus = 0
+--   end,
+-- })
 
 autocmd("BufUnload", {
   buffer = 0,
