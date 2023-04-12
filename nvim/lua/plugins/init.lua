@@ -65,7 +65,7 @@ local default_plugins = {
     lazy = false,
     init = require("core.utils").load_mappings "translate",
     config = function()
-      vim.g.translator_default_engines = { "haici", "youdao", "bing" }
+      vim.g.translator_default_engines = { "haici", "bing" }
     end,
   },
 }
