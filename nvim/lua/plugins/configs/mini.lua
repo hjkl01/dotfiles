@@ -1,10 +1,8 @@
-local line_ok, comment = pcall(require, "mini.comment")
-if not line_ok then
-  return
-end
+require("mini.animate").setup()
 
--- mini.comment.setup(
-local options = {
+-- require("mini.basics").setup()
+
+require("mini.comment").setup {
   -- Module mappings. Use `''` (empty string) to disable one.
   mappings = {
     -- Toggle comment (like `gcip` - comment inner paragraph) for both
@@ -27,45 +25,24 @@ local options = {
   },
 }
 
-comment.setup(options)
+require("mini.cursorword").setup()
 
-local _, cursorword = pcall(require, "mini.cursorword")
-cursorword.setup()
-
--- local _,fuzzy = pcall(require, "mini.fuzzy")
--- fuzzy.setup()
+require("mini.fuzzy").setup()
 -- nvim-telescope/telescope.nvim
 
 -- Visualize and operate on indent scope
-local _, indentscope = pcall(require, "mini.indentscope")
-indentscope.setup()
+require("mini.indentscope").setup()
 
--- local _, map = pcall(require, "mini.map")
--- map.setup()
+-- require("mini.map").setup()
 -- lua MiniMap.open()
 
--- ["windwp/nvim-autopairs"] = {
---   config = function()
---     require("plugins.configs.others").autopairs()
---   end,
--- },
-local _, minipairs = pcall(require, "mini.pairs")
-minipairs.setup()
-
-local _, sessions = pcall(require, "mini.sessions")
-sessions.setup {
+require("mini.pairs").setup()
+require("mini.sessions").setup {
   directory = "~/.local/share/nvim/",
 }
-
-local _, starter = pcall(require, "mini.starter")
-starter.setup()
-
--- local _,statusline = pcall(require, "mini.statusline")
--- statusline.setup()
-
--- local _,surround = pcall(require, "mini.surround")
--- surround.setup()
+require("mini.starter").setup()
+-- require("mini.statusline").setup()
+require("mini.surround").setup()
 
 -- trailing whitespace
-local _, trailspace = pcall(require, "mini.trailspace")
-trailspace.setup()
+require("mini.trailspace").setup()
