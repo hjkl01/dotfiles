@@ -1,4 +1,4 @@
-require("mini.animate").setup()
+-- require("mini.animate").setup()
 
 -- require("mini.basics").setup()
 
