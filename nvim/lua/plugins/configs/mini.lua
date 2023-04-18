@@ -25,9 +25,9 @@ require("mini.comment").setup {
   },
 }
 
-require("mini.cursorword").setup()
+-- require("mini.cursorword").setup()
 
-require("mini.fuzzy").setup()
+-- require("mini.fuzzy").setup()
 -- nvim-telescope/telescope.nvim
 
 -- Visualize and operate on indent scope
