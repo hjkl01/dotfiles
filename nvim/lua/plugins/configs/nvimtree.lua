@@ -47,7 +47,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     centralize_selection = false,
     cursorline = true,
     debounce_delay = 15,
-    width = 20,
+    width = 30,
     hide_root_folder = false,
     side = "right",
     preserve_window_proportions = false,
@@ -78,7 +78,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
   renderer = {
     add_trailing = false,
     group_empty = false,
-    highlight_git = false,
+    highlight_git = true,
     full_name = false,
     highlight_opened_files = "none",
     highlight_modified = "none",
@@ -142,7 +142,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     auto_open = true,
   },
   update_focused_file = {
-    enable = false,
+    enable = true,
     update_root = false,
     ignore_list = {},
   },
