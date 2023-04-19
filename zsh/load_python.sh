@@ -27,5 +27,5 @@ export BETTER_EXCEPTIONS=1
 # alias pi='pdm run pip install'
 
 # .venv
-alias pr='.venv/bin/python'
-alias pi='.venv/bin/pip'
+alias pr='venv/bin/python'
+alias pi='venv/bin/pip'
