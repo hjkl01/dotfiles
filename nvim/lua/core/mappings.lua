@@ -326,7 +326,8 @@ M.translate = {
     ["tt"] = { "<cmd> TranslateW <CR>", "translate window" },
   },
   v = {
-    ["tt"] = { "<cmd> Translate ZH <CR>", "translate zh" },
+    -- ["tt"] = { "<cmd> Translate ZH <CR>", "translate zh" },
+    ["tt"] = { "<cmd> TranslateW <CR>", "translate in visual model" },
   },
 }
 return M
