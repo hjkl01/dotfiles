@@ -16,9 +16,8 @@
 #   return 0
 # }
 #
-# alias_if_program_exists trash-put rr
 # alias_if_program_exists nvim vi
-alias rr="trash-put"
+alias rr="gio trash"
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
 
@@ -44,5 +43,4 @@ alias gip6='curl -6 https://ifconfig.co/ip'
 alias wt='curl wttr.in/nanjing'
 
 # vultr
-export VULTR_API_KEY=''
 alias vc='vultr-cli'

@@ -164,7 +164,7 @@ brew update
 #### install
 
 ```shell
-# install zsh python3-venv trash-cli neovim stylua
+# install zsh python3-venv neovim stylua
 # if system is ubuntu/debian, use asdf install stylua
 # install xclip in arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
