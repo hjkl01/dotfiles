@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# mac
+# export zsh='/usr/local/opt/zsh/bin/zsh'
+
+# proxy
+export P_ADDRESS="127.0.0.1"
+export P_PORT="7890"
+
+# vultr key
+export VULTR_API_KEY=''
+
+# backups
+export OPEN_API_KEY=''

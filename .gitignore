@@ -3,3 +3,4 @@ zsh/Schminitz.zsh-theme
 nvim/plugin/
 nvim/lazy-lock.json
 */ultimate.db
+.env

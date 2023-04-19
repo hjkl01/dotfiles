@@ -168,8 +168,8 @@ brew update
 # if system is ubuntu/debian, use asdf install stylua
 # install xclip in arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
-cd ~/.dotfiles && sh ./installer.sh link # config git and pip mirror
-cd ~/.dotfiles && sh ./installer.sh
+cd ~/.dotfiles && cp env .env && sh ./installer.sh link # config git and pip mirror
+cd ~/.dotfiles && cp env .env && sh ./installer.sh
 ```
 
 #### crontab setting
