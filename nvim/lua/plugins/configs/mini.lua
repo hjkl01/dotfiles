@@ -27,7 +27,7 @@ require("mini.comment").setup {
 
 require("mini.cursorword").setup()
 
--- require("mini.fuzzy").setup()
+require("mini.fuzzy").setup()
 -- nvim-telescope/telescope.nvim
 
 -- Visualize and operate on indent scope
@@ -42,7 +42,7 @@ require("mini.sessions").setup {
 }
 require("mini.starter").setup()
 -- require("mini.statusline").setup()
-require("mini.surround").setup()
+-- require("mini.surround").setup()
 
 -- trailing whitespace
 require("mini.trailspace").setup()
