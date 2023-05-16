@@ -27,13 +27,26 @@ alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plu
 alias pac='sudo pacman --noconfirm'
 alias vv='cd ~/dev'
 alias cc='cd ~/.dotfiles'
+
+# find by name
+# find . -name "*.log"
+# grep "hello" example.txt
+# grep -r "hello" my_directory
 alias fd='find . -name '
 alias pc='proxychains4'
 alias scpr='rsync -zvauP --exclude "logs" --exclude "node_modules" --rsh=ssh'
 # alias getpass='openssl rand -base64 20'
 alias getpass='openssl rand -hex 20'
-alias www='ifconfig en0 && python -m http.server 80 -d $1 '
-alias wqr='python ~/.dotfiles/config/sharefile.py $1'
+
+fileserver() {
+	ifconfig en0 && python -m http.server 80 -d "$1"
+}
+alias www=fileserver
+qrcode() {
+	python ~/.dotfiles/config/sharefile.py "$1"
+}
+alias wqr=qrcode
+
 # alias getip='curl ipinfo.io/ip'
 # alias getip='curl -L tool.lu/ip'
 # alias getip='curl http://api.ipify.org'
