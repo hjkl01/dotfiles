@@ -68,7 +68,6 @@ local code_plugins = {
     end,
   },
   -- { "williamboman/mason-lspconfig.nvim" },
-
   {
     "neovim/nvim-lspconfig",
     init = require("core.utils").lazy_load "nvim-lspconfig",
@@ -76,16 +75,7 @@ local code_plugins = {
       require "plugins.configs.lspconfig"
     end,
   },
-  { "sbdchd/neoformat",      lazy = false },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    lazy = false,
-    after = "nvim-lspconfig",
-    config = function()
-      require "plugins.configs.nullls"
-    end,
-  },
-  { "mfussenegger/nvim-lint" },
+
   -- load luasnips + cmp related in insert mode only
   {
     "hrsh7th/nvim-cmp",
@@ -116,6 +106,17 @@ local code_plugins = {
       require("cmp").setup(opts)
     end,
   },
+
+  { "sbdchd/neoformat",      lazy = false },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    lazy = false,
+    after = "nvim-lspconfig",
+    config = function()
+      require "plugins.configs.nullls"
+    end,
+  },
+  { "mfussenegger/nvim-lint" },
 }
 
 return code_plugins
