@@ -187,3 +187,7 @@ cd ~/.dotfiles && cp env .env && sh ./installer.sh
 ```shell
 rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin
 ```
+
+#### refer from
+
+- [NvChad](https://github.com/NvChad/NvChad)
