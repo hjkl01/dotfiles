@@ -10,6 +10,7 @@ local options = {
     "python-lsp-server",
     "bash-language-server",
     "typescript-language-server",
+    "gopls",
   }, -- not an option from mason.nvim
   PATH = "skip",
   -- ui = {

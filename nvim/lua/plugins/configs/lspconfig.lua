@@ -60,7 +60,7 @@ lspconfig.lua_ls.setup {
   },
 }
 
-local servers = { "pylsp", "tsserver" }
+local servers = { "pylsp", "tsserver", "gopls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = M.on_attach, capabilities = capabilities }
