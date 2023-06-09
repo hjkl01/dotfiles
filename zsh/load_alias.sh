@@ -20,6 +20,7 @@
 alias rr="gio trash"
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
+# curl cht.sh/rsync
 
 # export EDITOR='nvim'
 
