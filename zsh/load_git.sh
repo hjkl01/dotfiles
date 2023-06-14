@@ -11,3 +11,8 @@ alias gco='git checkout'
 alias gd='git diff'
 alias gl='git pull'
 alias gp='git push'
+
+gitpush() {
+	git commit -m $1
+	git push
+}
