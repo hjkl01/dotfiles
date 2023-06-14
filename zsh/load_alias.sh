@@ -58,3 +58,8 @@ alias wt='curl wttr.in/nanjing'
 
 # vultr
 alias vc='vultr-cli'
+
+cdd() {
+	cd $1
+	ls -G
+}
