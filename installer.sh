@@ -59,7 +59,8 @@ Installasdf() {
 }
 
 InstallRime() {
-	if [ "$(uname)"=="Darwin" ]; then
+	# Mac OS X 操作系统
+	if [[ $(uname) == 'Darwin' ]]; then
 		echo "mac"
 
 		# 按照鼠须管
@@ -67,13 +68,26 @@ InstallRime() {
 		# 参考配置
 		git clone --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
 
-	# Mac OS X 操作系统
-	elif [ "$(expr substr $(uname -s) 1 5)"=="Linux" ]; then
-		echo "Linux"
 	# GNU/Linux操作系统
-	elif [ "$(expr substr $(uname -s) 1 10)"=="MINGW32_NT" ]; then
-		echo "Windows"
+	# 需要重启
+	elif [[ $(uname) == 'Linux' ]]; then
+		echo "Linux"
+
+		yay --noconfirm -S fcitx5-rime
+
+		echo "export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS="@im=fcitx"
+
+    fcitx5 &" >>~/.xprofile
+
+		# 参考配置
+		mkdir -p ~/.local/share/fcitx5/
+		git clone --depth=1 https://github.com/iDvel/rime-ice ~/.local/share/fcitx5/rime
+
 	# Windows NT操作系统
+	else
+		echo "Unkown system"
 	fi
 }
 
