@@ -1,7 +1,8 @@
 local ui_plugins = {
   {
-    "folke/tokyonight.nvim",
+    "catppuccin/nvim",
     lazy = false,
+    name = "catppuccin",
     priority = 1000,
     config = function()
       require "plugins.configs.colorscheme"
