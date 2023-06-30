@@ -16,3 +16,4 @@ plugins=(
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 export LC_ALL="zh_CN.UTF-8"
+setopt NO_HUP
