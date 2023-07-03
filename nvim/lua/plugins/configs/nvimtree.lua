@@ -272,6 +272,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
 } -- END_DEFAULT_OPTS
 
 -- nvim-tree 自动关闭
+-- https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close
 vim.api.nvim_create_autocmd({ "QuitPre" }, {
   callback = function()
     vim.cmd "NvimTreeClose"
