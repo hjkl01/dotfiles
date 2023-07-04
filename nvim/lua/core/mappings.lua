@@ -38,42 +38,35 @@ M.general = {
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
     ["ff"] = {
       function()
-        -- echo &filetype
-        vim.cmd [[
-                    exec "w"
-                    if &filetype == 'python'
-                        exec "r !black -l 120 -q %"
-                        " exec "r !yapf -i %"
-                        exec "e"
-                    elseif &filetype == 'json'
-                        exec "%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))'"
-                    else
-                        exec ":Neoformat "
-                        exec "w"
-                    endif
-                ]]
+        local fileType = vim.o.filetype
+        print(fileType)
+        if fileType == "python" then
+          vim.cmd [[r !black -l 120 -q %]]
+        elseif fileType == "json" then
+          vim.cmd [[%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))']]
+        else
+          vim.cmd [[<cmd>Neoformat]]
+        end
       end,
       "autoformat",
     },
     [" r"] = {
       function()
-        vim.cmd [[
-                    exec "w"
-                    if &filetype == 'python'
-                        "exec "!time python %"
-                        exec ':bo 20sp | terminal python %'
-                    elseif &filetype == 'lua'
-                        exec ':bo 10sp | terminal lua %'
-                    elseif &filetype == 'go'
-                        exec ':bo 10sp | terminal go run %'
-                    elseif &filetype == 'sh'
-                        exec ':bo 10sp | terminal sh %'
-                    elseif &filetype == 'javascript'
-                        exec ':bo 10sp | terminal node %'
-                    else
-                        echo &filetype
-                    endif
-                ]]
+        local fileType = vim.o.filetype
+        print(fileType)
+        if fileType == "lua" then
+          vim.cmd [[ :bo 20sp | terminal lua %]]
+        elseif fileType == "python" then
+          vim.cmd [[ :bo 20sp | terminal python %]]
+        elseif fileType == "go" then
+          vim.cmd [[ :bo 20sp | terminal go run %]]
+        elseif fileType == "sh" then
+          vim.cmd [[ :bo 20sp | terminal sh %]]
+        elseif fileType == "javascript" then
+          vim.cmd [[ :bo 20sp | terminal node %]]
+        else
+          print(fileType)
+        end
       end,
       "run file",
     },
