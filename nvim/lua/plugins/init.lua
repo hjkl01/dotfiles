@@ -39,10 +39,6 @@ for _, v in pairs(code_plugins) do
   table.insert(default_plugins, v)
 end
 
--- local config = require("core.utils").load_config()
-
--- lazy_nvim startup opts
--- local lazy_config = vim.tbl_deep_extend("force", require "plugins.configs.lazy_nvim", config.lazy_nvim)
 local lazy_config = require "plugins.configs.lazy_nvim" -- config for lazy.nvim startup options
 
 require("lazy").setup(default_plugins, lazy_config)
