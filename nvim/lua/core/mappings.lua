@@ -4,7 +4,7 @@ local M = {}
 
 M.general = {
   i = {
-    ["<C-d>"] = { "<ESC>", "exit edit" },
+    -- ["<C-d>"] = { "<ESC>", "exit edit" },
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "beginning of line" },
     ["<C-e>"] = { "<End>", "end of line" },
@@ -45,7 +45,7 @@ M.general = {
         elseif fileType == "json" then
           vim.cmd [[%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))']]
         else
-          vim.cmd [[<cmd>Neoformat]]
+          vim.cmd [[ Neoformat ]]
         end
       end,
       "autoformat",
@@ -219,10 +219,6 @@ M.telescope = {
     -- git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
     ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
-    -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
-    -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
     ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
   },
 }
