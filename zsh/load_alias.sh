@@ -18,7 +18,7 @@
 #
 # alias_if_program_exists nvim vi
 alias rr="gio trash"
-alias tt='TERM=screen-256color-bce tmux'
+alias tt='TERM=screen-256color-bce tmux -f ~/.config/tmux/tmux.conf'
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
 # curl cht.sh/rsync
