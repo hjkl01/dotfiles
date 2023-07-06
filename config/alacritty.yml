@@ -47,3 +47,9 @@ cursor:
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
+
+key_bindings:
+  - { key: V, mods: Alt, action: Paste }
+  - { key: C, mods: Alt, action: Copy }
+  - { key: Q, mods: Alt, action: Quit }
+  # - { key: Q, mods: Command, action: Quit }
