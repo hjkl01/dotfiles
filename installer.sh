@@ -58,11 +58,12 @@ Installasdf() {
 	asdf global neovim latest
 }
 
-InstallRime() {
+InstallOthers() {
 	# Mac OS X 操作系统
 	if [[ $(uname) == 'Darwin' ]]; then
 		echo "mac"
 
+		brew install alacritty tmux
 		# 按照鼠须管
 		brew install --cask squirrel
 		# 参考配置
@@ -73,7 +74,7 @@ InstallRime() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		yay --noconfirm -S fcitx5-rime
+		yay --noconfirm -S alacritty tmux fcitx5-rime
 
 		echo "export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
@@ -89,6 +90,14 @@ InstallRime() {
 	else
 		echo "Unkown system"
 	fi
+
+	# 配置alacritty
+	mkdir -p ~/.config/alacritty/
+	ln -s ~/.dotfiles/config/alacritty.yml ~/.config/alacritty
+	ln -s ~/.dotfiles/config/tokyonignt_storm.yml ~/.config/alacritty
+
+	# 配置tmux
+	ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
 }
 
 # echo $@
@@ -102,7 +111,7 @@ beforeInstall
 InstallOhMyZsh
 InstallNeovim
 Installasdf
-InstallRime
+InstallOthers
 
 echo "edit ~/.oh-my-zsh/themes/Schminitz.zsh-themes to update themes"
 echo "finish ! logout and relogin"
