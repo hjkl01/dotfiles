@@ -39,7 +39,8 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 lspconfig.lua_ls.setup {
   on_attach = M.on_attach,
-  capabilities = M.capabilities,
+  -- capabilities = M.capabilities,
+  capabilities = capabilities,
 
   settings = {
     Lua = {
