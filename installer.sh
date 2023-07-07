@@ -97,8 +97,10 @@ InstallOthers() {
 	ln -s ~/.dotfiles/config/tokyonignt_storm.yml ~/.config/alacritty
 
 	# 配置tmux
-	mkdir -p ~/.config/tmux/
-	ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
+	# mkdir -p ~/.config/tmux/
+	# ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
+	ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
+	ln -s ~/.dotfiles/config/tmux.conf.local ~/.tmux.conf.local
 }
 
 # echo $@
