@@ -3,7 +3,8 @@ import:
   - ~/.config/alacritty/tokyonignt_storm.yml
 window:
   decorations: full
-  startup_mode: Maximized
+  # startup_mode: Maximized
+  startup_mode: Fullscreen
   opacity: 0.8
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
@@ -11,6 +12,7 @@ window:
 scrolling:
   history: 1000
   multiplier: 3
+  auto_scroll: true
 
 # Font configuration (changes require restart)
 font:
@@ -22,7 +24,8 @@ font:
   # The bold font face
   bold:
     family: FiraCode Nerd Font Mono
-    style: Medium
+    # style: Medium
+    style: Bold
 
   # The italic font face
   italic:
@@ -36,7 +39,6 @@ draw_bold_text_with_bright_colors: false
 
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
-
   save_to_clipboard: true
 
 cursor:
