@@ -63,7 +63,7 @@ InstallOthers() {
 	if [[ $(uname) == 'Darwin' ]]; then
 		echo "mac"
 
-		brew install alacritty tmux
+		brew install alacritty tmux zellij
 		# 按照鼠须管
 		brew install --cask squirrel
 		# 参考配置
@@ -74,7 +74,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		yay --noconfirm -S alacritty tmux fcitx5-rime
+		yay --noconfirm -S alacritty tmux zellij fcitx5-rime
 
 		echo "export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
@@ -88,7 +88,7 @@ InstallOthers() {
 
 	# Windows NT操作系统
 	else
-		echo "Unkown system"
+		echo "Nonsupport system"
 	fi
 
 	# 配置alacritty
@@ -101,6 +101,10 @@ InstallOthers() {
 	# ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
 	ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
 	ln -s ~/.dotfiles/config/tmux.conf.local ~/.tmux.conf.local
+
+	# 配置zellij
+	mkdir -p ~/.config/zellij/
+	ln -s ~/.dotfiles/config/zellij.kdl ~/.config/zellij/config.kdl
 }
 
 # echo $@
