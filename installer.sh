@@ -15,6 +15,8 @@ beforeInstall() {
 		echo "$HOME/.config/nvim exists"
 		exit
 	fi
+
+	mkdir -p ~/.config/
 }
 
 SoftLinks() {
@@ -63,7 +65,7 @@ InstallOthers() {
 	if [[ $(uname) == 'Darwin' ]]; then
 		echo "mac"
 
-		brew install alacritty tmux zellij
+		brew install alacritty tmux
 		# 按照鼠须管
 		brew install --cask squirrel
 		# 参考配置
@@ -74,7 +76,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		yay --noconfirm -S alacritty tmux zellij fcitx5-rime
+		yay --noconfirm -S alacritty tmux fcitx5-rime
 
 		echo "export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
@@ -99,12 +101,13 @@ InstallOthers() {
 	# 配置tmux
 	# mkdir -p ~/.config/tmux/
 	# ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
-	ln -s ~/.dotfiles/config/tmux.conf.local ~/.tmux.conf.local
+	# ln -s ~/.dotfiles/config/tmux.conf.local ~/.tmux.conf.local
 
 	# 配置zellij
-	mkdir -p ~/.config/zellij/
-	ln -s ~/.dotfiles/config/zellij.kdl ~/.config/zellij/config.kdl
+	# mkdir -p ~/.config/zellij/
+	# ln -s ~/.dotfiles/config/zellij.kdl ~/.config/zellij/config.kdl
 }
 
 # echo $@
