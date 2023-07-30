@@ -9,9 +9,16 @@ function prompt_char {
 }
 
 function hostname {
-	echo "🀄   $HOST  "
+	if [[ $(uname) == 'Darwin' ]]; then
+    echo "🍎 "
+	elif [[ $(uname) == 'Linux' ]]; then
+    echo "⌨️ $HOST "
+	else
+		echo "Nonsupport system"
+	fi
 }
-# echo "🀄 💻 😈 🤓   $HOST  "
+
+# echo "🀄🀅 🀆 💻 😈 🤓   $HOST  "
 # https://emojiterra.com/
 
 # show git info
