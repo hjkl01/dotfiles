@@ -50,8 +50,23 @@ cursor:
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
+# https://github.com/alacritty/alacritty/releases
 key_bindings:
   - { key: V, mods: Alt, action: Paste }
   - { key: C, mods: Alt, action: Copy }
   - { key: Q, mods: Alt, action: Quit }
+
+  # tmux
+  - { key: Key1, mods: Command, chars: "\x02\x31" }
+  - { key: Key2, mods: Command, chars: "\x02\x32" }
+  - { key: Key3, mods: Command, chars: "\x02\x33" }
+  - { key: Key4, mods: Command, chars: "\x02\x34" }
+  - { key: Key5, mods: Command, chars: "\x02\x35" }
+  - { key: Key6, mods: Command, chars: "\x02\x36" }
+  - { key: Key7, mods: Command, chars: "\x02\x37" }
+  - { key: Key8, mods: Command, chars: "\x02\x38" }
+  - { key: Key9, mods: Command, chars: "\x02\x39" }
+  - { key: T, mods: Command, chars: "\x02\x63" }
+  # - { key: Key2, mods: Command, chars: "\x06\x32" }
   # - { key: Q, mods: Command, action: Quit }
+  # use command `xxd -psd` find chars
