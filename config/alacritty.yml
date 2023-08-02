@@ -57,16 +57,17 @@ key_bindings:
   - { key: Q, mods: Alt, action: Quit }
 
   # tmux
-  - { key: Key1, mods: Command, chars: "\x02\x31" }
-  - { key: Key2, mods: Command, chars: "\x02\x32" }
-  - { key: Key3, mods: Command, chars: "\x02\x33" }
-  - { key: Key4, mods: Command, chars: "\x02\x34" }
-  - { key: Key5, mods: Command, chars: "\x02\x35" }
-  - { key: Key6, mods: Command, chars: "\x02\x36" }
-  - { key: Key7, mods: Command, chars: "\x02\x37" }
-  - { key: Key8, mods: Command, chars: "\x02\x38" }
-  - { key: Key9, mods: Command, chars: "\x02\x39" }
-  - { key: T, mods: Command, chars: "\x02\x63" }
+  # https://zh.wikipedia.org/wiki/C0%E4%B8%8EC1%E6%8E%A7%E5%88%B6%E5%AD%97%E7%AC%A6
+  - { key: Key1, mods: Command, chars: "\x1c\x31" }
+  - { key: Key2, mods: Command, chars: "\x1c\x32" }
+  - { key: Key3, mods: Command, chars: "\x1c\x33" }
+  - { key: Key4, mods: Command, chars: "\x1c\x34" }
+  - { key: Key5, mods: Command, chars: "\x1c\x35" }
+  - { key: Key6, mods: Command, chars: "\x1c\x36" }
+  - { key: Key7, mods: Command, chars: "\x1c\x37" }
+  - { key: Key8, mods: Command, chars: "\x1c\x38" }
+  - { key: Key9, mods: Command, chars: "\x1c\x39" }
+  - { key: T, mods: Command, chars: "\x1c\x63" }
   # - { key: Key2, mods: Command, chars: "\x06\x32" }
   # - { key: Q, mods: Command, action: Quit }
   # use command `xxd -psd` find chars
