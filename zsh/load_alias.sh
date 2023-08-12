@@ -19,7 +19,7 @@
 # alias_if_program_exists nvim vi
 alias rr="gio trash"
 # alias tt='TERM=screen-256color-bce tmux -f ~/.config/tmux/tmux.conf'
-alias tt='TERM=screen-256color-bce tmux -f ~/.tmux.conf'
+alias tt='TERM=screen-256color-bce tmux -f ~/.dotfiles/config/tmux.conf'
 alias zz='TERM=screen-256color-bce zellij'
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'

@@ -101,8 +101,11 @@ InstallOthers() {
 	# 配置tmux
 	# mkdir -p ~/.config/tmux/
 	# ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
+
+	mkdir -p ~/.tmux/plugins
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
+	git clone https://github.com/hjkl01/tmux ~/.tmux/plugins/tmux
+	# ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
 	# ln -s ~/.dotfiles/config/tmux.conf.local ~/.tmux.conf.local
 
 	# 配置zellij

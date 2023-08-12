@@ -17,3 +17,7 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 export LC_ALL="zh_CN.UTF-8"
 setopt NO_HUP
+
+if [ ! "$TMUX" ]; then
+        tmux attach -t 0 || TERM=screen-256color-bce tmux -f ~/.dotfiles/config/tmux.conf
+fi

@@ -71,3 +71,4 @@ key_bindings:
   # - { key: Key2, mods: Command, chars: "\x06\x32" }
   # - { key: Q, mods: Command, action: Quit }
   # use command `xxd -psd` find chars
+  # or `showkey -a` on linux

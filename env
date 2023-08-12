@@ -3,6 +3,10 @@
 # mac
 # export zsh='/usr/local/opt/zsh/bin/zsh'
 
+# tmux
+export TMUX_PREIX='local'
+# export TMUX_PREIX='server'
+
 # proxy
 export P_ADDRESS="127.0.0.1"
 export P_PORT="7890"
