@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 beforeInstall() {
 	if [ -f ~/.zshrc ]; then
@@ -29,7 +29,11 @@ InstallOhMyZsh() {
 	ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 	git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-	chsh -s $(which zsh)
+	if [[ $SHELL == *"zsh"* ]]; then
+		echo "shell is zsh now"
+	else
+		chsh -s $(which zsh)
+	fi
 
 	git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 	git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
