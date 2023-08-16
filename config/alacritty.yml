@@ -15,6 +15,7 @@ scrolling:
   auto_scroll: true
 
 # Font configuration (changes require restart)
+# fc-list to check installed fonts
 font:
   # Style can be specified to pick a specific face.
   normal:
