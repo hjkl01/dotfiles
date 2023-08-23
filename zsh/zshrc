@@ -20,7 +20,7 @@ export LC_ALL="zh_CN.UTF-8"
 setopt NO_HUP
 
 # alias tt='TERM=screen-256color-bce tmux -f ~/.config/tmux/tmux.conf'
-alias tt='TERM=screen-256color-bce tmux -f ~/.dotfiles/config/tmux.conf'
-if [ ! "$TMUX" ]; then
-  tmux attach -t 0 || tt
-fi
+# alias tt='TERM=screen-256color-bce tmux -f ~/.dotfiles/config/tmux.conf'
+# if [ ! "$TMUX" ]; then
+#   tmux attach -t 0 || tt
+# fi
