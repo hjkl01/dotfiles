@@ -41,7 +41,6 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
   respect_buf_cwd = false,
   -- on_attach = "default",
   on_attach = my_on_attach,
-  remove_keymaps = false,
   select_prompts = false,
   view = {
     centralize_selection = false,
@@ -54,14 +53,6 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     number = true,
     relativenumber = true,
     signcolumn = "yes",
-    mappings = {
-      custom_only = false,
-      list = {
-        -- user mappings go here
-        { key = "v", action = "vsplit" },
-        { key = "s", action = "split" },
-      },
-    },
     float = {
       enable = false,
       quit_on_focus_loss = true,
