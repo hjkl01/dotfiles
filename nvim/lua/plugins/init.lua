@@ -30,13 +30,14 @@ local default_plugins = {
 }
 
 local ui_plugins, _ = require "plugins.ui"
-for _, v in pairs(ui_plugins) do
-  table.insert(default_plugins, v)
-end
-
 local code_plugins, _ = require "plugins.code"
-for _, v in pairs(code_plugins) do
-  table.insert(default_plugins, v)
+local dev_plugins, _ = require "plugins.dev"
+local other_plugins = { ui_plugins, code_plugins, dev_plugins }
+
+for _, op in pairs(other_plugins) do
+  for _, v in pairs(op) do
+    table.insert(default_plugins, v)
+  end
 end
 
 local lazy_config = require "plugins.configs.lazy_nvim" -- config for lazy.nvim startup options
