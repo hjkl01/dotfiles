@@ -13,15 +13,9 @@ local code_plugins = {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    init = function()
-      require("core.utils").lazy_load "indent-blankline.nvim"
-    end,
-    opts = function()
-      return require("plugins.configs.others").blankline
-    end,
-    config = function(_, opts)
-      require("core.utils").load_mappings "blankline"
-      require("indent_blankline").setup(opts)
+    main = "ibl",
+    config = function()
+      require("ibl").setup()
     end,
   },
 
@@ -51,6 +45,7 @@ local code_plugins = {
       require("gitsigns").setup(opts)
     end,
   },
+
   -- lsp stuff
   {
     "williamboman/mason.nvim",
