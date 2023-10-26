@@ -17,6 +17,8 @@ scrolling:
 # Font configuration (changes require restart)
 # fc-list : family style | grep Fira
 # brew install fontconfig
+# brew tap homebrew/cask-fonts
+# brew install font-fira-mono-nerd-font
 font:
   # Style can be specified to pick a specific face.
   normal:
