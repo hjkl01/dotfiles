@@ -17,8 +17,9 @@
 # }
 #
 # alias_if_program_exists nvim vi
+
+# brew install glib
 alias rr="gio trash"
-alias zz='TERM=screen-256color-bce zellij'
 alias tt='TERM=screen-256color-bce tmux -f ~/.dotfiles/config/tmux.conf'
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
@@ -27,8 +28,6 @@ alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plu
 # export EDITOR='nvim'
 
 # alias
-alias pac='sudo pacman --noconfirm'
-alias vv='cd ~/dev'
 alias cc='cd ~/.dotfiles'
 
 # find by name
