@@ -103,14 +103,6 @@ local code_plugins = {
   },
 
   { "sbdchd/neoformat",      lazy = false },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    lazy = false,
-    after = "nvim-lspconfig",
-    config = function()
-      require "plugins.configs.nullls"
-    end,
-  },
   { "mfussenegger/nvim-lint" },
 }
 
