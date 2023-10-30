@@ -1,16 +1,36 @@
 local options = {
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+  },
+  pip = {
+    ---@since 1.0.0
+    -- Whether to upgrade pip to the latest version in the virtual environment before installing packages.
+    upgrade_pip = false,
+
+    ---@since 1.0.0
+    -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior
+    -- and is not recommended.
+    --
+    -- Example: { "--proxy", "https://proxyserver" }
+    install_args = {},
+  },
+
   ensure_installed = {
     "lua-language-server",
-    "stylua",
-    "black",
+    -- "stylua",
+    "ruff",
     "prettier",
     "fixjson",
-    "yamlfmt",
-    "shfmt",
+    -- "yamlfmt",
+    -- "shfmt",
     "python-lsp-server",
-    "bash-language-server",
+    -- "bash-language-server",
     "typescript-language-server",
-    "gopls",
+    -- "gopls",
   }, -- not an option from mason.nvim
   PATH = "skip",
   -- ui = {
