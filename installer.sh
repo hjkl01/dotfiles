@@ -46,7 +46,7 @@ InstallNeovim() {
 
 	# install python env
 	python3 -m venv ~/.venv/py3
-	~/.venv/py3/bin/pip install better_exceptions neovim black -i https://pypi.tuna.tsinghua.edu.cn/simple
+	~/.venv/py3/bin/pip install better_exceptions neovim black ruff -i https://pypi.tuna.tsinghua.edu.cn/simple
 }
 
 Installasdf() {

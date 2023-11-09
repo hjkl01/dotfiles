@@ -102,8 +102,7 @@ local code_plugins = {
     end,
   },
 
-  { "sbdchd/neoformat",      lazy = false },
-  { "mfussenegger/nvim-lint" },
+  { "sbdchd/neoformat", lazy = false },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
