@@ -41,7 +41,7 @@ alias scpr='rsync -zvauP --exclude "logs" --exclude "node_modules" --rsh=ssh'
 alias getpass='openssl rand -hex 20'
 
 fileserver() {
-	ifconfig en0 && python -m http.server 80 -d "$1"
+	python -m http.server 80 -d "$1"
 }
 alias www=fileserver
 qrcode() {
