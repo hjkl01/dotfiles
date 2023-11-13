@@ -18,12 +18,13 @@ scrolling:
 # fc-list : family style | grep Fira
 # brew install fontconfig
 # brew tap homebrew/cask-fonts
+# brew install font-monaspace
 # brew install font-fira-mono-nerd-font
 font:
   # Style can be specified to pick a specific face.
   normal:
     # family: Fira Code
-    family: FiraMono Nerd Font Mono
+    family: Monaspace Xenon
     style: Regular
     # style: Retina
     # style: Medium
