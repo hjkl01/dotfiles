@@ -16,12 +16,12 @@ local sources = {
   b.formatting.stylua,
 
   -- Python
-  b.formatting.ruff.with {
-    extra_args = { "--config=~/.dotfiles/config/pyproject.toml" },
-  },
-  -- b.formatting.black.with {
-  --   extra_args = { "--line-length=120" },
+  -- b.formatting.ruff.with {
+  --   extra_args = { "--config=~/.dotfiles/config/pyproject.toml" },
   -- },
+  b.formatting.black.with {
+    extra_args = { "--line-length=120" },
+  },
 
   -- Shell
   b.formatting.shfmt,
