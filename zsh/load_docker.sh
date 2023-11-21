@@ -10,7 +10,7 @@
 
 alias dp='docker ps -a'
 # stop all containers 谨慎使用
-alias dk='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias dkkkk='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 # delete null images
 alias dr='docker rmi $(docker images --filter dangling=true -q --no-trunc)'
 # delete exited containers
