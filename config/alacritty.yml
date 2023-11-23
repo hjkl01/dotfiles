@@ -72,5 +72,5 @@ key_bindings:
   - { key: Key8, mods: Command, chars: "\x1c\x38" }
   - { key: Key9, mods: Command, chars: "\x1c\x39" }
   - { key: T, mods: Command, chars: "\x1c\x63" }
-  - { key: B, mods: Shift, chars: "\x1b\x42" }
-  - { key: F, mods: Shift, chars: "\x1b\x46" }
+  - { key: B, mods: Alt, chars: "\x1b\x42" }
+  - { key: F, mods: Alt, chars: "\x1b\x46" }
