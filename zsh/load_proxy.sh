@@ -10,9 +10,7 @@ alias unsetproxy='unset ALL_PROXY; unset http_proxy; unset https_proxy'
 run_cmd() {
 	export ALL_PROXY=$PROXY_URL
 	$*
-	unset ALL_PROXY
-	unset http_proxy
-	unset https_proxy
+	unsetproxy
 }
 alias px=run_cmd $*
 
