@@ -17,9 +17,7 @@ local colors = {
   magenta  = '#c678dd',
   blue     = '#51afef',
   red      = '#ec5f67',
-  -- newblue  = '#004c99',
-  -- newblue  = '#663300',
-  newblue  = '#4d2600',
+  newcolor = '#6c6c62',
 }
 
 local conditions = {
@@ -46,8 +44,8 @@ local config = {
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
       -- are just setting default looks o statusline
-      normal = { c = { fg = colors.fg, bg = colors.newblue } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
+      normal = { c = { fg = colors.fg, bg = colors.bg } },
+      inactive = { c = { fg = colors.fg, bg = colors.cyan } },
     },
   },
   sections = {
@@ -151,22 +149,6 @@ ins_left {
 }
 
 ins_left {
-  -- filesize component
-  "filesize",
-  cond = conditions.buffer_not_empty,
-}
-
-ins_left {
-  "filename",
-  cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = "bold" },
-}
-
-ins_left { "location" }
-
-ins_left { "progress", color = { fg = colors.fg, gui = "bold" } }
-
-ins_left {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   symbols = { error = " ", warn = " ", info = " " },
@@ -175,6 +157,20 @@ ins_left {
     color_warn = { fg = colors.yellow },
     color_info = { fg = colors.cyan },
   },
+}
+
+ins_left {
+  -- filesize component
+  "filesize",
+  icon = "",
+  cond = conditions.buffer_not_empty,
+}
+
+ins_left {
+  "filename",
+  icon = "",
+  cond = conditions.buffer_not_empty,
+  color = { fg = colors.green, gui = "bold" },
 }
 
 -- Insert mid section. You can make any number of sections in neovim :)
@@ -203,7 +199,7 @@ ins_left {
     return msg
   end,
   icon = " LSP:",
-  color = { fg = "#ffffff", gui = "bold" },
+  color = { fg = colors.red, gui = "bold" },
 }
 
 -- Add components to right sections
@@ -221,23 +217,34 @@ ins_right {
   color = { fg = colors.green, gui = "bold" },
 }
 
-ins_right {
-  "branch",
-  icon = "",
-  color = { fg = colors.violet, gui = "bold" },
-}
+ins_right { "progress", color = { fg = colors.fg, gui = "bold" } }
+
+ins_right { "location" }
 
 ins_right {
-  "diff",
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = " ", modified = "󰝤 ", removed = " " },
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
-    removed = { fg = colors.red },
-  },
-  cond = conditions.hide_in_width,
+  "searchcount",
+  icon = "",
+  cond = conditions.buffer_not_empty,
+  color = { fg = colors.magenta, gui = "bold" },
 }
+
+-- ins_right {
+--   "branch",
+--   icon = "",
+--   color = { fg = colors.violet, gui = "bold" },
+-- }
+--
+-- ins_right {
+--   "diff",
+--   -- Is it me or the symbol for modified us really weird
+--   symbols = { added = " ", modified = "󰝤 ", removed = " " },
+--   diff_color = {
+--     added = { fg = colors.green },
+--     modified = { fg = colors.orange },
+--     removed = { fg = colors.red },
+--   },
+--   cond = conditions.hide_in_width,
+-- }
 
 ins_right {
   function()
