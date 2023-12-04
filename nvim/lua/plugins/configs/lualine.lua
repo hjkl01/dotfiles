@@ -1,6 +1,7 @@
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
+-- https://fontawesome.com/search?o=r&c=coding
 local lualine = require "lualine"
 
 -- Color table for highlights
@@ -149,6 +150,21 @@ ins_left {
 }
 
 ins_left {
+  "filename",
+  icon = "",
+  cond = conditions.buffer_not_empty,
+  color = { fg = colors.green, gui = "bold" },
+}
+
+ins_left {
+  -- filesize component
+  "filesize",
+  -- icon = "",
+  fmt = string.upper, -- I'm not sure why it's upper case either ;)
+  cond = conditions.buffer_not_empty,
+}
+
+ins_left {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   symbols = { error = " ", warn = " ", info = " " },
@@ -157,20 +173,6 @@ ins_left {
     color_warn = { fg = colors.yellow },
     color_info = { fg = colors.cyan },
   },
-}
-
-ins_left {
-  -- filesize component
-  "filesize",
-  icon = "",
-  cond = conditions.buffer_not_empty,
-}
-
-ins_left {
-  "filename",
-  icon = "",
-  cond = conditions.buffer_not_empty,
-  color = { fg = colors.green, gui = "bold" },
 }
 
 -- Insert mid section. You can make any number of sections in neovim :)
@@ -210,12 +212,12 @@ ins_right {
   color = { fg = colors.green, gui = "bold" },
 }
 
-ins_right {
-  "fileformat",
-  fmt = string.upper,
-  icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.green, gui = "bold" },
-}
+-- ins_right {
+--   "fileformat",
+--   fmt = string.upper,
+--   icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+--   color = { fg = colors.green, gui = "bold" },
+-- }
 
 ins_right { "progress", color = { fg = colors.fg, gui = "bold" } }
 
@@ -223,7 +225,7 @@ ins_right { "location" }
 
 ins_right {
   "searchcount",
-  icon = "",
+  icon = "",
   cond = conditions.buffer_not_empty,
   color = { fg = colors.magenta, gui = "bold" },
 }
