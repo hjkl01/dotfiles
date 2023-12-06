@@ -40,15 +40,6 @@ alias scpr='rsync -zvauP --exclude "logs" --exclude "node_modules" --rsh=ssh'
 # alias getpass='openssl rand -base64 20'
 alias getpass='openssl rand -hex 20'
 
-fileserver() {
-	python -m http.server 80 -d "$1"
-}
-alias www=fileserver
-qrcode() {
-	python ~/.dotfiles/config/sharefile.py "$1"
-}
-alias wqr=qrcode
-
 # alias getip='curl ipinfo.io/ip'
 # alias getip='curl -L tool.lu/ip'
 # alias getip='curl http://api.ipify.org'
@@ -60,7 +51,22 @@ alias wt='curl wttr.in/nanjing'
 # vultr
 alias vc='vultr-cli'
 
+www() {
+	python -m http.server 80 -d "$1"
+}
+wqr() {
+	python ~/.dotfiles/config/sharefile.py "$1"
+}
+
 cdd() {
 	cd $1
 	ls -G
+}
+
+fkill() {
+	pid=$(ps -ef | sed 1d | sk --regex -m -e -q "$1" | awk '{print $2}')
+
+	if [ "x$pid" != "x" ]; then
+		echo "$pid" | xargs kill -"${2:-9}"
+	fi
 }
