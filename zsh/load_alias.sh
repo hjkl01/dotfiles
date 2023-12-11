@@ -29,6 +29,7 @@ alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plu
 
 # alias
 alias cc='cd ~/.dotfiles'
+alias vif='vi $(fzf --height 40%)'
 
 # find by name
 # find . -name "*.log"
@@ -64,7 +65,8 @@ cdd() {
 }
 
 fkill() {
-	pid=$(ps -ef | sed 1d | sk --regex -m -e -q "$1" | awk '{print $2}')
+	# pid=$(ps -ef | sed 1d | sk --regex -m -e -q "$1" | awk '{print $2}')
+	pid=$(ps -ef | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $2}')
 
 	if [ "x$pid" != "x" ]; then
 		echo "$pid" | xargs kill -"${2:-9}"

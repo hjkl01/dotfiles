@@ -11,6 +11,7 @@ ZSH_THEME='Schminitz'
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   # git
+  fzf-tab
   zsh-autosuggestions
   zsh-syntax-highlighting
 )

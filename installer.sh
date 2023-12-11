@@ -37,6 +37,7 @@ InstallOhMyZsh() {
 
 	git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 	git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+	git clone --single-branch --depth 1 https://github.com/Aloxaf/fzf-tab ~/.oh-my-zsh/plugins/fzf-tab
 	ln -s ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
 }
 
