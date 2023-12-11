@@ -29,7 +29,7 @@ alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plu
 
 # alias
 alias cc='cd ~/.dotfiles'
-alias vif='vi $(fzf --height 40%)'
+alias ii='vi $(fzf --height 40%)'
 
 # find by name
 # find . -name "*.log"
