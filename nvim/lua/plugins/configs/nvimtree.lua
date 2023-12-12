@@ -262,6 +262,14 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
   },
 } -- END_DEFAULT_OPTS
 
+require("nvim-tree.api").tree.toggle {
+  path = nil,
+  current_window = false,
+  find_file = false,
+  update_root = true,
+  focus = true,
+}
+
 -- nvim-tree 自动关闭
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close
 vim.api.nvim_create_autocmd("BufEnter", {
