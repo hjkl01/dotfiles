@@ -74,6 +74,7 @@ InstallOthers() {
 		brew install --cask squirrel
 		# 参考配置
 		git clone --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
+		ln -s ~/.dotfiles/config/rime/*.yaml ~/Library/Rime
 
 	# GNU/Linux操作系统
 	# 需要重启
@@ -91,6 +92,7 @@ InstallOthers() {
 		# 参考配置
 		mkdir -p ~/.local/share/fcitx5/
 		git clone --depth=1 https://github.com/iDvel/rime-ice ~/.local/share/fcitx5/rime
+		ln -s ~/.dotfiles/config/rime/*.yaml ~/.local/share/fcitx5/rime
 
 	# Windows NT操作系统
 	else

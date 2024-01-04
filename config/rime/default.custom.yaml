@@ -1,0 +1,79 @@
+# Rime default settings
+# encoding: utf-8
+
+patch:
+  # 要比共享目录的同名文件的 config_version 大才可以生效
+  config_version: "2024-01-04"
+
+  # 方案列表
+  schema_list:
+    - schema: rime_ice # 雾凇拼音（全拼）
+    - schema: double_pinyin_flypy # 小鹤双拼
+
+  # 菜单
+  menu:
+    page_size: 9 # 候选词个数
+    # alternative_select_labels: [ ①, ②, ③, ④, ⑤, ⑥, ⑦, ⑧, ⑨, ⑩ ]  # 修改候选项标签
+    # alternative_select_keys: ASDFGHJKL  # 如编码字符占用数字键，则需另设选字键
+
+  # 方案选单相关
+  switcher:
+    caption: 「方案选单」
+    hotkeys:
+      - F4
+      # - Control+grave
+      # - Alt+grave
+      # - Control+Shift+grave
+    save_options: # 开关记忆（方案中的 switches），从方案选单（而非快捷键）切换时会记住的选项，需要记忆的开关不能设定 reset
+      - ascii_punct
+      - traditionalization
+      - emoji
+      - full_shape
+    fold_options: true # 呼出时是否折叠，多方案时建议折叠 true ，一个方案建议展开 false
+    abbreviate_options: true # 折叠时是否缩写选项
+    option_list_separator: " / " # 折叠时的选项分隔符
+
+  # 中西文切换
+  #
+  # good_old_caps_lock:
+  # true   切换大写
+  # false  切换中英
+  # macOS 偏好设置的优先级更高，如果勾选【使用大写锁定键切换“ABC”输入法】则始终会切换输入法。
+  #
+  # 切换中英：
+  # 不同的选项表示：打字打到一半时按下了 CapsLock、Shift、Control 后：
+  # commit_code  上屏原始的编码，然后切换到英文
+  # commit_text  上屏拼出的词句，然后切换到英文
+  # clear        清除未上屏内容，然后切换到英文
+  # inline_ascii 切换到临时英文模式，按回车上屏后回到中文状态
+  # noop         屏蔽快捷键，不切换中英，但不要屏蔽 CapsLock
+  ascii_composer:
+    good_old_caps_lock: true # true | false
+    switch_key:
+      Caps_Lock: commit_code # commit_code | commit_text | clear
+      Shift_L: commit_code # commit_code | commit_text | inline_ascii | clear | noop
+      Shift_R: noop # commit_code | commit_text | inline_ascii | clear | noop
+      Control_L: noop # commit_code | commit_text | inline_ascii | clear | noop
+      Control_R: noop # commit_code | commit_text | inline_ascii | clear | noop
+
+  # 快捷键
+  key_binder:
+    # Lua 配置: 以词定字（上屏当前词句的第一个或最后一个字），和中括号翻页有冲突
+    select_first_character: "bracketleft" # 左中括号 [
+    select_last_character: "bracketright" # 右中括号 ]
+
+    bindings:
+      # Tab / Shift+Tab 切换光标至下/上一个拼音
+      - { when: composing, accept: Shift+Tab, send: Page_Up }
+      - { when: composing, accept: Tab, send: Page_Down }
+      # Tab / Shift+Tab 翻页
+      # - { when: has_menu, accept: Shift+Tab, send: Page_Up }
+      # - { when: has_menu, accept: Tab, send: Page_Down }
+
+      # Option/Alt + ←/→ 切换光标至下/上一个拼音
+      - { when: composing, accept: Alt+Left, send: Shift+Left }
+      - { when: composing, accept: Alt+Right, send: Shift+Right }
+
+      # 翻页 - =
+      - { when: has_menu, accept: minus, send: Page_Up }
+      - { when: has_menu, accept: equal, send: Page_Down }
