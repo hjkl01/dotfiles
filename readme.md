@@ -61,9 +61,12 @@ cd ~/.dotfiles && cp env .env && sh ./installer.sh
 #### crontab setting
 
 ```shell
-# nvim /var/spool/cron/$USER
-*/10 * * * * cd $HOME/.dotfiles/ && git pull
+# crontab -e or nvim /var/spool/cron/$USER
+50 8 * * * cd $HOME/.dotfiles/ && git pull
 # && nvim --headless "+Lazy! sync" +qa
+
+# MacOS reload Squirrel
+/Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
 ```
 
 #### questions
