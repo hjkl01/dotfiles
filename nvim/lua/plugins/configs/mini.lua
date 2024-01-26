@@ -1,4 +1,4 @@
--- require("mini.animate").setup()
+require("mini.animate").setup()
 
 -- require("mini.basics").setup()
 
@@ -17,13 +17,15 @@ require("mini.comment").setup {
   -- Hook functions to be executed at certain stage of commenting
   hooks = {
     -- Before successful commenting. Does nothing by default.
-    pre = function()
-    end,
+    pre = function() end,
     -- After successful commenting. Does nothing by default.
-    post = function()
-    end,
+    post = function() end,
   },
 }
+
+-- require("mini.colors").setup()
+
+require("mini.completion").setup()
 
 require("mini.cursorword").setup()
 
@@ -35,6 +37,8 @@ require("mini.indentscope").setup()
 
 -- require("mini.map").setup()
 -- lua MiniMap.open()
+
+require("mini.notify").setup()
 
 require("mini.pairs").setup()
 require("mini.sessions").setup {
