@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# https://tools.hjkl01.cn/emoji-picker
+export example=' 0️⃣  1️⃣  2️⃣  3️⃣  4️⃣  5️⃣  6️⃣  7️⃣  8️⃣  9️⃣  🔟  💻  🖥️  ⌨️ 🖱️'
+export ZSH_ENV='🖥️ '
+
 # mac
 # export zsh='/usr/local/opt/zsh/bin/zsh'
 # export PATH=/opt/homebrew/bin:$PATH
