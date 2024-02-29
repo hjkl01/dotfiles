@@ -25,5 +25,5 @@ function hostname {
 # %{$reset_color%}$(git_prompt_info)%{$reset_color%}$(git_prompt_ahead)
 
 PROMPT='%(?, ,%{$fg[red]%}FAIL%{$reset_color%})
-%{$fg[green]%} $(hostname) $ZSH_ENV %{$fg[yellow]%}[%~]  %{$reset_color%}$(git_prompt_info) %{$fg[green]%}[%D %*]%{$reset_color%}
+$ZSH_ENV %{$fg[green]%} $(hostname) %{$fg[yellow]%}[%~]  %{$reset_color%}$(git_prompt_info) %{$fg[green]%}[%D %*]%{$reset_color%}
 %_ $(prompt_char) '
