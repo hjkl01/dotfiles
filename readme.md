@@ -40,8 +40,13 @@
 ; 	postBuffer = 524288000
 ; 	proxy = socks5://127.0.0.1:1080
 
-; [url "https://gitclone.com/github.com/"]
-[url "https://ghproxy.com/https://github.com/"]
+; [url "https://gitclone.com/github.com"]
+; [url "https://fastly.jsdelivr.net/https://github.com"]
+; [url "https://testingcf.jsdelivr.net/https://github.com"]
+; [url "https://raw.fastgit.org/https://github.com"]
+; [url "https://ghproxy.com/https://github.com"]
+; [url "https://cdn.jsdelivr.net/https://github.com"]
+[url "https://gh.hjkl01.cn/proxy/https://github.com"]
 	insteadOf = https://github.com
 ```
 
