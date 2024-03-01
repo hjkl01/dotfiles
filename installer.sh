@@ -114,7 +114,7 @@ InstallOthers() {
 
 	mkdir -p ~/.tmux/plugins
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	git clone https://github.com/hjkl01/tmux ~/.tmux/plugins/tmux
+	git clone https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
 
 	# 配置zellij
 	# mkdir -p ~/.config/zellij/
