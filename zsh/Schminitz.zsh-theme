@@ -12,7 +12,7 @@ function hostname {
 	if [[ $(uname) == 'Darwin' ]]; then
     echo "🍎 "
 	elif [[ $(uname) == 'Linux' ]]; then
-    echo "🖥️ $HOST "
+    echo "🖥️  $HOST "
 	else
 		echo "Nonsupport system"
 	fi
