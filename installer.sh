@@ -21,6 +21,8 @@ beforeInstall() {
 
 SoftLinks() {
 	ln -s ~/.dotfiles/config/gitconfig ~/.gitconfig
+	ln -s ~/.dotfiles/config/gitignore ~/.gitignore
+
 	mkdir -p ~/.config/pip
 	ln -s ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
 }
