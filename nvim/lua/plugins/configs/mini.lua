@@ -25,7 +25,7 @@ require("mini.comment").setup {
 
 -- require("mini.colors").setup()
 
-require("mini.completion").setup()
+-- require("mini.completion").setup()
 
 require("mini.cursorword").setup()
 
