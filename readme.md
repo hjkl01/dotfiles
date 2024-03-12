@@ -55,7 +55,7 @@
 #### install
 
 ```shell
-# install zsh python3-venv neovim stylua
+# install zsh python3-venv neovim stylua alacritty tmux fcitx5-rime fzf zoxide
 # if system is ubuntu/debian, use asdf install stylua
 # install xclip in arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
@@ -76,7 +76,7 @@ cd ~/.dotfiles && cp env .env && sh ./installer.sh
 
 #### questions
 
-> 如果有报错 清除缓存
+> 如果Neovim有报错 清除缓存
 
 ```shell
 rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin

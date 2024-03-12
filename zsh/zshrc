@@ -25,3 +25,5 @@ setopt NO_HUP
 # if [ ! "$TMUX" ]; then
 #   tmux attach -t 0 || tt
 # fi
+
+eval "$(zoxide init zsh)"

@@ -61,8 +61,8 @@ Installasdf() {
 	# install nodejs
 	asdf plugin add nodejs
 	asdf list all nodejs
-	asdf install nodejs 16.20.0
-	asdf global nodejs 16.20.0
+	asdf install nodejs 16.20.2
+	asdf global nodejs 16.20.2
 
 	asdf list all neovim
 	asdf install neovim latest
@@ -74,7 +74,7 @@ InstallOthers() {
 	if [[ $(uname) == 'Darwin' ]]; then
 		echo "mac"
 
-		brew install alacritty tmux
+		brew install alacritty tmux fzf zoxide
 		# 按照鼠须管
 		brew install --cask squirrel
 		# 参考配置
@@ -86,7 +86,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		yay --noconfirm -S alacritty tmux fcitx5-rime
+		yay --noconfirm -S alacritty tmux fcitx5-rime fzf zoxide
 
 		echo "export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
