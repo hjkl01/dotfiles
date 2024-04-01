@@ -31,7 +31,7 @@ font:
     # style: Medium
     # style: Bold
 
-  size: 14.0
+  size: 16.0
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: false
