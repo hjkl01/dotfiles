@@ -20,6 +20,7 @@ scrolling:
 # brew tap homebrew/cask-fonts
 # font-fira-code-nerd-font
 # brew install font-monaspace
+# in arch, install ttf-maple ttf-firacode-nerd
 font:
   # Style can be specified to pick a specific face.
   normal:

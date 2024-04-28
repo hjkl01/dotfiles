@@ -29,7 +29,7 @@ SoftLinks() {
 
 InstallOhMyZsh() {
 	ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-	echo ": 1700000000:0;ps aux | grep ssh \
+	echo ": 1700000000:0;ps aux | grep ssh\n\
 : 1700000000:0;ssh-copy-id -i ~/.ssh/id_rsa.pub nj" >>~/.zsh_history
 
 	git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -106,8 +106,8 @@ InstallOthers() {
 
 	# 配置alacritty
 	mkdir -p ~/.config/alacritty/
-	ln -s ~/.dotfiles/config/alacritty.yml ~/.config/alacritty
-	ln -s ~/.dotfiles/config/tokyonignt_storm.yml ~/.config/alacritty
+	ln -s ~/.dotfiles/config/alacritty.toml ~/.config/alacritty
+	ln -s ~/.dotfiles/config/tokyonignt_storm.toml ~/.config/alacritty
 
 	# 配置tmux
 	ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
