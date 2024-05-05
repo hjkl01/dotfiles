@@ -1,108 +1,65 @@
-import = ["$HOME/.config/alacritty/tokyonignt_storm.toml"]
+import = ["$HOME/.dotfiles/config/tokyonignt_storm.toml"]
+live_config_reload = true
 
-[colors]
-draw_bold_text_with_bright_colors = false
-
-[cursor.style]
-blinking = "Off"
-shape = "Block"
-
-[font]
-size = 16.0
-
-[font.normal]
-family = "FiraCode Nerd Font"
-style = "Retina"
-
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "Quit"
-key = "Q"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C1"
-key = "Key1"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C2"
-key = "Key2"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C3"
-key = "Key3"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C4"
-key = "Key4"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C5"
-key = "Key5"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C6"
-key = "Key6"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C7"
-key = "Key7"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C8"
-key = "Key8"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001C9"
-key = "Key9"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001Cc"
-key = "T"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001BB"
-key = "B"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001BF"
-key = "F"
-mods = "Alt"
-
-[[mouse.bindings]]
-action = "PasteSelection"
-mouse = "Middle"
+[window]
+decorations = "Full"
+opacity = 0.8
+# startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
+startup_mode = "Maximized"
+dynamic_title = true
 
 [scrolling]
 history = 1000
 multiplier = 3
 
+# Font configuration (changes require restart)
+# fc-list : family style | grep Fira
+# brew install fontconfig
+# brew tap homebrew/cask-fonts
+# font-fira-code-nerd-font font-jetbrains-mono-nerd-font
+# brew install font-monaspace
+# in arch, install ttf-maple ttf-firacode-nerd
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Retina" }
+bold = { family = "JetBrainsMonoNL Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMonoNL Nerd Font", style = "Italic" }
+size = 16.0
+
+[colors]
+transparent_background_colors = false
+draw_bold_text_with_bright_colors = true
+
 [selection]
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[window]
-decorations = "full"
-dynamic_title = true
-opacity = 0.8
-startup_mode = "Maximized"
+[cursor]
+style = { shape = "Block", blinking = "On" }
+blink_interval = 300
+
+[mouse]
+hide_when_typing = true
+bindings = [
+  { mouse = "Right", mods = "Control", action = "Paste" },
+]
+
+# tmux
+# https://zh.wikipedia.org/wiki/Unicode字符列表
+# if use C-b, update chars to \u0042
+[keyboard]
+bindings = [
+  { key = "C", mods = "Alt", action = "Paste" },
+  { key = "V", mods = "Alt", action = "Copy" },
+  { key = "Q", mods = "Alt", action = "Quit" },
+  { key = "T", mods = "Command", chars = "\u001Cc" },
+  { key = "W", mods = "Command", chars = "\u001Cx" },
+  { key = "1", mods = "Command", chars = "\u001C1" },
+  { key = "2", mods = "Command", chars = "\u001C2" },
+  { key = "3", mods = "Command", chars = "\u001C3" },
+  { key = "4", mods = "Command", chars = "\u001C4" },
+  { key = "5", mods = "Command", chars = "\u001C5" },
+  { key = "6", mods = "Command", chars = "\u001C6" },
+  { key = "7", mods = "Command", chars = "\u001C7" },
+  { key = "8", mods = "Command", chars = "\u001C8" },
+  { key = "9", mods = "Command", chars = "\u001C9" },
+]
