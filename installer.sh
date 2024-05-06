@@ -78,7 +78,7 @@ InstallOthers() {
 		# 按照鼠须管
 		brew install --cask squirrel
 		# 参考配置
-		git clone --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
+		git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
 		ln -s ~/.dotfiles/config/rime/*.yaml ~/Library/Rime
 
 	# GNU/Linux操作系统
@@ -96,7 +96,7 @@ InstallOthers() {
 
 		# 参考配置
 		mkdir -p ~/.local/share/fcitx5/
-		git clone --depth=1 https://github.com/iDvel/rime-ice ~/.local/share/fcitx5/rime
+		git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice ~/.local/share/fcitx5/rime
 		ln -s ~/.dotfiles/config/rime/*.yaml ~/.local/share/fcitx5/rime
 
 	# Windows NT操作系统
@@ -114,8 +114,8 @@ InstallOthers() {
 	# ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
 
 	mkdir -p ~/.tmux/plugins
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	git clone https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
+	git clone --single-branch --depth=1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	git clone --single-branch --depth=1 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
 
 	# 配置zellij
 	# mkdir -p ~/.config/zellij/
