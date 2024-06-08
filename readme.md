@@ -85,3 +85,4 @@ rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin
 #### refer from
 
 - [NvChad](https://github.com/NvChad/NvChad)
+- [LazyVim](https://github.com/LazyVim/LazyVim)
