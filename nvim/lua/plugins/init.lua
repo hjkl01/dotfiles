@@ -22,7 +22,7 @@ local default_plugins = {
     "voldikss/vim-translator",
     cmd = "Translate",
     lazy = false,
-    init = require("core.utils").load_mappings "translate",
+    init = require("utils").load_mappings "translate",
     config = function()
       vim.g.translator_default_engines = { "haici", "bing" }
     end,

@@ -9,7 +9,6 @@ C.mappings = {}
 
 M.load_config = function()
   local config = C
-  -- local config = require "core.default_config"
 
   config.mappings.disabled = nil
   return config
@@ -72,8 +71,7 @@ M.load_mappings = function(section, mapping_opt)
     end
   end
 
-  -- local mappings = require("core.utils").load_config().mappings
-  local mappings = require "core.mappings"
+  local mappings = require "mappings"
 
   if type(section) == "string" then
     mappings[section]["plugin"] = nil

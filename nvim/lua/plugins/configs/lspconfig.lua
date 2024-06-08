@@ -5,7 +5,7 @@ if not present then
 end
 
 local M = {}
-local utils = require "core.utils"
+local utils = require "utils"
 
 -- export on_attach & capabilities for custom lspconfigs
 
@@ -75,12 +75,12 @@ vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
 
 -- 自动保存文件
 -- vim.api.nvim_command "autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)"
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function()
-    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-    -- vim.lsp.buf.formatting_sync()
-    vim.lsp.buf.format {}
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   callback = function()
+--     -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+--     -- vim.lsp.buf.formatting_sync()
+--     vim.lsp.buf.format {}
+--   end,
+-- })
 
 return M

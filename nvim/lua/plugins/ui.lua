@@ -13,7 +13,7 @@ local ui_plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle" },
-    init = require("core.utils").load_mappings "nvimtree",
+    init = require("utils").load_mappings "nvimtree",
     config = function()
       require "plugins.configs.nvimtree"
     end,
@@ -25,7 +25,7 @@ local ui_plugins = {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    init = require("core.utils").load_mappings "telescope",
+    init = require("utils").load_mappings "telescope",
     opts = function()
       return require "plugins.configs.telescope"
     end,
@@ -47,7 +47,7 @@ local ui_plugins = {
     config = function()
       vim.opt.termguicolors = true
       require("bufferline").setup()
-      require("core.utils").load_mappings "bufferline"
+      require("utils").load_mappings "bufferline"
     end,
   },
   {
@@ -62,12 +62,27 @@ local ui_plugins = {
   {
     "folke/which-key.nvim",
     keys = { "<leader>", '"', "'", "`", "g" },
-    init = require("core.utils").load_mappings "whichkey",
+    init = require("utils").load_mappings "whichkey",
     opts = function()
       return require "plugins.configs.whichkey"
     end,
     config = function(_, opts)
       require("which-key").setup(opts)
+    end,
+  },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function(_, opts)
+      require("noice").setup(opts)
     end,
   },
 }

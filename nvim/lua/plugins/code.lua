@@ -1,7 +1,7 @@
 local code_plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
-    init = require("core.utils").lazy_load "nvim-treesitter",
+    init = require("utils").lazy_load "nvim-treesitter",
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()
@@ -65,7 +65,7 @@ local code_plugins = {
   -- { "williamboman/mason-lspconfig.nvim" },
   {
     "neovim/nvim-lspconfig",
-    init = require("core.utils").lazy_load "nvim-lspconfig",
+    init = require("utils").lazy_load "nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
     end,
@@ -101,15 +101,62 @@ local code_plugins = {
       require("cmp").setup(opts)
     end,
   },
-
-  { "sbdchd/neoformat", lazy = false },
+  {
+    "danymat/neogen",
+    cmd = { "Neogen" },
+    -- config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+    config = function()
+      require("neogen").setup()
+      local opts = { noremap = true, silent = true }
+      vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts)
+    end,
+  },
 
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "stevearc/conform.nvim",
     lazy = false,
-    after = "nvim-lspconfig",
     config = function()
-      require "plugins.configs.nullls"
+      require("conform").setup {
+        formatters_by_ft = {
+          -- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
+          lua = { "stylua" },
+          -- Conform will run multiple formatters sequentially
+          python = { "black" },
+          -- Use a sub-list to run only the first available formatter
+          javascript = { { "prettier", "prettierd" } },
+          go = { "gofmt" },
+          -- Use the "*" filetype to run formatters on all filetypes.
+          ["*"] = { "codespell" },
+          -- Use the "_" filetype to run formatters on filetypes that don't
+          -- have other formatters configured.
+          ["_"] = { "trim_whitespace" },
+        },
+        format_on_save = {
+          -- I recommend these options. See :help conform.format for details.
+          lsp_fallback = true,
+          timeout_ms = 500,
+        },
+      }
+    end,
+  },
+
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod", lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
 }
