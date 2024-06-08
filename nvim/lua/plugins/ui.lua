@@ -75,7 +75,9 @@ local ui_plugins = {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-      -- add any options here
+      messages = {
+        enabled = false,
+      },
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
