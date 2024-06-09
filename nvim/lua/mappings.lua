@@ -197,11 +197,10 @@ M.bufferline = {
   },
 }
 
-M.nvimtree = {
+M.neotree = {
   plugin = true,
   n = {
-    -- toggle
-    ["<leader><leader>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+    ["<leader><leader>"] = { "<cmd> Neotree <CR>", "" },
   },
 }
 

@@ -11,16 +11,19 @@ local ui_plugins = {
 
   -- file managing , picker etc
   {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle" },
-    init = require("utils").load_mappings "nvimtree",
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    cmd = "Neotree",
+    init = require("utils").load_mappings "neotree",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
     config = function()
-      require "plugins.configs.nvimtree"
+      require "plugins.configs.neotree"
     end,
-  },
-  {
-    "nvim-tree/nvim-web-devicons",
-    module = "nvim-web-devicons",
   },
   {
     "nvim-telescope/telescope.nvim",
