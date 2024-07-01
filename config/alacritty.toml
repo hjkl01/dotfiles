@@ -3,7 +3,7 @@ live_config_reload = true
 
 [window]
 decorations = "Full"
-opacity = 0.8
+opacity = 0.6
 # startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
 startup_mode = "Maximized"
 dynamic_title = true
@@ -48,8 +48,8 @@ bindings = [
 # if use C-b, update chars to \u0042
 [keyboard]
 bindings = [
-  { key = "C", mods = "Alt", action = "Paste" },
-  { key = "V", mods = "Alt", action = "Copy" },
+  { key = "C", mods = "Alt", action = "Copy" },
+  { key = "V", mods = "Alt", action = "Paste" },
   { key = "Q", mods = "Alt", action = "Quit" },
   { key = "T", mods = "Command", chars = "\u001Cc" },
   { key = "W", mods = "Command", chars = "\u001Cx" },
