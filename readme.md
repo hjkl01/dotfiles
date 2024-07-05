@@ -82,6 +82,11 @@ cd ~/.dotfiles && cp env .env && sh ./installer.sh
 rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin
 ```
 
+#### wsl
+
+> install win32yank in wsl
+> windows alacritty config path: ~\AppData\Roaming\alacritty\alacritty.toml
+
 #### refer from
 
 - [NvChad](https://github.com/NvChad/NvChad)

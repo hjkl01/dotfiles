@@ -20,6 +20,8 @@
 
 # brew install glib
 alias rr="gio trash"
+# 如果显示错乱
+# alias tt='TERM=screen-256color-bce TERM=xterm tmux -f ~/.dotfiles/config/tmux.conf'
 alias tt='TERM=screen-256color-bce tmux -f ~/.dotfiles/config/tmux.conf'
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
