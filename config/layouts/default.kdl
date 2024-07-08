@@ -8,12 +8,12 @@ layout {
                 format_right  "{command_git_branch} {datetime}"
                 format_space  ""
 
-                border_enabled  "true"
+                border_enabled  "false"
                 border_char     "─"
                 border_format   "#[fg=#6C7086]{char}"
                 border_position "top"
 
-                hide_frame_for_single_pane "false"
+                hide_frame_for_single_pane "true"
 
                 mode_normal  "#[bg=blue] {name}"
                 mode_tmux    "#[bg=#ffc387] {name}"
