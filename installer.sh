@@ -73,7 +73,7 @@ InstallOthers() {
 	if [[ $(uname) == 'Darwin' ]]; then
 		echo "mac"
 
-		brew install alacritty zellij fzf zoxide
+		brew install alacritty tmux zellij fzf zoxide
 		# 按照鼠须管
 		brew install --cask squirrel
 		# 参考配置
@@ -85,7 +85,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		yay --noconfirm -S alacritty zellij fcitx5-rime fzf zoxide
+		yay --noconfirm -S alacritty tmux zellij fcitx5-rime fzf zoxide
 
 		echo "export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
@@ -108,13 +108,13 @@ InstallOthers() {
 	ln -s ~/.dotfiles/config/alacritty.toml ~/.config/alacritty
 
 	# 配置tmux
-	# ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
-	# # mkdir -p ~/.config/tmux/
-	# # ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
-	#
-	# mkdir -p ~/.tmux/plugins
-	# git clone --single-branch --depth=1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	# git clone --single-branch --depth=1 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
+	ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
+	# mkdir -p ~/.config/tmux/
+	# ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
+
+	mkdir -p ~/.tmux/plugins
+	git clone --single-branch --depth=1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	git clone --single-branch --depth=1 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
 
 	# 配置zellij
   # zellij setup --dump-config > ~/.config/zellij/config.kdl
