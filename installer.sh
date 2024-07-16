@@ -73,7 +73,7 @@ InstallOthers() {
 	if [[ $(uname) == 'Darwin' ]]; then
 		echo "mac"
 
-		brew install alacritty tmux zellij fzf zoxide
+		brew install alacritty tmux fzf zoxide
 		# 按照鼠须管
 		brew install --cask squirrel
 		# 参考配置
@@ -85,7 +85,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		yay --noconfirm -S alacritty tmux zellij fcitx5-rime fzf zoxide
+		yay --noconfirm -S alacritty tmux fzf zoxide
 
 		echo "export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
@@ -94,9 +94,6 @@ InstallOthers() {
     fcitx5 &" >>~/.xprofile
 
 		# 参考配置
-		mkdir -p ~/.local/share/fcitx5/
-		git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice ~/.local/share/fcitx5/rime
-		ln -s ~/.dotfiles/config/rime/*.yaml ~/.local/share/fcitx5/rime
 
 	# Windows NT操作系统
 	else
@@ -118,9 +115,9 @@ InstallOthers() {
 
 	# 配置zellij
   # zellij setup --dump-config > ~/.config/zellij/config.kdl
-	mkdir -p ~/.config/zellij/
-	ln -s ~/.dotfiles/config/zellij.kdl ~/.config/zellij/config.kdl
-	ln -s ~/.dotfiles/config/layouts ~/.config/zellij/layouts
+	# mkdir -p ~/.config/zellij/
+	# ln -s ~/.dotfiles/config/zellij.kdl ~/.config/zellij/config.kdl
+	# ln -s ~/.dotfiles/config/layouts ~/.config/zellij/layouts
 }
 
 # echo $@
