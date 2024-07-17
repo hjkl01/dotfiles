@@ -60,8 +60,8 @@ Installasdf() {
 	# install nodejs
 	asdf plugin add nodejs
 	asdf list all nodejs
-	asdf install nodejs 16.20.2
-	asdf global nodejs 16.20.2
+	asdf install nodejs 20.15.1
+	asdf global nodejs 20.15.1
 
 	asdf list all neovim
 	asdf install neovim latest
