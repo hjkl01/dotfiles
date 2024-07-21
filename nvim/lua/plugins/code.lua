@@ -123,7 +123,7 @@ local code_plugins = {
           -- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
           lua = { "stylua" },
           -- Conform will run multiple formatters sequentially
-          python = { "black" },
+          -- python = { "black" },
           -- Use a sub-list to run only the first available formatter
           javascript = { { "prettier", "prettierd" } },
           go = { "gofmt" },
