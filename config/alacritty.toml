@@ -1,8 +1,9 @@
+# https://alacritty.org/config-alacritty.html
+
 import = ["$HOME/.dotfiles/config/tokyonignt_storm.toml"]
 live_config_reload = true
 
 [window]
-decorations = "Full"
 opacity = 0.6
 # startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
 startup_mode = "Maximized"
