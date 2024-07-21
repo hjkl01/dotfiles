@@ -22,6 +22,11 @@
 alias rr="gio trash"
 # 如果显示错乱
 alias tt='TERM=screen-256color-bce TERM=xterm-256color tmux -f ~/.dotfiles/config/tmux.conf -u'
+if [ -z "$TMUX" ]; then
+    tmux attach || exec 'tmux'
+else
+    echo "already in tmux!"
+fi
 
 alias vi="nvim"
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
