@@ -1,22 +1,19 @@
 #! /bin/sh
 
-# yarn config
-alias yy='yarn'
-alias ys='yarn start'
-
-# yrm
+# npm config
+alias npm='pnpm'
 
 # 查询源
-# yarn config get registry
+# npm config get registry
 
 # 更换国内源
-# yarn config set registry https://registry.npmmirror.com
+# npm config set registry https://registry.npmmirror.com
 
 # 恢复官方源
-# yarn config set registry https://registry.yarnpkg.com
+# npm config set registry https://registry.npmpkg.com
 
 # 删除注册表
-# yarn config delete registry
+# npm config delete registry
 
 # HUAWEI
 # https://repo.huaweicloud.com/repository/npm/
