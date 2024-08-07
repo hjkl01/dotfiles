@@ -85,19 +85,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		yay --noconfirm -S alacritty tmux fzf zoxide fcitx5 fcitx5-chinese-addons fcitx5-im fcitx5-configtool
-
-    mkdir -p ~/.local/share/fcitx5/
-    git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice ~/.local/share/fcitx5/rime
-    ln -s ~/.dotfiles/config/rime/*.yaml ~/.local/share/fcitx5/rime/
-
-		echo "export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-
-fcitx5 &" >>~/.xprofile
-
-		# 参考配置
+		yay --noconfirm -S alacritty tmux fzf zoxide
 
 	# Windows NT操作系统
 	else
