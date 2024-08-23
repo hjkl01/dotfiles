@@ -85,7 +85,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		yay --noconfirm -S alacritty tmux fzf zoxide
+		pacman --noconfirm -S alacritty tmux fzf zoxide
 
 	# Windows NT操作系统
 	else
