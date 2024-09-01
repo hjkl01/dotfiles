@@ -21,9 +21,9 @@
 # brew install glib
 alias rr="gio trash"
 # 如果显示错乱
-alias tt='TERM=screen-256color-bce TERM=xterm-256color tmux -f ~/.dotfiles/config/tmux.conf -u'
+alias run_tmux='TERM=screen-256color-bce TERM=xterm-256color tmux -f ~/.dotfiles/config/tmux.conf -u'
 if [ -z "$TMUX" ]; then
-    tmux attach || exec 'tmux'
+    tmux attach || run_tmux
 else
     echo "already in tmux!"
 fi
