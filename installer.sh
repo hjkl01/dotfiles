@@ -79,6 +79,8 @@ InstallOthers() {
 		# 参考配置
 		git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
 		ln -s ~/.dotfiles/config/rime/*.yaml ~/Library/Rime
+    # 重新部署
+    # /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
 
 	# GNU/Linux操作系统
 	# 需要重启
