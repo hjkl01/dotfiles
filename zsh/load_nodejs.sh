@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # npm config
-alias npm='pnpm'
+# alias npm='pnpm'
 
 # 查询源
 # npm config get registry
