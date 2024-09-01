@@ -74,7 +74,7 @@ InstallOthers() {
 		echo "mac"
 
 		brew install alacritty tmux fzf zoxide
-		# 按照鼠须管
+		# 安装鼠须管
 		brew install --cask squirrel
 		# 参考配置
 		git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
