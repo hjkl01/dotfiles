@@ -13,7 +13,7 @@ export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bot
 export HOMEBREW_API_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/api
 
 # tmux
-export TMUX_PREFIX='C-\'
+export TMUX_PREFIX='C-b'
 
 # proxy
 export P_ADDRESS="127.0.0.1"
