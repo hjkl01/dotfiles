@@ -16,7 +16,7 @@ alias dcp='docker ps -a'
 # delete exited containers
 # alias dre='docker rm -v $(docker ps -a -q -f status=exited)'
 # clean null images and exited containers
-alias dclean='docker rmi $(docker images --filter dangling=true -q --no-trunc) && docker rm -v $(docker ps -a -q -f status=exited)'
+alias dclean='docker rmi -f $(docker images --filter dangling=true -q --no-trunc) && docker rm -v $(docker ps -a -q -f status=exited)'
 
 alias dc='docker-compose'
 alias dci='docker images'
