@@ -1,19 +1,22 @@
 #!/bin/bash
 
+timestamp=$(date +%Y%m%d%H%M%S)
+echo $timestamp
+
 beforeInstall() {
 	if [ -f ~/.zshrc ]; then
 		echo "$HOME/.zshrc exists"
-		exit
+	   mv ~/.zshrc ~/.zshrc_$timestamp
 	fi
 
 	if [ -d ~/.oh-my-zsh ]; then
 		echo "$HOME/.oh-my-zsh exists"
-		exit
+	   mv -f ~/.oh-my-zsh ~/.oh-my-zsh_$timestamp
 	fi
 
-	if [ -d ~/.~/.config/nvim ]; then
+	if [ -d ~/.config/nvim ]; then
 		echo "$HOME/.config/nvim exists"
-		exit
+    mv -f ~/.config/nvim ~/.config/nvim_$timestamp
 	fi
 
 	mkdir -p ~/.config/
@@ -54,7 +57,7 @@ InstallNeovim() {
 }
 
 Installasdf() {
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
 	. $HOME/.asdf/asdf.sh
 
 	# install nodejs
