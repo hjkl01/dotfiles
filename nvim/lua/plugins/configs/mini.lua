@@ -45,8 +45,10 @@ require("mini.sessions").setup {
   directory = "~/.local/share/nvim/",
 }
 require("mini.starter").setup()
--- require("mini.statusline").setup()
+require("mini.statusline").setup()
 -- require("mini.surround").setup()
+
+-- require("mini.tabline").setup()
 
 -- trailing whitespace
 require("mini.trailspace").setup()

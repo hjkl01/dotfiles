@@ -1,16 +1,7 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-  ["lewis6991/impatient.nvim"] = {
-    config = function()
-      require "impatient"
-    end,
-  },
-  "nvim-lua/plenary.nvim",
-  {
-    "smiteshp/nvim-navic",
-    lazy = false,
-  },
+  -- "nvim-lua/plenary.nvim",
   {
     "echasnovski/mini.nvim",
     lazy = false,
