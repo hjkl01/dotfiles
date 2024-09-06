@@ -66,6 +66,7 @@ Installasdf() {
 	asdf install nodejs 20.15.1
 	asdf global nodejs 20.15.1
 
+	asdf plugin add neovim
 	asdf list all neovim
 	asdf install neovim latest
 	asdf global neovim latest
@@ -124,11 +125,24 @@ if [ "$1" = "link" ]; then
 	SoftLinks
 fi
 
-beforeInstall
-InstallOhMyZsh
-InstallNeovim
-Installasdf
-InstallOthers
+# 定义一个函数，用于执行其他函数并捕获错误
+execute_function() {
+  local func_name=$1
+  shift
+
+  # 尝试执行函数
+  if ! "$func_name" "$@"; then
+    # 如果函数执行失败，输出错误信息并继续执行
+    echo "Error executing function: $func_name"
+  fi
+}
+
+
+execute_function beforeInstall
+execute_function InstallOhMyZsh
+execute_function InstallNeovim
+execute_function Installasdf
+execute_function InstallOthers
 
 echo "edit ~/.oh-my-zsh/themes/Schminitz.zsh-themes to update themes"
 echo "finish ! logout and relogin"
