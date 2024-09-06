@@ -4,7 +4,7 @@ import = ["$HOME/.dotfiles/config/tokyonignt_storm.toml"]
 live_config_reload = true
 
 [window]
-opacity = 0.6
+opacity = 0.9
 # startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
 startup_mode = "Maximized"
 dynamic_title = true
@@ -39,7 +39,7 @@ style = { shape = "Block", blinking = "On" }
 blink_interval = 300
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 bindings = [
   { mouse = "Right", mods = "Control", action = "Paste" },
 ]
