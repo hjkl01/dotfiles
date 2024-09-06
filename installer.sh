@@ -76,7 +76,7 @@ InstallOthers() {
 	if [[ $(uname) == 'Darwin' ]]; then
 		echo "mac"
 
-		brew install alacritty tmux fzf zoxide
+		brew install alacritty tmux fzf zoxide lua
 		# 安装鼠须管
 		brew install --cask squirrel
 		# 参考配置
@@ -90,7 +90,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		pacman --noconfirm -S alacritty tmux fzf zoxide
+		pacman --noconfirm -S alacritty tmux fzf zoxide lua
 
 	# Windows NT操作系统
 	else
