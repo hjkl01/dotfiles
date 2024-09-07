@@ -43,6 +43,17 @@ local ui_plugins = {
     end,
   },
 
+  {
+    "akinsho/bufferline.nvim",
+    lazy = false,
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      vim.opt.termguicolors = true
+      require("bufferline").setup()
+      require("utils").load_mappings "bufferline"
+    end,
+  },
+
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
