@@ -42,7 +42,7 @@ alias ii='vi $(fzf --height 40%)'
 # find . -name "*.log"
 # grep "hello" example.txt
 # grep -r "hello" my_directory
-alias fd='find . -name '
+
 alias pc='proxychains4'
 alias scpr='rsync -zvauP --exclude="logs" --exclude="venv" --exclude="go" --exclude="node_modules" --rsh=ssh'
 # alias getpass='openssl rand -base64 20'
