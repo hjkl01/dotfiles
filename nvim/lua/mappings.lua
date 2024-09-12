@@ -189,14 +189,6 @@ M.lspconfig = {
   },
 }
 
-M.bufferline = {
-  plugin = true,
-  n = {
-    ["<TAB>"] = { "<cmd> BufferLineCycleNext <CR>", "BufferLineCycleNext" },
-    ["<s-TAB>"] = { "<cmd> BufferLineCyclePrev <CR>", "BufferLineCyclePrev" },
-  },
-}
-
 M.neotree = {
   plugin = true,
   n = {
