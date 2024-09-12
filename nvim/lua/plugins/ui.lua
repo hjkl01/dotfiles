@@ -53,6 +53,13 @@ local ui_plugins = {
       require("utils").load_mappings "bufferline"
     end,
   },
+  {
+    "nvim-lualine/lualine.nvim",
+    lazy = false,
+    config = function()
+      require "plugins.configs.lualine"
+    end,
+  },
 
   -- Only load whichkey after all the gui
   {
