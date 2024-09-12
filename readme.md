@@ -55,7 +55,7 @@
 #### install
 
 ```shell
-# install zsh python3-venv neovim stylua alacritty tmux fcitx5-rime fzf zoxide
+# install fcitx5-rime alacritty zsh tmux fzf zoxide neovim lua stylua
 # if system is ubuntu/debian, use asdf install stylua
 # install xclip in arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles

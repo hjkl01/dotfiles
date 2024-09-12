@@ -4,6 +4,11 @@ timestamp=$(date +%Y%m%d%H%M%S)
 echo $timestamp
 
 beforeInstall() {
+	if [ -f ~/.gitconfig ]; then
+		echo "$HOME/.gitconfig exists"
+	   mv ~/.gitconfig ~/.gitconfig_$timestamp
+	fi
+
 	if [ -f ~/.zshrc ]; then
 		echo "$HOME/.zshrc exists"
 	   mv ~/.zshrc ~/.zshrc_$timestamp
@@ -62,9 +67,9 @@ Installasdf() {
 
 	# install nodejs
 	asdf plugin add nodejs
-	asdf list all nodejs
-	asdf install nodejs 20.15.1
-	asdf global nodejs 20.15.1
+	# asdf list all nodejs
+	asdf install nodejs 20.17.1
+	asdf global nodejs 20.17.1
 
 	asdf plugin add neovim
 	asdf list all neovim
@@ -91,7 +96,7 @@ InstallOthers() {
 	elif [[ $(uname) == 'Linux' ]]; then
 		echo "Linux"
 
-		pacman --noconfirm -S alacritty tmux fzf zoxide lua
+		pacman --noconfirm -Syy
 
 	# Windows NT操作系统
 	else
