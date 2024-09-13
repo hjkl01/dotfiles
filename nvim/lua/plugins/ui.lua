@@ -64,22 +64,23 @@ local ui_plugins = {
     end,
   },
 
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      messages = {
-        enabled = false,
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    config = function(_, opts)
-      require("noice").setup(opts)
-    end,
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     messages = {
+  --       -- enabled = false,
+  --       enabled = true,
+  --     },
+  --   },
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "rcarriga/nvim-notify",
+  --   },
+  --   config = function(_, opts)
+  --     require("noice").setup(opts)
+  --   end,
+  -- },
 }
 
 return ui_plugins

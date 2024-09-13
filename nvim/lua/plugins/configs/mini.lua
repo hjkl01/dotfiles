@@ -16,13 +16,15 @@ require("mini.cursorword").setup()
 require("mini.fuzzy").setup()
 -- nvim-telescope/telescope.nvim
 
+require('mini.icons').setup()
+
 -- Visualize and operate on indent scope
 require("mini.indentscope").setup()
 
 -- require("mini.map").setup()
 -- lua MiniMap.open()
 
--- require("mini.notify").setup()
+require("mini.notify").setup()
 
 require("mini.pairs").setup()
 require("mini.sessions").setup {
