@@ -1,10 +1,10 @@
 require("mini.animate").setup()
 
 require("mini.comment").setup {
-  mappings = {
-    -- Toggle comment on current line
-    comment_line = "//",
-  },
+	mappings = {
+		-- Toggle comment on current line
+		comment_line = "//",
+	},
 }
 
 -- require("mini.colors").setup()
@@ -28,7 +28,7 @@ require("mini.notify").setup()
 
 require("mini.pairs").setup()
 require("mini.sessions").setup {
-  directory = "~/.local/share/nvim/",
+	directory = "~/.local/share/nvim/",
 }
 require("mini.starter").setup()
 

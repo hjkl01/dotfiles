@@ -1,12 +1,12 @@
 local ui_plugins = {
   {
-    "catppuccin/nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
-    name = "catppuccin",
     priority = 1000,
+    opts = {},
     config = function()
-      require "plugins.configs.colorscheme"
-    end,
+      vim.cmd [[colorscheme tokyonight]]
+    end
   },
 
   -- file managing , picker etc
@@ -43,6 +43,16 @@ local ui_plugins = {
     end,
   },
 
+  {
+    "akinsho/bufferline.nvim",
+    lazy = false,
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      vim.opt.termguicolors = true
+      require("bufferline").setup()
+      require("utils").load_mappings "bufferline"
+    end,
+  },
   {
     "nvim-lualine/lualine.nvim",
     lazy = false,
