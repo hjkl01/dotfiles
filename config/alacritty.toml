@@ -21,7 +21,7 @@ multiplier = 3
 # brew install font-monaspace
 # in arch, install ttf-maple ttf-firacode-nerd
 [font]
-normal = { family = "FiraCode Nerd Font Mono", style = "Retina" }
+normal = { family = "FiraCode Nerd Font", style = "Retina" }
 bold = { family = "JetBrainsMonoNL Nerd Font", style = "Bold" }
 italic = { family = "JetBrainsMonoNL Nerd Font", style = "Italic" }
 size = 14.0
