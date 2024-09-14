@@ -36,7 +36,7 @@ SoftLinks() {
 }
 
 InstallOhMyZsh() {
-	ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
+	ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
 	echo ": 1700000000:0;ps aux | grep ssh" >>~/.zsh_history
 
 	git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
