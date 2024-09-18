@@ -60,7 +60,7 @@ alias wt='curl wttr.in/nanjing'
 alias vc='vultr-cli'
 
 www() {
-	python -m http.server 80 -d "$1"
+	python -m http.server "$1" -d "$2"
 }
 wqr() {
 	python ~/.dotfiles/config/sharefile.py "$1"
