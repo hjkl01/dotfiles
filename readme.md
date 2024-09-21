@@ -69,6 +69,21 @@ cd ~/.dotfiles && cp env .env && sh ./installer.sh
 # crontab -e or nvim /var/spool/cron/$USER
 50 8 * * * cd $HOME/.dotfiles/ && git pull
 # && nvim --headless "+Lazy! sync" +qa
+```
+
+### usecase
+```shell
+# neovim
+# nvim will install lazy auto
+# nvim will install nvim-treesitter auto
+# install Mason plugin Command :
+Mason
+MasonUpdate
+MasonInstallAll
+
+# tmux
+# Press prefix + I (capital i, as in Install) to fetch the plugin.
+prefix + I
 
 # MacOS reload Squirrel
 /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
