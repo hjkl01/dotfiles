@@ -1,7 +1,6 @@
 # https://alacritty.org/config-alacritty.html
 
-import = ["$HOME/.dotfiles/config/tokyonignt_storm.toml"]
-live_config_reload = true
+# live_config_reload = true
 
 [window]
 opacity = 0.9
