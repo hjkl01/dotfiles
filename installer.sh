@@ -71,10 +71,10 @@ Installasdf() {
 	asdf install nodejs 20.17.1
 	asdf global nodejs 20.17.1
 
-	asdf plugin add neovim
-	asdf list all neovim
-	asdf install neovim latest
-	asdf global neovim latest
+	# asdf plugin add neovim
+	# asdf list all neovim
+	# asdf install neovim latest
+	# asdf global neovim latest
 }
 
 InstallOthers() {
