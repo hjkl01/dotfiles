@@ -3,7 +3,7 @@
 # live_config_reload = true
 
 [window]
-opacity = 0.9
+opacity = 0.7
 # startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
 startup_mode = "Maximized"
 dynamic_title = true
@@ -18,7 +18,7 @@ multiplier = 3
 # brew tap homebrew/cask-fonts
 # font-fira-code-nerd-font font-jetbrains-mono-nerd-font
 # brew install font-monaspace
-# in arch, install ttf-maple ttf-firacode-nerd
+# in arch, install ttf-firacode-nerd ttf-jetbrains-mono-nerd
 [font]
 normal = { family = "FiraCode Nerd Font", style = "Retina" }
 bold = { family = "JetBrainsMonoNL Nerd Font", style = "Bold" }
