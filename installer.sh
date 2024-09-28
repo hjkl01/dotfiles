@@ -125,11 +125,6 @@ InstallOthers() {
 
 # echo $@
 
-if [ "$1" = "link" ]; then
-	echo "link in args, run soft link"
-	SoftLinks
-fi
-
 # 定义一个函数，用于执行其他函数并捕获错误
 execute_function() {
   local func_name=$1
@@ -144,6 +139,12 @@ execute_function() {
 
 
 execute_function beforeInstall
+
+if [ "$1" = "link" ]; then
+	echo "link in args, run soft link"
+	SoftLinks
+fi
+
 execute_function InstallOhMyZsh
 execute_function InstallNeovim
 execute_function Installasdf
