@@ -85,6 +85,17 @@ MasonInstallAll
 # Press prefix + I (capital i, as in Install) to fetch the plugin.
 prefix + I
 
+# fcitx5-rime
+# install ruby
+git clone --depth=1 https://github.com/Mark24Code/rime-auto-deploy
+cd rime-auto-deploy
+./installer.rb
+
+# write to /etc/environment
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
 # MacOS reload Squirrel
 /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
 ```
