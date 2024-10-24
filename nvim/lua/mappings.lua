@@ -44,7 +44,7 @@ M.general = {
         elseif fileType == "json" then
           vim.cmd [[%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))']]
         else
-          print(fileType)
+          vim.cmd('Neoformat')
         end
       end,
       "autoformat",
