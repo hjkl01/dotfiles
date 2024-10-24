@@ -95,33 +95,10 @@ local code_plugins = {
     end,
   },
 
-  -- {
-  --   "stevearc/conform.nvim",
-  --   lazy = false,
-  --   config = function()
-  --     require("conform").setup {
-  --       formatters_by_ft = {
-  --         -- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
-  --         lua = { "stylua" },
-  --         -- Conform will run multiple formatters sequentially
-  --         -- python = { "black" },
-  --         -- Use a sub-list to run only the first available formatter
-  --         javascript = { { "prettier", "prettierd" } },
-  --         go = { "gofmt" },
-  --         -- Use the "*" filetype to run formatters on all filetypes.
-  --         ["*"] = { "codespell" },
-  --         -- Use the "_" filetype to run formatters on filetypes that don't
-  --         -- have other formatters configured.
-  --         ["_"] = { "trim_whitespace" },
-  --       },
-  --       format_on_save = {
-  --         -- I recommend these options. See :help conform.format for details.
-  --         lsp_fallback = true,
-  --         timeout_ms = 500,
-  --       },
-  --     }
-  --   end,
-  -- },
+  {
+    "sbdchd/neoformat",
+    cmd = { "Neoformat" },
+  },
 
   -- Database UI
   -- {
