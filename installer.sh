@@ -116,6 +116,7 @@ InstallOthers() {
 	mkdir -p ~/.tmux/plugins
 	git clone --single-branch --depth=1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   git clone --single-branch --depth=1 https://github.com/hjkl01/catppuccin_tmux ~/.tmux/plugins/catppuccin_tmux
+  git clone --single-branch --depth=1 https://github.com/tmux-plugins/tmux-cpu ~/.tmux/plugins/tmux-cpu
 
 	# 配置zellij
   # zellij setup --dump-config > ~/.config/zellij/config.kdl
