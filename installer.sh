@@ -98,6 +98,7 @@ InstallOthers() {
     echo "Linux"
 
     # download chsrc
+    mkdir bin
     curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o bin/chsrc
     chmod +x ./bin/chsrc
 
