@@ -1,17 +1,5 @@
 ## 我的配置
 
-- alacritty
-- tmux
-- git
-- oh-my-zsh
-- neovim
-- asdf
-- python
-  - pip
-  - pycodestyle
-- squirrel
-  - rime-ice
-
 <details><summary> ~/.gitconfig </summary>
 
 ```shell
@@ -52,11 +40,11 @@
 
 </details>
 
-#### install
+### install
 
 - install fcitx5-rime alacritty zsh tmux fzf zoxide neovim lua stylua
-- if system is ubuntu/debian, use asdf install stylua
 - install xclip in arch
+- if system is ubuntu/debian, use asdf install stylua
 
 ```shell
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
@@ -68,7 +56,7 @@ git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && cp env .env && sh ./installer.sh
 ```
 
-#### crontab setting
+### crontab setting
 
 ```shell
 # crontab -e or nvim /var/spool/cron/$USER
@@ -106,7 +94,7 @@ export XMODIFIERS="@im=fcitx"
 /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
 ```
 
-#### questions
+### questions
 
 > 如果Neovim有报错 清除缓存
 
@@ -114,12 +102,12 @@ export XMODIFIERS="@im=fcitx"
 rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin
 ```
 
-#### wsl
+### wsl
 
 > install win32yank in wsl
 > windows alacritty config path: ~\AppData\Roaming\alacritty\alacritty.toml
 
-#### refer from
+### refer from
 
 - [NvChad](https://github.com/NvChad/NvChad)
 - [LazyVim](https://github.com/LazyVim/LazyVim)
