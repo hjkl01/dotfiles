@@ -18,14 +18,16 @@
 #
 # alias_if_program_exists nvim vi
 
+export PATH="$PATH:$HOME/.dotfiles/bin"
+
 # brew install glib
 alias rr="gio trash"
 # 如果显示错乱
 alias run_tmux='TERM=screen-256color-bce TERM=xterm-256color tmux -f ~/.dotfiles/config/tmux.conf -u'
 if [ -z "$TMUX" ]; then
-    tmux attach || run_tmux
+  tmux attach || run_tmux
 else
-    echo "already in tmux!"
+  echo "already in tmux!"
 fi
 
 alias vi="nvim"
@@ -60,22 +62,22 @@ alias wt='curl wttr.in/nanjing'
 alias vc='vultr-cli'
 
 www() {
-	python -m http.server "$1" -d "$2"
+  python -m http.server "$1" -d "$2"
 }
 wqr() {
-	python ~/.dotfiles/config/sharefile.py "$1"
+  python ~/.dotfiles/config/sharefile.py "$1"
 }
 
 cdd() {
-	cd $1
-	ls -G
+  cd $1
+  ls -G
 }
 
 fkill() {
-	# pid=$(ps -ef | sed 1d | sk --regex -m -e -q "$1" | awk '{print $2}')
-	pid=$(ps -ef | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $2}')
+  # pid=$(ps -ef | sed 1d | sk --regex -m -e -q "$1" | awk '{print $2}')
+  pid=$(ps -ef | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $2}')
 
-	if [ "x$pid" != "x" ]; then
-		echo "$pid" | xargs kill -"${2:-9}"
-	fi
+  if [ "x$pid" != "x" ]; then
+    echo "$pid" | xargs kill -"${2:-9}"
+  fi
 }
