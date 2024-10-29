@@ -54,12 +54,17 @@
 
 #### install
 
+- install fcitx5-rime alacritty zsh tmux fzf zoxide neovim lua stylua
+- if system is ubuntu/debian, use asdf install stylua
+- install xclip in arch
+
 ```shell
-# install fcitx5-rime alacritty zsh tmux fzf zoxide neovim lua stylua
-# if system is ubuntu/debian, use asdf install stylua
-# install xclip in arch
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && cp env .env && sh ./installer.sh link # config git and pip mirror
+```
+
+```shell
+git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && cp env .env && sh ./installer.sh
 ```
 
@@ -72,6 +77,7 @@ cd ~/.dotfiles && cp env .env && sh ./installer.sh
 ```
 
 ### usecase
+
 ```shell
 # neovim
 # nvim will install lazy auto
