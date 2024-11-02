@@ -1,5 +1,6 @@
 # https://alacritty.org/config-alacritty.html
 
+[general]
 live_config_reload = true
 
 [window]
