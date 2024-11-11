@@ -48,12 +48,12 @@
 
 ```shell
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
-cd ~/.dotfiles && cp env .env && sh ./installer.sh link # config git and pip mirror
+cd ~/.dotfiles && cp env .env && bash ./installer.sh link # config git and pip mirror
 ```
 
 ```shell
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
-cd ~/.dotfiles && cp env .env && sh ./installer.sh
+cd ~/.dotfiles && cp env .env && bash ./installer.sh
 ```
 
 ### crontab setting
