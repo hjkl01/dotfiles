@@ -31,6 +31,12 @@ SoftLinks() {
   cp ~/.dotfiles/config/gitconfig ~/.gitconfig
   cp ~/.dotfiles/config/gitignore ~/.gitignore
 
+  if [ ! -f ~/.ssh/id_rsa ]; then
+    ssh-keygen -q -t rsa -b 4096 -C "" -f ~/.ssh/id_rsa -N ""
+  else
+    echo "SSH key pair already exists."
+  fi
+
   mkdir -p ~/.config/pip
   cp ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
 }
