@@ -207,7 +207,8 @@ M.telescope = {
   plugin = true,
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
+    ["<leader>ff"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Telescope find files" },
+    ["<leader>fg"] = { "<cmd> lua require('telescope.builtin').live_grep() <cr>", "Telescope live grep" },
     -- git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
     ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
