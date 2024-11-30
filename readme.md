@@ -42,7 +42,7 @@
 
 ### install
 
-- install fcitx5-rime alacritty zsh tmux fzf zoxide neovim lua stylua
+- install fcitx5-rime alacritty zsh tmux fzf zoxide neovim lua stylua ripgrep
 - install xclip in arch
 - if system is ubuntu/debian, use asdf install stylua
 
@@ -92,6 +92,15 @@ export XMODIFIERS="@im=fcitx"
 
 # MacOS reload Squirrel
 /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
+```
+
+### software recommand
+
+```shell
+tree
+htop
+lsof
+ncdu
 ```
 
 ### questions
