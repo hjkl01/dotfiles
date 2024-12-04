@@ -1,23 +1,5 @@
 #! /bin/sh
 
-# alias_if_program_exists() {
-#   local ret='0'
-#   command -v $1 >/dev/null 2>&1 || { local ret='1'; }
-#   # if type nvim > /dev/null 2>&1; then
-#   #   alias vi='nvim'
-#   # fi
-#
-#   # fail on non-zero return value
-#   if [ "$ret" -ne 0 ]; then
-#     return 1
-#   fi
-#
-#   alias $2=$1
-#   return 0
-# }
-#
-# alias_if_program_exists nvim vi
-
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
 # brew install glib
