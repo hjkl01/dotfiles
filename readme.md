@@ -101,6 +101,8 @@ tree
 htop
 lsof
 ncdu
+rsync
+proxychains-ng
 ```
 
 ### questions
