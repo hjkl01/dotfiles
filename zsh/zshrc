@@ -32,10 +32,19 @@ source $HOME/.oh-my-zsh/oh-my-zsh.sh
 export LC_ALL="zh_CN.UTF-8"
 setopt NO_HUP
 
-# alias tt='TERM=screen-256color-bce tmux -f ~/.config/tmux/tmux.conf'
-# alias tt='TERM=screen-256color-bce tmux -f ~/.dotfiles/config/tmux.conf'
-# if [ ! "$TMUX" ]; then
-#   tmux attach -t 0 || tt
-# fi
+if command -v zoxide &> /dev/null
+then
+    eval "$(zoxide init zsh)"
+else
+    echo "zoxide 命令不存在"
+fi
 
-eval "$(zoxide init zsh)"
+export PATH="$PATH:$HOME/.dotfiles/bin"
+
+# 如果显示错乱
+alias run_tmux='TERM=screen-256color-bce TERM=xterm-256color tmux -f ~/.dotfiles/config/tmux.conf -u'
+if [ -z "$TMUX" ]; then
+  tmux attach || run_tmux
+else
+  echo "already in tmux!"
+fi
