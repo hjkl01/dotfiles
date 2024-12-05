@@ -103,6 +103,7 @@ lsof
 ncdu
 rsync
 proxychains-ng
+lazygit
 ```
 
 ### questions
