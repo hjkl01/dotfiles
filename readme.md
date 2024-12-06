@@ -68,12 +68,14 @@ cd ~/.dotfiles && cp env .env && bash ./installer.sh
 
 ```shell
 # neovim
-# nvim will install lazy auto
-# nvim will install nvim-treesitter auto
-# install Mason plugin Command :
-Mason
-MasonUpdate
-MasonInstallAll
+
+# if can't install nvim-treesitter
+# Linux
+sed -i 's|https://github.com|https://ghp.ci/https://github.com|g' ~/.local/share/nvim/lazy/nvim-treesitter/lua/nvim-treesitter/parsers.lua
+# MacOS
+sed -i "" 's|https://github.com|https://ghp.ci/https://github.com|g' ~/.local/share/nvim/lazy/nvim-treesitter/lua/nvim-treesitter/parsers.lua
+# checkout before lazy sync
+git -C ~/.local/share/nvim/lazy/nvim-treesitter/ checkout .
 
 # tmux
 # Press prefix + I (capital i, as in Install) to fetch the plugin.
