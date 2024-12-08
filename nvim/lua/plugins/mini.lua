@@ -2,7 +2,7 @@ return {
 
   {
     "echasnovski/mini.nvim",
-    lazy = false,
+    -- lazy = false,
     config = function()
       require("mini.animate").setup()
 
