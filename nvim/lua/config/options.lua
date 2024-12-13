@@ -11,3 +11,6 @@ opt.autoread = true
 -- 补全增强
 opt.wildmenu = true
 opt.incsearch = true
+
+vim.o.linebreak = true
+vim.o.wrap = true
