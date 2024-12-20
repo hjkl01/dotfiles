@@ -64,6 +64,12 @@ return {
       bind_to_cwd = false,
       follow_current_file = { enabled = true },
       use_libuv_file_watcher = true,
+      filtered_items = {
+        visible = false, -- when true, they will just be displayed differently than normal items
+        hide_dotfiles = false,
+        hide_gitignored = false,
+        hide_hidden = false, -- only works on Windows for hidden files/directories
+      },
     },
 
     window = {
