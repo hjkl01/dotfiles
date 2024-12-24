@@ -173,7 +173,7 @@ plugins {
     }
 }
 
-default_mode "locked"
+// default_mode "locked"
 
 themes {
   catppuccin-latte {
