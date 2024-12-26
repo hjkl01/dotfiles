@@ -1,7 +1,12 @@
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+
 local opt = vim.opt
 local g = vim.g
 
 -------------------------------------- globals -----------------------------------------
+g.mapleader = " "
+
 g.toggle_theme_icon = "   "
 g.transparency = false
 
@@ -47,8 +52,6 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
-g.mapleader = " "
-
 -- 折叠
 opt.foldenable = false
 opt.foldmethod = "indent"
@@ -62,12 +65,3 @@ opt.incsearch = true
 opt.hidden = true
 opt.ignorecase = true
 opt.smartcase = true
-
--- disable some default providers
-for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
-  vim.g["loaded_" .. provider .. "_provider"] = 0
-end
-
--- add binaries installed by mason.nvim to path
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "data" .. "/mason/bin"
