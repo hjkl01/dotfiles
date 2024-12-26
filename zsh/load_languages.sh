@@ -77,10 +77,10 @@ export GOPROXY=https://goproxy.cn
 export GO111MODULE=auto
 export GOPATH=$HOME/dev/go
 export PATH="$PATH:$HOME/dev/go/bin"
-# alias gg='GO111MODULE=on go get'
-# alias gr='GO111MODULE=on go run'
 
 
 # rust config
-
 export PATH="$PATH:$HOME/.cargo/bin/"
+
+# neovim mason path
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
