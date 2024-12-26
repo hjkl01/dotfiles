@@ -22,16 +22,17 @@ return {
       },
       ensure_installed = {
         "lua-language-server",
-        -- "stylua",
+        "stylua",
         "ruff",
         "prettier",
         "fixjson",
-        -- "yamlfmt",
-        -- "shfmt",
+        "yamlfmt",
+        "shfmt",
         "python-lsp-server",
-        -- "bash-language-server",
+        "bash-language-server",
         "typescript-language-server",
         "gopls",
+        "sqlfluff",
       }, -- not an option from mason.nvim
     },
 
@@ -47,7 +48,6 @@ return {
       -- -- add binaries installed by mason.nvim to path
       -- local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
       -- vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "data" .. "/mason/bin"
-      
     end,
   }
 }
