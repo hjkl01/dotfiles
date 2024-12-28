@@ -40,14 +40,18 @@ return {
       require("mason").setup(opts)
 
       require("mason-lspconfig").setup({
+        -- https://github.com/williamboman/mason-lspconfig.nvim
         ensure_installed = {
           "bashls",
+          -- 'cmake',
+          -- 'clangd',
           "gopls",
           -- 'jsonls',
           "lua_ls",
           "ruff",
           "pylsp",
           -- "sqlls",
+          -- "taplo",
           "ts_ls",
           -- "yamlls",
         },
