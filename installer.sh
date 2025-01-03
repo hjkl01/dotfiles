@@ -72,11 +72,11 @@ Installasdf() {
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
   . $HOME/.asdf/asdf.sh
 
-  # install nodejs
-  asdf plugin add nodejs
-  # asdf list all nodejs
-  asdf install nodejs 20.17.1
-  asdf global nodejs 20.17.1
+  # # install nodejs
+  # asdf plugin add nodejs
+  # # asdf list all nodejs
+  # asdf install nodejs 20.17.1
+  # asdf global nodejs 20.17.1
 
   # asdf plugin add neovim
   # asdf list all neovim
@@ -89,9 +89,9 @@ InstallOthers() {
   if [[ $(uname) == 'Darwin' ]]; then
     echo "mac"
 
-    brew install alacritty tmux fzf zoxide lua
+    brew install tmux fzf zoxide lua
     # 安装鼠须管
-    brew install --cask squirrel
+    brew install --cask squirrel ghostty
     # 参考配置
     git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
     ln -s ~/.dotfiles/config/rime/*.yaml ~/Library/Rime
@@ -115,9 +115,13 @@ InstallOthers() {
     echo "Nonsupport system"
   fi
 
-  # 配置alacritty
-  mkdir -p ~/.config/alacritty/
-  ln -s ~/.dotfiles/config/alacritty.toml ~/.config/alacritty
+  # config ghostty
+  mkdir -p ~/.config/ghostty/
+  echo 'config-file = "../../.dotfiles/config/ghostty.config"' >>~/.config/ghostty/config
+
+  # # 配置alacritty
+  # mkdir -p ~/.config/alacritty/
+  # ln -s ~/.dotfiles/config/alacritty.toml ~/.config/alacritty
 
   # 配置tmux
   ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
