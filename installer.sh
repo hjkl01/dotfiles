@@ -108,8 +108,6 @@ InstallOthers() {
     curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o bin/chsrc
     chmod +x ./bin/chsrc
 
-    pacman --noconfirm -Syy
-
   # Windows NT操作系统
   else
     echo "Nonsupport system"
