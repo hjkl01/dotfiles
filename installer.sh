@@ -69,7 +69,7 @@ InstallNeovim() {
 }
 
 Installasdf() {
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.15.0
   . $HOME/.asdf/asdf.sh
 
   # # install nodejs
