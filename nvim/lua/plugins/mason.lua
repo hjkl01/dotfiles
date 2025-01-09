@@ -1,13 +1,26 @@
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+-- https://github.com/williamboman/mason-lspconfig.nvim
+local servers = {
+  "bashls",
+  -- 'cmake',
+  -- 'clangd',
+  -- "gopls",
+  -- 'jsonls',
+  "lua_ls",
+  "ruff",
+  "pylsp",
+  -- "sqlls",
+  -- "taplo",
+  "ts_ls",
+  -- "yamlls",
+}
+
 return {
   {
     "williamboman/mason.nvim",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
-    build = "MasonInstallAll",
     opts = {
-      -- install_root_dir = path.concat { vim.fn.stdpath "data", "mason" },
-      -- PATH = "skip",
-      -- PATH = "append",
       PATH = "prepend",
       max_concurrent_installers = 10,
       github = {
@@ -20,41 +33,13 @@ return {
           package_uninstalled = "✗",
         },
       },
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "ruff",
-        "prettier",
-        "fixjson",
-        "yamlfmt",
-        "shfmt",
-        "python-lsp-server",
-        "bash-language-server",
-        "typescript-language-server",
-        "gopls",
-        "sqlfluff",
-      },
     },
 
     config = function(_, opts)
       require("mason").setup(opts)
 
       require("mason-lspconfig").setup({
-        -- https://github.com/williamboman/mason-lspconfig.nvim
-        ensure_installed = {
-          "bashls",
-          -- 'cmake',
-          -- 'clangd',
-          "gopls",
-          -- 'jsonls',
-          "lua_ls",
-          "ruff",
-          "pylsp",
-          -- "sqlls",
-          -- "taplo",
-          "ts_ls",
-          -- "yamlls",
-        },
+        ensure_installed = servers,
         automatic_installation = true,
       })
 
@@ -63,5 +48,39 @@ return {
         vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
       end, {})
     end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    config = function()
+      local on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = true
+        client.server_capabilities.documentRangeFormattingProvider = true
+      end
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      local lspconfig = require('lspconfig')
+
+      for _, lsp in ipairs(servers) do
+        lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
+      end
+
+      require('lspconfig').ruff.setup {
+        init_options = {
+          settings = {
+            lineLength = 120
+          }
+        }
+      }
+
+      local LspFormat = function()
+        vim.lsp.buf.format { async = true }
+      end
+      vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
+      -- vim.api.nvim_set_keymap("n", "<space>f", "<cmd> LspFormat w <CR>", { silent = true })
+
+      vim.api.nvim_command "autocmd BufWritePre * lua vim.lsp.buf.format()"
+    end
   }
 }
