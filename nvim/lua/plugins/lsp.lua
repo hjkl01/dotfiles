@@ -17,6 +17,14 @@ return {
         lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
       end
 
+      require('lspconfig').ruff.setup {
+        init_options = {
+          settings = {
+            lineLength = 120
+          }
+        }
+      }
+
       local LspFormat = function()
         vim.lsp.buf.format { async = true }
       end
