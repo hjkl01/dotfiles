@@ -1,5 +1,11 @@
 ## 我的配置
 
+### try in docker
+
+```
+docker run -ti --rm -v $(pwd):/root formattedd/dotfiles zsh
+```
+
 <details><summary> ~/.gitconfig </summary>
 
 ```shell
