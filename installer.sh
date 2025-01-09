@@ -122,7 +122,7 @@ InstallOthers() {
   # ln -s ~/.dotfiles/config/alacritty.toml ~/.config/alacritty
 
   # 配置tmux
-  ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
+  # ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
   # mkdir -p ~/.config/tmux/
   # ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
 
