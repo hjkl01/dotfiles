@@ -26,6 +26,7 @@ RUN nvim --headless \
     -c 'qa!'
 
 # RUN nvim --headless -c 'lua print(vim.inspect(require("mason-registry").get_installed_packages()))' -c 'qa!'
-WORKDIR /root/
+RUN mkdir /projects
+WORKDIR /projects/
 
 CMD ['zsh']

@@ -3,7 +3,7 @@
 ### try in docker
 
 ```
-docker run -ti --rm -v $(pwd):/root formattedd/dotfiles zsh
+docker run -ti --rm -v $(pwd):/projects formattedd/dotfiles zsh
 ```
 
 <details><summary> ~/.gitconfig </summary>
