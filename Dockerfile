@@ -23,6 +23,7 @@ RUN nvim --headless \
     -c "MasonInstall lua-language-server" \
     -c "MasonInstall ruff" \
     -c "MasonInstall typescript-language-server" \
+    -c "MasonInstall yaml-language-server" \
     -c 'qa!'
 
 # RUN nvim --headless -c 'lua print(vim.inspect(require("mason-registry").get_installed_packages()))' -c 'qa!'

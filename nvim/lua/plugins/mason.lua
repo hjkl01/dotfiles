@@ -12,7 +12,7 @@ local servers = {
   -- "sqlls",
   -- "taplo",
   "ts_ls",
-  -- "yamlls",
+  "yamlls",
 }
 
 return {
