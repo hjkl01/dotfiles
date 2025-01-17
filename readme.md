@@ -6,26 +6,37 @@
 docker run -ti --rm -v $(pwd):/projects formattedd/dotfiles zsh
 ```
 
-### install
+### Before Install
+- install fcitx5-rime alacritty zsh tmux fzf zoxide neovim lua stylua ripgrep
+- install xclip in arch
+- if system is ubuntu/debian, use asdf install stylua
 
+### Install Auto
+
+```shell
+bash <(curl -s https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh) link
+# bash <(curl -s https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh)
+chsh -s zsh
+```
+
+### Install Manual 
 - copy gitconfig
 
 ```shell
 [url "https://gh.hjkl01.cn/proxy/https://github.com"]
 	insteadOf = https://github.com
 ```
-- install fcitx5-rime alacritty zsh tmux fzf zoxide neovim lua stylua ripgrep
-- install xclip in arch
-- if system is ubuntu/debian, use asdf install stylua
 
 ```shell
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && cp env .env && bash ./installer.sh link # config git and pip mirror
+chsh -s zsh
 ```
 
 ```shell
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 cd ~/.dotfiles && cp env .env && bash ./installer.sh
+chsh -s zsh
 ```
 
 ### crontab setting

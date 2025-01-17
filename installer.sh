@@ -4,27 +4,28 @@ timestamp=$(date +%Y%m%d%H%M%S)
 echo $timestamp
 
 beforeInstall() {
+  mkdir -p ~/.local/
+  mkdir -p ~/.config/
+
   if [ -f ~/.gitconfig ]; then
     echo "$HOME/.gitconfig exists"
-    mv ~/.gitconfig ~/.gitconfig_$timestamp
+    mv ~/.gitconfig ~/.local/gitconfig_$timestamp
   fi
 
   if [ -f ~/.zshrc ]; then
     echo "$HOME/.zshrc exists"
-    mv ~/.zshrc ~/.zshrc_$timestamp
+    mv ~/.zshrc ~/.local/zshrc_$timestamp
   fi
 
   if [ -d ~/.oh-my-zsh ]; then
     echo "$HOME/.oh-my-zsh exists"
-    mv -f ~/.oh-my-zsh ~/.oh-my-zsh_$timestamp
+    mv -f ~/.oh-my-zsh ~/.local/oh-my-zsh_$timestamp
   fi
 
   if [ -d ~/.config/nvim ]; then
     echo "$HOME/.config/nvim exists"
-    mv -f ~/.config/nvim ~/.config/nvim_$timestamp
+    mv -f ~/.config/nvim ~/.local/config/nvim_$timestamp
   fi
-
-  mkdir -p ~/.config/
 }
 
 SoftLinks() {
@@ -47,12 +48,6 @@ InstallOhMyZsh() {
   echo ": 1700000000:0;ps aux | grep ssh" >>~/.zsh_history
 
   git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-
-  if [[ $SHELL == *"zsh"* ]]; then
-    echo "shell is zsh now"
-  else
-    chsh -s $(which zsh)
-  fi
 
   git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
   git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
@@ -104,9 +99,9 @@ InstallOthers() {
     echo "Linux"
 
     # download chsrc
-    mkdir bin
-    curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o bin/chsrc
-    chmod +x ./bin/chsrc
+    mkdir ~/.dotfiles/bin
+    curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o ~/.dotfiles/bin/chsrc
+    chmod +x ~/.dotfiles/bin/chsrc
 
   # Windows NT操作系统
   else
@@ -157,6 +152,16 @@ execute_function beforeInstall
 
 if [ "$1" = "link" ]; then
   echo "link in args, run soft link"
+  echo '[url "https://gh.hjkl01.cn/proxy/https://github.com"]
+	  insteadOf = https://github.com' >> ~/.gitconfig
+  cat ~/.gitconfig
+
+  if [ ! -d ~/.dotfiles ]; then
+    echo "clone dotfiles..."
+    git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles ~/.dotfiles
+    cp ~/.dotfiles/env ~/.dotfiles/.env
+  fi
+
   SoftLinks
 fi
 
