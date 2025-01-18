@@ -14,8 +14,8 @@ docker run -ti --rm -v $(pwd):/projects formattedd/dotfiles zsh
 ### Install Auto
 
 ```shell
-bash <(curl -s https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh) link
-# bash <(curl -s https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh)
+bash <(https://gh.hjkl01.cn/proxy/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh) link
+# bash <(https://gh.hjkl01.cn/proxy/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh)
 chsh -s zsh
 ```
 
