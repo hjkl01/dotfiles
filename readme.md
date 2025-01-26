@@ -50,16 +50,6 @@ chsh -s zsh
 ### usecase
 
 ```shell
-# neovim
-
-# if can't install nvim-treesitter
-# Linux
-sed -i 's|https://github.com|https://gh.hjkl01.cn/proxy/https://github.com|g' ~/.local/share/nvim/lazy/nvim-treesitter/lua/nvim-treesitter/parsers.lua
-# MacOS
-sed -i "" 's|https://github.com|https://gh.hjkl01.cn/proxy/https://github.com|g' ~/.local/share/nvim/lazy/nvim-treesitter/lua/nvim-treesitter/parsers.lua
-# checkout before lazy sync
-git -C ~/.local/share/nvim/lazy/nvim-treesitter/ checkout .
-
 # tmux
 # Press prefix + I (capital i, as in Install) to fetch the plugin.
 prefix + I
@@ -89,6 +79,8 @@ ncdu
 rsync
 proxychains-ng
 lazygit
+https://github.com/sxyazi/yazi
+https://github.com/yorukot/superfile
 ```
 
 ### questions
