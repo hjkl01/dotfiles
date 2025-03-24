@@ -38,9 +38,8 @@ RUN pacman --noconfirm -Syyu && \
 
 # Clone dotfiles and set up environment in a single layer
 RUN git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles /root/.dotfiles && \
-    cd /root/.dotfiles && \
-    cp env .env && \
-    bash ./installer.sh
+    cp /root/.dotfiles/env /root/.dotfiles/.env && \
+    bash /root/.dotfiles/installer.sh
     
 
 # Install Neovim plugins and language servers in a single layer
