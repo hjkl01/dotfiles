@@ -1,174 +1,135 @@
 #!/bin/bash
 
+set -euo pipefail
+
 timestamp=$(date +%Y%m%d%H%M%S)
-echo $timestamp
+BACKUP_DIR="$HOME/.local/dotfiles_backup_${timestamp}"
+CONFIG_DIR="$HOME/.config"
+
+mkdir -p "$BACKUP_DIR" "$CONFIG_DIR"
+
+backup_if_exists() {
+    local file="$1"
+    if [ -e "$file" ]; then
+        echo "Backing up $file"
+        mv "$file" "$BACKUP_DIR/$(basename "$file")"
+    fi
+}
 
 beforeInstall() {
-  mkdir -p ~/.local/
-  mkdir -p ~/.config/
-
-  if [ -f ~/.gitconfig ]; then
-    echo "$HOME/.gitconfig exists"
-    mv ~/.gitconfig ~/.local/gitconfig_$timestamp
-  fi
-
-  if [ -f ~/.zshrc ]; then
-    echo "$HOME/.zshrc exists"
-    mv ~/.zshrc ~/.local/zshrc_$timestamp
-  fi
-
-  if [ -d ~/.oh-my-zsh ]; then
-    echo "$HOME/.oh-my-zsh exists"
-    mv -f ~/.oh-my-zsh ~/.local/oh-my-zsh_$timestamp
-  fi
-
-  if [ -d ~/.config/nvim ]; then
-    echo "$HOME/.config/nvim exists"
-    mv -f ~/.config/nvim ~/.local/config/nvim_$timestamp
-  fi
+    backup_if_exists "$HOME/.gitconfig"
+    backup_if_exists "$HOME/.zshrc"
+    backup_if_exists "$HOME/.oh-my-zsh"
+    backup_if_exists "$CONFIG_DIR/nvim"
 }
 
 SoftLinks() {
-  cp ~/.dotfiles/config/gitconfig ~/.gitconfig
-  cp ~/.dotfiles/config/gitignore ~/.gitignore
+    ln -sf "$HOME/.dotfiles/config/gitconfig" "$HOME/.gitconfig"
+    ln -sf "$HOME/.dotfiles/config/gitignore" "$HOME/.gitignore"
 
-  if [ ! -f ~/.ssh/id_rsa ]; then
-    ssh-keygen -q -t rsa -b 4096 -C "" -f ~/.ssh/id_rsa -N ""
-  else
-    echo "SSH key pair already exists."
-  fi
+    if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+        mkdir -p "$HOME/.ssh"
+        ssh-keygen -q -t rsa -b 4096 -C "" -f "$HOME/.ssh/id_rsa" -N ""
+    fi
 
-  mkdir -p ~/.config/pip
-  cp ~/.dotfiles/config/pip.conf ~/.config/pip/pip.conf
+    mkdir -p "$CONFIG_DIR/pip"
+    ln -sf "$HOME/.dotfiles/config/pip.conf" "$CONFIG_DIR/pip/pip.conf"
 }
 
 InstallOhMyZsh() {
-  # ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
-  cp ~/.dotfiles/zsh/zshrc ~/.zshrc
-  echo ": 1700000000:0;ps aux | grep ssh" >>~/.zsh_history
+    ln -sf "$HOME/.dotfiles/zsh/zshrc" "$HOME/.zshrc"
+    echo ": 1700000000:0;ps aux | grep ssh" >> "$HOME/.zsh_history"
 
-  git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+        git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+    fi
 
-  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
-  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-  ln -s ~/.dotfiles/zsh/Schminitz.zsh-theme ~/.oh-my-zsh/custom/themes/Schminitz.zsh-theme
+    for plugin in "zsh-autosuggestions" "zsh-syntax-highlighting"; do
+        plugin_dir="$HOME/.oh-my-zsh/plugins/$plugin"
+        if [ ! -d "$plugin_dir" ]; then
+            git clone --single-branch --depth 1 "https://github.com/zsh-users/$plugin" "$plugin_dir"
+        else
+            ( cd "$plugin_dir" && git pull )
+        fi
+    done
+
+    ln -sf "$HOME/.dotfiles/zsh/Schminitz.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/Schminitz.zsh-theme"
 }
 
 InstallNeovim() {
-  ln -s ~/.dotfiles/nvim ~/.config/nvim
-  ln -s ~/.dotfiles/config/pycodestyle ~/.config/pycodestyle
+    ln -sf "$HOME/.dotfiles/nvim" "$CONFIG_DIR/nvim"
+    ln -sf "$HOME/.dotfiles/config/pycodestyle" "$CONFIG_DIR/pycodestyle"
 
-  # install python env
-  python3 -m venv ~/.venv/py3
-  ~/.venv/py3/bin/pip install better_exceptions neovim black ruff
+    if [ ! -d "$HOME/.venv/py3" ]; then
+        python3 -m venv "$HOME/.venv/py3"
+        "$HOME/.venv/py3/bin/pip" install --upgrade pip
+        "$HOME/.venv/py3/bin/pip" install better_exceptions neovim black ruff
+    fi
 }
 
 Installasdf() {
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.15.0
-  . $HOME/.asdf/asdf.sh
-
-  # # install nodejs
-  # asdf plugin add nodejs
-  # # asdf list all nodejs
-  # asdf install nodejs 20.17.1
-  # asdf global nodejs 20.17.1
-
-  # asdf plugin add neovim
-  # asdf list all neovim
-  # asdf install neovim latest
-  # asdf global neovim latest
+    if [ ! -d "$HOME/.asdf" ]; then
+        git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch v0.15.0
+    fi
+    . "$HOME/.asdf/asdf.sh"
 }
 
 InstallOthers() {
-  # Mac OS X 操作系统
-  if [[ $(uname) == 'Darwin' ]]; then
-    echo "mac"
+    if [[ $(uname) == 'Darwin' ]]; then
+        if ! command -v brew &> /dev/null; then
+            echo "Installing Homebrew..."
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        fi
+        brew install tmux fzf zoxide lua
+        brew install --cask squirrel ghostty
 
-    brew install tmux fzf zoxide lua
-    # 安装鼠须管
-    brew install --cask squirrel ghostty
-    # 参考配置
-    git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice ~/Library/Rime
-    ln -s ~/.dotfiles/config/rime/*.yaml ~/Library/Rime
-    # 重新部署
-    # /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
+        if [ ! -d "$HOME/Library/Rime" ]; then
+            git clone --single-branch --depth=1 https://github.com/iDvel/rime-ice "$HOME/Library/Rime"
+            ln -sf "$HOME/.dotfiles/config/rime/"*.yaml "$HOME/Library/Rime/"
+        fi
 
-  # GNU/Linux操作系统
-  # 需要重启
-  elif [[ $(uname) == 'Linux' ]]; then
-    echo "Linux"
+    elif [[ $(uname) == 'Linux' ]]; then
+        mkdir -p "$HOME/.dotfiles/bin"
+        if [ ! -f "$HOME/.dotfiles/bin/chsrc" ]; then
+            curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o "$HOME/.dotfiles/bin/chsrc"
+            chmod +x "$HOME/.dotfiles/bin/chsrc"
+        fi
+    fi
 
-    # download chsrc
-    mkdir ~/.dotfiles/bin
-    curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o ~/.dotfiles/bin/chsrc
-    chmod +x ~/.dotfiles/bin/chsrc
+    mkdir -p "$CONFIG_DIR/ghostty"
+    echo 'config-file = "../../.dotfiles/config/ghostty.config"' > "$CONFIG_DIR/ghostty/config"
 
-  # Windows NT操作系统
-  else
-    echo "Nonsupport system"
-  fi
-
-  # config ghostty
-  mkdir -p ~/.config/ghostty/
-  echo 'config-file = "../../.dotfiles/config/ghostty.config"' >>~/.config/ghostty/config
-
-  # # 配置alacritty
-  # mkdir -p ~/.config/alacritty/
-  # ln -s ~/.dotfiles/config/alacritty.toml ~/.config/alacritty
-
-  # 配置tmux
-  # ln -s ~/.dotfiles/config/tmux.conf ~/.tmux.conf
-  # mkdir -p ~/.config/tmux/
-  # ln -s ~/.dotfiles/config/tmux.conf ~/.config/tmux/tmux.conf
-
-  mkdir -p ~/.tmux/plugins
-  git clone --single-branch --depth=1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  git clone --single-branch --depth=1 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
-  git clone --single-branch --depth=1 https://github.com/tmux-plugins/tmux-cpu ~/.tmux/plugins/tmux-cpu
-  # git clone --single-branch --depth=1 https://github.com/tmux-plugins/tmux-battery ~/.tmux/plugins/tmux-battery
-
-  # 配置zellij
-  # zellij setup --dump-config > ~/.config/zellij/config.kdl
-  # mkdir -p ~/.config/zellij/
-  # ln -s ~/.dotfiles/config/zellij.kdl ~/.config/zellij/config.kdl
-  # ln -s ~/.dotfiles/config/layouts ~/.config/zellij/layouts
+    mkdir -p "$HOME/.tmux/plugins"
+    for plugin in "tpm" "tmux" "tmux-cpu"; do
+        plugin_dir="$HOME/.tmux/plugins/$plugin"
+        if [ ! -d "$plugin_dir" ]; then
+            git clone --single-branch --depth=1 "https://github.com/tmux-plugins/$plugin" "$plugin_dir"
+        fi
+    done
 }
 
-# echo $@
+main() {
+    beforeInstall
 
-# 定义一个函数，用于执行其他函数并捕获错误
-execute_function() {
-  local func_name=$1
-  shift
+    if [ "${1:-}" = "link" ]; then
+        echo "Setting up GitHub proxy..."
+        echo '[url "https://gh.hjkl01.cn/proxy/https://github.com"]
+        insteadOf = https://github.com' >> "$HOME/.gitconfig"
 
-  # 尝试执行函数
-  if ! "$func_name" "$@"; then
-    # 如果函数执行失败，输出错误信息并继续执行
-    echo "Error executing function: $func_name"
-  fi
+        if [ ! -d "$HOME/.dotfiles" ]; then
+            git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles "$HOME/.dotfiles"
+            cp "$HOME/.dotfiles/env" "$HOME/.dotfiles/.env"
+        fi
+
+        SoftLinks
+    fi
+
+    InstallOhMyZsh
+    InstallNeovim
+    Installasdf
+    InstallOthers
+
+    echo "Installation complete! Please logout and relogin to apply changes."
 }
 
-execute_function beforeInstall
-
-if [ "$1" = "link" ]; then
-  echo "link in args, run soft link"
-  echo '[url "https://gh.hjkl01.cn/proxy/https://github.com"]
-	  insteadOf = https://github.com' >> ~/.gitconfig
-  cat ~/.gitconfig
-
-  if [ ! -d ~/.dotfiles ]; then
-    echo "clone dotfiles..."
-    git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles ~/.dotfiles
-    cp ~/.dotfiles/env ~/.dotfiles/.env
-  fi
-
-  SoftLinks
-fi
-
-execute_function InstallOhMyZsh
-execute_function InstallNeovim
-execute_function Installasdf
-execute_function InstallOthers
-
-echo "edit ~/.oh-my-zsh/themes/Schminitz.zsh-themes to update themes"
-echo "finish ! logout and relogin"
+main "$@"
