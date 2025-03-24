@@ -40,9 +40,8 @@ RUN pacman --noconfirm -Syyu && \
 RUN git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles /root/.dotfiles && \
     cd /root/.dotfiles && \
     cp env .env && \
-    sed -i 's|execute_function Installasdf||g' installer.sh && \
-    bash ./installer.sh && \
-    echo 'export ZSH_ENV="docker container "' >> /root/.dotfiles/.env
+    bash ./installer.sh
+    
 
 # Install Neovim plugins and language servers in a single layer
 RUN nvim --headless -c 'silent Mason' -c 'sleep 5' -c 'qa!' && \
