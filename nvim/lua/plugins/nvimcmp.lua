@@ -112,8 +112,6 @@ return {
           CmpItemKindTypeParameter = { fg = "#D8EEEB", bg = "#58B5A8" },
         },
         mapping = {
-          ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-          ["<Tab>"] = cmp.mapping.select_next_item(),
           ["<C-u>"] = cmp.mapping.scroll_docs(-4),
           ["<C-d>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
