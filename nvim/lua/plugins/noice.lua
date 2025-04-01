@@ -3,6 +3,28 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
+      views = {
+        mini = {
+          position = {
+            row = -1,
+            col = -1,
+          },
+          size = "auto",
+          win_options = {
+            winhighlight = {
+              Normal = "NormalFloat",      -- 设置背景颜色
+              FloatBorder = "FloatBorder", -- 设置边框颜色
+            },
+          },
+          border = {
+            style = "rounded", -- 设置边框样式
+          },
+        },
+      },
+      -- messages = {
+      --   view = "mini",
+      -- },
+
       cmdline = {
         enabled = true,         -- enables the Noice cmdline UI
         view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
@@ -26,8 +48,12 @@ return {
       },
       messages = {
         enabled = true,
+        view = "mini",
       },
       lsp = {
+        process = {
+          enabled = false, -- enables the Noice LSP process UI
+        },
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
