@@ -31,27 +31,6 @@ map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
--- stylua: ignore start
-
--- floating terminal
-map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
-map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
-map("n", "<c-/>", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
-map("n", "<c-_>", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "which_key_ignore" })
-
--- native snippets. only needed on < 0.11, as 0.11 creates these by default
-if vim.fn.has("nvim-0.11") == 0 then
-  map("s", "<Tab>", function()
-    return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
-  end, { expr = true, desc = "Jump Next" })
-  map({ "i", "s" }, "<S-Tab>", function()
-    return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
-  end, { expr = true, desc = "Jump Previous" })
-end
-
-map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
-
--- map("n", "ff", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
 
 map("n", "ff", function()
     local fileType = vim.o.filetype
