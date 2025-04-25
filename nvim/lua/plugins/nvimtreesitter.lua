@@ -28,6 +28,10 @@ return {
           use_languagetree = true,
         },
         indent = { enable = true },
+        folding = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        }
       })
     end,
   }
