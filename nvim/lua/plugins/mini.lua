@@ -3,7 +3,7 @@ return {
     "echasnovski/mini.nvim",
     lazy = false,
     config = function()
-      require("mini.animate").setup()
+      -- require("mini.animate").setup()
 
       require("mini.comment").setup {
         mappings = {
@@ -62,6 +62,8 @@ return {
       })
 
       require("mini.cursorword").setup()
+
+      require("mini.files").setup()
 
       require("mini.fuzzy").setup()
       -- nvim-telescope/telescope.nvim
