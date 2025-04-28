@@ -86,11 +86,11 @@ map('n', "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "git commits
 map('n', "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "git status" })
 
 -- WhichKey
-map('n', "<leader>wK", function() vim.cmd "WhichKey" end, { desc = "which-key all keymaps" })
-map('n', "<leader>wk", function()
-  local input = vim.fn.input "WhichKey: "
-  vim.cmd("WhichKey " .. input)
-end, { desc = "which-key query lookup" })
+-- map('n', "<leader>wK", function() vim.cmd "WhichKey" end, { desc = "which-key all keymaps" })
+-- map('n', "<leader>wk", function()
+--   local input = vim.fn.input "WhichKey: "
+--   vim.cmd("WhichKey " .. input)
+-- end, { desc = "which-key query lookup" })
 
 -- FzfLua
 map('n', 'gd', '<cmd>FzfLua lsp_definitions     jump_to_single_result=true ignore_current_line=true<cr>',
