@@ -57,7 +57,7 @@ return {
 
       require("mini.cursorword").setup()
 
-      require("mini.files").setup()
+      -- require("mini.files").setup()
 
       require('mini.icons').setup()
 

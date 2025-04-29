@@ -67,8 +67,8 @@ map("n", " r", function()
 )
 
 -- neo-tree
-vim.keymap.set('n', '<leader>e', function() require("mini.files").open() end, { desc = "Open Mini Files" })
--- map("n", "<leader>e", "<cmd> Neotree <CR>", { desc = "Open Neo-tree", remap = true })
+-- vim.keymap.set('n', '<leader>e', function() require("mini.files").open() end, { desc = "Open Mini Files" })
+map("n", "<leader>e", "<cmd> Neotree <CR>", { desc = "Open Neo-tree", remap = true })
 
 -- translate
 map({ 'n', 'v' }, 'tt', "<cmd> TranslateW <CR>", { desc = "translate window", remap = true })
