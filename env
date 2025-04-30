@@ -24,3 +24,6 @@ export VULTR_API_KEY=''
 
 # backups
 export OPEN_API_KEY=''
+
+# huggingface
+export HF_ENDPOINT=https://hf-mirror.com
