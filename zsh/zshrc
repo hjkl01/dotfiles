@@ -26,6 +26,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   web-search
+  zsh-you-should-use
 )
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
