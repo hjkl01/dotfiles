@@ -44,7 +44,7 @@ InstallOhMyZsh() {
     git clone --single-branch --depth 1 https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
   fi
 
-  for plugin in "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-you-should-use.git"; do
+  for plugin in "zsh-autosuggestions" "zsh-syntax-highlighting"; do
     plugin_dir="$HOME/.oh-my-zsh/custom/plugins/$plugin"
     if [ ! -d "$plugin_dir" ]; then
       git clone --single-branch --depth 1 "https://github.com/zsh-users/$plugin" "$plugin_dir"
@@ -52,6 +52,7 @@ InstallOhMyZsh() {
       (cd "$plugin_dir" && git pull)
     fi
   done
+  git clone --single-branch --depth 1 https://github.com/MichaelAquilina/zsh-you-should-use $HOME/.oh-my-zsh/custom/plugins/zsh-you-should-use
 
   ln -sf "$HOME/.dotfiles/zsh/Schminitz.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/Schminitz.zsh-theme"
 }
