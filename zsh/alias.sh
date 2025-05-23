@@ -3,8 +3,9 @@
 # brew install glib
 alias rr="gio trash"
 
-[[ -x $(command -v eza) ]] && alias sl=eza
+[[ -x $(command -v eza) ]] && alias ls=eza
 [[ -x $(command -v nvim) ]] && alias vi=nvim
+
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
 # curl cht.sh/rsync
 
@@ -31,9 +32,6 @@ alias getpass='openssl rand -hex 20'
 alias gip='curl -s ipinfo.io'
 alias gip6='curl -6 https://ifconfig.co/ip'
 alias wt='curl wttr.in/nanjing'
-
-# vultr
-alias vc='vultr-cli'
 
 www() {
   python -m http.server "$1" -d "$2"
