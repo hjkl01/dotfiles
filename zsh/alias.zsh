@@ -10,6 +10,8 @@ alias rr="gio trash"
 [[ -x $(command -v fd) ]] && alias find=fd
 [[ -x $(command -v rg) ]] && alias grep=rg
 
+[[ -x $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
+
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
 # curl cht.sh/rsync
 
