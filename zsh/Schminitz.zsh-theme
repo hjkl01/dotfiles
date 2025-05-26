@@ -28,10 +28,11 @@ function directory() {
 }
 
 # git
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[cyan]%}[";
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} ";
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg_no_bold[red]%}✖%{$fg_no_bold[cyan]%}]";
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[cyan]%}]";
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[cyan]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}✘"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[red]%}➦"
 
 function update_git_status() {
     GIT_STATUS=$(_omz_git_prompt_info);
