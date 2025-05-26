@@ -36,4 +36,4 @@ export LC_ALL="zh_CN.UTF-8"
 setopt NO_HUP
 
 alias run_tmux='tmux -f ~/.dotfiles/config/tmux.conf -u'
-[[ -x $(command -v tmux) ]] && tmux attach || run_tmux
+{ [ -z "$TMUX" ] && { tmux attach || run_tmux }} || echo "already in tmux !" >&2
