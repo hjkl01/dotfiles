@@ -1,33 +1,14 @@
-# ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[cyan]%}"
-# ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}✘"
-# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔"
-# ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[red]%}➦"
-
-# function prompt_char {
-# 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
-# }
-#
 function hostname() {
 	if [[ $(uname) == 'Darwin' ]]; then
     echo "🍎 "
 	elif [[ $(uname) == 'Linux' ]]; then
-    echo "🖥️  $HOST "
+    echo "🖥️  %{$bg[red]%}$HOST%{$reset_color%}"
 	else
 		echo "Nonsupport system"
 	fi
 }
-#
 # # echo "🀄🀅 🀆 💻 😈 🤓   $HOST  "
 # # https://emojiterra.com/
-#
-# # show git info
-# # %{$reset_color%}$(git_prompt_info)%{$reset_color%}$(git_prompt_ahead)
-#
-# PROMPT='%(?, ,%{$fg[red]%}FAIL%{$reset_color%})
-# $ZSH_ENV %{$fg[green]%} $(hostname) %{$fg[yellow]%}[%~]  %{$reset_color%}$(git_prompt_info) %{$fg[green]%}[%D %*]%{$reset_color%}
-# %_ $(prompt_char) '
-
 
 # time
 function real_time() {
@@ -37,42 +18,14 @@ function real_time() {
     echo "${color}${time}${color_reset}";
 }
 
-
-# login_info
-function login_info() {
-    local color="%{$fg_no_bold[cyan]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
-    local ip
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        # Linux
-        ip="$(ifconfig | grep ^eth1 -A 1 | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1)";
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        # macOS
-        ip="$(ifconfig | grep ^en1 -A 4 | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1)";
-    elif [[ "$OSTYPE" == "cygwin" ]]; then
-        # POSIX compatibility layer and Linux environment emulation for Windows
-    elif [[ "$OSTYPE" == "msys" ]]; then
-        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
-    elif [[ "$OSTYPE" == "win32" ]]; then
-        # I'm not sure this can happen.
-    elif [[ "$OSTYPE" == "freebsd"* ]]; then
-        # ...
-    else
-        # Unknown.
-    fi
-    local color_reset="%{$reset_color%}";
-    echo "${color}[%n@${ip}]${color_reset}";
-}
-
-
 # directory
 function directory() {
     local color="%{$fg[yellow]%}";
-    # REF: https://stackoverflow.com/questions/25944006/bash-current-working-directory-with-replacing-path-to-home-folder
+    # local color="%{$fg[yellow]%}%{$bg[cyan]%}";
     local directory="${PWD/#$HOME/~}";
     local color_reset="%{$reset_color%}";
     echo "${color}[${directory}]${color_reset}";
 }
-
 
 # git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[cyan]%}[";
@@ -225,7 +178,7 @@ TRAPALRM() { # cspell:disable-line
 
 
 # prompt
-# PROMPT='$(real_time) $(login_info) $(directory) $(git_status)$(command_status) ';
+# PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
 PROMPT='$(hostname) $(directory) $(git_status) $(real_time) $(command_status) ';
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes
