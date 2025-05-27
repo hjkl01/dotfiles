@@ -191,7 +191,7 @@ return {
         end,
       }
 
-      ins_left {
+      ins_right {
         -- Lsp server name .
         function()
           local msg = "No Active Lsp"
