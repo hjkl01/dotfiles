@@ -6,7 +6,7 @@
 
 function hostname() {
 	if [[ $(uname) == 'Darwin' ]]; then
-    echo "🍎 "
+    echo "🍎 %K{blue}%F{black}$HOST%k%F{blue}"
 	elif [[ $(uname) == 'Linux' ]]; then
     echo "🖥️ %K{blue}%F{black}$HOST%k%F{blue}"
 	else
