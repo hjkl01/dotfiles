@@ -1,15 +1,18 @@
+# echo "🀄🀅 🀆 💻 😈 🤓   $HOST  "
+# https://emojiterra.com/
+
+# for i in {0..255}; do print -P "%F{$i}颜色 $i %f"; done
+# for i in {0..16}; do print -P "%F{$i}颜色 $i %f"; done
+
 function hostname() {
 	if [[ $(uname) == 'Darwin' ]]; then
     echo "🍎 "
 	elif [[ $(uname) == 'Linux' ]]; then
-    echo "🖥️  %{$bg[red]%}$HOST%{$reset_color%}"
+    echo "🖥️ %K{blue}%F{black}$HOST%k%F{blue}"
 	else
 		echo "Nonsupport system"
 	fi
 }
-# # echo "🀄🀅 🀆 💻 😈 🤓   $HOST  "
-# # https://emojiterra.com/
-
 # time
 function real_time() {
     local color="%{$fg[green]%}";
