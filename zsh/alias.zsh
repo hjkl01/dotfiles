@@ -6,6 +6,7 @@ alias rr="gio trash"
 [[ -x $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
 
 [[ -x $(command -v eza) ]] && alias ls=eza
+[[ -x $(command -v bat) ]] && alias cat=bat
 [[ -x $(command -v nvim) ]] && alias vi=nvim
 [[ -x $(command -v fd) ]] && alias find=fd
 [[ -x $(command -v rg) ]] && alias grep=rg
