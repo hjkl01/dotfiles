@@ -7,6 +7,11 @@ ENV TERM=xterm-256color
 # Update system and install packages in a single layer to reduce image size
 RUN pacman --noconfirm -Syyu && \
     pacman --noconfirm -S \
+    bc \
+    eza \
+    bat \
+    fd \
+    ripgrep \
     gcc \
     openssh \
     git \
@@ -25,7 +30,6 @@ RUN pacman --noconfirm -Syyu && \
     neovim \
     lua \
     stylua \
-    ripgrep \
     python3 \
     nodejs \
     npm \
@@ -57,5 +61,5 @@ RUN nvim --headless -c 'silent Mason' -c 'sleep 5' -c 'qa!' && \
 WORKDIR /projects
 
 # Set default shell to zsh
-SHELL ["/usr/bin/zsh", "-c"]
-ENTRYPOINT ["/usr/bin/zsh"]
+SHELL ["/usr/sbin/zsh", "-c"]
+ENTRYPOINT ["/usr/sbin/zsh"]
