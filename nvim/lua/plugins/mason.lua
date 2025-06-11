@@ -19,7 +19,7 @@ return {
   {
     "williamboman/mason.nvim",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
-    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     opts = {
       PATH = "prepend",
       max_concurrent_installers = 10,
@@ -42,11 +42,6 @@ return {
         ensure_installed = servers,
         automatic_installation = true,
       })
-
-      -- custom cmd to install all mason binaries listed
-      vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
-      end, {})
     end,
   },
 
