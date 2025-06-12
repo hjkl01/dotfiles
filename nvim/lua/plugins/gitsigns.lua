@@ -1,6 +1,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
+    lazy = false,
     ft = "gitcommit",
     init = function()
       -- load gitsigns only when a git file is opened
@@ -68,6 +69,10 @@ return {
           col = 1,
         },
       })
+
+      -- -- git
+      vim.keymap.set('n', "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "git commits" })
+      vim.keymap.set('n', "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "git status" })
     end,
   }
 }

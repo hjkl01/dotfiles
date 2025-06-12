@@ -65,39 +65,3 @@ map("n", " r", function()
   end,
   { desc = "run file" }
 )
-
--- neo-tree
--- vim.keymap.set('n', '<leader>e', function() require("mini.files").open() end, { desc = "Open Mini Files" })
-map("n", "<leader>e", "<cmd> Neotree <CR>", { desc = "Open Neo-tree", remap = true })
-
--- translate
-map({ 'n', 'v' }, 'tt', "<cmd> TranslateW <CR>", { desc = "translate window", remap = true })
-
--- bufferline
-map('n', '<TAB>', "<cmd> BufferLineCycleNext <CR>", { desc = "BufferLineCycleNext" })
-map('n', '<s-TAB>', "<cmd> BufferLineCyclePrev <CR>", { desc = "BufferLineCyclePrev" })
-
--- telescope
-map('n', "<leader>ff", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
-  { desc = "Telescope find files" })
-map('n', "<leader>fg", "<cmd> lua require('telescope.builtin').live_grep() <cr>", { desc = "Telescope live grep" })
--- -- git
-map('n', "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "git commits" })
-map('n', "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "git status" })
-
--- WhichKey
--- map('n', "<leader>wK", function() vim.cmd "WhichKey" end, { desc = "which-key all keymaps" })
--- map('n', "<leader>wk", function()
---   local input = vim.fn.input "WhichKey: "
---   vim.cmd("WhichKey " .. input)
--- end, { desc = "which-key query lookup" })
-
--- FzfLua
-map('n', 'gd', '<cmd>FzfLua lsp_definitions     jump_to_single_result=true silent=true ignore_current_line=true<cr>',
-  { desc = "Goto Definition" })
-map('n', 'gr', '<cmd>FzfLua lsp_references      jump_to_single_result=true ignore_current_line=true<cr>',
-  { desc = "References" })
-map('n', 'gI', '<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>',
-  { desc = "Goto Implementation" })
-map('n', 'gy', '<cmd>FzfLua lsp_typedefs        jump_to_single_result=true ignore_current_line=true<cr>',
-  { desc = "Goto T[y]pe Definition" })

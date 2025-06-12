@@ -1,6 +1,7 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    lazy = false,
     branch = "v3.x",
     cmd = "Neotree",
     dependencies = {
@@ -244,6 +245,8 @@ return {
       }
 
       vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
+
+      vim.keymap.set("n", "<leader>e", "<cmd> Neotree <CR>", { desc = "Open Neo-tree", remap = true })
     end,
   },
 }

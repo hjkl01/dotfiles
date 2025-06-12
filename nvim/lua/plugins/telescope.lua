@@ -1,6 +1,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    lazy = false,
     cmd = "Telescope",
     opts = function()
       return {
@@ -64,6 +65,12 @@ return {
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
       end
+
+      vim.keymap.set('n', "<leader>ff", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+        { desc = "Telescope find files" })
+      vim.keymap.set('n', "<leader>fg", "<cmd> lua require('telescope.builtin').live_grep() <cr>",
+        { desc = "Telescope live grep" })
     end,
+
   }
 }
