@@ -1,7 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- https://github.com/williamboman/mason-lspconfig.nvim
 local servers = {
-  "bashls",
+  -- "bashls",
   -- 'cmake',
   -- 'clangd',
   -- "gopls",
@@ -11,8 +11,8 @@ local servers = {
   "pylsp",
   -- "sqlls",
   -- "taplo",
-  "ts_ls",
-  "yamlls",
+  -- "ts_ls",
+  -- "yamlls",
 }
 
 return {
