@@ -14,6 +14,7 @@ alias rr="gio trash"
 [[ -x $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
 
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
+cht() { curl cht.sh/$1; }
 # curl cht.sh/rsync
 
 # export EDITOR='nvim'
