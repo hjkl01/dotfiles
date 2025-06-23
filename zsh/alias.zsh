@@ -6,9 +6,13 @@ alias rr="gio trash"
 [[ -x $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
 
 fzf_nvim() {
-  local file
-  file=$(fd . | fzf --preview 'bat --style=numbers --color=always {}')
-  [ -n "$file" ] && nvim "$file"
+  if [ -n "$1" ]; then
+    nvim "$@"
+  else
+    local file
+    file=$(fd . | fzf --preview 'bat --style=numbers --color=always {}')
+    [ -n "$file" ] && nvim "$file"
+  fi
 }
 
 [[ -x $(command -v eza) ]] && alias ls=eza
