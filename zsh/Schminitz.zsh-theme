@@ -152,8 +152,7 @@ precmd() { # cspell:disable-line
         last_cmd_result=false;
     fi
 
-    # update_git_status
-    update_git_status;
+    update_git_status
 
     # update_command_status
     update_command_status $last_cmd_result;
@@ -183,7 +182,7 @@ TRAPALRM() { # cspell:disable-line
 
 # prompt
 # PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
-PROMPT='$(hostname) $(directory) $(git_status) $(real_time) 
+PROMPT='$(hostname) $(directory) $(real_time) 
 $(command_status) ';
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes
