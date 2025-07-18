@@ -47,8 +47,8 @@ RUN git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles /root
     
 
 # Install Neovim plugins and language servers in a single layer
-RUN nvim --headless -c 'silent Mason' -c 'sleep 5' -c 'qa!' && \
-    nvim --headless \
+RUN nvim --headless -c 'silent Mason' -c 'sleep 5' -c 'qa!'
+RUN nvim --headless \
     -c "MasonInstall python-lsp-server" \
     -c "MasonInstall bash-language-server" \
     -c "MasonInstall lua-language-server" \
