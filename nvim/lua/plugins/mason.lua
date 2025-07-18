@@ -57,6 +57,15 @@ return {
 
       local lspconfig = require('lspconfig')
 
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+        float = true,
+      })
+
       for _, lsp in ipairs(servers) do
         lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
       end
