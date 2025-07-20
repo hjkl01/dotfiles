@@ -14,13 +14,13 @@ docker run -ti --rm -v $(pwd):/projects formattedd/dotfiles zsh
 ### Install Auto
 
 ```shell
-curl -fsSL https://gh.hjkl01.cn/proxy/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh -o install.sh && chmod +x install.sh && bash ./install.sh link
-# curl -fsSL https://gh.hjkl01.cn/proxy/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh -o install.sh && chmod +x install.sh && bash ./install.sh
+curl -fsSL https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh -o install.sh && chmod +x install.sh && bash ./install.sh link
+# curl -fsSL https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh -o install.sh && chmod +x install.sh && bash ./install.sh
 chsh -s zsh
 ```
 
 ### Install Manual 
-- copy gitconfig
+- copy [gitconfig](https://github.com/XIU2/UserScript/blob/master/GithubEnhanced-High-Speed-Download.user.js)
 
 ```shell
 [url "https://gh.hjkl01.cn/proxy/https://github.com"]

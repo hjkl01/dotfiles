@@ -4,10 +4,12 @@ return {
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     config = function()
-      for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
-        config.install_info.url = config.install_info.url:gsub("https://github.com/",
-          "https://gh.hjkl01.cn/proxy/https://github.com/")
-      end
+      require("nvim-treesitter.install").prefer_git = true
+      -- for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
+      -- -- config.install_info.url = config.install_info.url:gsub("https://github.com/", "https://gh.hjkl01.cn/proxy/https://github.com/")
+      -- config.install_info.url = config.install_info.url:gsub("https://github.com/", vim.fn.getenv("GITHUB_MIRROR") .. "/https://github.com/")
+      -- end
+
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "lua",

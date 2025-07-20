@@ -116,17 +116,18 @@ main() {
   beforeInstall
 
   if [ "${1:-}" = "link" ]; then
-    echo "Setting up GitHub proxy..."
-    echo '[url "https://gh.hjkl01.cn/proxy/https://github.com"]
-      insteadOf = https://github.com' >>"$HOME/.gitconfig"
-
-    if [ ! -d "$HOME/.dotfiles" ]; then
-      git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles "$HOME/.dotfiles"
-      cp "$HOME/.dotfiles/env" "$HOME/.dotfiles/.env"
-    fi
+    # echo "Setting up GitHub proxy..."
+    # echo '[url "https://gh.hjkl01.cn/proxy/https://github.com"]
+    #   insteadOf = https://github.com' >>"$HOME/.gitconfig"
 
     SoftLinks
   fi
+
+  if [ ! -d "$HOME/.dotfiles" ]; then
+    git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles "$HOME/.dotfiles"
+    cp "$HOME/.dotfiles/env" "$HOME/.dotfiles/.env"
+  fi
+
 
   InstallOhMyZsh
   InstallNeovim
