@@ -33,8 +33,8 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "Saghen/blink.cmp", -- New async buffer source
       },
     },
     opts = function()
@@ -148,7 +148,7 @@ return {
         sources = {
           { name = "nvim_lsp" },
           { name = "luasnip" },
-          { name = "buffer" },
+          { name = "blink" }, -- Replaced "buffer" with "blink"
           { name = "nvim_lua" },
           { name = "path" },
         },
