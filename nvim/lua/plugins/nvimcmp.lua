@@ -12,7 +12,7 @@ return {
 
           require("luasnip").config.set_config(options)
 
-          require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.luasnippets_path or "" }
+          require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.g.luasnippets_path or "" })
           require("luasnip.loaders.from_vscode").lazy_load()
 
           vim.api.nvim_create_autocmd("InsertLeave", {
@@ -38,7 +38,7 @@ return {
       },
     },
     opts = function()
-      local cmp = require "cmp"
+      local cmp = require("cmp")
 
       local function border(hl_name)
         return {
@@ -69,7 +69,7 @@ return {
             scrollbar = true,
           },
           documentation = {
-            border = border "CmpDocBorder",
+            border = border("CmpDocBorder"),
             winhighlight = "Normal:CmpDoc",
           },
         },
@@ -116,10 +116,10 @@ return {
           ["<C-d>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.close(),
-          ["<CR>"] = cmp.mapping.confirm {
+          ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-          },
+          }),
           ["<C-n>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
@@ -159,5 +159,5 @@ return {
     config = function(_, opts)
       require("cmp").setup(opts)
     end,
-  }
+  },
 }

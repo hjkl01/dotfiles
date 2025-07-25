@@ -24,14 +24,7 @@ return {
       PATH = "prepend",
       max_concurrent_installers = 10,
       github = {
-        ---@since 1.0.0
-        -- The template URL to use when downloading assets from GitHub.
-        -- The placeholders are the following (in order):
-        -- 1. The repository (e.g. "rust-lang/rust-analyzer")
-        -- 2. The release version (e.g. "v0.3.0")
-        -- 3. The asset name (e.g. "rust-analyzer-v0.3.0-x86_64-unknown-linux-gnu.tar.gz")
         download_url_template = "https://github.com/%s/releases/download/%s/%s",
-        -- download_url_template = vim.fn.getenv("GITHUB_MIRROR") .. "https://github.com/%s/releases/download/%s/%s",
         -- download_url_template = "https://ghproxy.cxkpro.top/https://github.com/%s/releases/download/%s/%s",
       },
       ui = {
@@ -42,29 +35,37 @@ return {
         },
       },
     },
-
     config = function(_, opts)
       require("mason").setup(opts)
-
       require("mason-lspconfig").setup({
         ensure_installed = servers,
         automatic_installation = true,
       })
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "williamboman/mason.nvim",
+    },
     config = function()
-      local on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = true
-        client.server_capabilities.documentRangeFormattingProvider = true
-      end
+      local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local lspconfig = require('lspconfig')
+      -- Define the on_attach function to apply settings to each LSP client
+      local on_attach = function(client, bufnr)
+        -- Enable formatting capabilities
+        client.server_capabilities.documentFormattingProvider = true
+        client.server_capabilities.documentRangeFormattingProvider = true
 
+        -- You can add keymaps or other buffer-local settings here
+        -- e.g., vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+      end
+
+      -- Configure diagnostics
       vim.diagnostic.config({
         virtual_text = true,
         signs = true,
@@ -74,25 +75,33 @@ return {
         float = true,
       })
 
-      for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
+      -- Loop through the servers and set them up
+      for _, server_name in ipairs(servers) do
+        lspconfig[server_name].setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
       end
 
-      require('lspconfig').ruff.setup {
+      -- Specific setup for ruff, if needed
+      lspconfig.ruff.setup({
         init_options = {
           settings = {
-            lineLength = 120
-          }
-        }
-      }
+            lineLength = 120,
+          },
+        },
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
 
-      local LspFormat = function()
-        vim.lsp.buf.format { async = true }
-      end
-      vim.api.nvim_create_user_command("LspFormat", LspFormat, {})
-      -- vim.api.nvim_set_keymap("n", "<space>f", "<cmd> LspFormat w <CR>", { silent = true })
-
-      vim.api.nvim_command "autocmd BufWritePre * lua vim.lsp.buf.format()"
-    end
-  }
+      -- Auto-format on save
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*",
+        callback = function()
+          vim.lsp.buf.format({ async = true })
+        end,
+        desc = "Format file on save",
+      })
+    end,
+  },
 }
