@@ -1,47 +1,47 @@
 return {
   {
     "echasnovski/mini.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
-      require("mini.comment").setup {
+      require("mini.comment").setup({
         mappings = {
           -- Toggle comment on current line
           comment_line = "//",
         },
-      }
+      })
 
-      local miniclue = require('mini.clue')
-      require('mini.clue').setup({
+      local miniclue = require("mini.clue")
+      miniclue.setup({
         triggers = {
           -- Leader triggers
-          { mode = 'n', keys = '<Leader>' },
-          { mode = 'x', keys = '<Leader>' },
+          { mode = "n", keys = "<Leader>" },
+          { mode = "x", keys = "<Leader>" },
 
           -- Built-in completion
-          { mode = 'i', keys = '<C-x>' },
+          { mode = "i", keys = "<C-x>" },
 
           -- `g` key
-          { mode = 'n', keys = 'g' },
-          { mode = 'x', keys = 'g' },
+          { mode = "n", keys = "g" },
+          { mode = "x", keys = "g" },
 
           -- Marks
-          { mode = 'n', keys = "'" },
-          { mode = 'n', keys = '`' },
-          { mode = 'x', keys = "'" },
-          { mode = 'x', keys = '`' },
+          { mode = "n", keys = "'" },
+          { mode = "n", keys = "`" },
+          { mode = "x", keys = "'" },
+          { mode = "x", keys = "`" },
 
           -- Registers
-          { mode = 'n', keys = '"' },
-          { mode = 'x', keys = '"' },
-          { mode = 'i', keys = '<C-r>' },
-          { mode = 'c', keys = '<C-r>' },
+          { mode = "n", keys = '"' },
+          { mode = "x", keys = '"' },
+          { mode = "i", keys = "<C-r>" },
+          { mode = "c", keys = "<C-r>" },
 
           -- Window commands
-          { mode = 'n', keys = '<C-w>' },
+          { mode = "n", keys = "<C-w>" },
 
           -- `z` key
-          { mode = 'n', keys = 'z' },
-          { mode = 'x', keys = 'z' },
+          { mode = "n", keys = "z" },
+          { mode = "x", keys = "z" },
         },
 
         clues = {
@@ -59,31 +59,22 @@ return {
 
           config = {
             -- Compute window width automatically
-            width = 'auto',
+            width = "auto",
 
             -- Use double-line border
-            border = 'double',
+            border = "double",
           },
         },
       })
 
       require("mini.cursorword").setup()
-
-      -- require("mini.files").setup()
-
-      require('mini.icons').setup()
-
-      -- Visualize and operate on indent scope
+      require("mini.icons").setup()
       require("mini.indentscope").setup()
-
       require("mini.pairs").setup()
-
-      require("mini.sessions").setup {
-        directory = "~/.local/share/nvim/",
-      }
+      require("mini.sessions").setup({
+        directory = vim.fn.stdpath("data") .. "/sessions/",
+      })
       require("mini.starter").setup()
-
-      -- trailing whitespace
       require("mini.trailspace").setup()
     end,
   },

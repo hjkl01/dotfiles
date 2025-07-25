@@ -1,9 +1,30 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    lazy = false,
     cmd = "Telescope",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      {
+        "<leader>ff",
+        function()
+          require("telescope.builtin").find_files({ follow = true, no_ignore = true, hidden = true })
+        end,
+        desc = "Find files",
+      },
+      {
+        "<leader>fg",
+        function()
+          require("telescope.builtin").live_grep()
+        end,
+        desc = "Live grep",
+      },
+    },
     opts = function()
+      -- Defer require calls until the plugin is loaded
+      local sorters = require("telescope.sorters")
+      local previewers = require("telescope.previewers")
+      local actions = require("telescope.actions")
+
       return {
         defaults = {
           vimgrep_arguments = {
@@ -36,41 +57,27 @@ return {
             height = 0.80,
             preview_cutoff = 120,
           },
-          file_sorter = require("telescope.sorters").get_fuzzy_file,
+          file_sorter = sorters.get_fuzzy_file,
           file_ignore_patterns = { "node_modules" },
-          generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+          generic_sorter = sorters.get_generic_fuzzy_sorter,
           path_display = { "truncate" },
           winblend = 0,
           border = {},
           borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
           color_devicons = true,
-          set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-          file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-          grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-          qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-          -- Developer configurations: Not meant for general override
-          buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+          set_env = { ["COLORTERM"] = "truecolor" },
+          file_previewer = previewers.vim_buffer_cat.new,
+          grep_previewer = previewers.vim_buffer_vimgrep.new,
+          qflist_previewer = previewers.vim_buffer_qflist.new,
+          buffer_previewer_maker = previewers.buffer_previewer_maker,
           mappings = {
-            n = { ["q"] = require("telescope.actions").close },
+            n = { ["q"] = actions.close },
           },
         },
-        extensions_list = {},
       }
     end,
     config = function(_, opts)
-      local telescope = require "telescope"
-      telescope.setup(opts)
-
-      -- load extensions
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
-
-      vim.keymap.set('n', "<leader>ff", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
-        { desc = "Telescope find files" })
-      vim.keymap.set('n', "<leader>fg", "<cmd> lua require('telescope.builtin').live_grep() <cr>",
-        { desc = "Telescope live grep" })
+      require("telescope").setup(opts)
     end,
-
-  }
+  },
 }

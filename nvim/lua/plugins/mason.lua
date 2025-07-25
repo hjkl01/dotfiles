@@ -1,14 +1,14 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- https://github.com/williamboman/mason-lspconfig.nvim
 local servers = {
-  -- "bashls",
-  -- 'cmake',
-  -- 'clangd',
-  -- "gopls",
-  -- 'jsonls',
   "lua_ls",
   "ruff",
   "pylsp",
+  -- "bashls",
+  -- "cmake",
+  -- "clangd",
+  -- "gopls",
+  -- "jsonls",
   -- "sqlls",
   -- "taplo",
   -- "ts_ls",
@@ -25,7 +25,6 @@ return {
       max_concurrent_installers = 10,
       github = {
         download_url_template = "https://github.com/%s/releases/download/%s/%s",
-        -- download_url_template = "https://ghproxy.cxkpro.top/https://github.com/%s/releases/download/%s/%s",
       },
       ui = {
         icons = {
@@ -45,7 +44,6 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -55,17 +53,7 @@ return {
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      -- Define the on_attach function to apply settings to each LSP client
-      local on_attach = function(client, bufnr)
-        -- Enable formatting capabilities
-        client.server_capabilities.documentFormattingProvider = true
-        client.server_capabilities.documentRangeFormattingProvider = true
-
-        -- You can add keymaps or other buffer-local settings here
-        -- e.g., vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-      end
-
-      -- Configure diagnostics
+      -- Global diagnostics configuration
       vim.diagnostic.config({
         virtual_text = true,
         signs = true,
@@ -75,33 +63,57 @@ return {
         float = true,
       })
 
-      -- Loop through the servers and set them up
-      for _, server_name in ipairs(servers) do
-        lspconfig[server_name].setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-        })
+      -- Executed for each LSP server
+      local on_attach = function(client, bufnr)
+        -- Enable formatting capabilities
+        if client.supports_method("textDocument/formatting") then
+          client.server_capabilities.documentFormattingProvider = true
+          client.server_capabilities.documentRangeFormattingProvider = true
+          -- Auto-format on save, buffer-local to this client
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = bufnr, async = true })
+            end,
+            desc = "Format file on save",
+          })
+        end
+
+        -- Standard LSP keymaps
+        local map = function(keys, func, desc)
+          vim.keymap.set("n", keys, func, { buffer = bufnr, noremap = true, silent = true, desc = "LSP: " .. desc })
+        end
+        map("K", vim.lsp.buf.hover, "Hover Documentation")
+        map("gd", vim.lsp.buf.definition, "Goto Definition")
+        map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+        map("gi", vim.lsp.buf.implementation, "Goto Implementation")
+        map("gr", vim.lsp.buf.references, "Goto References")
+        map("gt", vim.lsp.buf.type_definition, "Goto Type Definition")
+        map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+        map("<leader>rn", vim.lsp.buf.rename, "Rename")
+        map("[d", vim.diagnostic.goto_prev, "Previous Diagnostic")
+        map("]d", vim.diagnostic.goto_next, "Next Diagnostic")
       end
 
-      -- Specific setup for ruff, if needed
-      lspconfig.ruff.setup({
-        init_options = {
-          settings = {
-            lineLength = 120,
-          },
-        },
-        on_attach = on_attach,
-        capabilities = capabilities,
-      })
+      -- Loop through servers and set them up
+      for _, server_name in ipairs(servers) do
+        local server_opts = {
+          on_attach = on_attach,
+          capabilities = capabilities,
+        }
 
-      -- Auto-format on save
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*",
-        callback = function()
-          vim.lsp.buf.format({ async = true })
-        end,
-        desc = "Format file on save",
-      })
+        -- Special settings for specific servers
+        if server_name == "ruff" then
+          server_opts.init_options = {
+            settings = {
+              lineLength = 120,
+            },
+          }
+        end
+
+        lspconfig[server_name].setup(server_opts)
+      end
     end,
   },
 }

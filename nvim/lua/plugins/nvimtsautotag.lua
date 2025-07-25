@@ -1,7 +1,17 @@
 return {
   {
     "windwp/nvim-ts-autotag",
-    lazy = false,
+    ft = {
+      "html",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "svelte",
+      "vue",
+      "tsx",
+      "jsx",
+    },
     opts = {},
-  }
+  },
 }
