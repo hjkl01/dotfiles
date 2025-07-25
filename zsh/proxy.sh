@@ -4,10 +4,12 @@
 
 export PROXY_URL="http://$P_ADDRESS:$P_PORT"
 
-alias setproxy='export ALL_PROXY=$PROXY_URL'
-alias unsetproxy='unset ALL_PROXY; unset http_proxy; unset https_proxy'
+alias setproxy='export HTTP_PROXY=$PROXY_URL; export HTTPS_PROXY=$PROXY_URL; export ALL_PROXY=$PROXY_URL;'
+alias unsetproxy='unset HTTP_PROXY; unset HTTPS_PROXY;unset ALL_PROXY;'
 
 run_cmd() {
+  export HTTP_PROXY=$PROXY_URL;
+  export HTTPS_PROXY=$PROXY_URL;
 	export ALL_PROXY=$PROXY_URL
 	$*
 	unsetproxy
