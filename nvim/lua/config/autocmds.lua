@@ -136,9 +136,22 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- Return last position
-vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-  desc = 'return cursor to where it was last time closing the file',
-  pattern = '*',
-  command = 'silent! normal! g`"zv',
+-- Set indentation for specific filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("indentation"),
+  pattern = { "python", "terraform", "c" },
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("indentation"),
+  pattern = { "go" },
+  callback = function()
+    vim.opt_local.expandtab = false -- Go uses tabs
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+  end,
 })

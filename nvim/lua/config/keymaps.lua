@@ -33,35 +33,42 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 
 map("n", "ff", function()
-    local fileType = vim.o.filetype
-    print(fileType)
-    if fileType == "python" then
-      vim.cmd [[r !black -l 120 -q %]]
-    elseif fileType == "json" then
-      vim.cmd [[%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))']]
-    else
-      -- vim.cmd('Neoformat')
-      vim.cmd('Conform')
-    end
-  end,
-  { desc = "autoformat" })
+  local formatters = {
+    python = function()
+      vim.cmd([[r !black -l 120 -q %]])
+    end,
+    json = function()
+      vim.cmd([[%!python3 -c 'import json, sys, collections; print(json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), ensure_ascii=False, indent=4))']])
+    end,
+    -- Add other filetype formatters here
+  }
+
+  local filetype = vim.bo.filetype
+  local formatter = formatters[filetype]
+
+  if formatter then
+    formatter()
+  else
+    -- Default action for other filetypes
+    vim.cmd("Conform")
+  end
+end, { desc = "Format code" })
 
 map("n", " r", function()
-    local fileType = vim.o.filetype
-    print(fileType)
-    if fileType == "lua" then
-      vim.cmd [[ :bo 20sp | terminal lua %]]
-    elseif fileType == "python" then
-      vim.cmd [[ :bo 20sp | terminal python %]]
-    elseif fileType == "go" then
-      vim.cmd [[ :bo 20sp | terminal go run %]]
-    elseif fileType == "sh" then
-      vim.cmd [[ :bo 20sp | terminal sh %]]
-    elseif fileType == "javascript" then
-      vim.cmd [[ :bo 20sp | terminal node %]]
-    else
-      print(fileType)
-    end
-  end,
-  { desc = "run file" }
-)
+  local runners = {
+    lua = "lua",
+    python = "python",
+    go = "go run",
+    sh = "sh",
+    javascript = "node",
+  }
+
+  local filetype = vim.bo.filetype
+  local runner = runners[filetype]
+
+  if runner then
+    vim.cmd(string.format("bo 20sp | terminal %s %%", runner))
+  else
+    print("No runner configured for filetype: " .. filetype)
+  end
+end, { desc = "Run file" })
