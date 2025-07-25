@@ -24,7 +24,7 @@ return {
       PATH = "prepend",
       max_concurrent_installers = 10,
       github = {
-        download_url_template = "https://github.com/%s/releases/download/%s/%s",
+        download_url_template = "https://gh.hjkl01.cn/https://github.com/%s/releases/download/%s/%s",
       },
       ui = {
         icons = {
