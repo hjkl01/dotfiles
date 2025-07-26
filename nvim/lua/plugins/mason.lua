@@ -74,7 +74,7 @@ return {
             group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.format({ bufnr = bufnr, async = true })
+              vim.lsp.buf.format({ bufnr = bufnr })
             end,
             desc = "Format file on save",
           })
