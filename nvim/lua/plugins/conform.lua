@@ -33,6 +33,13 @@ return {
     format_on_save = { timeout_ms = 500 },
     -- Customize formatters
     formatters = {
+      black = {
+        args = {
+          "--line-length", "120", -- 指定最大行长度为120
+          "--stdin-filename", "$FILENAME",
+          "-",
+        },
+      },
       shfmt = {
         prepend_args = { "-i", "2" },
       },
