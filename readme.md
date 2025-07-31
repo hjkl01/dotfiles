@@ -19,11 +19,25 @@
 
 > **提示**: 在 Ubuntu/Debian 等系统上，如果 `apt` 源的版本过旧，建议使用 `asdf` 来安装 `stylua`。
 
+### Git 代理设置
+
+如果在中国大陆访问 GitHub 速度较慢，可以配置代理来加速 `git clone`。
+
+```shell
+# 配置 git 代理
+git config --global url."https://gh.hjkl01.cn/https://github.com".insteadOf "https://github.com"
+
+# 取消代理
+git config --global --unset url."https://gh.hjkl01.cn/https://github.com".insteadOf
+```
+
 #### 🐳 Docker 容器中体验
 
 ```
 docker run -ti --rm -v $(pwd):/projects formattedd/dotfiles zsh
 ```
+
+
 
 ### 2. 一键安装
 
@@ -45,18 +59,6 @@ chsh -s $(which zsh)
 ---
 
 ## 🔧 配置与使用
-
-### Git 代理设置
-
-如果在中国大陆访问 GitHub 速度较慢，可以配置代理来加速 `git clone`。
-
-```shell
-# 配置 git 代理
-git config --global url."https://gh.hjkl01.cn/proxy/https://github.com".insteadOf "https://github.com"
-
-# 取消代理
-git config --global --unset url."https://gh.hjkl01.cn/proxy/https://github.com".insteadOf
-```
 
 ### Rime 输入法 (`fcitx5-rime`)
 
