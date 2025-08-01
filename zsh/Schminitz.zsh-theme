@@ -182,7 +182,7 @@ TRAPALRM() { # cspell:disable-line
 
 # prompt
 # PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
-PROMPT='$(hostname) $(directory) $(real_time) 
+PROMPT='$(hostname) $(directory) $(git_status) $(real_time) 
 $(command_status) ';
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes
