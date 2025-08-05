@@ -90,8 +90,8 @@ return {
         map("gi", vim.lsp.buf.implementation, "Goto Implementation")
         map("gr", vim.lsp.buf.references, "Goto References")
         map("gt", vim.lsp.buf.type_definition, "Goto Type Definition")
-        map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-        map("<leader>rn", vim.lsp.buf.rename, "Rename")
+        -- map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+        -- map("<leader>rn", vim.lsp.buf.rename, "Rename")
         map("[d", vim.diagnostic.goto_prev, "Previous Diagnostic")
         map("]d", vim.diagnostic.goto_next, "Next Diagnostic")
       end
