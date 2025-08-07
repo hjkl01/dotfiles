@@ -9,7 +9,7 @@ return {
       "MunifTanjim/nui.nvim",
     },
     keys = {
-      { "\\",        ":Neotree reveal<CR>", desc = "NeoTree: Reveal file" },
+      { "\\", ":Neotree reveal<CR>", desc = "NeoTree: Reveal file" },
       { "<leader>e", ":Neotree toggle<CR>", desc = "NeoTree: Toggle" },
     },
     config = function()

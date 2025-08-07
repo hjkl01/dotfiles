@@ -70,7 +70,7 @@ return {
         formatting = {
           format = lspkind.cmp_format({
             mode = "symbol_text", -- show symbol and text
-            maxwidth = 50,        -- prevent the popup from becoming too wide
+            maxwidth = 50, -- prevent the popup from becoming too wide
             ellipsis_char = "...",
             -- Show source name
             before = function(entry, vim_item)

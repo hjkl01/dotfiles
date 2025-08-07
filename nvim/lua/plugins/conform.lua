@@ -35,8 +35,10 @@ return {
     formatters = {
       black = {
         args = {
-          "--line-length", "120", -- 指定最大行长度为120
-          "--stdin-filename", "$FILENAME",
+          "--line-length",
+          "120", -- 指定最大行长度为120
+          "--stdin-filename",
+          "$FILENAME",
           "-",
         },
       },
