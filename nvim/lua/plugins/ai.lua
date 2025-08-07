@@ -5,7 +5,27 @@ return {
     event = "BufEnter",
     config = function()
       vim.g.copilot_no_tab_map = true
-      vim.keymap.set("i", "<C-g>", 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
+      -- 接受 Copilot 的补全建议
+      vim.keymap.set("i", "<C-j>", 'copilot#Accept("")', {
+        expr = true,
+        replace_keycodes = false,
+        desc = "接受 Copilot 补全建议",
+      })
+
+      -- 触发 Copilot 补全（默认可能自动触发，此为手动触发快捷键）
+      vim.keymap.set("i", "<C-l>", "<Plug>(copilot-next)", {
+        desc = "触发 Copilot 补全",
+      })
+
+      -- 查看上一个补全建议
+      vim.keymap.set("i", "<C-k>", "<Plug>(copilot-previous)", {
+        desc = "查看上一个 Copilot 补全建议",
+      })
+
+      -- 取消 Copilot 补全
+      vim.keymap.set("i", "<C-]>", "<Plug>(copilot-dismiss)", {
+        desc = "取消 Copilot 补全建议",
+      })
     end,
   },
   {
