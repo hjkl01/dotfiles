@@ -6,6 +6,10 @@ local map = vim.keymap.set
 
 map("i", "<C-b>", "<ESC>^i", { desc = "beginning of line", remap = true })
 map("i", "<C-e>", "<End>", { desc = "end of line", remap = true })
+map("i", "<C-h>", "<Left>", { desc = "move left", remap = true })
+map("i", "<C-l>", "<Right>", { desc = "move right", remap = true })
+map("i", "<C-j>", "<Down>", { desc = "move down", remap = true })
+map("i", "<C-k>", "<Up>", { desc = "move up", remap = true })
 
 -- 开始定义快捷键映射
 map("n", "<ESC>", ":noh<CR>", { desc = "no highlight" })
