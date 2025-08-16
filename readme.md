@@ -112,11 +112,11 @@ rm -rf ~/.local/share/nvim/ ~/.cache/nvim
 ```
 然后重启 Neovim，让 `lazy.nvim` 重新同步插件。
 
-### Neovim 报错或缓存问题
+### 下载python慢，更新下载地址
 
-下载python慢，更新下载地址
-
-https://www.python.org/ftp -> https://mirrors.huaweicloud.com
+```shell
+https://www.python.org/ftp -> https://registry.npmmirror.com/-/binary/python
+```
 
 ### WSL 与 Windows 剪贴板集成
 
