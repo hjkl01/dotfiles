@@ -24,6 +24,7 @@ return {
       javascript = { "prettierd", "prettier", stop_after_first = true },
       typescript = { "prettier" },
       html = { "prettier" },
+      sh = { "shfmt" },
     },
     -- Set default options
     default_format_opts = {
@@ -43,7 +44,7 @@ return {
         },
       },
       shfmt = {
-        prepend_args = { "-i", "2" },
+        prepend_args = { "-i", "4" },
       },
     },
   },
