@@ -71,11 +71,6 @@ InstallNeovim() {
 }
 
 Installasdf() {
-  # if [ ! -d "$HOME/.asdf" ]; then
-  #   git clone https://github.com/asdf-vm/asdf.git "$HOME/.asdf" --branch v0.15.0
-  # fi
-  # . "$HOME/.asdf/asdf.sh"
-
   # 检测系统
   OS=$(uname -s)
   ARCH=$(uname -m)
