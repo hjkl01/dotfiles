@@ -4,10 +4,10 @@ local servers = {
   "lua_ls",
   "ruff",
   "pylsp",
-  "shfmt",
+  -- "shfmt",
+  -- "yamlls",
   -- "gopls",
   -- "ts_ls",
-  -- "yamlls",
 }
 
 return {
@@ -43,6 +43,18 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason.nvim",
+    },
+
+    keys = {
+      {
+        -- Customize or remove this keymap to your liking
+        "<leader>fm",
+        function()
+          vim.lsp.buf.format({ bufnr = bufnr })
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
     },
     config = function()
       local lspconfig = require("lspconfig")
