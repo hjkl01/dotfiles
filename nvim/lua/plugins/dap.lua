@@ -1,3 +1,5 @@
+local vim = vim
+
 return {
   {
     "mfussenegger/nvim-dap",

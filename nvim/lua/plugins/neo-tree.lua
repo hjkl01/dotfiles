@@ -1,3 +1,5 @@
+local vim = vim
+
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",

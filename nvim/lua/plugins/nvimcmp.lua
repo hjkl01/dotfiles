@@ -1,3 +1,5 @@
+local vim = vim
+
 return {
   {
     "hrsh7th/nvim-cmp",
