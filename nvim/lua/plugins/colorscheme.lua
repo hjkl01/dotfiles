@@ -1,6 +1,17 @@
+local vim = vim
+
 return {
   {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("tokyonight")
+    end,
+  },
+  {
     "catppuccin/nvim",
+    enabled = false, -- Disabled, uncomment to enable
     lazy = false,
     priority = 1000,
     name = "catppuccin",
