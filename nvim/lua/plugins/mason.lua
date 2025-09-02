@@ -1,3 +1,4 @@
+local vim = vim
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- https://github.com/williamboman/mason-lspconfig.nvim
 local servers = {
