@@ -3,15 +3,42 @@ local vim = vim
 return {
   {
     "folke/tokyonight.nvim",
-    lazy = false,
+    enabled = false, -- Disabled, uncomment to enable
+    lazy = false,    -- 确保尽早加载
     priority = 1000,
+    opts = {
+      style = "storm",    -- 或 "moon", "night", "day"
+      transparent = true, -- 🌟 关键：启用透明背景
+      terminal_colors = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = {},
+        variables = {},
+      },
+      sidebars = {
+        "qf",
+        "help",
+        "terminal",
+        "startuptime",
+        "packer",
+        "nvim-tree",
+        "neo-tree",
+        "toggleterm",
+        "lazy",
+        "mason",
+        "notify",
+        "noice",
+      },
+    },
+
     config = function()
       vim.cmd.colorscheme("tokyonight")
     end,
   },
   {
     "catppuccin/nvim",
-    enabled = false, -- Disabled, uncomment to enable
+    -- enabled = false, -- Disabled, uncomment to enable
     lazy = false,
     priority = 1000,
     name = "catppuccin",
@@ -21,9 +48,9 @@ return {
         light = "latte",
         dark = "mocha",
       },
-      transparent_background = false,
-      show_end_of_buffer = false,
-      term_colors = false,
+      transparent_background = true,
+      show_end_of_buffer = true,
+      term_colors = true,
       dim_inactive = {
         enabled = true,
         shade = "dark",
