@@ -21,6 +21,7 @@ beforeInstall() {
   backup_if_exists "$HOME/.zshrc"
   backup_if_exists "$HOME/.oh-my-zsh"
   backup_if_exists "$CONFIG_DIR/nvim"
+  mkdir -p "$HOME/.dotfiles/bin"
 }
 
 SoftLinks() {
@@ -139,7 +140,6 @@ InstallOthers() {
     fi
 
   elif [[ $(uname) == 'Linux' ]]; then
-    mkdir -p "$HOME/.dotfiles/bin"
     if [ ! -f "$HOME/.dotfiles/bin/chsrc" ]; then
       curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o "$HOME/.dotfiles/bin/chsrc"
       chmod +x "$HOME/.dotfiles/bin/chsrc"
