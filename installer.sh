@@ -19,7 +19,6 @@ backup_if_exists() {
 beforeInstall() {
   backup_if_exists "$HOME/.gitconfig"
   backup_if_exists "$HOME/.zshrc"
-  backup_if_exists "$HOME/.oh-my-zsh"
   backup_if_exists "$CONFIG_DIR/nvim"
   mkdir -p "$HOME/.dotfiles/bin"
 }
@@ -55,9 +54,13 @@ InstallOhMyZsh() {
       (cd "$plugin_dir" && git pull)
     fi
   done
-  git clone --single-branch --depth 1 https://github.com/MichaelAquilina/zsh-you-should-use $HOME/.oh-my-zsh/custom/plugins/zsh-you-should-use
+  if [ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-you-should-use ]; then
+    git clone --single-branch --depth 1 https://github.com/MichaelAquilina/zsh-you-should-use $HOME/.oh-my-zsh/custom/plugins/zsh-you-should-use
+  fi
 
-  ln -sf "$HOME/.dotfiles/zsh/Schminitz.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/Schminitz.zsh-theme"
+  if [ ! -d $HOME/.oh-my-zsh/custom/themes/Schminitz.zsh-theme ]; then
+    ln -sf "$HOME/.dotfiles/zsh/Schminitz.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/Schminitz.zsh-theme"
+  fi
 }
 
 InstallNeovim() {
@@ -158,7 +161,9 @@ InstallOthers() {
       git clone --single-branch --depth=1 "https://github.com/tmux-plugins/$plugin" "$plugin_dir"
     fi
   done
-  git clone --single-branch --depth=1 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
+  if [ ! -d ~/.tmux/plugins/tmux/ ]; then
+    git clone --single-branch --depth=1 https://github.com/catppuccin/tmux ~/.tmux/plugins/tmux
+  fi
 }
 
 main() {
