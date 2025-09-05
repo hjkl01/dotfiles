@@ -28,4 +28,4 @@ export OPEN_API_KEY=''
 # huggingface
 export HF_ENDPOINT=https://hf-mirror.com
 
-export GITHUB_MIRROR='https://ghproxy.cxkpro.top/'
+export GITHUB_MIRROR='https://gh.hjkl01.cn/'
