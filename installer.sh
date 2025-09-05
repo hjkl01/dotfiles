@@ -35,7 +35,7 @@ SoftLinks() {
   mkdir -p "$CONFIG_DIR/pip"
   ln -sf "$HOME/.dotfiles/config/pip.conf" "$CONFIG_DIR/pip/pip.conf"
   mkdir -p "$CONFIG_DIR/uv"
-  ln -sf "$HOME/.dotfiles/config/uv.toml" "$CONFIG_DIR/pip/uv.toml"
+  ln -sf "$HOME/.dotfiles/config/uv.toml" "$CONFIG_DIR/uv/uv.toml"
 }
 
 InstallOhMyZsh() {
