@@ -122,6 +122,7 @@ Installasdf() {
     echo "⬇️  下载: $URL"
     curl -L -o "$FILE" "$URL"
     tar -C ~/.dotfiles/bin -xzf "$FILE"
+    rm $FILE
   fi
 
   echo "完成！请运行: asdf --version"
