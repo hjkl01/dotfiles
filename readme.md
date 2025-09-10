@@ -44,7 +44,7 @@ docker run -ti --rm -v $(pwd):/projects formattedd/dotfiles zsh
 使用以下命令下载并执行安装脚本。
 
 ```shell
-curl -fsSL https://gh.hjkl01.cn/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh -o install.sh && chmod +x install.sh && bash ./install.sh
+curl -fsSL https://gh.hjkl01.cn/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh -o install.sh && chmod +x install.sh && bash ./install.sh link
 ```
 
 -   默认情况下，脚本会备份你现有的配置文件（如 `~/.zshrc`）并创建新的符号链接。
@@ -80,6 +80,16 @@ export XMODIFIERS="@im=fcitx"
 
 # 4. 在 macOS 上重载 Squirrel (Rime)
 /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
+```
+
+### asdf 安装Python加速
+
+```
+# 找到需要安装的对应版本 如3.11.12
+https://mirrors.cernet.edu.cn/list/pythonxy -> https://mirrors.ustc.edu.cn/python/3.11.12/Python-3.11.12.tar.xz
+
+# 分别替换GitHub和Python的地址
+vi ~/.asdf/plugins/python/pyenv/plugins/python-build/share/python-build/3.11.13
 ```
 
 ### Tmux 插件管理
