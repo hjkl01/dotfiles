@@ -60,5 +60,11 @@ return {
         lsp_doc_border = false,
       },
     },
+
+    config = function()
+      require("notify").setup({
+        backgroud_colour = "#000000"
+      })
+    end
   },
 }
