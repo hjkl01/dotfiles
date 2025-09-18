@@ -1,6 +1,7 @@
-local vim = vim
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- https://github.com/williamboman/mason-lspconfig.nvim
+
+local vim = vim
 local servers = {
   "lua_ls",
   "ruff",
@@ -48,13 +49,55 @@ return {
 
     keys = {
       {
-        -- Customize or remove this keymap to your liking
         "<leader>fm",
         function()
-          vim.lsp.buf.format({ bufnr = bufnr })
+          vim.lsp.buf.format({
+            bufnr = vim.api.nvim_get_current_buf(),
+            async = false,
+          })
+          vim.cmd("write")
         end,
-        mode = "",
-        desc = "Format buffer",
+        desc = "LSP Format and Save",
+      },
+      {
+        "K",
+        vim.lsp.buf.hover,
+        desc = "LSP: Hover Documentation",
+      },
+      {
+        "gd",
+        vim.lsp.buf.definition,
+        desc = "LSP: Goto Definition",
+      },
+      {
+        "gD",
+        vim.lsp.buf.declaration,
+        desc = "LSP: Goto Declaration",
+      },
+      {
+        "gi",
+        vim.lsp.buf.implementation,
+        desc = "LSP: Goto Implementation",
+      },
+      {
+        "gr",
+        vim.lsp.buf.references,
+        desc = "LSP: Goto References",
+      },
+      {
+        "gt",
+        vim.lsp.buf.type_definition,
+        desc = "LSP: Goto Type Definition",
+      },
+      {
+        "[d",
+        vim.diagnostic.goto_prev,
+        desc = "LSP: Previous Diagnostic",
+      },
+      {
+        "]d",
+        vim.diagnostic.goto_next,
+        desc = "LSP: Next Diagnostic",
       },
     },
     config = function()
@@ -78,30 +121,17 @@ return {
           client.server_capabilities.documentFormattingProvider = true
           client.server_capabilities.documentRangeFormattingProvider = true
           -- Auto-format on save, buffer-local to this client
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-            desc = "Format file on save",
-          })
+          -- vim.api.nvim_create_autocmd("BufWritePre", {
+          --   group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
+          --   buffer = bufnr,
+          --   callback = function()
+          --     vim.lsp.buf.format({ bufnr = bufnr })
+          --   end,
+          --   desc = "Format file on save",
+          -- })
         end
 
-        -- Standard LSP keymaps
-        local map = function(keys, func, desc)
-          vim.keymap.set("n", keys, func, { buffer = bufnr, noremap = true, silent = true, desc = "LSP: " .. desc })
-        end
-        map("K", vim.lsp.buf.hover, "Hover Documentation")
-        map("gd", vim.lsp.buf.definition, "Goto Definition")
-        map("gD", vim.lsp.buf.declaration, "Goto Declaration")
-        map("gi", vim.lsp.buf.implementation, "Goto Implementation")
-        map("gr", vim.lsp.buf.references, "Goto References")
-        map("gt", vim.lsp.buf.type_definition, "Goto Type Definition")
-        -- map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-        -- map("<leader>rn", vim.lsp.buf.rename, "Rename")
-        map("[d", vim.diagnostic.goto_prev, "Previous Diagnostic")
-        map("]d", vim.diagnostic.goto_next, "Next Diagnostic")
+        -- Standard LSP keymaps (now defined in keys section above)
       end
 
       -- Loop through servers and set them up
