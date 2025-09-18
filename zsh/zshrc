@@ -38,5 +38,6 @@ source $HOME/.dotfiles/zsh/alias.zsh
 export LC_ALL="zh_CN.UTF-8"
 setopt NO_HUP
 
+export TERM="screen-256color"
 alias run_tmux='tmux -f ~/.dotfiles/config/tmux.conf -u'
 [ "${START_TMUX:-0}" -eq 1 ] && { [ -z "$TMUX" ] && { tmux attach || run_tmux }}
