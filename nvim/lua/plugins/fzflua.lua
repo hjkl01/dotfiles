@@ -6,22 +6,22 @@ return {
     keys = {
       {
         "gd",
-        "<cmd>FzfLua lsp_definitions jump_to_single_result=true silent=true ignore_current_line=true<cr>",
+        "<cmd>FzfLua lsp_definitions jump1=true silent=true ignore_current_line=true<cr>",
         desc = "Goto Definition",
       },
       {
         "gr",
-        "<cmd>FzfLua lsp_references jump_to_single_result=true ignore_current_line=true<cr>",
+        "<cmd>FzfLua lsp_references jump1=true ignore_current_line=true<cr>",
         desc = "References",
       },
       {
         "gI",
-        "<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>",
+        "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>",
         desc = "Goto Implementation",
       },
       {
         "gy",
-        "<cmd>FzfLua lsp_typedefs jump_to_single_result=true ignore_current_line=true<cr>",
+        "<cmd>FzfLua lsp_typedefs jump1=true ignore_current_line=true<cr>",
         desc = "Goto T[y]pe Definition",
       },
     },
