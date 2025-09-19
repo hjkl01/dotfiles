@@ -142,6 +142,25 @@ return {
         }
 
         -- Special settings for specific servers
+
+        if server_name == "pylsp" then
+          server_opts.init_options = {
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  ignore = { "E501" },
+                  -- 或者用 select 只启用你想看的错误
+                  -- select = { "E", "W" }, -- 不推荐，会覆盖 ignore
+                },
+                -- 如果你用的是 flake8 插件：
+                flake8 = {
+                  ignore = { "E501" },
+                },
+              },
+            },
+          }
+        end
+
         if server_name == "ruff" then
           server_opts.init_options = {
             settings = {
