@@ -57,6 +57,7 @@ opt.foldenable = false
 opt.foldmethod = "indent"
 
 -- 补全增强
+opt.wildignorecase = true
 opt.wildmenu = true
 -- 当文件被外部程序修改时，自动加载
 opt.autoread = true
