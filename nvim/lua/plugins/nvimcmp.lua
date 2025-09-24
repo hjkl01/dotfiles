@@ -35,7 +35,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
-      "Saghen/blink.cmp",
 
       -- UI/Icons
       "onsails/lspkind.nvim",
@@ -111,7 +110,6 @@ return {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
-          { name = "blink" },
           { name = "nvim_lua" },
           { name = "path" },
         }),
