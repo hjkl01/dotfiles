@@ -101,7 +101,6 @@ return {
       },
     },
     config = function()
-      local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       -- Global diagnostics configuration
@@ -169,7 +168,11 @@ return {
           }
         end
 
-        lspconfig[server_name].setup(server_opts)
+        vim.lsp.config[server_name] = server_opts
+      end
+
+      for _, server_name in ipairs(servers) do
+        vim.lsp.enable(server_name)
       end
     end,
   },
