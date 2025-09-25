@@ -1,13 +1,5 @@
 #! /bin/sh
 
-# docker config
-
-# /etc/docker/daemon.json
-# {"registry-mirrors":["https://reg-mirror.qiniu.com/"]}
-
-# https://hub-mirror.c.163.com
-# https://mirror.baidubce.com
-
 alias dops='docker ps -a'
 # stop all containers 谨慎使用
 # alias dcka='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'

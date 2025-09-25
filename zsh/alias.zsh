@@ -3,8 +3,6 @@
 # brew install glib
 alias rr="gio trash"
 
-[[ -x $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
-
 fzf_nvim() {
   if [ -n "$1" ]; then
     nvim "$@"
@@ -26,7 +24,7 @@ alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plu
 cht() { curl cht.sh/$1; }
 # curl cht.sh/rsync
 
-# export EDITOR='nvim'
+export EDITOR='nvim'
 
 # alias
 alias cc='cd ~/.dotfiles'
