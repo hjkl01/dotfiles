@@ -150,8 +150,10 @@ InstallOthers() {
     fi
   fi
 
-  mkdir -p "$CONFIG_DIR/ghostty"
-  echo 'config-file = "../../.dotfiles/config/ghostty.config"' >"$CONFIG_DIR/ghostty/config"
+  if [ ! -f "$CONFIG_DIR/ghostty" ]; then
+    mkdir -p "$CONFIG_DIR/ghostty"
+    echo 'config-file = "../../.dotfiles/config/ghostty.config"' >"$CONFIG_DIR/ghostty/config"
+  fi
 
   mkdir -p "$HOME/.tmux/plugins"
 
