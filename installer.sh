@@ -155,7 +155,7 @@ InstallOthers() {
 
   mkdir -p "$HOME/.tmux/plugins"
 
-  for plugin in "tpm" "tmux-cpu"; do
+  for plugin in "tpm" "tmux-cpu" "tmux-yank" "tmux-resurrect"; do
     plugin_dir="$HOME/.tmux/plugins/$plugin"
     if [ ! -d "$plugin_dir" ]; then
       echo $plugin
