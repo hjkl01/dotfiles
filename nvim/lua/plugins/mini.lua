@@ -74,7 +74,7 @@ return {
       require("mini.sessions").setup({
         directory = vim.fn.stdpath("data") .. "/sessions/",
       })
-      require("mini.starter").setup()
+      -- require("mini.starter").setup()
       require("mini.trailspace").setup()
     end,
   },
