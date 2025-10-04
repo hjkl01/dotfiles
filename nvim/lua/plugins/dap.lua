@@ -6,7 +6,7 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
-      "mfussenegger/nvim-dap-python",
+      -- "mfussenegger/nvim-dap-python",
       -- "leoluz/nvim-dap-go",
     },
     keys = {

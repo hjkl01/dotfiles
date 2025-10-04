@@ -20,8 +20,9 @@ return {
   opts = {
     -- Define your formatters
     formatters_by_ft = {
-      -- lua = { "stylua" },
-      -- python = { "black", "ruff" },
+      lua = { "stylua" },
+      python = { "ruff", "black" },
+      json = { "prettier" },
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
       -- typescript = { "prettier" },
       html = { "prettier" },
