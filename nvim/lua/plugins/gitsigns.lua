@@ -3,8 +3,8 @@ return {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>cm", "<cmd>Telescope git_commits<CR>", desc = "Git commits" },
-      { "<leader>gt", "<cmd>Telescope git_status<CR>", desc = "Git status" },
+      -- { "<leader>cm", "<cmd>Telescope git_commits<CR>", desc = "Git commits" },
+      -- { "<leader>gt", "<cmd>Telescope git_status<CR>", desc = "Git status" },
     },
     opts = {
       signs = {

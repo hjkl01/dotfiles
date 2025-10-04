@@ -15,6 +15,11 @@ map("n", "q", "<cmd>q<CR>", { desc = "﬚  quit file" })
 map("n", "W", "<cmd>w<CR>", { desc = "﬚  save file" })
 map("n", "#", "*<CR>", { desc = "next ident" })
 
+map("i", "<C-h>", "<Left>", { desc = "move left", remap = true })
+map("i", "<C-l>", "<Right>", { desc = "move right", remap = true })
+map("i", "<C-j>", "<Down>", { desc = "move down", remap = true })
+map("i", "<C-k>", "<Up>", { desc = "move up", remap = true })
+
 map("n", "ff", function()
   local formatters = {
     python = function()
