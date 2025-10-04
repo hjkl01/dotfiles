@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.nvim",
+    "nvim-mini/mini.nvim",
     event = "VeryLazy",
     config = function()
       require("mini.comment").setup({

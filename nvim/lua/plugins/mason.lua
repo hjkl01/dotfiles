@@ -14,8 +14,8 @@ local servers = {
 
 return {
   {
-    "williamboman/mason.nvim",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
+    "mason-org/mason.nvim",
+    dependencies = { "mason-org/mason-lspconfig.nvim" },
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     opts = {
       PATH = "prepend",
@@ -43,7 +43,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
     },
 
     keys = {
