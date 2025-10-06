@@ -44,7 +44,7 @@ docker run -ti --rm -v $(pwd):/projects formattedd/dotfiles zsh
 使用以下命令下载并执行安装脚本。
 
 ```shell
-curl -fsSL https://gh.hjkl01.cn/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh -o install.sh && chmod +x install.sh && bash ./install.sh link
+curl -fsSL https://gh.hjkl01.cn/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh | sh -s -- link
 ```
 
 -   默认情况下，脚本会备份你现有的配置文件（如 `~/.zshrc`）并创建新的符号链接。
