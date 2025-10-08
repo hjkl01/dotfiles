@@ -8,11 +8,11 @@ alias setproxy='export HTTP_PROXY=$PROXY_URL; export HTTPS_PROXY=$PROXY_URL; exp
 alias unsetproxy='unset HTTP_PROXY; unset HTTPS_PROXY;unset ALL_PROXY;'
 
 run_cmd() {
-  export HTTP_PROXY=$PROXY_URL;
-  export HTTPS_PROXY=$PROXY_URL;
-	export ALL_PROXY=$PROXY_URL
-	$*
-	unsetproxy
+  export HTTP_PROXY=$PROXY_URL
+  export HTTPS_PROXY=$PROXY_URL
+  export ALL_PROXY=$PROXY_URL
+  $*
+  unsetproxy
 }
 alias px=run_cmd $*
 

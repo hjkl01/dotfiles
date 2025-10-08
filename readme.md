@@ -10,7 +10,7 @@
 
 在开始之前，请确保你的系统已经安装了以下基础工具：
 
--   **核心工具**: `git`, `zsh`, `tmux`, `fzf`, `zoxide`, `neovim`
+-   **核心工具**: `git`, `zsh`, `tmux`, `fzf`, `zoxide`, `neovim`, `asdf`
 -   **Neovim 依赖**: `ripgrep` (用于搜索), `stylua` (Lua 格式化)
 -   **剪贴板工具**:
     -   **Linux (X11)**: `xclip`

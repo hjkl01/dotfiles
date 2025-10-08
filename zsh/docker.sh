@@ -20,11 +20,11 @@ alias doi='docker images'
 
 # Select a docker container to stop and rm
 dosr() {
-	docker ps -a | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $1 }' | xargs -r docker stop | xargs -r docker rm
+  docker ps -a | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $1 }' | xargs -r docker stop | xargs -r docker rm
 }
 
 # Select a docker image or images to remove
 dori() {
-	docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
+  docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
 
 }

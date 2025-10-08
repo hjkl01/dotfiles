@@ -2,12 +2,11 @@
 
 # install chsrc to use mirrors
 
-
 # python config
 
 virtualenv_path=~/.venv/py3/bin/activate
 if [ -f $virtualenv_path ]; then
-	source $virtualenv_path
+  source $virtualenv_path
 fi
 
 # pip install better_exceptions
@@ -33,34 +32,6 @@ export BETTER_EXCEPTIONS=1
 alias pr='.venv/bin/python'
 alias pi='.venv/bin/pip'
 
-# nodejs config
-# npm config
-# alias npm='pnpm'
-
-# 查询源
-# npm config get registry
-
-# 更换国内源
-# npm config set registry https://registry.npmmirror.com
-
-# 恢复官方源
-# npm config set registry https://registry.npmpkg.com
-
-# 删除注册表
-# npm config delete registry
-
-# HUAWEI
-# https://repo.huaweicloud.com/repository/npm/
-# Tencent
-# http://mirrors.cloud.tencent.com/npm/
-# 浙江大学
-# http://mirrors.zju.edu.cn/npm/
-# 南京邮电
-# https://mirrors.njupt.edu.cn/nexus/repository/npm/
-# npmjs
-# https://registry.npmjs.org
-
-
 # golang config
 
 # Go语言中文网
@@ -77,7 +48,6 @@ export GOPROXY=https://goproxy.cn
 export GO111MODULE=auto
 export GOPATH=$HOME/dev/go
 export PATH="$PATH:$HOME/dev/go/bin"
-
 
 # rust config
 export PATH="$PATH:$HOME/.cargo/bin/"

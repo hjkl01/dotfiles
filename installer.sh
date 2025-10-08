@@ -135,7 +135,7 @@ InstallOthers() {
       echo "Installing Homebrew..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-    brew install tmux fzf zoxide lua
+    brew install tmux fzf zoxide lua asdf
     brew install --cask squirrel ghostty
 
     if [ ! -d "$HOME/Library/Rime" ]; then
