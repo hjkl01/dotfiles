@@ -15,3 +15,7 @@ fi
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # 使用 ZSH 的 compinit 初始化补全功能
 autoload -Uz compinit && compinit
+
+# rust
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
