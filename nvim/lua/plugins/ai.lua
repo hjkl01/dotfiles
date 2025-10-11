@@ -2,7 +2,7 @@ local vim = vim
 return {
   {
     "github/copilot.vim",
-    -- enabled = false, -- Disabled, uncomment to enable
+    enabled = false, -- Disabled, uncomment to enable
     event = "BufEnter",
     config = function()
       vim.g.copilot_no_tab_map = true
@@ -15,11 +15,9 @@ return {
     end,
   },
   {
-    "Exafunction/codeium.vim",
+    "Exafunction/windsurf.vim",
     enabled = false, -- Disabled, uncomment to enable
-    event = "BufEnter",
     config = function()
-      -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set("i", "<C-g>", function()
         return vim.fn["codeium#Accept"]()
       end, { expr = true, silent = true })
@@ -35,4 +33,3 @@ return {
     end,
   },
 }
-
