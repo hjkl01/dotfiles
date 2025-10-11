@@ -84,9 +84,9 @@ export XMODIFIERS="@im=fcitx"
 
 ### asdf 安装Python加速
 
-# 找到需要安装的[对应版本](https://mirrors.cernet.edu.cn/list/pythonxy) 如3.11.12
+  - 找到需要安装的[对应版本](https://mirrors.cernet.edu.cn/list/pythonxy) 如3.11.12
 ```
-example:
+# example:
 https://mirrors.ustc.edu.cn/python/3.11.12/Python-3.11.12.tar.xz
 
 # 分别替换GitHub和Python的地址
