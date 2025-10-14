@@ -24,7 +24,10 @@ dosr() {
 }
 
 # Select a docker image or images to remove
-dori() {
-  docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
+# dori() {
+#   docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
+# }
 
+dori() {
+  docker images -a --format "{{.Repository}}:{{.Tag}}" | fzf-tmux -m --header="Select images to remove (Ctrl-a: select all)" | xargs -r docker rmi -f
 }
