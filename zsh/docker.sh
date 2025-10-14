@@ -31,3 +31,12 @@ dosr() {
 dori() {
   docker images -a --format "{{.Repository}}:{{.Tag}}" | fzf-tmux -m --header="Select images to remove (Ctrl-a: select all)" | xargs -r docker rmi -f
 }
+
+dlgsf() {
+  docker ps --format "{{.Names}}" | fzf-tmux | xargs -r docker logs --tail 200 -f
+}
+
+dexec() {
+  local container=$(docker ps --format "{{.Names}}" | fzf-tmux --header="Select container")
+  [ -n "$container" ] && docker exec -it "$container" sh
+}
