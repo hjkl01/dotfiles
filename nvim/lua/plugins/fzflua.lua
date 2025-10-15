@@ -1,35 +1,34 @@
 return {
-  {
-    "ibhagwan/fzf-lua",
-    enabled = false, -- Disabled, uncomment to enable
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    cmd = "FzfLua",
-    keys = {
-      {
-        "gd",
-        "<cmd>FzfLua lsp_definitions jump1=true silent=true ignore_current_line=true<cr>",
-        desc = "Goto Definition",
-      },
-      {
-        "gr",
-        "<cmd>FzfLua lsp_references jump1=true ignore_current_line=true<cr>",
-        desc = "References",
-      },
-      {
-        "gI",
-        "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>",
-        desc = "Goto Implementation",
-      },
-      {
-        "gy",
-        "<cmd>FzfLua lsp_typedefs jump1=true ignore_current_line=true<cr>",
-        desc = "Goto T[y]pe Definition",
-      },
-    },
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
-    end,
-  },
+  -- {
+  --   "ibhagwan/fzf-lua",
+  --   enabled = false, -- Disabled, uncomment to enable
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   cmd = "FzfLua",
+  --   keys = {
+  --     {
+  --       "gd",
+  --       "<cmd>FzfLua lsp_definitions jump1=true silent=true ignore_current_line=true<cr>",
+  --       desc = "Goto Definition",
+  --     },
+  --     {
+  --       "gr",
+  --       "<cmd>FzfLua lsp_references jump1=true ignore_current_line=true<cr>",
+  --       desc = "References",
+  --     },
+  --     {
+  --       "gI",
+  --       "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>",
+  --       desc = "Goto Implementation",
+  --     },
+  --     {
+  --       "gy",
+  --       "<cmd>FzfLua lsp_typedefs jump1=true ignore_current_line=true<cr>",
+  --       desc = "Goto T[y]pe Definition",
+  --     },
+  --   },
+  --   config = function()
+  --     -- calling `setup` is optional for customization
+  --     require("fzf-lua").setup({})
+  --   end,
+  -- },
 }
-
