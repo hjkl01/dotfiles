@@ -16,7 +16,7 @@ return {
   },
   {
     "Exafunction/windsurf.vim",
-    enabled = false, -- Disabled, uncomment to enable
+    -- enabled = false, -- Disabled, uncomment to enable
     config = function()
       vim.keymap.set("i", "<C-g>", function()
         return vim.fn["codeium#Accept"]()
