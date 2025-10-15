@@ -3,6 +3,7 @@ local vim = vim
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    lazy = false,
     branch = "v3.x",
     cmd = "Neotree",
     dependencies = {
