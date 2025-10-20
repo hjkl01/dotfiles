@@ -60,11 +60,15 @@ cdd() {
   ls -G
 }
 
-fkill() {
-  # pid=$(ps -ef | sed 1d | sk --regex -m -e -q "$1" | awk '{print $2}')
-  pid=$(ps -ef | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $2}')
+# fkill() {
+#   # pid=$(ps -ef | sed 1d | sk --regex -m -e -q "$1" | awk '{print $2}')
+#   pid=$(ps -ef | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{print $2}')
+#
+#   if [ "x$pid" != "x" ]; then
+#     echo "$pid" | xargs kill -"${2:-9}"
+#   fi
+# }
 
-  if [ "x$pid" != "x" ]; then
-    echo "$pid" | xargs kill -"${2:-9}"
-  fi
+fkill() {
+  ps -ef | fzf -m --header="选择多个进程 (Tab键多选)" | awk '{print $2}' | xargs -r kill -9
 }
