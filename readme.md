@@ -13,6 +13,7 @@
 -   **核心工具**: `git`, `zsh`, `tmux`, `fzf`, `zoxide`, `neovim`, `asdf`
 -   **Neovim 依赖**: `ripgrep` (用于搜索), `stylua` (Lua 格式化)
     - 用Blink.cmp实现代码补全时，如网络环境不好，执行 `BlinkCmp build`,需要rust环境
+    - <leader>uT 临时禁止渲染markdown
 -   **剪贴板工具**:
     -   **Linux (X11)**: `xclip`
     -   **WSL**: `win32yank.exe` (需要手动下载并放置到 PATH)
