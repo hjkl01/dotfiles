@@ -58,8 +58,8 @@ InstallOhMyZsh() {
     git clone --single-branch --depth 1 https://github.com/MichaelAquilina/zsh-you-should-use $HOME/.oh-my-zsh/custom/plugins/zsh-you-should-use
   fi
 
-  if [ ! -d $HOME/.oh-my-zsh/custom/themes/Schminitz.zsh-theme ]; then
-    ln -sf "$HOME/.dotfiles/zsh/Schminitz.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/Schminitz.zsh-theme"
+  if [ ! -d $HOME/.oh-my-zsh/custom/themes/hjkl01.zsh-theme ]; then
+    ln -sf "$HOME/.dotfiles/zsh/hjkl01.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/hjkl01.zsh-theme"
   fi
 }
 
