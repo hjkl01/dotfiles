@@ -40,24 +40,24 @@ ZSH_THEME_GIT_PROMPT_DIRTY="$YS_VCS_PROMPT_DIRTY"
 ZSH_THEME_GIT_PROMPT_CLEAN="$YS_VCS_PROMPT_CLEAN"
 
 
-# Prompt format: \n # TIME USER at MACHINE in [DIRECTORY] on git:BRANCH STATE \n $ 
+# Prompt format: \n # TIME USER at MACHINE in [DIRECTORY] on git:BRANCH STATE \n $
 PROMPT="
-%{$fg[cyan]%}%n \
+%K{blue}%F{black}%n%k%F{blue} \
 %{$fg[white]%}at \
-%{$fg[green]%}$(box_name) \
+%K{green}%F{black}$(box_name)%k%F{green} \
 %{$fg[white]%}in \
-%{$terminfo[bold]$fg[yellow]%}[${current_dir}] \
+%K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
 $(current_time) \
 
 %{$terminfo[bold]$fg[white]%}› %{$reset_color%} "
 
 if [[ "$USER" == "root" ]]; then
 PROMPT="
-%{$fg[red]%}%n \
+%K{red}%F{black}%n%k%F{red} \
 %{$fg[white]%}at \
-%{$fg[red]%}$(box_name) \
+%K{red}%F{black}$(box_name)%k%F{red} \
 %{$fg[white]%}in \
-%{$terminfo[bold]$fg[yellow]%}[${current_dir}] \
+%K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
 $(current_time) \
 
 %{$terminfo[bold]$fg[white]%}› %{$reset_color%} "
