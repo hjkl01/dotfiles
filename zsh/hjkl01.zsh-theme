@@ -47,8 +47,7 @@ PROMPT="
 %K{green}%F{black}$(box_name)%k%F{green} \
 %{$fg[white]%}in \
 %K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
-$(current_time) \
-
+$(current_time)
 %{$terminfo[bold]$fg[white]%}› %{$reset_color%} "
 
 if [[ "$USER" == "root" ]]; then
@@ -59,6 +58,5 @@ PROMPT="
 %{$fg[white]%}in \
 %K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
 $(current_time) \
-
 %{$terminfo[bold]$fg[white]%}› %{$reset_color%} "
 fi
