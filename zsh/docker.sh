@@ -19,7 +19,7 @@ alias doi='docker images'
 # alias dc='podman-compose'
 
 # Select a docker container to stop and rm
-dosr() {
+dosrc() {
   docker ps -a | sed 1d | fzf -q "$1" --no-sort -m | awk '{ print $1 }' | xargs -r docker stop | xargs -r docker rm
 }
 
