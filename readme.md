@@ -10,7 +10,7 @@
 
 在开始之前，请确保你的系统已经安装了以下基础工具：
 
--   **核心工具**: `git`, `zsh`, `tmux`, `fzf`, `zoxide`, `neovim`, `asdf`
+-   **核心工具**: `git` `zsh` `tmux` `fzf` `zoxide` `neovim` `asdf`
 -   **Neovim 依赖**: `ripgrep` (用于搜索), `stylua` (Lua 格式化)
     - 用Blink.cmp实现代码补全时，如网络环境不好，执行 `BlinkCmp build`,需要rust环境
     - <leader>uT 临时禁止渲染markdown
