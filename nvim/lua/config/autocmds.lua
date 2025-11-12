@@ -9,7 +9,7 @@
 
 
 -- 自动高亮光标下的单词
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   pattern = "*",
   callback = function()
     -- 获取光标下的单词
