@@ -1,0 +1,18 @@
+#!/bin/bash
+
+host=$(rg '^Host\s+(.*)' ~/.ssh/config --no-heading | awk '{print $2}' | fzf --prompt="选择远程主机: ")
+[ -z "$host" ] && echo "❌ 未选择主机" && return 1
+
+file=$(ssh "$host" 'fd . --max-depth 2 --hidden --follow --color=never ~' |
+  fzf --prompt="选择要下载的远程文件/目录: " \
+    --preview "ssh '"$host"' ls -lh {}")
+file="${file%%/}"
+[ -z "$file" ] && echo "❌ 未选择文件" && return 1
+
+echo -n "📂 请输入本地保存目录 [默认: 当前目录]: "
+read local_dir
+local_dir=${local_dir:-.}
+
+echo "⬇️ 正在下载: $host:$file → $local_dir"
+
+rsync -avzPr "${host}:$file" "$local_dir"

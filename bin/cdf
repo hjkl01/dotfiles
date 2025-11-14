@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dir=$(fd --type d --hidden --follow --exclude .git . "$HOME" | fzf --height 50% --reverse)
+if [[ -n "$dir" ]]; then
+  cd "$dir"
+  ls -F
+fi

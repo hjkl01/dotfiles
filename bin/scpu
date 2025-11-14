@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# host=$(rg '^Host\s+(.*)' ~/.ssh/config --no-heading | awk '{print $2}' | fzf --prompt="选择远程主机: ")
+# [ -z "$host" ] && echo "❌ 未选择主机" && return 1
+#
+# # 选择本地文件/目录（可多选）
+# local targets
+# targets=$(fd . --type f --type d | fzf --multi --prompt="选择要上传的本地文件/目录: " --preview 'if [[ -d {} ]]; then ls -la {}; else file {}; fi')
+# [ -z "$targets" ] && echo "❌ 未选择文件/目录" && return 1
+#
+# # 输入远程目录（默认为远程用户主目录）
+# local remote_dir
+# echo -n "📁 请输入远程目录路径 [默认: home directory]: "
+# read remote_dir
+# remote_dir=${remote_dir:-.} # Use . to mean remote user's home directory
+#
+# echo "🚀 上传中: $(echo $targets | tr '\n' ' ') → $host:$remote_dir"
+#
+# # Process each target individually to avoid path issues
+# local target
+# while IFS= read -r target; do
+#   if [ -n "$target" ]; then
+#     rsync -avzPr --rsh=ssh "$target" "${host}:${remote_dir}/"
+#   fi
+# done <<<"$targets"
+
+# 选择远程主机
+host=$(rg '^Host\s+(.*)' ~/.ssh/config --no-heading | awk '{print $2}' | fzf --prompt="选择远程主机: ")
+[ -z "$host" ] && echo "❌ 未选择主机" && return 1
+
+# 选择本地文件或目录
+file=$(fd . --max-depth 3 --hidden --follow --color=never |
+  fzf --prompt="选择要上传的本地文件/目录: " \
+    --preview "ls -lh {}")
+file="${file%%/}"
+[ -z "$file" ] && echo "❌ 未选择文件" && return 1
+
+# 询问远程保存目录
+echo -n "📂 请输入远程保存目录 [默认: ~]: "
+read remote_dir
+remote_dir=${remote_dir:-~}
+
+echo "⬆️ 正在上传: $file → $host:$remote_dir"
+
+# 执行上传
+rsync -avzPr "$file" "${host}:${remote_dir}/"

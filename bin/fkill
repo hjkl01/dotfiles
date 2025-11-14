@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ps -ef | fzf -m --header="选择多个进程 (Tab键多选)" | awk '{print $2}' | xargs -r kill -9
