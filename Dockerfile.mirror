@@ -4,18 +4,21 @@ FROM archlinux:latest
 ENV LANG=en_US.UTF-8
 ENV TERM=xterm-256color
 
-
 RUN echo 'zh_CN.UTF-8\ UTF-8' >> /etc/locale.gen && locale-gen
 
-RUN echo 'Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-RUN echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+RUN echo "Server = https://mirrors.aliyun.com/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist && \
+    echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist && \
+    echo "Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist && \
+    echo "Server = https://mirrors.163.com/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist && \
+    echo "Server = https://mirrors.ustc.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
 RUN cat /etc/pacman.d/mirrorlist
 
 RUN echo '[url "https://gh.hjkl01.cn/https://github.com"] \
               insteadOf = https://github.com' >> /root/.gitconfig
 RUN cat /root/.gitconfig
 
-RUN pacman --noconfirm -Syu
+RUN pacman --noconfirm -Syy
+RUN pacman --noconfirm -Syyu
 RUN pacman --noconfirm -S \
     bc \
     eza \
@@ -38,27 +41,24 @@ RUN pacman --noconfirm -S \
     fzf \
     zoxide \
     neovim \
+    rust \
     lua \
     stylua \
     python3 \
-    nodejs \
-    npm \
     which \
-    lsof \
+    tzdata \
     base-devel && \
     pacman -Scc --noconfirm && \
     rm -rf /var/cache/pacman/pkg/* && \
     echo $(which zsh) >> /etc/shells
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
 
 RUN git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles /root/.dotfiles && \
     cd /root/.dotfiles && cp env .env && \
     sed -i 's|execute_function Installasdf||g' installer.sh && \
     bash ./installer.sh link && \
     echo 'export ZSH_ENV="docker container "' >> /root/.dotfiles/.env
-
-# RUN /root/.dotfiles/bin/chsrc set pip first
-# RUN /root/.dotfiles/bin/chsrc set go first
-# RUN /root/.dotfiles/bin/chsrc set npm first
 
 # Install Neovim plugins and language servers in a single layer
 RUN nvim --headless -c 'silent Mason' -c 'sleep 5' -c 'qa!'
@@ -67,14 +67,13 @@ RUN nvim --headless \
     -c "MasonInstall lua-language-server" \
     -c "MasonInstall ruff" \
     -c 'qa!'
-RUN nvim --headless -c 'Lazy! sync' -c 'sleep 15' -c 'qa!'
-
-# RUN nvim --headless -c 'lua print(vim.inspect(require("mason-registry").get_installed_packages()))' -c 'qa!'
+RUN nvim --headless -c 'TSUpdate!' -c 'BlinkCmp build !' -c 'sleep 5' -c 'qa!'
+RUN nvim --headless -c 'sleep 10' -c 'qa!'
 
 WORKDIR /projects/
 
 # Set default shell to zsh
 RUN echo $(which zsh)
 RUN chsh -s $(which zsh)
-SHELL ["/usr/sbin/zsh", "-c"]
+
 ENTRYPOINT ["/usr/sbin/zsh"]

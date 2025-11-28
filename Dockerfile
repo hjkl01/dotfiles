@@ -4,9 +4,11 @@ FROM archlinux:latest
 ENV LANG=en_US.UTF-8
 ENV TERM=xterm-256color
 
-# Update system and install packages in a single layer to reduce image size
-RUN pacman --noconfirm -Syyu && \
-    pacman --noconfirm -S \
+RUN echo 'zh_CN.UTF-8\ UTF-8' >> /etc/locale.gen && locale-gen
+
+RUN pacman --noconfirm -Syy
+RUN pacman --noconfirm -Syyu
+RUN pacman --noconfirm -S \
     bc \
     eza \
     bat \
@@ -28,38 +30,39 @@ RUN pacman --noconfirm -Syyu && \
     fzf \
     zoxide \
     neovim \
+    rust \
     lua \
     stylua \
     python3 \
-    nodejs \
-    npm \
     which \
-    lsof \
+    tzdata \
     base-devel && \
     pacman -Scc --noconfirm && \
     rm -rf /var/cache/pacman/pkg/* && \
     echo $(which zsh) >> /etc/shells
 
-# Clone dotfiles and set up environment in a single layer
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+
 RUN git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles /root/.dotfiles && \
-    cp /root/.dotfiles/env /root/.dotfiles/.env && \
-    bash /root/.dotfiles/installer.sh
-    
+    cd /root/.dotfiles && cp env .env && \
+    sed -i 's|execute_function Installasdf||g' installer.sh && \
+    bash ./installer.sh link && \
+    echo 'export ZSH_ENV="docker container "' >> /root/.dotfiles/.env
 
 # Install Neovim plugins and language servers in a single layer
 RUN nvim --headless -c 'silent Mason' -c 'sleep 5' -c 'qa!'
 RUN nvim --headless \
     -c "MasonInstall python-lsp-server" \
-    -c "MasonInstall bash-language-server" \
     -c "MasonInstall lua-language-server" \
     -c "MasonInstall ruff" \
-    -c "MasonInstall typescript-language-server" \
-    -c "MasonInstall yaml-language-server" \
     -c 'qa!'
+RUN nvim --headless -c 'TSUpdate!' -c 'BlinkCmp build !' -c 'sleep 5' -c 'qa!'
+RUN nvim --headless -c 'sleep 10' -c 'qa!'
 
-# Create and set working directory
-WORKDIR /projects
+WORKDIR /projects/
 
 # Set default shell to zsh
-SHELL ["/usr/sbin/zsh", "-c"]
+RUN echo $(which zsh)
+RUN chsh -s $(which zsh)
+
 ENTRYPOINT ["/usr/sbin/zsh"]
