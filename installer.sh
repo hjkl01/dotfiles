@@ -69,8 +69,8 @@ InstallNeovim() {
 
   if [ ! -d "$HOME/.venv/py3" ]; then
     python3 -m venv "$HOME/.venv/py3"
-    "$HOME/.venv/py3/bin/pip" install --upgrade pip
-    "$HOME/.venv/py3/bin/pip" install better_exceptions neovim black ruff debugpy
+    "$HOME/.venv/py3/bin/pip" install --upgrade pip uv
+    "$HOME/.venv/py3/bin/uv pip" install better_exceptions neovim black ruff debugpy
   fi
 }
 
