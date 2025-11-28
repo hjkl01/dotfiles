@@ -74,61 +74,6 @@ InstallNeovim() {
   fi
 }
 
-Installasdf() {
-  # 检测系统
-  OS=$(uname -s)
-  ARCH=$(uname -m)
-
-  # 转换架构名称
-  case "$ARCH" in
-  x86_64)
-    ARCH="amd64"
-    ;;
-  aarch64 | arm64)
-    ARCH="arm64"
-    ;;
-  *)
-    echo "不支持的架构: $ARCH"
-    exit 1
-    ;;
-  esac
-
-  # 转换系统名称
-  case "$OS" in
-  Linux)
-    OS="linux"
-    ;;
-  Darwin)
-    OS="darwin"
-    ;;
-  *)
-    echo "不支持的系统: $OS"
-    exit 1
-    ;;
-  esac
-
-  # 获取最新版本号
-  LATEST_VERSION=$(curl -s https://api.github.com/repos/asdf-vm/asdf/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-  echo "检测到 asdf 最新版本: $LATEST_VERSION"
-
-  # 拼接下载 URL
-  FILE="asdf-$LATEST_VERSION-$OS-$ARCH.tar.gz"
-  URL="https://gh.hjkl01.cn/https://github.com/asdf-vm/asdf/releases/download/$LATEST_VERSION/$FILE"
-
-  # 判断是否已存在
-  if [ -f "$FILE" ]; then
-    echo "⚠️ 文件已存在: $FILE, 跳过下载"
-  else
-    echo "⬇️  下载: $URL"
-    curl -L -o "$FILE" "$URL"
-    tar -C ~/.dotfiles/bin -xzf "$FILE"
-    rm $FILE
-  fi
-
-  echo "完成！请运行: asdf --version"
-
-}
-
 InstallOthers() {
   if [[ $(uname) == 'Darwin' ]]; then
     if ! command -v brew &>/dev/null; then
@@ -187,7 +132,6 @@ main() {
 
   InstallOhMyZsh
   InstallNeovim
-  Installasdf
   InstallOthers
 
   echo "Installation complete! Please logout and relogin to apply changes."
