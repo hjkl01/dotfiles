@@ -54,8 +54,8 @@ RUN pacman --noconfirm -S \
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
 
-RUN git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles /root/.dotfiles && \
-  cd /root/.dotfiles && cp env .env && bash ./installer.sh
+RUN curl -fsSL https://gh.hjkl01.cn/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh | sh -s -- link
+RUN cp /root/.dotfiles/env /root/.dotfiles/.env
 
 # Install Neovim plugins and language servers in a single layer
 RUN nvim --headless -c 'silent Mason' -c 'sleep 5' -c 'qa!'
