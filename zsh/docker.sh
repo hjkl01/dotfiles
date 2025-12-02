@@ -34,7 +34,7 @@ dori() {
 }
 
 dlgsf() {
-  docker ps --format "{{.Names}}" | fzf-tmux | xargs -r docker logs --tail 200 -f
+  docker ps -a | fzf-tmux | xargs -r docker logs --tail 200 -f
 }
 
 dexec() {
