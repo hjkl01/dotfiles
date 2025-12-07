@@ -1,6 +1,28 @@
-# My Dotfiles
+# 我的 Dotfiles (My Dotfiles)
 
 这是我的个人配置文件集合，用于统一我在不同设备上的开发环境，主要围绕 Zsh、Neovim、Tmux 和 Ghostty。
+
+## 目录
+
+- [🚀 快速开始](#-快速开始)
+- [🔧 配置与使用](#-配置与使用)
+- [🤔 故障排除](#-故障排除)
+- [💡 推荐工具](#-推荐工具)
+- [🙏 致谢](#-致谢)
+
+---
+
+## 📁 包含配置
+
+本仓库包含以下工具的配置文件：
+
+- **Zsh**: 增强的 Shell 配置，包括别名、插件和主题
+- **Neovim**: 基于 LazyVim 的现代化编辑器配置
+- **Tmux**: 终端复用器配置，支持插件管理
+- **Ghostty**: 现代终端模拟器配置
+- **Alacritty**: 轻量级终端模拟器配置
+- **Rime**: 中文输入法配置
+- **其他**: Git、Python、Docker 等工具配置
 
 ---
 
@@ -154,9 +176,23 @@ https://www.python.org/ftp -> https://registry.npmmirror.com/-/binary/python
 
 ---
 
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request 来改进这些配置！
+
+如果你有更好的配置建议或发现了问题，请随时联系。
+
+---
+
 ## 🙏 致谢
 
 这份配置的灵感和部分代码来源于以下优秀的开源项目：
 
 -   [NvChad](https://github.com/NvChad/NvChad)
 -   [LazyVim](https://github.com/LazyVim/LazyVim)
+
+---
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
