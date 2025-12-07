@@ -43,40 +43,21 @@
 
 > **提示**: 在 Ubuntu/Debian 等系统上，如果 `apt` 源的版本过旧，建议使用 `asdf` 来安装 `stylua`。
 
-### Git 代理设置
 
-如果在中国大陆访问 GitHub 速度较慢，可以配置代理来加速 `git clone`。
-
-```shell
-# 配置 git 代理
-git config --global url."https://gh.hjkl01.cn/https://github.com".insteadOf "https://github.com"
-
-# 取消代理
-git config --global --unset url."https://gh.hjkl01.cn/https://github.com".insteadOf
-```
-
-#### 🐳 Docker 容器中体验
-
-```
-docker run -ti --rm -v $(pwd):/projects formattedd/dotfiles zsh
-```
-
-
-
-### 2. 一键安装
+### 2. 安装
 
 使用以下命令下载并执行安装脚本。
 
 ```shell
-curl -fsSL https://gh.hjkl01.cn/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh | sh -s -- link
-```
+# curl -fsSL https://gh.hjkl01.cn/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh | sh -s -- link
+git config --global url."https://gh.hjkl01.cn/https://github.com".insteadOf "https://github.com"
 
--   默认情况下，脚本会备份你现有的配置文件（如 `~/.zshrc`）并创建新的符号链接。
--   如果你只想创建链接而不进行其他设置（如配置镜像源），可以运行 `bash ./install.sh link`。
+git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
 
-安装完成后，将 Zsh 设置为你的默认 Shell：
+cd ~/.dotfiles
 
-```shell
+bash ./installer.sh link
+
 chsh -s $(which zsh)
 ```
 
