@@ -30,7 +30,7 @@ dosrc() {
 # }
 
 dori() {
-  docker images -a --format "{{.Repository}}:{{.Tag}}" | fzf-tmux -m --header="Select images to remove (Ctrl-a: select all)" | xargs -r docker rmi -f
+  docker images -a  | fzf-tmux -m --header="Select images to remove (Ctrl-a: select all)" | xargs -r docker rmi -f
 }
 
 dlgsf() {
