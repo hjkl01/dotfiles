@@ -32,7 +32,7 @@
 
 在开始之前，请确保你的系统已经安装了以下基础工具：
 
--   **核心工具**: `git` `zsh` `tmux` `fzf` `zoxide` `neovim` `asdf`
+-   **核心工具**: `git` `zsh` `tmux` `fzf` `zoxide` `neovim` `asdf` `git-delta`
 -   **Neovim 依赖**: `ripgrep` (用于搜索), `stylua` (Lua 格式化)
     - 用Blink.cmp实现代码补全时，如网络环境不好，执行 `BlinkCmp build`,需要rust环境
     - <leader>uT 临时禁止渲染markdown
@@ -90,6 +90,8 @@ chsh -s $(which zsh)
 我使用 `rime-auto-deploy` 项目来自动化部署 Rime 的词库和配置。
 
 ```shell
+# sudo pacman -S fcitx5 fcitx5-rime fcitx5-configtool fcitx5-gtk fcitx5-qt 
+
 # 1. 克隆部署工具
 git clone --depth=1 https://github.com/Mark24Code/rime-auto-deploy
 cd rime-auto-deploy
