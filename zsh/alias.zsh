@@ -13,12 +13,11 @@ fzf_nvim() {
   fi
 }
 
-[[ -x $(command -v eza) ]] && alias ls=eza
+[[ -x $(command -v lsd) ]] && alias ls=lsd
 [[ -x $(command -v nvim) ]] && alias vi=fzf_nvim
 # [[ -x $(command -v fd) ]] && alias find=fd
 [[ -x $(command -v rg) ]] && alias grep=rg
 
-[[ -x $(command -v lsof) ]] && alias lsof="lsof -i -P -n | fzf"
 [[ -x $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
 
 alias clean_nvim='rm -rf ~/.local/share/nvim/ ~/.cache/nvim ~/.dotfiles/nvim/plugin'
