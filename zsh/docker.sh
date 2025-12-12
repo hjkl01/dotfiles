@@ -30,15 +30,23 @@ dosrc() {
 # }
 
 dori() {
-  docker images -a  | fzf-tmux -m --header="Select images to remove (Ctrl-a: select all)" | xargs -r docker rmi -f
+  docker images -a | sed 1d | fzf -m --header="Select images to remove (Ctrl-a: select all)" | awk '{print $3}' | xargs -r docker rmi -f
 }
 
-dlgsf() {
-  docker ps -a | fzf-tmux | xargs -r docker logs --tail 200 -f
+dlog() {
+  local container_id
+  container_id=$(docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" |
+    fzf --header-lines=1 --preview 'docker logs {1}' --preview-window=right:60% |
+    awk '{print $1}')
+  if [ -n "$container_id" ]; then
+    docker logs -f --tail 200 "$container_id"
+  else
+    echo "未选择容器"
+  fi
 }
 
 dexec() {
-  local container=$(docker ps --format "{{.Names}}" | fzf-tmux --header="Select container")
+  local container=$(docker ps --format "{{.Names}}" | fzf --header="Select container")
   [ -n "$container" ] && docker exec -it "$container" sh
 }
 
