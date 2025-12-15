@@ -2,6 +2,8 @@
 
 这是我的个人配置文件集合，用于统一我在不同设备上的开发环境，主要围绕 Zsh、Neovim、Tmux 和 Ghostty。
 
+<!-- 💡 在这里插入一张截图或 GIF 来展示你的终端和编辑器外观！ -->
+
 ## 目录
 
 - [🚀 快速开始](#-快速开始)
@@ -30,56 +32,65 @@
 
 ### 1. 环境准备 (Prerequisites)
 
-在开始之前，请确保你的系统已经安装了以下基础工具：
+在开始之前，请确保你的系统已经安装了以下核心工具，这些是保证配置正常运行所必需的。
 
--   **核心工具**: `git` `zsh` `tmux` `fzf` `zoxide` `neovim` `asdf` `git-delta`
--   **Neovim 依赖**: `ripgrep` (用于搜索), `stylua` (Lua 格式化)
-    - 用Blink.cmp实现代码补全时，如网络环境不好，执行 `BlinkCmp build`,需要rust环境
-    - <leader>uT 临时禁止渲染markdown
+-   **核心依赖**:
+    -   `git`: 版本控制工具。
+    -   `zsh`: 功能强大的 Shell。
+    -   `neovim`: 可扩展的现代化文本编辑器。
+    -   `tmux`: 终端复用器。
+    -   `asdf`: 多版本管理工具，用于管理 `python`, `node` 等。
+-   **Neovim 依赖**:
+    -   `ripgrep`: 用于代码搜索。
+    -   `fzf`: 模糊搜索工具。
+    -   `stylua`: Lua 代码格式化工具。
 -   **剪贴板工具**:
-    -   **Linux (X11)**: `xclip`
-    -   **WSL**: `win32yank.exe` (需要手动下载并放置到 PATH)
--   **输入法 (可选)**: `fcitx5-rime`
-
-> **提示**: 在 Ubuntu/Debian 等系统上，如果 `apt` 源的版本过旧，建议使用 `asdf` 来安装 `stylua`。
-
-一些我喜欢并推荐的命令行工具：
-
--   `lsd`: 下一代文件列表命令。向下兼容 ls。
--   `zoxide`: 一个更聪明的 CD 指令。
--   `fd`: 一个简单、快速且用户友好的find替代方案。
--   `ripgrep`: 非常快速的 grep 替代方案。
--   `fzf`: 通用的命令行模糊查找器。
--   `dust`: du 更直观的版本。
--   `tree`: 以树状图列出文件和目录。
--   `broot`: 一种新的查看和导航目录树的方式。
--   `htop`: 交互式的进程查看器。
--   `lsof`: 显示当前系统中被进程打开的文件信息。
--   `rsync`: 强大的文件同步工具。
--   `proxychains-ng`: 终端网络代理工具。
--   `delta`: 用于 git 和 diff 输出的查看器。
--   `lazygit`: TUI 形式的 Git 客户端。
--   [yazi](https://github.com/sxyazi/yazi): 一个用 Rust 编写的极速终端文件管理器。
--   `ncdu`: 磁盘空间使用分析器。
--   [superfile](https://github.com/yorukot/superfile): 一款 Go 编写的现代化 TUI 文件管理器。
-
+    -   **Linux (X11)**: `xclip` 或 `xsel`。
+    -   **WSL**: `win32yank.exe` (需要手动下载并放置到 PATH)。
+-   **输入法 (可选)**:
+    -   `fcitx5-rime`: 用于中文输入。
 
 ### 2. 安装
 
-使用以下命令下载并执行安装脚本。
+使用以下步骤来安装 dotfiles。
 
 ```shell
-# curl -fsSL https://gh.hjkl01.cn/https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/installer.sh | sh -s -- link
+# 步骤 1: (可选) 配置 GitHub 镜像以加速下载
+# 如果你访问 GitHub 速度较慢，可以执行此命令
 git config --global url."https://gh.hjkl01.cn/https://github.com".insteadOf "https://github.com"
 
+# 步骤 2: 克隆仓库到本地
 git clone https://github.com/hjkl01/dotfiles ~/.dotfiles
-
 cd ~/.dotfiles
 
+# 步骤 3: 运行安装脚本来链接配置文件
+# 这将会把仓库中的配置文件软链接到你的 Home 目录下
 bash ./installer.sh link
 
+# 步骤 4: 更改默认 Shell 为 Zsh
 chsh -s $(which zsh)
 ```
+
+> **注意**: 脚本执行后，请重新启动终端或 `source ~/.zshrc` 来使配置生效。
+
+---
+
+## 💡 推荐工具
+
+以下是一些我个人喜欢并推荐的命令行工具，它们能极大提升你的终端体验，但并非必需。
+
+-   `lsd`: 现代化的 `ls` 命令，带图标和颜色。
+-   `zoxide`: 更智能的目录跳转工具，替代 `cd`。
+-   `fd`: 简单、快速、友好的 `find` 替代品。
+-   `git-delta`: `git diff` 的美化工具。
+-   `lazygit`: TUI 界面的 Git 客户端，非常高效。
+-   `yazi` / `superfile`: 现代化的 TUI 文件管理器。
+-   `dust`: 查看目录大小，`du` 的友好替代品。
+-   `tree`: 以树状结构显示文件。
+-   `broot`: 交互式目录树导航。
+-   `htop`: 交互式进程查看器。
+-   `ncdu`: 磁盘使用分析器。
+-   `proxychains-ng`: 终端网络代理工具。
 
 ---
 
@@ -109,16 +120,20 @@ export XMODIFIERS="@im=fcitx"
 /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
 ```
 
-### asdf 安装Python加速
+### asdf 环境加速
 
-  - 找到需要安装的[对应版本](https://mirrors.cernet.edu.cn/list/pythonxy) 如3.11.12
-```
-# example:
-https://mirrors.ustc.edu.cn/python/3.11.12/Python-3.11.12.tar.xz
+对于 `asdf` 管理的语言（如 Python），可以通过设置环境变量来使用镜像源，从而加速下载。
 
-# 分别替换GitHub和Python的地址
-vi ~/.asdf/plugins/python/pyenv/plugins/python-build/share/python-build/3.11.13
+**以 Python 为例:**
+
+将以下行添加到你的 `~/.zshrc` 或 `~/.bashrc` 文件中，可以显著提高 `asdf install python ...` 的速度。
+
+```shell
+# 使用镜像源加速 asdf-python 的下载
+export PYTHON_BUILD_MIRROR_URL="https://registry.npmmirror.com/-/binary/python"
 ```
+
+这种方法比手动修改插件文件更推荐，因为它不会在插件更新后被覆盖。
 
 ### Tmux 插件管理
 
@@ -149,12 +164,6 @@ Tmux 的插件使用 `tpm` 管理。
 rm -rf ~/.local/share/nvim/ ~/.cache/nvim
 ```
 然后重启 Neovim，让 `lazy.nvim` 重新同步插件。
-
-### 下载python慢，更新下载地址
-
-```shell
-https://www.python.org/ftp -> https://registry.npmmirror.com/-/binary/python
-```
 
 ### WSL 与 Windows 剪贴板集成
 
