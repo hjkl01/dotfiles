@@ -32,23 +32,20 @@
 
 ### 1. 环境准备 (Prerequisites)
 
-在开始之前，请确保你的系统已经安装了以下核心工具，这些是保证配置正常运行所必需的。
+在开始之前，请确保你的系统已经安装了以下核心工具。为了方便起见，你可以根据你的操作系统直接复制下方的命令进行安装。
 
--   **核心依赖**:
-    -   `git`: 版本控制工具。
-    -   `zsh`: 功能强大的 Shell。
-    -   `neovim`: 可扩展的现代化文本编辑器。
-    -   `tmux`: 终端复用器。
-    -   `asdf`: 多版本管理工具，用于管理 `python`, `node` 等。
--   **Neovim 依赖**:
-    -   `ripgrep`: 用于代码搜索。
-    -   `fzf`: 模糊搜索工具。
-    -   `stylua`: Lua 代码格式化工具。
+```bash
+git zsh neovim tmux ripgrep fzf stylua asdf stylua
+```
+
+#### 依赖说明
+
+-   **核心依赖**: `git`, `zsh`, `neovim`, `tmux`, `asdf`
+-   **Neovim 依赖**: `ripgrep`, `fzf`, `stylua`
 -   **剪贴板工具**:
-    -   **Linux (X11)**: `xclip` 或 `xsel`。
-    -   **WSL**: `win32yank.exe` (需要手动下载并放置到 PATH)。
--   **输入法 (可选)**:
-    -   `fcitx5-rime`: 用于中文输入。
+    -   **Linux (X11)**: `xclip` 或 `xsel`
+    -   **WSL**: `win32yank.exe` (需手动下载并放置到 PATH)
+-   **输入法 (可选)**: `fcitx5-rime`
 
 ### 2. 安装
 
