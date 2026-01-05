@@ -10,6 +10,8 @@
 - [💡 推荐工具](#-推荐工具)
 - [🔧 配置与使用](#-配置与使用)
 - [🤔 故障排除](#-故障排除)
+- [🏗️ 项目结构](#️-项目结构)
+- [🤝 贡献](#-贡献)
 - [🙏 致谢](#-致谢)
 
 ---
@@ -98,7 +100,7 @@ chsh -s $(which zsh)
 我使用 `rime-auto-deploy` 项目来自动化部署 Rime 的词库和配置。
 
 ```shell
-# sudo pacman -S fcitx5 fcitx5-rime fcitx5-configtool fcitx5-gtk fcitx5-qt 
+# sudo pacman -S fcitx5 fcitx5-rime fcitx5-configtool fcitx5-gtk fcitx5-qt
 
 # 1. 克隆部署工具
 git clone --depth=1 https://github.com/Mark24Code/rime-auto-deploy
@@ -168,6 +170,38 @@ rm -rf ~/.local/share/nvim/ ~/.cache/nvim
 -   Windows Terminal 或 Alacritty for Windows 的配置文件路径通常在: `~/AppData/Roaming/alacritty/alacritty.toml`。
 
 ---
+
+## 🏗️ 项目结构
+
+```
+.dotfiles/
+├── config/                 # 配置文件
+│   ├── gitconfig           # Git 配置
+│   ├── tmux.conf           # Tmux 配置
+│   ├── ghostty.config      # Ghostty 终端配置
+│   ├── alacritty.toml      # Alacritty 终端配置
+│   ├── rime/               # Rime 输入法配置
+│   └── ...                 # 其他工具配置
+├── nvim/                   # Neovim 配置 (基于 LazyVim)
+├── zsh/                    # Zsh 配置
+│   ├── zshrc               # Zsh 主配置文件
+│   ├── alias.zsh           # 别名定义
+│   ├── git.sh              # Git 相关函数和别名
+│   ├── languages.sh        # 编程语言环境配置
+│   ├── docker.sh           # Docker 相关别名和函数
+│   ├── proxy.sh            # 代理配置
+│   └── hjkl01.zsh-theme    # 自定义 Zsh 主题
+├── bin/                    # 可执行脚本 (软链接到系统 PATH)
+├── scripts/                # 工具脚本
+│   ├── run.sh              # etcd 操作脚本
+│   ├── test.py             # Ollama 测试脚本
+│   └── README.md           # 脚本说明
+├── installer.sh            # 安装脚本 (改进版，支持备份和错误处理)
+├── Dockerfile              # 开发环境容器配置
+├── Dockerfile.mirror       # 使用国内镜像的 Dockerfile
+├── readme.md               # 项目文档
+└── ...                     # 其他文件
+```
 
 ---
 
