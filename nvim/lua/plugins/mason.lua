@@ -162,7 +162,7 @@ return {
         if server_name == "ruff" then
           server_opts.init_options = {
             settings = {
-              lineLength = 120,
+              lineLength = 180,
             },
           }
         end
