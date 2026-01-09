@@ -11,7 +11,7 @@
 ---
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/hjkl01/dotfiles/main/assets/preview.png" alt="Terminal Preview" width="800">
+  <img src="https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/assets/preview.png" alt="Terminal Preview" width="800">
 </div>
 
 > 💡 **现代化开发环境配置** - 基于 Zsh + Neovim + Tmux + Ghostty 的高效工作流
