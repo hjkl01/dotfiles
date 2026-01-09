@@ -65,7 +65,7 @@
 
 ```bash
 # 🎯 一键安装核心依赖 (Ubuntu/Debian)
-sudo apt update && sudo apt install -y git zsh neovim tmux ripgrep fzf
+git zsh neovim tmux ripgrep fzf
 
 # 🐧 使用 asdf 管理多版本环境
 git clone --depth=1 https://github.com/asdf-vm/asdf.git ~/.asdf
