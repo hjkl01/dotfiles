@@ -6,7 +6,7 @@
 	rebase = false
 [user]
 	email = ycm76229@gmail.com
-	name = ycm76229
+	name = hjkl01
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
