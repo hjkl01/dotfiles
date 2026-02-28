@@ -24,15 +24,6 @@ dosrc() {
   docker ps -a | sed 1d | fzf -q "$1" --no-sort -m | awk '{ print $1 }' | xargs -r docker stop | xargs -r docker rm
 }
 
-# Select a docker image or images to remove
-# dori() {
-#   docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
-# }
-
-dori() {
-  docker images -a | sed 1d | fzf -m --header="Select images to remove (Ctrl-a: select all)" | awk '{print $3}' | xargs -r docker rmi -f
-}
-
 dlog() {
   local container_id
   container_id=$(docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" |
@@ -53,3 +44,49 @@ dexec() {
 dlz() {
   docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock lazyteam/lazydocker
 }
+
+
+# docker image 多选删除
+docker-image-clean() {
+  if ! command -v fzf >/dev/null 2>&1; then
+    echo "fzf 未安装"
+    return 1
+  fi
+
+  local images
+  images=$(docker images --format "{{.Repository}}:{{.Tag}}|{{.ID}}|{{.Size}}" | sort)
+
+  if [[ -z "$images" ]]; then
+    echo "没有可用的 docker images"
+    return 0
+  fi
+
+  local selected
+  selected=$(echo "$images" | \
+    fzf --multi \
+        --layout=reverse \
+        --prompt="选择要删除的 Docker Images (Tab 多选) > " \
+        --header="Repository:Tag | ImageID | Size" \
+        --preview="echo {} | cut -d'|' -f2 | xargs docker image inspect 2>/dev/null" \
+        --preview-window=right:60%)
+
+  [[ -z "$selected" ]] && return 0
+
+  local image_ids
+  image_ids=$(echo "$selected" | cut -d'|' -f2)
+
+  echo "即将删除以下镜像："
+  echo "$selected"
+  echo
+
+  read "confirm?确认删除？(y/N): "
+
+  if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    echo "$image_ids" | xargs docker rmi
+    echo "删除完成"
+  else
+    echo "已取消"
+  fi
+}
+
+alias dori='docker-image-clean'
