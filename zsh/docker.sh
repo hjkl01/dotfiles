@@ -19,11 +19,6 @@ alias doi='docker images'
 # alias di='podman images'
 # alias dc='podman-compose'
 
-# Select a docker container to stop and rm
-dosrc() {
-  docker ps -a | sed 1d | fzf -q "$1" --no-sort -m | awk '{ print $1 }' | xargs -r docker stop | xargs -r docker rm
-}
-
 dlog() {
   local container_id
   container_id=$(docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" |
@@ -90,3 +85,51 @@ docker-image-clean() {
 }
 
 alias dori='docker-image-clean'
+
+
+# docker container 多选删除
+docker-container-clean() {
+  if ! command -v fzf >/dev/null 2>&1; then
+    echo "fzf 未安装"
+    return 1
+  fi
+
+  local containers
+  containers=$(docker ps -a --format "{{.Names}}|{{.ID}}|{{.Status}}|{{.Image}}" | sort)
+
+  if [[ -z "$containers" ]]; then
+    echo "没有可用的 docker containers"
+    return 0
+  fi
+
+  local selected
+  selected=$(echo "$containers" | \
+    fzf --multi \
+        --layout=reverse \
+        --cycle \
+        --prompt="选择要删除的 Docker Containers (Tab 多选) > " \
+        --header="Name | ID | Status | Image" \
+        --preview="echo {} | cut -d'|' -f2 | xargs docker inspect 2>/dev/null" \
+        --preview-window=right:60%)
+
+  [[ -z "$selected" ]] && return 0
+
+  local container_ids
+  container_ids=$(echo "$selected" | cut -d'|' -f2)
+
+  echo "即将删除以下容器："
+  echo "$selected"
+  echo
+
+  read "confirm?确认删除？(y/N): "
+
+  if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    # 自动停止运行中的容器
+    echo "$container_ids" | xargs docker rm -f
+    echo "删除完成"
+  else
+    echo "已取消"
+  fi
+}
+
+alias dosrc='docker-container-clean'
