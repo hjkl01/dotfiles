@@ -4,15 +4,16 @@ alias dops='docker ps -a'
 # stop all containers 谨慎使用
 # alias dcka='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 # delete null images
-alias dorin='docker rmi $(docker images --filter dangling=true -q --no-trunc)'
+alias doicleann='docker rmi $(docker images --filter dangling=true -q --no-trunc)'
 # delete exited containers
-alias dorce='docker rm -v $(docker ps -a -q -f status=exited)'
+alias docleane='docker rm -v $(docker ps -a -q -f status=exited)'
 # clean null images and exited containers
 # alias dclean='docker rmi -f $(docker images --filter dangling=true -q --no-trunc) && docker rm -v $(docker ps -a -q -f status=exited)'
 
 # alias dc='docker-compose'
 alias dc='docker compose'
-alias doi='docker images'
+# alias doi='docker images'
+alias doi='docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}\t{{.CreatedSince}}\t{{.Size}}"'
 
 # podman config
 # alias dp='podman ps -a'
@@ -37,7 +38,7 @@ dnetclean() {
   cut -d'|' -f2 | xargs docker network rm
 }
 
-dvolclean() {
+dovclean() {
   if ! command -v fzf >/dev/null 2>&1; then
     echo "fzf 未安装"
     return 1
@@ -85,7 +86,7 @@ dvolclean() {
   fi
 }
 
-dlog() {
+doclog() {
   local container_id
   container_id=$(docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" |
     fzf --header-lines=1 --preview 'docker logs {1}' --preview-window=right:60% |
@@ -97,7 +98,7 @@ dlog() {
   fi
 }
 
-dexec() {
+docexec() {
   # local container=$(docker ps --format "{{.Names}}" | fzf --header="Select container")
   # [ -n "$container" ] && docker exec -it "$container" sh
   local cid
@@ -158,7 +159,7 @@ docker-image-clean() {
   fi
 }
 
-alias dori='docker-image-clean'
+alias doiclean='docker-image-clean'
 
 
 # docker container 多选删除
@@ -206,7 +207,7 @@ docker-container-clean() {
   fi
 }
 
-alias dosrc='docker-container-clean'
+alias doclean='docker-container-clean'
 
 dfzf() {
   local action
