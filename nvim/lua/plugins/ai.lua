@@ -16,6 +16,7 @@ return {
   },
   {
     "Exafunction/windsurf.vim",
+    event = "InsertEnter",
     -- enabled = false, -- Disabled, uncomment to enable
     config = function()
       vim.keymap.set("i", "<C-g>", function()
