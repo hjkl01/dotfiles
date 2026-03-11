@@ -29,8 +29,8 @@ plugins=(
 )
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
-fpath=(~/.oh-my-zsh/custom/plugins/zsh-completions/src $fpath)
-rm -f ~/.zcompdump; compinit
+# fpath=(~/.oh-my-zsh/custom/plugins/zsh-completions/src $fpath)
+# rm -f ~/.zcompdump; compinit
 
 source $HOME/.dotfiles/zsh/alias.zsh
 
