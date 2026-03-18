@@ -3,6 +3,8 @@
 -- Add any additional options here
 
 vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 
 -- 如果是 SSH 远程会话，使用 OSC 52 协议

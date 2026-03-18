@@ -1,22 +1,6 @@
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
--- https://github.com/williamboman/mason-lspconfig.nvim
-
-local vim = vim
-local servers = {
-  "lua_ls",
-  "ruff",
-  "pylsp",
-  -- "shfmt",
-  -- "yamlls",
-  -- "gopls",
-  -- "ts_ls",
-}
-
 return {
   {
     "mason-org/mason.nvim",
-    dependencies = { "mason-org/mason-lspconfig.nvim" },
-    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     opts = {
       PATH = "prepend",
       max_concurrent_installers = 10,
@@ -31,147 +15,66 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      require("mason").setup(opts)
-      require("mason-lspconfig").setup({
-        ensure_installed = servers,
-        automatic_installation = true,
-      })
-    end,
   },
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "mason-org/mason.nvim",
-    },
+    opts = function(_, opts)
+      opts.servers = opts.servers or {}
+      opts.setup = opts.setup or {}
 
-    keys = {
-      {
-        "<leader>fm",
-        function()
-          vim.lsp.buf.format({
-            bufnr = vim.api.nvim_get_current_buf(),
-            async = false,
-          })
-          vim.cmd("write")
-        end,
-        desc = "LSP Format and Save",
-      },
-      {
-        "K",
-        vim.lsp.buf.hover,
-        desc = "LSP: Hover Documentation",
-      },
-      {
-        "gd",
-        vim.lsp.buf.definition,
-        desc = "LSP: Goto Definition",
-      },
-      {
-        "gD",
-        vim.lsp.buf.declaration,
-        desc = "LSP: Goto Declaration",
-      },
-      {
-        "gi",
-        vim.lsp.buf.implementation,
-        desc = "LSP: Goto Implementation",
-      },
-      {
-        "gr",
-        vim.lsp.buf.references,
-        desc = "LSP: Goto References",
-      },
-      {
-        "gt",
-        vim.lsp.buf.type_definition,
-        desc = "LSP: Goto Type Definition",
-      },
-      {
-        "[d",
-        vim.diagnostic.goto_prev,
-        desc = "LSP: Previous Diagnostic",
-      },
-      {
-        "]d",
-        vim.diagnostic.goto_next,
-        desc = "LSP: Next Diagnostic",
-      },
-    },
-    config = function()
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-      -- Global diagnostics configuration
-      vim.diagnostic.config({
-        virtual_text = true,
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-        severity_sort = true,
-        float = true,
+      opts.servers["*"] = opts.servers["*"] or {}
+      opts.servers["*"].keys = vim.list_extend(opts.servers["*"].keys or {}, {
+        {
+          "gt",
+          vim.lsp.buf.type_definition,
+          desc = "Goto Type Definition",
+        },
+        {
+          "<leader>fm",
+          function()
+            local ok, conform = pcall(require, "conform")
+            if ok then
+              conform.format({ async = false, lsp_fallback = true })
+            else
+              vim.lsp.buf.format({ async = false })
+            end
+            vim.cmd.write()
+          end,
+          desc = "Format and Save",
+        },
       })
 
-      -- Executed for each LSP server
-      local on_attach = function(client, bufnr)
-        -- Enable formatting capabilities
-        if client.supports_method("textDocument/formatting") then
-          client.server_capabilities.documentFormattingProvider = true
-          client.server_capabilities.documentRangeFormattingProvider = true
-          -- Auto-format on save, buffer-local to this client
-          -- vim.api.nvim_create_autocmd("BufWritePre", {
-          --   group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
-          --   buffer = bufnr,
-          --   callback = function()
-          --     vim.lsp.buf.format({ bufnr = bufnr })
-          --   end,
-          --   desc = "Format file on save",
-          -- })
-        end
+      opts.servers.ruff = vim.tbl_deep_extend("force", opts.servers.ruff or {}, {
+        init_options = {
+          settings = {
+            lineLength = 180,
+          },
+        },
+      })
 
-        -- Standard LSP keymaps (now defined in keys section above)
-      end
-
-      -- Loop through servers and set them up
-      for _, server_name in ipairs(servers) do
-        local server_opts = {
-          on_attach = on_attach,
-          capabilities = capabilities,
-        }
-
-        -- Special settings for specific servers
-
-        if server_name == "pylsp" then
-          server_opts.init_options = {
-            pylsp = {
-              plugins = {
-                pycodestyle = {
-                  ignore = { "E501" },
-                  -- 或者用 select 只启用你想看的错误
-                  -- select = { "E", "W" }, -- 不推荐，会覆盖 ignore
-                },
-                -- 如果你用的是 flake8 插件：
-                flake8 = {
-                  ignore = { "E501" },
-                },
-              },
+      opts.servers.pylsp = vim.tbl_deep_extend("force", opts.servers.pylsp or {}, {
+        settings = {
+          pylsp = {
+            plugins = {
+              autopep8 = { enabled = false },
+              mccabe = { enabled = false },
+              pycodestyle = { enabled = false },
+              pyflakes = { enabled = false },
+              yapf = { enabled = false },
             },
-          }
+          },
+        },
+      })
+
+      local prev_setup_ruff = opts.setup.ruff
+      opts.setup.ruff = function(server, server_opts)
+        if prev_setup_ruff and prev_setup_ruff(server, server_opts) then
+          return true
         end
 
-        if server_name == "ruff" then
-          server_opts.init_options = {
-            settings = {
-              lineLength = 180,
-            },
-          }
-        end
-
-        vim.lsp.config[server_name] = server_opts
-      end
-
-      for _, server_name in ipairs(servers) do
-        vim.lsp.enable(server_name)
+        Snacks.util.lsp.on({ name = "ruff" }, function(_, client)
+          client.server_capabilities.hoverProvider = false
+        end)
       end
     end,
   },
