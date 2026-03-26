@@ -32,46 +32,46 @@ function git_prompt_info() {
   if ! git rev-parse --git-dir > /dev/null 2>&1; then
     return
   fi
-  
+
   # Get the current branch name
   local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-  
+
   if [[ -n "$branch" ]]; then
     # Check git status for indicators (use git_status to avoid conflict with zsh built-in)
     local git_status=""
-    
+
     # Check for staged changes
     if ! git diff --cached --quiet 2>/dev/null; then
       git_status+="+"
     fi
-    
+
     # Check for unstaged changes
     if ! git diff --quiet 2>/dev/null; then
       git_status+="✎"
     fi
-    
+
     # Check for untracked files
     if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
       git_status+="?"
     fi
-    
+
     # Check if ahead/behind remote
     local ahead=$(git rev-list --count @{u}..HEAD 2>/dev/null)
     local behind=$(git rev-list --count HEAD..@{u} 2>/dev/null)
-    
+
     if [[ "$ahead" -gt 0 ]]; then
       git_status+="↑${ahead}"
     fi
     if [[ "$behind" -gt 0 ]]; then
       git_status+="↓${behind}"
     fi
-    
+
     # Format: on git:BRANCH [STATUS]
     local branch_info="%F{green}git:%F{white}${branch}"
     if [[ -n "$git_status" ]]; then
       branch_info+="%F{yellow} ${git_status}"
     fi
-    
+
     echo "on ${branch_info}"
   fi
 }

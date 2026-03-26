@@ -1,4 +1,17 @@
--- mini.pairs is already configured by LazyVim by default.
--- This file is kept for any future customizations you might want to add.
--- For now, it does nothing.
-return {}
+return {
+  {
+    "nvim-mini/mini.nvim",
+    config = function()
+      require("mini.trailspace").setup({
+        filetypes = { "*" },
+      })
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*",
+        callback = function()
+          require("mini.trailspace").trim()
+        end,
+      })
+    end,
+  },
+}
