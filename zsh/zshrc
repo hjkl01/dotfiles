@@ -19,6 +19,7 @@ DISABLE_AUTO_UPDATE='true'
 ZSH_DISABLE_COMPFIX='true'
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME='hjkl01'
+# ZSH_THEME='robbyrussell'
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   # git

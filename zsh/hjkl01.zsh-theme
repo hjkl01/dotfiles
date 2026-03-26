@@ -26,20 +26,6 @@ function current_time {
 # Directory info.
 local current_dir='${PWD/#$HOME/~}'
 
-# VCS
-YS_VCS_PROMPT_PREFIX1="%{$fg[white]%}on%{$reset_color%} "
-YS_VCS_PROMPT_PREFIX2=":%{$fg[cyan]%}"
-YS_VCS_PROMPT_SUFFIX="%{$reset_color%} "
-YS_VCS_PROMPT_DIRTY=" %{$fg[red]%}✗"
-YS_VCS_PROMPT_CLEAN=" %{$fg[green]%}✔︎"
-
-# Git info.
-ZSH_THEME_GIT_PROMPT_PREFIX="${YS_VCS_PROMPT_PREFIX1}git${YS_VCS_PROMPT_PREFIX2}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="$YS_VCS_PROMPT_SUFFIX"
-ZSH_THEME_GIT_PROMPT_DIRTY="$YS_VCS_PROMPT_DIRTY"
-ZSH_THEME_GIT_PROMPT_CLEAN="$YS_VCS_PROMPT_CLEAN"
-
-
 # Prompt format: \n # TIME USER at MACHINE in [DIRECTORY] on git:BRANCH STATE \n $
 PROMPT="
 %K{blue}%F{black}%n%k%F{blue} \
@@ -47,7 +33,7 @@ PROMPT="
 %K{green}%F{black}$(box_name)%k%F{green} \
 %{$fg[white]%}in \
 %K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
-$(current_time)
+$(current_time) %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} )
 %{$terminfo[bold]$fg[white]%}› %{$reset_color%} "
 
 if [[ "$USER" == "root" ]]; then
@@ -57,6 +43,6 @@ PROMPT="
 %K{red}%F{black}$(box_name)%k%F{red} \
 %{$fg[white]%}in \
 %K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
-$(current_time) \
+$(current_time) %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) \
 %{$terminfo[bold]$fg[white]%}› %{$reset_color%} "
 fi
