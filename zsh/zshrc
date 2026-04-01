@@ -40,4 +40,8 @@ setopt NO_HUP
 
 export TERM="screen-256color"
 alias run_tmux='tmux -f ~/.dotfiles/config/tmux.conf -u'
-[ "${START_TMUX:-0}" -eq 1 ] && { [ -z "$TMUX" ] && { tmux attach || run_tmux }}
+# [ "${START_TMUX:-0}" -eq 1 ] && { [ -z "$TMUX" ] && { tmux attach || run_tmux }}
+
+if [[ -z "$ZELLIJ" ]]; then
+  zellij attach main || zellij -s main
+fi
