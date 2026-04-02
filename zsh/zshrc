@@ -1,3 +1,5 @@
+export LANG=zh_CN.UTF-8
+
 source ~/.dotfiles/.env
 
 for file in ~/.dotfiles/zsh/*.sh; do
