@@ -12,8 +12,9 @@ export PATH="$PATH:$HOME/.dotfiles/bin"
 # export PATH=/opt/homebrew/bin:$PATH
 
 # tmux
-export START_TMUX=1
+export START_TMUX=0
 export TMUX_PREFIX='C-b'
+export START_ZELLIJ=1
 
 # proxy
 export P_ADDRESS="127.0.0.1"

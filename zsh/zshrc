@@ -46,6 +46,6 @@ export TERM="xterm-256color"
 alias run_tmux='tmux -f ~/.dotfiles/config/tmux.conf -u'
 # [ "${START_TMUX:-0}" -eq 1 ] && { [ -z "$TMUX" ] && { tmux attach || run_tmux }}
 
-if [[ -z "$ZELLIJ" ]] && command -v zellij &>/dev/null; then
+if [[ "${START_ZELLIJ:-0}" == "1" && -z "$ZELLIJ" ]] && command -v zellij &>/dev/null; then
   zellij attach main || zellij -s main
 fi
