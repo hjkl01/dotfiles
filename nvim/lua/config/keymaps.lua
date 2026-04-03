@@ -4,6 +4,30 @@
 
 local map = vim.keymap.set
 
+local function remap_comment_keys()
+  local gc_normal = vim.fn.maparg("gc", "n", false, true)
+  local gc_visual = vim.fn.maparg("gc", "x", false, true)
+  local gcc = vim.fn.maparg("gcc", "n", false, true)
+
+  if type(gcc) == "table" and type(gcc.callback) == "function" then
+    map("n", "<leader>/", gcc.callback, { expr = true, desc = "Toggle comment line" })
+  end
+
+  if type(gc_visual) == "table" and type(gc_visual.callback) == "function" then
+    map("x", "<leader>/", gc_visual.callback, { expr = true, desc = "Toggle comment selection" })
+  end
+
+  if type(gc_normal) == "table" and type(gc_normal.callback) == "function" then
+    map("n", "<leader>?", gc_normal.callback, { expr = true, desc = "Toggle comment operator" })
+  end
+
+  pcall(vim.keymap.del, "n", "gcc")
+  pcall(vim.keymap.del, "n", "gc")
+  pcall(vim.keymap.del, "x", "gc")
+end
+
+remap_comment_keys()
+
 map("i", "<C-b>", "<ESC>^i", { desc = "beginning of line", remap = true })
 map("i", "<C-e>", "<End>", { desc = "end of line", remap = true })
 
