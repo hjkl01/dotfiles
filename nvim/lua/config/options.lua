@@ -5,10 +5,10 @@
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
-vim.opt.clipboard = "unnamedplus"
 
--- 如果是 SSH 远程会话，使用 OSC 52 协议
+-- SSH 远程时：yank 通过 OSC52 同步到 macOS 剪贴板，paste 走内部寄存器（避免延迟）
 if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") then
+  vim.o.clipboard = "unnamedplus"
   vim.g.clipboard = {
     name = "OSC 52",
     copy = {
@@ -16,8 +16,8 @@ if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") then
       ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
     },
     paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+      ["+"] = function() end,
+      ["*"] = function() end,
     },
   }
 end
