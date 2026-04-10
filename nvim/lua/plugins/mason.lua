@@ -22,7 +22,7 @@ return {
       opts.servers = opts.servers or {}
       opts.setup = opts.setup or {}
 
-      opts.servers["*"] = opts.servers["*"] or {}
+      -- opts.servers["*"] = opts.servers["*"] or {}
       opts.servers["*"].keys = vim.list_extend(opts.servers["*"].keys or {}, {
         {
           "gt",
