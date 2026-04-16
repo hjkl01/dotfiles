@@ -253,7 +253,7 @@ dfzf() {
         ;;
       logs)
         first_id=$(echo "$ids" | head -n1)
-        docker logs -f "$first_id"
+        docker logs -f --tail 200 "$first_id"
         ;;
       delete)
         echo "$ids" | xargs docker rm -f
