@@ -1,17 +1,16 @@
-return {
-  {
-    "nvim-mini/mini.nvim",
-    config = function()
-      require("mini.trailspace").setup({
-        filetypes = { "*" },
-      })
+local M = {}
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*",
-        callback = function()
-          require("mini.trailspace").trim()
-        end,
-      })
+function M.setup()
+  require("mini.trailspace").setup({
+    filetypes = { "*" },
+  })
+
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function()
+      require("mini.trailspace").trim()
     end,
-  },
-}
+  })
+end
+
+return M
