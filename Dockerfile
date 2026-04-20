@@ -46,14 +46,16 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles /root/.dotfiles && \
   cd /root/.dotfiles && cp env .env && bash ./installer.sh
 
-# Install Neovim plugins and language servers in a single layer
+# Install Neovim plugins and language servers
+RUN nvim --headless "+lua vim.pack.update()" -c 'sleep 5' -c 'qa!'
 RUN nvim --headless -c 'silent Mason' -c 'sleep 5' -c 'qa!'
 RUN nvim --headless \
   -c "MasonInstall python-lsp-server" \
   -c "MasonInstall lua-language-server" \
   -c "MasonInstall ruff" \
   -c 'qa!'
-RUN nvim --headless -c 'TSUpdate!' -c 'BlinkCmp build !' -c 'sleep 5' -c 'qa!'
+RUN nvim --headless -c 'TSUpdate' -c 'sleep 5' -c 'qa!'
+RUN nvim --headless -c 'BlinkCmp build !' -c 'sleep 5' -c 'qa!'
 RUN nvim --headless -c 'sleep 10' -c 'qa!'
 
 WORKDIR /projects/

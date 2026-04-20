@@ -39,8 +39,8 @@
 
 | 🎯 核心工具 | 📝 编辑器 | 🖥️ 终端 | 🔧 开发环境 |
 |-------------|-----------|---------|-------------|
-| ![Zsh](https://img.shields.io/badge/Zsh-5.8+-blue?style=flat-square&logo=zsh) | ![Neovim](https://img.shields.io/badge/Neovim-0.9+-green?style=flat-square&logo=neovim) | ![Ghostty](https://img.shields.io/badge/Ghostty-latest-purple?style=flat-square) | ![Git](https://img.shields.io/badge/Git-2.30+-orange?style=flat-square&logo=git) |
-| ![Tmux](https://img.shields.io/badge/Tmux-3.2+-black?style=flat-square&logo=tmux) | ![LazyVim](https://img.shields.io/badge/LazyVim-Starter-yellow?style=flat-square) | ![Alacritty](https://img.shields.io/badge/Alacritty-latest-cyan?style=flat-square) | ![Docker](https://img.shields.io/badge/Docker-20.10+-blue?style=flat-square&logo=docker) |
+| ![Zsh](https://img.shields.io/badge/Zsh-5.8+-blue?style=flat-square&logo=zsh) | ![Neovim](https://img.shields.io/badge/Neovim-0.12+-green?style=flat-square&logo=neovim) | ![Ghostty](https://img.shields.io/badge/Ghostty-latest-purple?style=flat-square) | ![Git](https://img.shields.io/badge/Git-2.30+-orange?style=flat-square&logo=git) |
+| ![Tmux](https://img.shields.io/badge/Tmux-3.2+-black?style=flat-square&logo=tmux) | ![vim.pack](https://img.shields.io/badge/vim.pack-builtin-yellow?style=flat-square) | ![Alacritty](https://img.shields.io/badge/Alacritty-latest-cyan?style=flat-square) | ![Docker](https://img.shields.io/badge/Docker-20.10+-blue?style=flat-square&logo=docker) |
 
 </div>
 
@@ -49,7 +49,7 @@
 | 🔧 配置项 | 📁 路径 | 🎯 功能 | ⭐ 特点 |
 |-----------|---------|---------|---------|
 | **Shell 环境** | `zsh/` | Zsh 配置与主题 | 自定义主题 + 智能别名 |
-| **编辑器配置** | `nvim/` | Neovim + LazyVim | LSP + 语法高亮 + 插件管理 |
+| **编辑器配置** | `nvim/` | Neovim + vim.pack | LSP + 语法高亮 + 插件管理 |
 | **终端复用** | `config/tmux.conf` | Tmux 会话管理 | 插件系统 + 快捷键优化 |
 | **现代终端** | `config/ghostty.config` | Ghostty 终端设置 | GPU 加速 + 主题定制 |
 | **输入法** | `config/rime/` | Rime 中文输入 | 自定义词库 + 快捷输入 |
@@ -255,8 +255,8 @@ rm -rf ~/.local/share/nvim/ ~/.cache/nvim/
 # 🔍 检查配置
 nvim --check-health
 
-# 🚀 重新安装
-nvim +Lazy sync
+# 🚀 重新安装（vim.pack）
+nvim --headless "+lua vim.pack.update()" +qa
 ```
 
 </div>
@@ -265,9 +265,9 @@ nvim +Lazy sync
 
 | 🚨 问题 | 🔧 解决方案 | ✅ 验证 |
 |---------|-------------|---------|
-| **插件加载失败** | 清理缓存重装 | `:Lazy health` |
+| **插件加载失败** | 清理缓存后执行 `vim.pack` 更新 | `:checkhealth` |
 | **LSP 不工作** | 检查语言服务器 | `:LspInfo` |
-| **语法高亮异常** | 更新 treesitter | `:TSUpdate` |
+| **语法高亮异常** | 更新/安装 treesitter parser | `:TSUpdate` / `:TSInstall <lang>` |
 
 ### 🪟 WSL 剪贴板配置
 
@@ -305,7 +305,7 @@ graph TD
     
     C --> C1[lua/config/]
     C --> C2[lua/plugins/]
-    C --> C3[LazyVim/]
+    C --> C3[vim.pack]
     
     D --> D1[zshrc]
     D --> D2[alias.zsh]
@@ -391,7 +391,7 @@ git push origin feature/amazing-feature
 
 | 🌟 项目 | 🔗 链接 | 📝 贡献 |
 |---------|---------|---------|
-| **LazyVim** | [LazyVim](https://github.com/LazyVim/LazyVim) | Neovim 配置框架 |
+| **Neovim** | [Neovim](https://github.com/neovim/neovim) | 内置 `vim.pack` 与编辑器生态 |
 | **NvChad** | [NvChad](https://github.com/NvChad/NvChad) | 配置灵感来源 |
 | **Oh My Zsh** | [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) | Zsh 插件生态 |
 | **TPM** | [TPM](https://github.com/tmux-plugins/tpm) | Tmux 插件管理 |
