@@ -1,28 +1,62 @@
-local M = {}
-
-function M.setup()
-  require("fzf-lua").setup({
-    fzf_colors = true,
-    winopts = {
-      preview = {
-        default = "bat",
-      },
-    },
-  })
-
-  vim.keymap.set("n", "<leader><leader>", "<cmd>FzfLua files<cr>", { desc = "Find Files" })
-  vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<cr>", { desc = "Live Grep" })
-  vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<cr>", { desc = "Buffers" })
-  vim.keymap.set("n", "<leader>fh", "<cmd>FzfLua helptags<cr>", { desc = "Help Tags" })
-
-  vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions jump1=true ignore_current_line=true<cr>",
-    { desc = "Goto Definition" })
-  vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references jump1=true ignore_current_line=true<cr>",
-    { desc = "Goto References" })
-  vim.keymap.set("n", "gI", "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>",
-    { desc = "Goto Implementations" })
-  vim.keymap.set("n", "gy", "<cmd>FzfLua lsp_typedefs jump1=true ignore_current_line=true<cr>",
-    { desc = "Goto Type Definition" })
-end
-
-return M
+-- fzf-lua 配置暂时保留为注释，方便后续切回时直接恢复。
+--
+-- local M = {}
+-- local did_setup = false
+--
+-- local function ensure_loaded()
+--   if did_setup then
+--     return true
+--   end
+--
+--   if not require("config.pack").load("fzf-lua") then
+--     return false
+--   end
+--
+--   require("fzf-lua").setup({
+--     fzf_colors = true,
+--     winopts = {
+--       preview = {
+--         default = "bat",
+--       },
+--     },
+--   })
+--
+--   did_setup = true
+--   return true
+-- end
+--
+-- local function run(command)
+--   if ensure_loaded() then
+--     require("fzf-lua")[command]()
+--   end
+-- end
+--
+-- local function lsp_picker(command)
+--   return function()
+--     if ensure_loaded() then
+--       require("fzf-lua")[command]({ jump1 = true, ignore_current_line = true })
+--     end
+--   end
+-- end
+--
+-- function M.setup()
+--   vim.keymap.set("n", "<leader><leader>", function()
+--     run("files")
+--   end, { desc = "Find Files" })
+--   vim.keymap.set("n", "<leader>fg", function()
+--     run("live_grep")
+--   end, { desc = "Live Grep" })
+--   vim.keymap.set("n", "<leader>fb", function()
+--     run("buffers")
+--   end, { desc = "Buffers" })
+--   vim.keymap.set("n", "<leader>fh", function()
+--     run("helptags")
+--   end, { desc = "Help Tags" })
+--
+--   -- vim.keymap.set("n", "gd", lsp_picker("lsp_definitions"), { desc = "Goto Definition" })
+--   -- vim.keymap.set("n", "gr", lsp_picker("lsp_references"), { desc = "Goto References" })
+--   -- vim.keymap.set("n", "gI", lsp_picker("lsp_implementations"), { desc = "Goto Implementations" })
+--   -- vim.keymap.set("n", "gy", lsp_picker("lsp_typedefs"), { desc = "Goto Type Definition" })
+-- end
+--
+-- return M

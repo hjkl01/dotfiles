@@ -56,10 +56,12 @@ function M.setup()
     settings = {
       pylsp = {
         plugins = {
-          autopep8 = { enabled = true },
+          autopep8 = { enabled = false },
           mccabe = { enabled = false },
           pycodestyle = { enabled = false },
           pyflakes = { enabled = false },
+          pylint = { enabled = false },
+          ruff = { enabled = true },
           yapf = { enabled = false },
         },
       },
@@ -67,13 +69,21 @@ function M.setup()
   })
 
   local installed_lsp_servers = mason_lspconfig.get_installed_servers()
-  vim.lsp.enable(installed_lsp_servers)
+  -- vim.lsp.enable(vim.tbl_filter(function(server)
+  --   return vim.tbl_contains(lsp_servers, server)
+  -- end, installed_lsp_servers))
+  --
+  -- vim.api.nvim_create_user_command("NvimLspInstall", function()
+  --   vim.cmd("MasonInstall gopls lua-language-server ruff python-lsp-server")
+  -- end, {
+  --   desc = "Install configured LSP servers",
+  -- })
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
   vim.keymap.set("n", "<leader>fm", function()
     local ok, conform = pcall(require, "conform")
     if ok then
-      conform.format({ async = false, lsp_fallback = true })
+      conform.format({ async = false, lsp_format = "prefer" })
     else
       vim.lsp.buf.format({ async = false })
     end

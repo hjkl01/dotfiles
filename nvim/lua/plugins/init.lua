@@ -9,9 +9,7 @@ local plugin_modules = {
   "plugins.lint",
   "plugins.noice",
   "plugins.which-key",
-  "plugins.trouble",
-  "plugins.todo-comments",
-  "plugins.fzflua",
+  "plugins.telescope",
   "plugins.snacks",
   "plugins.persistence",
   "plugins.lazydev",
@@ -23,6 +21,8 @@ local plugin_modules = {
   "plugins.gitsigns",
   "plugins.bufferline",
   "plugins.translator",
+  "plugins.trouble",
+  "plugins.todo-comments",
 }
 
 function M.setup()

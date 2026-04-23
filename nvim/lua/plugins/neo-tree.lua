@@ -1,12 +1,19 @@
 local M = {}
+local did_setup = false
 
-function M.setup()
+local function configure()
+  if did_setup then
+    return true
+  end
+
+  if not require("config.pack").load("neo-tree.nvim") then
+    return false
+  end
+
   vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
   vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
   vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
   vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
-  vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "NeoTree: Toggle" })
 
   require("neo-tree").setup({
     close_if_last_window = true,
@@ -69,6 +76,17 @@ function M.setup()
       hijack_netrw_behavior = "open_default",
     },
   })
+
+  did_setup = true
+  return true
+end
+
+function M.setup()
+  vim.keymap.set("n", "<leader>e", function()
+    if configure() then
+      vim.cmd("Neotree toggle")
+    end
+  end, { desc = "NeoTree: Toggle" })
 end
 
 return M

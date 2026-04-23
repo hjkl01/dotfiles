@@ -1,7 +1,24 @@
-local M = {}
-
-function M.setup()
-  require("todo-comments").setup({})
-end
-
-return M
+-- local M = {}
+-- local did_setup = false
+--
+-- local function ensure_loaded()
+--   if did_setup then
+--     return true
+--   end
+--
+--   if not require("config.pack").load("todo-comments.nvim") then
+--     return false
+--   end
+--
+--   require("todo-comments").setup({})
+--   did_setup = true
+--   return true
+-- end
+--
+-- function M.setup()
+--   vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+--     callback = ensure_loaded,
+--   })
+-- end
+--
+-- return M

@@ -20,8 +20,8 @@ function M.setup()
     },
     signs_staged_enable = true,
     signcolumn = true,
-    numhl = true,
-    linehl = true,
+    numhl = false,
+    linehl = false,
     word_diff = false,
     watch_gitdir = {
       follow_files = true,
@@ -49,6 +49,10 @@ function M.setup()
       col = 1,
     },
   })
+
+  vim.keymap.set("n", "<leader>gb", function()
+    require("gitsigns").toggle_current_line_blame()
+  end, { desc = "Toggle git blame" })
 end
 
 return M

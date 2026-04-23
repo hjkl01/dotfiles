@@ -54,6 +54,25 @@ function M.setup()
     completion = {
       documentation = { auto_show = true },
     },
+    cmdline = {
+      keymap = {
+        preset = "cmdline",
+        ["<CR>"] = { "select_accept_and_enter", "fallback" },
+        ["<TAB>"] = { "select_and_accept", "fallback" },
+        ["<C-e>"] = { "cancel", "fallback" },
+      },
+      completion = {
+        list = {
+          selection = {
+            preselect = true,
+            auto_insert = true,
+          },
+        },
+        menu = {
+          auto_show = true,
+        },
+      },
+    },
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },

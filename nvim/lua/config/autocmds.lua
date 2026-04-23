@@ -1,5 +1,6 @@
 -- 自动高亮光标下的单词 (优化性能)
 local highlight_timer = nil
+local highlight_match_id = nil
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   pattern = "*",
   callback = function()
@@ -17,13 +18,25 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
           return
         end
 
-        -- 清除之前的匹配
-        vim.fn.clearmatches()
+        if highlight_match_id then
+          pcall(vim.fn.matchdelete, highlight_match_id)
+        end
 
-        -- 添加高亮（使用 Search 组）
-        vim.fn.matchadd("Search", "\\<" .. vim.fn.escape(word, "\\/") .. "\\>")
+        highlight_match_id = vim.fn.matchadd("Search", "\\<" .. vim.fn.escape(word, "\\/") .. "\\>")
       end)
     )
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufLeave" }, {
+  pattern = "*",
+  callback = function()
+    if not highlight_match_id then
+      return
+    end
+
+    pcall(vim.fn.matchdelete, highlight_match_id)
+    highlight_match_id = nil
   end,
 })
 
