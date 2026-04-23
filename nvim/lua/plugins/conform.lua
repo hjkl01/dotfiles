@@ -12,14 +12,10 @@ function M.setup()
       markdown = { "prettier" },
       sh = { "shfmt" },
     },
-    format_on_save = {
-      timeout_ms = 2000,
-      lsp_format = "prefer",
-    },
   })
 
   vim.keymap.set("n", "<leader>cf", function()
-    conform.format({ async = false, lsp_format = "prefer" })
+    conform.format({ async = false, lsp_format = "never" })
   end, { desc = "Format with Conform" })
 end
 
