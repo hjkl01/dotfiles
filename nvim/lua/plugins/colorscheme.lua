@@ -7,7 +7,7 @@ function M.setup()
       light = "latte",
       dark = "mocha",
     },
-    transparent_background = false,
+    transparent_background = true,
     term_colors = false,
     dim_inactive = {
       enabled = false,
@@ -85,6 +85,14 @@ function M.setup()
     custom_highlights = function(colors)
       return {
         Comment = { fg = colors.flamingo },
+        Normal = { bg = "NONE" },
+        NormalNC = { bg = "NONE" },
+        NormalFloat = { bg = "NONE" },
+        SignColumn = { bg = "NONE" },
+        FloatBorder = { bg = "NONE" },
+        NeoTreeNormal = { bg = "NONE" },
+        NeoTreeNormalNC = { bg = "NONE" },
+        EndOfBuffer = { bg = "NONE" },
       }
     end,
   })
