@@ -11,6 +11,8 @@ function M.setup()
       require("mini.trailspace").trim()
     end,
   })
+
+  require("mini.pairs").setup({})
 end
 
 return M

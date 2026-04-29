@@ -58,7 +58,8 @@ function M.setup()
       return
     end
 
-    notify("TSInstall 失败或未安装: " .. table.concat(missing, ", ") .. "（用 :TSLog / :checkhealth nvim-treesitter 查看详情）", vim.log.levels.ERROR)
+    notify("TSInstall 失败或未安装: " .. table.concat(missing, ", ") .. "（用 :TSLog / :checkhealth nvim-treesitter 查看详情）",
+      vim.log.levels.ERROR)
   end
 
   local function install_with_notify(args, opts)
@@ -92,6 +93,11 @@ function M.setup()
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,
+      disable = function(lang, buf)
+        local max_filesize = 100 * 1024 -- 100KB 更激进
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        return ok and stats and stats.size > max_filesize
+      end,
     },
     indent = { enable = true },
     autotag = { enable = true },
