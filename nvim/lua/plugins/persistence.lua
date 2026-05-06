@@ -21,10 +21,6 @@ function M.setup()
       require("persistence").load()
     end
   end, { desc = "Restore Session" })
-
-  vim.api.nvim_create_autocmd("VimEnter", {
-    callback = ensure_loaded,
-  })
 end
 
 return M

@@ -35,9 +35,6 @@ M.specs = {
   { src = "https://github.com/rafamadriz/friendly-snippets", name = "friendly-snippets" },
   { src = "https://github.com/folke/ts-comments.nvim", name = "ts-comments.nvim" },
   { src = "https://github.com/nvim-mini/mini.nvim", name = "mini.nvim" },
-  { src = "https://github.com/nvim-mini/mini.ai", name = "mini.ai" },
-  { src = "https://github.com/nvim-mini/mini.icons", name = "mini.icons" },
-  { src = "https://github.com/nvim-mini/mini.pairs", name = "mini.pairs" },
 
   -- Search / project tools
   { src = "https://github.com/nvim-telescope/telescope.nvim", name = "telescope.nvim" },
