@@ -47,7 +47,7 @@ function M.setup()
       },
     },
     on_attach = function(client)
-      client.server_capabilities.hoverProvider = true
+      client.server_capabilities.hoverProvider = false
     end,
   })
 

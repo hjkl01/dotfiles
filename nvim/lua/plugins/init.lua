@@ -22,7 +22,6 @@ local plugin_modules = {
   "plugins.bufferline",
   "plugins.translator",
   "plugins.trouble",
-  "plugins.todo-comments",
 }
 
 function M.setup()

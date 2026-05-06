@@ -1,26 +1,83 @@
 -- 自动高亮光标下的单词 (优化性能)
-local highlight_timer = nil
+local highlight_timer = vim.uv.new_timer()
 local highlight_match_id = nil
+local highlight_skip_filetypes = {
+  "TelescopePrompt",
+  "checkhealth",
+  "grug-far",
+  "help",
+  "lazy",
+  "lspinfo",
+  "neo-tree",
+  "noice",
+  "notify",
+  "qf",
+  "snacks_dashboard",
+  "trouble",
+}
+
+local function clear_highlight_match()
+  if not highlight_match_id then
+    return
+  end
+
+  pcall(vim.fn.matchdelete, highlight_match_id)
+  highlight_match_id = nil
+end
+
+local function should_highlight_word(buf)
+  if not vim.api.nvim_buf_is_valid(buf) then
+    return false
+  end
+
+  if vim.bo[buf].buftype ~= "" then
+    return false
+  end
+
+  local filetype = vim.bo[buf].filetype
+  if filetype ~= "" and vim.tbl_contains(highlight_skip_filetypes, filetype) then
+    return false
+  end
+
+  local buf_name = vim.api.nvim_buf_get_name(buf)
+  if buf_name == "" then
+    return false
+  end
+
+  local ok, stats = pcall(vim.uv.fs_stat, buf_name)
+  if ok and stats and stats.size and stats.size > 256 * 1024 then
+    return false
+  end
+
+  return true
+end
+
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   pattern = "*",
-  callback = function()
-    if highlight_timer then
-      vim.loop.timer_stop(highlight_timer)
+  callback = function(event)
+    if not should_highlight_word(event.buf) then
+      clear_highlight_match()
+      return
     end
-    highlight_timer = vim.loop.new_timer()
+
+    highlight_timer:stop()
     highlight_timer:start(
       200,
       0,
       vim.schedule_wrap(function()
-        -- 获取光标下的单词
-        local word = vim.fn.expand("<cword>")
-        if not word or word == "" or #word < 3 then
+        if not should_highlight_word(event.buf) then
+          clear_highlight_match()
           return
         end
 
-        if highlight_match_id then
-          pcall(vim.fn.matchdelete, highlight_match_id)
+        -- 获取光标下的单词
+        local word = vim.fn.expand("<cword>")
+        if not word or word == "" or #word < 3 then
+          clear_highlight_match()
+          return
         end
+
+        clear_highlight_match()
 
         highlight_match_id = vim.fn.matchadd("Search", "\\<" .. vim.fn.escape(word, "\\/") .. "\\>")
       end)
@@ -31,12 +88,17 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufLeave" }, {
   pattern = "*",
   callback = function()
-    if not highlight_match_id then
-      return
-    end
+    clear_highlight_match()
+  end,
+})
 
-    pcall(vim.fn.matchdelete, highlight_match_id)
-    highlight_match_id = nil
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    if highlight_timer then
+      highlight_timer:stop()
+      highlight_timer:close()
+      highlight_timer = nil
+    end
   end,
 })
 
