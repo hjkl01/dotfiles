@@ -74,10 +74,9 @@ opt.winborder = "rounded"
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
--- 本地与远程统一使用系统剪贴板寄存器
 vim.o.clipboard = "unnamedplus"
 
--- SSH 远程时：yank 通过 OSC52 同步到宿主机剪贴板，paste 走内部寄存器（避免延迟）
+-- SSH 远程时：yank 通过 OSC52 同步到 macOS 剪贴板，paste 走内部寄存器（避免延迟）
 if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") then
   vim.g.clipboard = {
     name = "OSC 52",
