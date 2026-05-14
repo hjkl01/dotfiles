@@ -1,45 +1,19 @@
+// zjstatus - tmux 风格状态栏
+// 插件二进制位于 ~/.config/zellij/plugins/zjstatus.wasm
+// 边框/frame 控制由 zjframes 后台插件负责(在 config.kdl 的 load_plugins 中加载)
 layout {
     default_tab_template {
         pane size=1 borderless=true {
             plugin location="https://gh.hjkl01.cn/proxy/https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+                format_left  "#[fg=0,bg=10][{session}]  {tabs}"
+                format_right "#[fg=0,bg=10]{datetime}"
+                format_space "#[bg=10]"
 
-                format_left   "{mode} #[fg=#89B4FA,bold]{tabs}"
-                format_center ""
-                format_right  "{datetime}"
-                format_space  ""
+                tab_normal   "{index}:{name}  "
+                tab_active   "{index}:{name}* "
 
-                border_enabled  "true"
-                border_char     "─"
-                border_format   "#[fg=#6C7086]{char}"
-                border_position "top"
-
-                hide_frame_for_single_pane "false"
-
-                mode_normal  "#[fg=blue]{name}"
-                mode_tmux    "#[fg=#ffc387]{name}"
-                mode_locked  "#[fg=#89B4FA]{name}"
-
-                tab_normal "#[bg=#8A8A8A,fg=#000000,italic]{name} {sync_indicator}{fullscreen_indicator}{floating_indicator} #[bg=#000000,fg=#8A8A8A]"
-                tab_active "#[bg=#9c86bf,fg=#000000,bold]{name} {sync_indicator}{fullscreen_indicator}{floating_indicator} #[bg=#000000,fg=#9c86bf]"
-
-                // separator between the tabs
-                // tab_separator           "#[fg=#6C7086,bg=#181825] | "
-
-                // format when renaming a tab
-                tab_rename              "#[fg=#eba0ac,bg=#181825] {index} {name} {floating_indicator} "
-
-                // indicators
-                tab_sync_indicator       "<> "
-                tab_fullscreen_indicator "[] "
-                tab_floating_indicator   "⬚ "
-
-                // limit tab display count
-                tab_display_count         "3"  // limit to showing 3 tabs
-                tab_truncate_start_format "#[fg=red,bg=#181825] < +{count} ..."
-                tab_truncate_end_format   "#[fg=red,bg=#181825] ... +{count} >"
-
-                datetime        "#[bg=#6C7086,bold] {format} "
-                datetime_format "%m/%d %H:%M"
+                datetime          " {format} "
+                datetime_format   "%H:%M %d-%b-%y"
                 datetime_timezone "Asia/Shanghai"
             }
         }
