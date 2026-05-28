@@ -59,3 +59,5 @@ cdd() {
   cd $1
   ls -G
 }
+
+alias playradio='mpv --no-video --quiet "http://ngcdn001.cnr.cn/live/yyzs/index.m3u8"'
