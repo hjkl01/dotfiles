@@ -29,7 +29,7 @@ drun() {
   [[ -z "$image" ]] && return
 
   docker run -it --rm "$image" /bin/bash 2>/dev/null || \
-  docker run -it --rmn "$image" /bin/sh
+  docker run -it --rm "$image" /bin/sh
 }
 
 dnetclean() {

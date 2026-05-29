@@ -28,7 +28,11 @@ export EDITOR='nvim'
 
 # alias
 alias cc='cd ~/.dotfiles'
-alias ii='vi $(fzf --height 40%)'
+ii() {
+  local file
+  file=$(fzf --height 40% --preview 'bat --style=numbers --color=always {}')
+  [ -n "$file" ] && nvim "$file"
+}
 
 # find by name
 # find . -name "*.log"
