@@ -17,7 +17,7 @@ function M.setup()
   })
 
   local mason_lspconfig = require("mason-lspconfig")
-  local lsp_servers = { "gopls", "lua_ls", "ruff", "pylsp" }
+  local lsp_servers = { "gopls", "lua_ls", "ruff", "pylsp", "ts_ls", "yamlls", "dockerls" }
 
   mason_lspconfig.setup({
     ensure_installed = lsp_servers,
@@ -66,6 +66,26 @@ function M.setup()
         },
       },
     },
+  })
+
+  vim.lsp.config("ts_ls", {
+    capabilities = capabilities,
+  })
+
+  vim.lsp.config("yamlls", {
+    capabilities = capabilities,
+    settings = {
+      yaml = {
+        schemas = {
+          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          ["https://json.schemastore.org/docker-compose.yml"] = "docker-compose*.{yml,yaml}",
+        },
+      },
+    },
+  })
+
+  vim.lsp.config("dockerls", {
+    capabilities = capabilities,
   })
 
   local installed_lsp_servers = mason_lspconfig.get_installed_servers()

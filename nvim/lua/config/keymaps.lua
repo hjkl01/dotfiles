@@ -35,6 +35,7 @@ map("n", "q", "<cmd>q<CR>", { desc = "﬚  quit file" })
 map("n", "W", "<cmd>w<CR>", { desc = "﬚  save file" })
 map("n", "#", "*<CR>", { desc = "next ident" })
 map("n", "<leader>u", function() vim.pack.update() end, { desc = "Update vim.pack plugins" })
+map("n", "<leader>p", function() print(vim.fn.expand("%:p")) end, { desc = "Show file path" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
