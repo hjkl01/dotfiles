@@ -41,6 +41,7 @@
 |-------------|-----------|---------|-------------|
 | ![Zsh](https://img.shields.io/badge/Zsh-5.8+-blue?style=flat-square&logo=zsh) | ![Neovim](https://img.shields.io/badge/Neovim-0.12+-green?style=flat-square&logo=neovim) | ![Ghostty](https://img.shields.io/badge/Ghostty-latest-purple?style=flat-square) | ![Git](https://img.shields.io/badge/Git-2.30+-orange?style=flat-square&logo=git) |
 | ![Tmux](https://img.shields.io/badge/Tmux-3.2+-black?style=flat-square&logo=tmux) | ![vim.pack](https://img.shields.io/badge/vim.pack-builtin-yellow?style=flat-square) | ![Alacritty](https://img.shields.io/badge/Alacritty-latest-cyan?style=flat-square) | ![Docker](https://img.shields.io/badge/Docker-20.10+-blue?style=flat-square&logo=docker) |
+| ![asdf](https://img.shields.io/badge/asdf-latest-orange?style=flat-square) | ![Copilot](https://img.shields.io/badge/Copilot-latest-black?style=flat-square&logo=github) | ![fzf](https://img.shields.io/badge/fzf-latest-blue?style=flat-square) | ![Python](https://img.shields.io/badge/Python-3.8+-yellow?style=flat-square&logo=python) |
 
 </div>
 
@@ -48,12 +49,81 @@
 
 | 🔧 配置项 | 📁 路径 | 🎯 功能 | ⭐ 特点 |
 |-----------|---------|---------|---------|
-| **Shell 环境** | `zsh/` | Zsh 配置与主题 | 自定义主题 + 智能别名 |
-| **编辑器配置** | `nvim/` | Neovim + vim.pack | LSP + 语法高亮 + 插件管理 |
-| **终端复用** | `config/tmux.conf` | Tmux 会话管理 | 插件系统 + 快捷键优化 |
-| **现代终端** | `config/ghostty.config` | Ghostty 终端设置 | GPU 加速 + 主题定制 |
+| **Shell 环境** | `zsh/` | Zsh 配置与主题 | 自定义主题 + 智能别名 + fzf 集成 |
+| **编辑器配置** | `nvim/` | Neovim + vim.pack | LSP + Treesitter + 29 个插件 |
+| **终端复用** | `config/tmux.conf` | Tmux 会话管理 | Catppuccin 主题 + vim 导航 |
+| **现代终端** | `config/ghostty.config` | Ghostty 终端设置 | GPU 加速 + Maple Mono 字体 |
 | **输入法** | `config/rime/` | Rime 中文输入 | 自定义词库 + 快捷输入 |
 | **开发工具** | `config/` | Git/Docker/Python | 统一配置 + 环境优化 |
+
+### 🎯 Neovim 插件列表 (29 个)
+
+<details>
+<summary>点击展开完整插件列表</summary>
+
+| 类别 | 插件 | 功能 |
+|------|------|------|
+| **核心库** | plenary.nvim, nvim-web-devicons, nui.nvim | 基础依赖 |
+| **UI 界面** | catppuccin, lualine.nvim, bufferline.nvim, noice.nvim, which-key.nvim | 主题 + 状态栏 + 标签栏 + 命令行 + 快捷键提示 |
+| **文件导航** | flash.nvim, neo-tree.nvim | 快速跳转 + 文件树 |
+| **LSP 语法** | mason.nvim, mason-lspconfig.nvim, nvim-lspconfig, nvim-treesitter, nvim-treesitter-textobjects, nvim-ts-autotag, nvim-lint, trouble.nvim | 语言服务 + 语法高亮 + 诊断 |
+| **代码补全** | blink.cmp, conform.nvim, friendly-snippets, ts-comments.nvim, mini.nvim | 自动补全 + 格式化 + 代码注释 |
+| **搜索工具** | telescope.nvim, snacks.nvim | 模糊搜索 + 通知 |
+| **Git 集成** | gitsigns.nvim, vim-fugitive, diffview.nvim, persistence.nvim | Git 状态 + 命令 + Diff 视图 + 会话管理 |
+| **AI 辅助** | lazydev.nvim, copilot.vim, windsurf.vim | Lua 开发 + AI 代码补全 |
+| **实用工具** | vim-translator, undotree | 翻译 + 撤销树 |
+
+</details>
+
+### 🔧 LSP 服务器配置
+
+| 语言 | LSP 服务器 | 功能 |
+|------|------------|------|
+| **Go** | gopls | Go 语言服务 |
+| **Lua** | lua_ls | Lua 语言服务 (Neovim 配置开发) |
+| **Python** | ruff + pylsp | Python 代码检查 + 语言服务 |
+| **TypeScript/JavaScript** | ts_ls | TypeScript/JavaScript 语言服务 |
+| **YAML** | yamlls | YAML 语言服务 (GitHub Actions, Docker Compose) |
+| **Docker** | dockerls | Dockerfile 语言服务 |
+
+### 🐚 Zsh 插件
+
+| 插件 | 功能 |
+|------|------|
+| **zsh-autosuggestions** | 命令自动建议 |
+| **zsh-syntax-highlighting** | 语法高亮 |
+| **web-search** | 网页搜索 |
+| **zsh-you-should-use** | 别名提醒 |
+
+### 🖥️ Tmux 插件
+
+| 插件 | 功能 |
+|------|------|
+| **tpm** | Tmux 插件管理器 |
+| **catppuccin/tmux** | Catppuccin Mocha 主题 |
+| **tmux-cpu** | CPU 使用率显示 |
+| **tmux-yank** | 剪贴板集成 |
+| **tmux-resurrect** | 会话恢复 |
+
+### 🐳 Docker 管理工具
+
+| 命令 | 功能 | 说明 |
+|------|------|------|
+| `dfzf` | Docker 交互式管理 | fzf 驱动的容器/镜像/Volume/Network 管理 |
+| `docexec` | 进入容器 | fzf 选择容器并进入 shell |
+| `doclog` | 查看日志 | fzf 选择容器并查看日志 |
+| `doiclean` | 清理镜像 | 多选删除 Docker 镜像 |
+| `doclean` | 清理容器 | 多选删除 Docker 容器 |
+| `dovclean` | 清理 Volume | 多选删除 Docker Volume |
+
+### 🌐 代理配置
+
+| 命令 | 功能 | 说明 |
+|------|------|------|
+| `setproxy` | 设置代理 | 设置 HTTP/HTTPS/SOCKS 代理 |
+| `unsetproxy` | 取消代理 | 取消所有代理设置 |
+| `px <cmd>` | 临时代理 | 单次命令使用代理 |
+| `macproxysetup` | Mac 代理 | 配置 macOS 系统代理 |
 
 ---
 
@@ -79,7 +149,8 @@ git clone --depth=1 https://github.com/asdf-vm/asdf.git ~/.asdf
 |---------|---------|---------|-----------|
 | **核心环境** | `git` `zsh` `neovim` `tmux` | 基础开发工具链 | ⭐⭐⭐ |
 | **版本管理** | `asdf` | 多语言环境管理 | ⭐⭐ |
-| **编辑器增强** | `ripgrep` `fzf` `stylua` | Neovim 搜索与格式化 | ⭐⭐ |
+| **编辑器增强** | `ripgrep` `fzf` `fd` `bat` | Neovim 搜索与预览 | ⭐⭐ |
+| **终端工具** | `lsd` `zoxide` `delta` | 现代化命令行体验 | ⭐⭐ |
 | **剪贴板支持** | `xclip`/`xsel` | Linux X11 剪贴板 | ⭐ |
 | **WSL 专用** | `win32yank.exe` | Windows 剪贴板桥接 | ⭐ (WSL) |
 | **中文输入** | `fcitx5-rime` | 中文输入法 | ⭐ (可选) |
@@ -136,6 +207,7 @@ echo "🐚 当前 Shell: $SHELL"
 | **lsd** | 现代化 `ls` | ⭐⭐⭐⭐⭐ | `cargo install lsd` |
 | **zoxide** | 智能目录跳转 | ⭐⭐⭐⭐⭐ | `cargo install zoxide` |
 | **fd** | 友好 `find` 替代 | ⭐⭐⭐⭐ | `cargo install fd-find` |
+| **bat** | 现代 `cat` 替代 | ⭐⭐⭐⭐⭐ | `cargo install bat` |
 | **delta** | Git diff 美化 | ⭐⭐⭐⭐ | `cargo install git-delta` |
 | **lazygit** | TUI Git 客户端 | ⭐⭐⭐⭐⭐ | `cargo install lazygit` |
 | **yazi** | 现代文件管理器 | ⭐⭐⭐⭐⭐ | `cargo install yazi` |
@@ -147,9 +219,9 @@ echo "🐚 当前 Shell: $SHELL"
 #### 🎨 终端美化
 
 ```bash
-# 🎨 安装主题和图标
-sudo apt install fonts-powerline fonts-font-awesome
-chsh -s $(which zsh)
+# 🎨 安装 Nerd Font (推荐 Maple Mono NF CN)
+# Ghostty: 已配置 Maple Mono NF CN
+# Alacritty: 已配置 JetBrainsMono Nerd Font
 ```
 
 #### 📊 系统监控
@@ -257,6 +329,12 @@ nvim --check-health
 
 # 🚀 重新安装（vim.pack）
 nvim --headless "+lua vim.pack.update()" +qa
+
+# 🔧 检查 LSP 状态
+:LspInfo
+
+# 🎨 更新 Treesitter 语法高亮
+:TSUpdate
 ```
 
 </div>
@@ -266,8 +344,22 @@ nvim --headless "+lua vim.pack.update()" +qa
 | 🚨 问题 | 🔧 解决方案 | ✅ 验证 |
 |---------|-------------|---------|
 | **插件加载失败** | 清理缓存后执行 `vim.pack` 更新 | `:checkhealth` |
-| **LSP 不工作** | 检查语言服务器 | `:LspInfo` |
+| **LSP 不工作** | 检查语言服务器安装 | `:LspInfo` |
 | **语法高亮异常** | 更新/安装 treesitter parser | `:TSUpdate` / `:TSInstall <lang>` |
+| **Copilot 不工作** | 设置环境变量 `NVIM_ENABLE_COPILOT=1` | 重启 Neovim |
+
+#### 🔑 Neovim 快捷键速查
+
+| ⌨️ 快捷键 | 🎯 功能 | 📝 说明 |
+|-----------|---------|---------|
+| `<leader>ff` | 查找文件 | Telescope 文件搜索 |
+| `<leader>fg` | 全局搜索 | Telescope 内容搜索 |
+| `<leader>e` | 文件树 | Neo-tree 文件浏览器 |
+| `<leader>gs` | Git 状态 | Fugitive Git 命令 |
+| `<leader>dv` | Diff 视图 | Diffview 打开 |
+| `<leader>u` | 撤销树 | Undotree 切换 |
+| `gd` | 跳转定义 | LSP 定义跳转 |
+| `gr` | 查看引用 | LSP 引用查看 |
 
 ### 🪟 WSL 剪贴板配置
 
@@ -304,18 +396,22 @@ graph TD
     B --> B5[rime/]
     
     C --> C1[lua/config/]
-    C --> C2[lua/plugins/]
-    C --> C3[vim.pack]
+    C --> C2[lua/plugins/ - 27 个插件配置]
+    C --> C3[init.lua]
     
     D --> D1[zshrc]
     D --> D2[alias.zsh]
     D --> D3[git.sh]
-    D --> D4[languages.sh]
-    D --> D5[hjkl01.zsh-theme]
+    D --> D4[docker.sh]
+    D --> D5[languages.sh]
+    D --> D6[proxy.sh]
+    D --> D7[asdf.sh]
     
     E --> E1[asdf]
     E --> E2[b]
     E --> E3[fif]
+    E --> E4[fkill]
+    E --> E5[cdf]
     
     F --> F1[run.sh]
     F --> F2[test.py]
@@ -327,10 +423,11 @@ graph TD
 
 | 📁 目录 | 📄 主要文件 | 🎯 用途 | ⭐ 重要度 |
 |---------|-------------|---------|-----------|
-| **config/** | `tmux.conf`, `ghostty.config` | 终端和应用配置 | ⭐⭐⭐⭐⭐ |
-| **nvim/** | `init.lua`, `plugins/` | Neovim 编辑器配置 | ⭐⭐⭐⭐⭐ |
-| **zsh/** | `zshrc`, `alias.zsh` | Shell 环境配置 | ⭐⭐⭐⭐⭐ |
-| **bin/** | `asdf`, `b`, `fif` | 自定义脚本工具 | ⭐⭐⭐ |
+| **config/** | `tmux.conf`, `ghostty.config`, `gitconfig` | 终端和应用配置 | ⭐⭐⭐⭐⭐ |
+| **nvim/lua/config/** | `options.lua`, `keymaps.lua`, `pack.lua` | Neovim 核心配置 | ⭐⭐⭐⭐⭐ |
+| **nvim/lua/plugins/** | 27 个 `.lua` 文件 | Neovim 插件配置 | ⭐⭐⭐⭐⭐ |
+| **zsh/** | `zshrc`, `alias.zsh`, `docker.sh` | Shell 环境配置 | ⭐⭐⭐⭐⭐ |
+| **bin/** | `asdf`, `b`, `fif`, `fkill`, `cdf` | 自定义脚本工具 | ⭐⭐⭐ |
 | **scripts/** | `run.sh`, `test.py` | 项目辅助脚本 | ⭐⭐ |
 | **.github/** | `workflows/` | CI/CD 配置 | ⭐ |
 
