@@ -14,7 +14,7 @@ run_cmd() {
   $*
   unsetproxy
 }
-alias px=run_cmd $*
+alias px='run_cmd'
 
 # Mac proxy
 alias macproxysetup='networksetup -setwebproxy Wi-Fi $P_ADDRESS $P_PORT && networksetup -setsecurewebproxy Wi-Fi $P_ADDRESS $P_PORT && networksetup -setsocksfirewallproxy Wi-Fi $P_ADDRESS $P_PORT'

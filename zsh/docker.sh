@@ -1,14 +1,10 @@
 #! /bin/sh
 
 alias dops='docker ps -a'
-# stop all containers 谨慎使用
-# alias dcka='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-# delete null images
-alias doicleann='docker rmi $(docker images --filter dangling=true -q --no-trunc)'
+# delete dangling images
+alias diclean='docker rmi $(docker images --filter dangling=true -q --no-trunc)'
 # delete exited containers
-alias docleane='docker rm -v $(docker ps -a -q -f status=exited)'
-# clean null images and exited containers
-# alias dclean='docker rmi -f $(docker images --filter dangling=true -q --no-trunc) && docker rm -v $(docker ps -a -q -f status=exited)'
+alias dclean='docker rm -v $(docker ps -a -q -f status=exited)'
 
 # alias dc='docker-compose'
 alias dc='docker compose'
@@ -162,7 +158,7 @@ docker-image-clean() {
 alias doiclean='docker-image-clean'
 
 
-# docker container 多选删除
+# docker container multi-select clean
 docker-container-clean() {
   if ! command -v fzf >/dev/null 2>&1; then
     echo "fzf 未安装"
@@ -296,7 +292,7 @@ dfzf() {
 
     case "$op" in
       run)    echo "$ids" | head -n1 | xargs -I{} docker run -it --rm {} /bin/bash ;;
-      delete) echo "$ids" | xargs docker rmi ;;
+      delete) echo "$ids" | xargs docker rmi -f;;
     esac
     ;;
 

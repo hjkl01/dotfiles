@@ -29,15 +29,17 @@ local current_dir='${PWD/#$HOME/~}'
 # Git info (inspired by robbyrussell theme)
 function git_prompt_info() {
   # Check if we're in a git repo
-  if ! git rev-parse --git-dir > /dev/null 2>&1; then
-    return
-  fi
+  local git_dir
+  git_dir=$(git rev-parse --git-dir 2>/dev/null) || return
 
   # Get the current branch name
-  local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+  local branch
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null) || \
+  branch=$(git describe --tags --exact-match 2>/dev/null) || \
+  branch=$(git rev-parse --short HEAD 2>/dev/null)
 
   if [[ -n "$branch" ]]; then
-    # Check git status for indicators (use git_status to avoid conflict with zsh built-in)
+    # Check git status for indicators
     local git_status=""
 
     # Check for staged changes
@@ -51,19 +53,26 @@ function git_prompt_info() {
     fi
 
     # Check for untracked files
-    if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
+    local untracked
+    untracked=$(git ls-files --others --exclude-standard 2>/dev/null)
+    if [[ -n "$untracked" ]]; then
       git_status+="?"
     fi
 
     # Check if ahead/behind remote
-    local ahead=$(git rev-list --count @{u}..HEAD 2>/dev/null)
-    local behind=$(git rev-list --count HEAD..@{u} 2>/dev/null)
+    local upstream
+    upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
+    if [[ -n "$upstream" ]]; then
+      local ahead behind
+      ahead=$(git rev-list --count "${upstream}..HEAD" 2>/dev/null)
+      behind=$(git rev-list --count "HEAD..${upstream}" 2>/dev/null)
 
-    if [[ "$ahead" -gt 0 ]]; then
-      git_status+="↑${ahead}"
-    fi
-    if [[ "$behind" -gt 0 ]]; then
-      git_status+="↓${behind}"
+      if [[ "$ahead" -gt 0 ]]; then
+        git_status+="↑${ahead}"
+      fi
+      if [[ "$behind" -gt 0 ]]; then
+        git_status+="↓${behind}"
+      fi
     fi
 
     # Format: on git:BRANCH [STATUS]

@@ -3,7 +3,6 @@
 # install chsrc to use mirrors
 
 # python config
-
 virtualenv_path=~/.venv/py3/bin/activate
 if [ -f $virtualenv_path ]; then
   source $virtualenv_path
@@ -47,10 +46,4 @@ alias pi='.venv/bin/pip'
 export GOPROXY=https://goproxy.cn
 export GO111MODULE=auto
 export GOPATH=$HOME/dev/go
-export PATH="$PATH:$HOME/dev/go/bin"
-
-# rust config
-export PATH="$PATH:$HOME/.cargo/bin/"
-
-# neovim mason path
-export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+path=($HOME/dev/go/bin $HOME/.cargo/bin $HOME/.local/share/nvim/mason/bin $path)
