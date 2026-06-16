@@ -24,7 +24,7 @@ function current_time {
 }
 
 # Directory info.
-local current_dir='${PWD/#$HOME/~}'
+local current_dir='%~'
 
 # Git info (inspired by robbyrussell theme)
 function git_prompt_info() {
@@ -86,22 +86,24 @@ function git_prompt_info() {
 }
 
 # Prompt format: \n # TIME USER at MACHINE in [DIRECTORY] on git:BRANCH STATE \n $
-PROMPT="
-%K{blue}%F{black}%n%k%F{blue} \
+setopt PROMPT_SUBST
+
+PROMPT='
+%K{blue}%F{black}%n%k%F{blue} \
 %{$fg[white]%}at \
-%K{green}%F{black}$(box_name)%k%F{green} \
+%K{green}%F{black}$(box_name)%k%F{green} \
 %{$fg[white]%}in \
-%K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
+%K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
 $(git_prompt_info) $(current_time) %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} )
-%{$terminfo[bold]$fg[white]%}› %{$reset_color%} "
+%{$terminfo[bold]$fg[white]%}› %{$reset_color%} '
 
 if [[ "$USER" == "root" ]]; then
-PROMPT="
-%K{red}%F{black}%n%k%F{red} \
+PROMPT='
+%K{red}%F{black}%n%k%F{red} \
 %{$fg[white]%}at \
-%K{red}%F{black}$(box_name)%k%F{red} \
+%K{red}%F{black}$(box_name)%k%F{red} \
 %{$fg[white]%}in \
-%K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
+%K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
 $(git_prompt_info) $(current_time) %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} )
-%{$terminfo[bold]$fg[white]%}› %{$reset_color%} "
+%{$terminfo[bold]$fg[white]%}› %{$reset_color%} '
 fi
