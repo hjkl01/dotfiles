@@ -14,14 +14,13 @@ function hostname() {
 	fi
 }
 
-# Machine name.
-function box_name {
-    [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
-}
-
-function current_time {
-  echo [ %F{cyan}%D{%Y-%m-%d %H:%M:%S}%f ]
-}
+# Pre-calculate machine name to prevent fork in PROMPT
+local my_box_name
+if [[ -f ~/.box-name ]]; then
+  my_box_name=$(<~/.box-name)
+else
+  my_box_name=$HOST
+fi
 
 # Directory info.
 local current_dir='%~'
@@ -43,29 +42,29 @@ function git_prompt_info() {
     local git_status=""
 
     # Check for staged changes
-    if ! git diff --cached --quiet 2>/dev/null; then
+    if ! git --no-optional-locks diff --cached --quiet 2>/dev/null; then
       git_status+="+"
     fi
 
     # Check for unstaged changes
-    if ! git diff --quiet 2>/dev/null; then
+    if ! git --no-optional-locks diff --quiet 2>/dev/null; then
       git_status+="✎"
     fi
 
     # Check for untracked files
     local untracked
-    untracked=$(git ls-files --others --exclude-standard 2>/dev/null)
+    untracked=$(git --no-optional-locks ls-files --others --exclude-standard 2>/dev/null)
     if [[ -n "$untracked" ]]; then
       git_status+="?"
     fi
 
     # Check if ahead/behind remote
-    local upstream
-    upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
-    if [[ -n "$upstream" ]]; then
-      local ahead behind
-      ahead=$(git rev-list --count "${upstream}..HEAD" 2>/dev/null)
-      behind=$(git rev-list --count "HEAD..${upstream}" 2>/dev/null)
+    local counts
+    # Output format: <ahead> \t <behind>
+    counts=($(git --no-optional-locks rev-list --left-right --count HEAD...@{u} 2>/dev/null))
+    if [[ ${#counts[@]} -eq 2 ]]; then
+      local ahead=${counts[1]}
+      local behind=${counts[2]}
 
       if [[ "$ahead" -gt 0 ]]; then
         git_status+="↑${ahead}"
@@ -89,21 +88,11 @@ function git_prompt_info() {
 setopt PROMPT_SUBST
 
 PROMPT='
-%K{blue}%F{black}%n%k%F{blue} \
-%{$fg[white]%}at \
-%K{green}%F{black}$(box_name)%k%F{green} \
-%{$fg[white]%}in \
-%K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
-$(git_prompt_info) $(current_time) %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} )
-%{$terminfo[bold]$fg[white]%}› %{$reset_color%} '
+%K{blue}%F{black}%n%k%f %F{white}at %K{green}%F{black}${my_box_name}%k%f %F{white}in %K{yellow}%F{black}[${current_dir}]%k%f $(git_prompt_info) [ %F{cyan}%D{%Y-%m-%d %H:%M:%S}%f ] %(?:%B%F{green}%1{➜%} :%B%F{red}%1{➜%} )
+%B%F{white}› %f%b '
 
 if [[ "$USER" == "root" ]]; then
 PROMPT='
-%K{red}%F{black}%n%k%F{red} \
-%{$fg[white]%}at \
-%K{red}%F{black}$(box_name)%k%F{red} \
-%{$fg[white]%}in \
-%K{yellow}%F{black}[${current_dir}]%k%F{yellow} \
-$(git_prompt_info) $(current_time) %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} )
-%{$terminfo[bold]$fg[white]%}› %{$reset_color%} '
+%K{red}%F{black}%n%k%f %F{white}at %K{red}%F{black}${my_box_name}%k%f %F{white}in %K{yellow}%F{black}[${current_dir}]%k%f $(git_prompt_info) [ %F{cyan}%D{%Y-%m-%d %H:%M:%S}%f ] %(?:%B%F{green}%1{➜%} :%B%F{red}%1{➜%} )
+%B%F{white}› %f%b '
 fi
