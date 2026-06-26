@@ -64,4 +64,30 @@ cdd() {
   ls -G
 }
 
+killport() {
+    local pids
+
+    pids=$(
+        lsof -nP -i \
+        | fzf \
+            --multi \
+            --header-lines=1 \
+            --prompt="搜索端口> " \
+            --with-nth=1,2,3,8,9 \
+        | awk '{print $2}' \
+        | sort -u
+    )
+
+    [[ -z "$pids" ]] && return
+
+    echo "将停止以下 PID:"
+    echo "$pids"
+
+    read "ans?继续？[y/N] "
+
+    [[ "$ans" =~ ^[Yy]$ ]] || return
+
+    echo "$pids" | xargs kill -TERM
+}
+
 alias playradio='mpv --no-video --quiet "http://ngcdn001.cnr.cn/live/yyzs/index.m3u8"'
