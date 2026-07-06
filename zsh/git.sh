@@ -13,7 +13,7 @@ alias gl='git pull'
 alias gp='git push'
 
 gitpush() {
-  git commit -m $1
+  git commit -m "$1"
   git push
 }
 
