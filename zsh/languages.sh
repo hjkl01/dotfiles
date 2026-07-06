@@ -18,4 +18,3 @@ alias pi='.venv/bin/pip'
 export GOPROXY=https://goproxy.cn
 export GO111MODULE=auto
 export GOPATH=$HOME/dev/go
-export PATH=$HOME/dev/go/bin:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:$PATH

@@ -5,7 +5,7 @@ export example=' 0️⃣  1️⃣  2️⃣  3️⃣  4️⃣  5️⃣  6️⃣  
 export ZSH_ENV='🖥️ '
 
 # path
-export PATH="$PATH:$HOME/.dotfiles/bin"
+path=($HOME/.dotfiles/bin $HOME/.bun/bin $HOME/dev/go/bin $HOME/.cargo/bin $HOME/.local/share/nvim/mason/bin "${ASDF_DATA_DIR:-$HOME/.asdf}/shims" $path)
 
 # mac
 # export zsh='/usr/local/opt/zsh/bin/zsh'
