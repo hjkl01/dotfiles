@@ -25,11 +25,9 @@ ZSH_THEME='hjkl01'
 # ZSH_THEME='robbyrussell'
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  # git
   zsh-autosuggestions
-  zsh-syntax-highlighting
-  web-search
   zsh-you-should-use
+  zsh-syntax-highlighting
 )
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
