@@ -12,8 +12,8 @@ fi
 export BETTER_EXCEPTIONS=1
 
 # .venv
-alias pr='.venv/bin/python'
-alias pi='.venv/bin/pip'
+# alias pr='.venv/bin/python'
+# alias pi='.venv/bin/pip'
 
 export GOPROXY=https://goproxy.cn
 export GO111MODULE=auto
