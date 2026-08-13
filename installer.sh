@@ -39,7 +39,8 @@ SoftLinks() {
 }
 
 InstallOhMyZsh() {
-  echo "source ~/.dotfiles/zsh/zshrc" >>"$HOME/.zshrc"
+  grep -qxF 'source ~/.dotfiles/zsh/zshrc' ~/.zshrc ||
+    echo 'source ~/.dotfiles/zsh/zshrc' >> ~/.zshrc
   echo ": 1700000000:0;ps aux | grep ssh" >>"$HOME/.zsh_history"
 
   if [ ! -d "$HOME/.oh-my-zsh" ]; then

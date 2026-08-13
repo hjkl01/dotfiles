@@ -1,14 +1,13 @@
 FROM archlinux:latest
 
 # Set environment variables
-ENV LANG=en_US.UTF-8
+ENV LANG=zh_CN.UTF-8
 ENV TERM=xterm-256color
 
 RUN echo 'zh_CN.UTF-8\ UTF-8' >> /etc/locale.gen && locale-gen
 
-RUN pacman --noconfirm -Syy
-RUN pacman --noconfirm -Syyu
-RUN pacman --noconfirm -S \
+RUN pacman --noconfirm -Syy && \
+  pacman --noconfirm -S \
   bc \
   eza \
   bat \
@@ -41,7 +40,7 @@ RUN pacman --noconfirm -S \
   rm -rf /var/cache/pacman/pkg/* && \
   echo $(which zsh) >> /etc/shells
 
-RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN git clone --single-branch --depth=1 https://github.com/hjkl01/dotfiles /root/.dotfiles && \
   cd /root/.dotfiles && cp env .env && bash ./installer.sh

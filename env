@@ -13,8 +13,8 @@ export PATH="$HOME/.dotfiles/bin:$HOME/.bun/bin:$HOME/dev/go/bin:$HOME/.cargo/bi
 
 # tmux
 export START_TMUX=0
-export TMUX_PREFIX='C-b'
-export START_ZELLIJ=1
+export TMUX_PREFIX='C-s'
+export START_ZELLIJ=0
 
 # proxy
 export P_ADDRESS="127.0.0.1"
@@ -23,12 +23,7 @@ export P_PORT="7890"
 # vultr key
 export VULTR_API_KEY=''
 
-# backups
-export OPEN_API_KEY=''
-
 # huggingface
 export HF_ENDPOINT=https://hf-mirror.com
 
 export GITHUB_MIRROR='https://gh.hjkl01.cn/'
-
-export PORT=8080
