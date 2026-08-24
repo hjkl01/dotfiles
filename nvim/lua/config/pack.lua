@@ -49,7 +49,7 @@ M.specs = {
 
   -- AI / language helpers
   { src = "https://github.com/folke/lazydev.nvim",                          name = "lazydev.nvim" },
-  { src = "https://github.com/Exafunction/windsurf.vim",                    name = "windsurf.vim" },
+  -- { src = "https://github.com/Exafunction/windsurf.vim",                    name = "windsurf.vim" },
   -- { src = "https://github.com/github/copilot.vim",                          name = "copilot.vim",                version = "release" },
 
   -- Utility

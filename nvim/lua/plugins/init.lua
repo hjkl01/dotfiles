@@ -1,31 +1,17 @@
 local M = {}
 
-local plugin_modules = {
-  "plugins.colorscheme",
-  "plugins.flash",
-  "plugins.blink",
-  "plugins.conform",
-  "plugins.treesitter",
-  "plugins.lint",
-  "plugins.noice",
-  "plugins.which-key",
-  "plugins.telescope",
-  "plugins.snacks",
-  "plugins.persistence",
-  "plugins.lazydev",
-  "plugins.lualine",
-  "plugins.mason",
-  "plugins.mini",
-  "plugins.neo-tree",
-  "plugins.ai",
-  "plugins.gitsigns",
-  "plugins.fugitive",
-  "plugins.diffview",
-  "plugins.undotree",
-  "plugins.bufferline",
-  "plugins.translator",
-  "plugins.trouble",
-}
+local plugin_modules = {}
+local config_dir = vim.fn.stdpath('config') .. '/lua/plugins'
+local files = vim.fn.glob(config_dir .. '/*.lua', false, false)
+if type(files) == "string" then
+  files = vim.split(files, "\n")
+end
+for _, file in ipairs(files) do
+  local name = vim.fn.fnamemodify(file, ":t:r")
+  if name ~= "init" then
+    table.insert(plugin_modules, "plugins." .. name)
+  end
+end
 
 function M.setup()
   for _, mod in ipairs(plugin_modules) do
