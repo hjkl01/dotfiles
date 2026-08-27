@@ -19,19 +19,21 @@ function M.setup()
   local mason_lspconfig = require("mason-lspconfig")
   local lsp_servers = { "gopls", "lua_ls", "ruff", "pylsp", "ts_ls", "yamlls", "dockerls" }
 
+  -- Neovim 0.11+: automatic_enable 自动启用已安装且已配置的 LSP
   mason_lspconfig.setup({
     ensure_installed = lsp_servers,
-    automatic_enable = false,
+    automatic_enable = true,
   })
 
   local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-  vim.lsp.config("gopls", {
+  -- 统一配置：所有 LSP 共享 capabilities
+  vim.lsp.config("*", {
     capabilities = capabilities,
   })
 
+  -- 各服务器个性化配置
   vim.lsp.config("lua_ls", {
-    capabilities = capabilities,
     settings = {
       Lua = {
         diagnostics = { globals = { "vim" } },
@@ -40,7 +42,6 @@ function M.setup()
   })
 
   vim.lsp.config("ruff", {
-    capabilities = capabilities,
     init_options = {
       settings = {
         lineLength = 180,
@@ -52,7 +53,6 @@ function M.setup()
   })
 
   vim.lsp.config("pylsp", {
-    capabilities = capabilities,
     settings = {
       pylsp = {
         plugins = {
@@ -60,20 +60,15 @@ function M.setup()
           mccabe = { enabled = false },
           pycodestyle = { enabled = false },
           pyflakes = { enabled = false },
-          pylint = { enabled = false },
-          ruff = { enabled = false },
+          pylint = { enabled = true },
+          ruff = { enabled = true },
           yapf = { enabled = false },
         },
       },
     },
   })
 
-  vim.lsp.config("ts_ls", {
-    capabilities = capabilities,
-  })
-
   vim.lsp.config("yamlls", {
-    capabilities = capabilities,
     settings = {
       yaml = {
         schemas = {
@@ -84,15 +79,7 @@ function M.setup()
     },
   })
 
-  vim.lsp.config("dockerls", {
-    capabilities = capabilities,
-  })
-
-  local installed_lsp_servers = mason_lspconfig.get_installed_servers()
-  vim.lsp.enable(vim.tbl_filter(function(server)
-    return vim.tbl_contains(lsp_servers, server)
-  end, installed_lsp_servers))
-
+  -- 自动格式化（保存时）
   vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function(event)
       if vim.bo[event.buf].buftype ~= "" then
