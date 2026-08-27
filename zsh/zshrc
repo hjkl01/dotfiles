@@ -3,15 +3,27 @@ export LC_ALL="${LC_CTYPE:-zh_CN.UTF-8}"
 
 source ~/.dotfiles/.env
 
-for file in ~/.dotfiles/zsh/*.sh; do
-  if [ -d "$file" ]; then
-    echo "$file is directory"
-  elif [ -f "$file" ]; then
-    # echo "$file is file"
-    source $file
-  fi
-done
+# ── Zsh 启动缓存优化 ──────────────────────────────────────────────
+# 缓存 glob 结果，避免每次启动都遍历文件系统
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p "$ZSH_CACHE_DIR"
 
+ZSH_SOURCES_CACHE="$ZSH_CACHE_DIR/sources.zsh"
+ZSHRC_MTIME=$(stat -c %Y ~/.dotfiles/zsh/zshrc 2>/dev/null || stat -f %m ~/.dotfiles/zsh/zshrc 2>/dev/null)
+
+# 如果缓存不存在或 zshrc 比缓存新，则重新生成
+if [[ ! -f "$ZSH_SOURCES_CACHE" || ! -f "$ZSH_CACHE_DIR/zshrc.zwc" || "$ZSHRC_MTIME" -gt $(stat -c %Y "$ZSH_SOURCES_CACHE" 2>/dev/null || stat -f %m "$ZSH_SOURCES_CACHE" 2>/dev/null || echo 0) ]]; then
+  : >| "$ZSH_SOURCES_CACHE"
+  for file in ~/.dotfiles/zsh/*.sh(N); do
+    [[ -f "$file" ]] && echo "source '$file'" >> "$ZSH_SOURCES_CACHE"
+  done
+fi
+
+source "$ZSH_SOURCES_CACHE"
+
+# 预编译 zshrc 和 alias.zsh 加速加载
+[[ ~/.dotfiles/zsh/zshrc -nt "$ZSH_CACHE_DIR/zshrc.zwc" ]] && zcompile -R "$ZSH_CACHE_DIR/zshrc.zwc" ~/.dotfiles/zsh/zshrc 2>/dev/null
+[[ ~/.dotfiles/zsh/alias.zsh -nt "$ZSH_CACHE_DIR/alias.zwc" ]] && zcompile -R "$ZSH_CACHE_DIR/alias.zwc" ~/.dotfiles/zsh/alias.zsh 2>/dev/null
 
 # ZSH config
 bindkey '^n' end-of-line
@@ -20,10 +32,8 @@ bindkey '^n' end-of-line
 export ZSH=$HOME/.oh-my-zsh
 DISABLE_AUTO_UPDATE='true'
 ZSH_DISABLE_COMPFIX='true'
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME='hjkl01'
-# ZSH_THEME='robbyrussell'
-# Add wisely, as too many plugins slow down shell startup.
+
 plugins=(
   zsh-autosuggestions
   zsh-you-should-use
@@ -31,14 +41,10 @@ plugins=(
 )
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
-# fpath=(~/.oh-my-zsh/custom/plugins/zsh-completions/src $fpath)
-# rm -f ~/.zcompdump; compinit
-
 source $HOME/.dotfiles/zsh/alias.zsh
 
 setopt NO_HUP
 
-# export TERM="screen-256color"
 # tmux.conf handles TERM setting; only set for non-tmux sessions
 [ -z "$TMUX" ] && export TERM="xterm-256color"
 
