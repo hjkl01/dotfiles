@@ -1,7 +1,7 @@
 <div align="center">
   <h1>🏠 我的 Dotfiles</h1>
   <p>个人开发环境配置集合 | 统一跨设备体验</p>
-  
+
   ![GitHub stars](https://img.shields.io/github/stars/hjkl01/dotfiles?style=for-the-badge&logo=github&color=ff6b6b)
   ![GitHub forks](https://img.shields.io/github/forks/hjkl01/dotfiles?style=for-the-badge&logo=github&color=4ecdc4)
   ![License](https://img.shields.io/github/license/hjkl01/dotfiles?style=for-the-badge&color=45b7d1)
@@ -388,17 +388,17 @@ graph TD
     A --> F[scripts/]
     A --> G[installer.sh]
     A --> H[Dockerfile]
-    
+
     B --> B1[gitconfig]
     B --> B2[tmux.conf]
     B --> B3[ghostty.config]
     B --> B4[alacritty.toml]
     B --> B5[rime/]
-    
+
     C --> C1[lua/config/]
     C --> C2[lua/plugins/ - 27 个插件配置]
     C --> C3[init.lua]
-    
+
     D --> D1[zshrc]
     D --> D2[alias.zsh]
     D --> D3[git.sh]
@@ -406,13 +406,13 @@ graph TD
     D --> D5[languages.sh]
     D --> D6[proxy.sh]
     D --> D7[asdf.sh]
-    
+
     E --> E1[asdf]
     E --> E2[b]
     E --> E3[fif]
     E --> E4[fkill]
     E --> E5[cdf]
-    
+
     F --> F1[run.sh]
     F --> F2[test.py]
 ```
