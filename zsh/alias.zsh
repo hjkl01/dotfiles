@@ -16,7 +16,6 @@ fzf_nvim() {
 [[ -x $(command -v lsd) ]] && alias ls=lsd
 [[ -x $(command -v nvim) ]] && alias vi=fzf_nvim
 # [[ -x $(command -v fd) ]] && alias find=fd
-[[ -x $(command -v rg) ]] && alias grep=rg
 
 [[ -x $(command -v zoxide) ]] && eval "$(zoxide init zsh)"
 
