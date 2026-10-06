@@ -7,6 +7,9 @@ export ZSH_ENV='🖥️ '
 # path
 export PATH="$HOME/.dotfiles/bin:$HOME/.bun/bin:$HOME/dev/go/bin:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
+# asdf
+# export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
+
 # mac
 # export zsh='/usr/local/opt/zsh/bin/zsh'
 # export PATH=/opt/homebrew/bin:$PATH
