@@ -416,7 +416,6 @@ graph TD
     A --> C[nvim/]
     A --> D[zsh/]
     A --> E[bin/]
-    A --> F[scripts/]
     A --> G[installer.sh]
     A --> H[Dockerfile]
 
@@ -443,9 +442,6 @@ graph TD
     E --> E3[fif]
     E --> E4[fkill]
     E --> E5[cdf]
-
-    F --> F1[run.sh]
-    F --> F2[test.py]
 ```
 
 </details>

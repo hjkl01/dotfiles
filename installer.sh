@@ -29,13 +29,8 @@ SoftLinks() {
 
   if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     mkdir -p "$HOME/.ssh"
-    ssh-keygen -q -t rsa -b 4096 -C "" -f "$HOME/.ssh/id_rsa" -N ""
+    ssh-keygen -q -t rsa -b 4096 -C "dotfiles@$(hostname)" -f "$HOME/.ssh/id_rsa" -N ""
   fi
-
-  mkdir -p "$CONFIG_DIR/pip"
-  ln -sf "$HOME/.dotfiles/config/pip.conf" "$CONFIG_DIR/pip/pip.conf"
-  mkdir -p "$CONFIG_DIR/uv"
-  ln -sf "$HOME/.dotfiles/config/uv.toml" "$CONFIG_DIR/uv/uv.toml"
 }
 
 InstallOhMyZsh() {
@@ -70,8 +65,8 @@ InstallNeovim() {
 
   if [ ! -d "$HOME/.venv/py3" ]; then
     python3 -m venv "$HOME/.venv/py3"
-    "$HOME/.venv/py3/bin/pip" install --upgrade pip uv
-    "$HOME/.venv/py3/bin/pip" install better_exceptions neovim black ruff debugpy
+    "$HOME/.venv/py3/bin/pip" install --upgrade pip uv -i https://mirrors.cernet.edu.cn/pypi/web/simple
+    "$HOME/.venv/py3/bin/pip" install better_exceptions neovim black ruff debugpy -i https://mirrors.cernet.edu.cn/pypi/web/simple
   fi
 }
 
@@ -81,7 +76,7 @@ InstallOthers() {
       echo "Installing Homebrew..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-    brew install tmux fzf zoxide lua asdf
+    brew install tmux fzf zoxide lua asdf fd ripgrep chsrc
     brew install --cask squirrel ghostty
 
     if [ ! -d "$HOME/Library/Rime" ]; then
