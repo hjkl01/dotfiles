@@ -1,18 +1,10 @@
-<div align="center">
-  <h1>🏠 我的 Dotfiles</h1>
-  <p>个人开发环境配置集合 | 统一跨设备体验</p>
+# 🏠 我的 Dotfiles
 
-  ![GitHub stars](https://img.shields.io/github/stars/hjkl01/dotfiles?style=for-the-badge&logo=github&color=ff6b6b)
-  ![GitHub forks](https://img.shields.io/github/forks/hjkl01/dotfiles?style=for-the-badge&logo=github&color=4ecdc4)
-  ![License](https://img.shields.io/github/license/hjkl01/dotfiles?style=for-the-badge&color=45b7d1)
-  ![Last commit](https://img.shields.io/github/last-commit/hjkl01/dotfiles?style=for-the-badge&color=96ceb4)
-</div>
+个人开发环境配置集合 | 统一跨设备体验
 
----
+![GitHub stars](https://img.shields.io/github/stars/hjkl01/dotfiles?style=for-the-badge&logo=github&color=ff6b6b) ![GitHub forks](https://img.shields.io/github/forks/hjkl01/dotfiles?style=for-the-badge&logo=github&color=4ecdc4) ![License](https://img.shields.io/github/license/hjkl01/dotfiles?style=for-the-badge&color=45b7d1) ![Last commit](https://img.shields.io/github/last-commit/hjkl01/dotfiles?style=for-the-badge&color=96ceb4)
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/assets/preview.png" alt="Terminal Preview" width="800">
-</div>
+![Terminal Preview](https://raw.githubusercontent.com/hjkl01/dotfiles/refs/heads/master/assets/preview.png)
 
 > 💡 **现代化开发环境配置** - 基于 Zsh + Neovim + Tmux + Ghostty 的高效工作流
 
@@ -35,7 +27,8 @@
 
 ## 🛠️ 技术栈
 
-<div align="center">
+<details>
+<summary>📦 技术栈徽章（Zsh / Neovim / Tmux / Ghostty / asdf ...）</summary>
 
 | 🎯 核心工具 | 📝 编辑器 | 🖥️ 终端 | 🔧 开发环境 |
 |-------------|-----------|---------|-------------|
@@ -43,23 +36,28 @@
 | ![Tmux](https://img.shields.io/badge/Tmux-3.2+-black?style=flat-square&logo=tmux) | ![vim.pack](https://img.shields.io/badge/vim.pack-builtin-yellow?style=flat-square) | ![Alacritty](https://img.shields.io/badge/Alacritty-latest-cyan?style=flat-square) | ![Docker](https://img.shields.io/badge/Docker-20.10+-blue?style=flat-square&logo=docker) |
 | ![asdf](https://img.shields.io/badge/asdf-latest-orange?style=flat-square) | ![Copilot](https://img.shields.io/badge/Copilot-latest-black?style=flat-square&logo=github) | ![fzf](https://img.shields.io/badge/fzf-latest-blue?style=flat-square) | ![Python](https://img.shields.io/badge/Python-3.8+-yellow?style=flat-square&logo=python) |
 
-</div>
+</details>
 
 ### 📦 配置概览
+
+<details>
+<summary>📂 各配置项路径与功能一览</summary>
 
 | 🔧 配置项 | 📁 路径 | 🎯 功能 | ⭐ 特点 |
 |-----------|---------|---------|---------|
 | **Shell 环境** | `zsh/` | Zsh 配置与主题 | 自定义主题 + 智能别名 + fzf 集成 |
-| **编辑器配置** | `nvim/` | Neovim + vim.pack | LSP + Treesitter + 29 个插件 |
+| **编辑器配置** | `nvim/` | Neovim + vim.pack | LSP + Treesitter + 27 个插件配置 |
 | **终端复用** | `config/tmux.conf` | Tmux 会话管理 | Catppuccin 主题 + vim 导航 |
 | **现代终端** | `config/ghostty.config` | Ghostty 终端设置 | GPU 加速 + Maple Mono 字体 |
 | **输入法** | `config/rime/` | Rime 中文输入 | 自定义词库 + 快捷输入 |
 | **开发工具** | `config/` | Git/Docker/Python | 统一配置 + 环境优化 |
 
-### 🎯 Neovim 插件列表 (29 个)
+</details>
+
+### 🎯 Neovim 插件列表
 
 <details>
-<summary>点击展开完整插件列表</summary>
+<summary>🧩 查看完整插件列表（27 个插件配置文件）</summary>
 
 | 类别 | 插件 | 功能 |
 |------|------|------|
@@ -77,6 +75,9 @@
 
 ### 🔧 LSP 服务器配置
 
+<details>
+<summary>🌐 查看已配置的 LSP 服务器清单</summary>
+
 | 语言 | LSP 服务器 | 功能 |
 |------|------------|------|
 | **Go** | gopls | Go 语言服务 |
@@ -86,7 +87,12 @@
 | **YAML** | yamlls | YAML 语言服务 (GitHub Actions, Docker Compose) |
 | **Docker** | dockerls | Dockerfile 语言服务 |
 
+</details>
+
 ### 🐚 Zsh 插件
+
+<details>
+<summary>🧾 查看 Zsh 插件清单</summary>
 
 | 插件 | 功能 |
 |------|------|
@@ -95,7 +101,12 @@
 | **web-search** | 网页搜索 |
 | **zsh-you-should-use** | 别名提醒 |
 
+</details>
+
 ### 🖥️ Tmux 插件
+
+<details>
+<summary>🧾 查看 Tmux 插件清单</summary>
 
 | 插件 | 功能 |
 |------|------|
@@ -105,7 +116,12 @@
 | **tmux-yank** | 剪贴板集成 |
 | **tmux-resurrect** | 会话恢复 |
 
+</details>
+
 ### 🐳 Docker 管理工具
+
+<details>
+<summary>🐧 查看 Docker 快捷命令清单</summary>
 
 | 命令 | 功能 | 说明 |
 |------|------|------|
@@ -116,7 +132,12 @@
 | `doclean` | 清理容器 | 多选删除 Docker 容器 |
 | `dovclean` | 清理 Volume | 多选删除 Docker Volume |
 
+</details>
+
 ### 🌐 代理配置
+
+<details>
+<summary>🛰️ 查看代理相关命令清单</summary>
 
 | 命令 | 功能 | 说明 |
 |------|------|------|
@@ -125,13 +146,13 @@
 | `px <cmd>` | 临时代理 | 单次命令使用代理 |
 | `macproxysetup` | Mac 代理 | 配置 macOS 系统代理 |
 
+</details>
+
 ---
 
 ## 🚀 快速开始
 
 ### 📋 环境准备
-
-<div align="center">
 
 ```bash
 # 🎯 一键安装核心依赖 (Ubuntu/Debian)
@@ -141,9 +162,10 @@ git zsh neovim tmux ripgrep fzf
 git clone --depth=1 https://github.com/asdf-vm/asdf.git ~/.asdf
 ```
 
-</div>
-
 #### 🔍 依赖清单
+
+<details>
+<summary>📥 查看依赖清单与必需性</summary>
 
 | 📦 类别 | 🛠️ 工具 | 📝 说明 | 🌟 必需性 |
 |---------|---------|---------|-----------|
@@ -155,9 +177,9 @@ git clone --depth=1 https://github.com/asdf-vm/asdf.git ~/.asdf
 | **WSL 专用** | `win32yank.exe` | Windows 剪贴板桥接 | ⭐ (WSL) |
 | **中文输入** | `fcitx5-rime` | 中文输入法 | ⭐ (可选) |
 
-### ⚡ 一键安装
+</details>
 
-<div align="center">
+### ⚡ 一键安装
 
 ```bash
 # 🚀 克隆配置仓库
@@ -170,8 +192,6 @@ bash ./installer.sh link
 # 🐚 切换到 Zsh Shell
 chsh -s $(which zsh)
 ```
-
-</div>
 
 #### 🌐 加速选项 (可选)
 
@@ -198,9 +218,10 @@ echo "🐚 当前 Shell: $SHELL"
 
 ## 💡 推荐工具
 
-<div align="center">
-
 ### 🎯 效率提升工具集
+
+<details>
+<summary>🛠️ 查看效率工具清单与安装命令</summary>
 
 | 🛠️ 工具 | 📝 功能 | 🌟 推荐指数 | 🚀 安装命令 |
 |---------|---------|-----------|-------------|
@@ -214,7 +235,7 @@ echo "🐚 当前 Shell: $SHELL"
 | **dust** | 目录大小分析 | ⭐⭐⭐ | `cargo install dust` |
 | **broot** | 交互式目录树 | ⭐⭐⭐⭐ | `cargo install broot` |
 
-</div>
+</details>
 
 #### 🎨 终端美化
 
@@ -226,6 +247,9 @@ echo "🐚 当前 Shell: $SHELL"
 
 #### 📊 系统监控
 
+<details>
+<summary>📈 查看系统监控工具清单</summary>
+
 | 🔍 工具 | 📊 用途 | ⭐ 特点 |
 |---------|---------|---------|
 | **htop** | 进程监控 | 交互式界面 |
@@ -233,13 +257,13 @@ echo "🐚 当前 Shell: $SHELL"
 | **tree** | 目录树 | 结构化显示 |
 | **proxychains-ng** | 网络代理 | 终端代理支持 |
 
+</details>
+
 ---
 
 ## 🔧 高级配置
 
 ### 🈚 Rime 输入法配置
-
-<div align="center">
 
 ```bash
 # 📦 安装 fcitx5-rime (Arch Linux)
@@ -249,8 +273,6 @@ sudo pacman -S fcitx5 fcitx5-rime fcitx5-configtool
 git clone --depth=1 https://github.com/Mark24Code/rime-auto-deploy
 cd rime-auto-deploy && ./installer.rb
 ```
-
-</div>
 
 #### ⚙️ 环境变量配置
 
@@ -266,8 +288,6 @@ export XMODIFIERS="@im=fcitx"
 
 ### 🚀 asdf 环境加速
 
-<div align="center">
-
 ```bash
 # 🐍 Python 镜像加速 (添加到 ~/.zshrc)
 export PYTHON_BUILD_MIRROR_URL="https://registry.npmmirror.com/-/binary/python"
@@ -280,9 +300,10 @@ export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 ```
 
-</div>
-
 #### 💡 加速效果对比
+
+<details>
+<summary>⚡ 查看镜像加速效果对比</summary>
 
 | 🐍 语言 | 🌐 官方源 | 🇨🇳 镜像源 | ⚡ 加速比 |
 |---------|---------|-----------|---------|
@@ -290,9 +311,12 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 | **Node.js** | ~3分钟 | ~20秒 | **9x** |
 | **Rust** | ~8分钟 | ~45秒 | **11x** |
 
+</details>
+
 ### 🖥️ Tmux 插件管理
 
-<div align="center">
+<details>
+<summary>⌨️ 查看 Tmux 插件管理快捷键</summary>
 
 | ⌨️ 快捷键 | 🎯 功能 | 📝 说明 |
 |-----------|---------|---------|
@@ -300,7 +324,7 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 | `prefix + U` | 更新插件 | Update plugins |
 | `prefix + alt + u` | 卸载插件 | Uninstall plugins |
 
-</div>
+</details>
 
 #### 🔄 自动化更新
 
@@ -317,8 +341,6 @@ cd ~/.dotfiles && git pull && bash ./installer.sh link
 ## 🆘 故障排除
 
 ### 🐛 Neovim 问题诊断
-
-<div align="center">
 
 ```bash
 # 🧹 清理缓存和插件
@@ -337,9 +359,10 @@ nvim --headless "+lua vim.pack.update()" +qa
 :TSUpdate
 ```
 
-</div>
-
 #### 📊 常见问题
+
+<details>
+<summary>🚨 查看常见问题与解决方案</summary>
 
 | 🚨 问题 | 🔧 解决方案 | ✅ 验证 |
 |---------|-------------|---------|
@@ -348,7 +371,12 @@ nvim --headless "+lua vim.pack.update()" +qa
 | **语法高亮异常** | 更新/安装 treesitter parser | `:TSUpdate` / `:TSInstall <lang>` |
 | **Copilot 不工作** | 设置环境变量 `NVIM_ENABLE_COPILOT=1` | 重启 Neovim |
 
+</details>
+
 #### 🔑 Neovim 快捷键速查
+
+<details>
+<summary>⌨️ 查看 Neovim 快捷键速查表</summary>
 
 | ⌨️ 快捷键 | 🎯 功能 | 📝 说明 |
 |-----------|---------|---------|
@@ -360,6 +388,8 @@ nvim --headless "+lua vim.pack.update()" +qa
 | `<leader>u` | 撤销树 | Undotree 切换 |
 | `gd` | 跳转定义 | LSP 定义跳转 |
 | `gr` | 查看引用 | LSP 引用查看 |
+
+</details>
 
 ### 🪟 WSL 剪贴板配置
 
@@ -377,7 +407,8 @@ echo 'let g:clipboard = {"name": "win32yank", "copy": {"+": "win32yank.exe -i --
 
 ## 📁 项目结构
 
-<div align="center">
+<details>
+<summary>🏗️ 查看项目结构树</summary>
 
 ```mermaid
 graph TD
@@ -417,9 +448,12 @@ graph TD
     F --> F2[test.py]
 ```
 
-</div>
+</details>
 
 #### 📂 详细目录说明
+
+<details>
+<summary>📇 查看目录与文件清单</summary>
 
 | 📁 目录 | 📄 主要文件 | 🎯 用途 | ⭐ 重要度 |
 |---------|-------------|---------|-----------|
@@ -430,6 +464,8 @@ graph TD
 | **bin/** | `asdf`, `b`, `fif`, `fkill`, `cdf` | 自定义脚本工具 | ⭐⭐⭐ |
 | **scripts/** | `run.sh`, `test.py` | 项目辅助脚本 | ⭐⭐ |
 | **.github/** | `workflows/` | CI/CD 配置 | ⭐ |
+
+</details>
 
 #### 🔧 安装脚本功能
 
@@ -445,8 +481,6 @@ graph TD
 
 ## 🤝 贡献指南
 
-<div align="center">
-
 ### 🎯 如何贡献
 
 | 📝 方式 | 🔗 链接 | 📋 说明 |
@@ -454,8 +488,6 @@ graph TD
 | **🐛 报告问题** | [Issues](https://github.com/hjkl01/dotfiles/issues) | 发现 Bug 或配置问题 |
 | **💡 功能建议** | [Discussions](https://github.com/hjkl01/dotfiles/discussions) | 提出改进建议 |
 | **🔧 提交代码** | [Pull Requests](https://github.com/hjkl01/dotfiles/pulls) | 直接贡献配置 |
-
-</div>
 
 #### 📝 贡献流程
 
@@ -484,7 +516,8 @@ git push origin feature/amazing-feature
 
 ## 🙏 致谢
 
-<div align="center">
+<details>
+<summary>🌟 致谢的项目清单</summary>
 
 | 🌟 项目 | 🔗 链接 | 📝 贡献 |
 |---------|---------|---------|
@@ -493,26 +526,18 @@ git push origin feature/amazing-feature
 | **Oh My Zsh** | [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) | Zsh 插件生态 |
 | **TPM** | [TPM](https://github.com/tmux-plugins/tpm) | Tmux 插件管理 |
 
-</div>
+</details>
 
 ---
 
 ## 📄 许可证
 
-<div align="center">
-
 ![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=opensource)
 
 本项目采用 **MIT 许可证** - 查看 [LICENSE](LICENSE) 文件了解详情。
 
-</div>
-
 ---
-
-<div align="center">
 
 **⭐ 如果这个项目对你有帮助，请给一个 Star！**
 
 **📧 联系方式**: [GitHub Issues](https://github.com/hjkl01/dotfiles/issues)
-
-</div>
