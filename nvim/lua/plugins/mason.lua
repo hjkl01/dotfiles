@@ -27,7 +27,7 @@ function M.setup()
 
   local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-  -- 统一配置：所有 LSP 共享 capabilities
+  -- 在 mason_lspconfig.setup() 之后、任何 LSP attach 之前设置全局默认 capabilities
   vim.lsp.config("*", {
     capabilities = capabilities,
   })

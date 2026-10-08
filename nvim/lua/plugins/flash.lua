@@ -10,7 +10,7 @@ function M.setup()
 
   vim.keymap.set({ "n", "x", "o" }, "?", function()
     flash.jump()
-  end, { desc = "Flash" })
+  end, { desc = "Flash jump" })
 end
 
 return M

@@ -51,7 +51,7 @@ local function cache_valid()
   local dir_ok, dir_stat = pcall(vim.uv.fs_stat, config_dir)
   if not dir_ok or not dir_stat then return false end
 
-  return cached_stat.mtime.sec > dir_stat.mtime.sec
+  return (cached_stat.mtime.sec * 1e9 + cached_stat.mtime.nsec) > (dir_stat.mtime.sec * 1e9 + dir_stat.mtime.nsec)
 end
 
 local plugin_modules = nil

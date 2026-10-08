@@ -21,6 +21,11 @@ function M.setup()
       require("persistence").load()
     end
   end, { desc = "Restore Session" })
+  vim.keymap.set("n", "<leader>qd", function()
+    if ensure_loaded() then
+      require("persistence").save()
+    end
+  end, { desc = "Save Session" })
 end
 
 return M

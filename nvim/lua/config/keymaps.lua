@@ -28,19 +28,19 @@ map("i", "<C-b>", "<ESC>^i", { desc = "beginning of line", remap = true })
 map("i", "<C-e>", "<End>", { desc = "end of line", remap = true })
 
 -- 开始定义快捷键映射
-map("n", "<ESC>", ":noh<CR>", { desc = "no highlight" })
+map("n", "<ESC>", ":noh<CR>", { desc = "No highlight" })
 map({ "n", "v" }, "H", "0", { desc = "Home" })
 map({ "n", "v" }, "L", "$", { desc = "End" })
-map("n", "q", "<cmd>q<CR>", { desc = "﬚  quit file" })
-map("n", "W", "<cmd>w<CR>", { desc = "﬚  save file" })
-map("n", "#", "*<CR>", { desc = "next ident" })
+map("n", "q", "<cmd>q<CR>", { desc = "Quit file" })
+map("n", "W", "<cmd>w<CR>", { desc = "Save file" })
+map("n", "#", "*<CR>", { desc = "Next ident" })
 map("n", "<leader>up", function() vim.pack.update() end, { desc = "Update vim.pack plugins" })
 map("n", "<leader>p", function() print(vim.fn.expand("%:p")) end, { desc = "Show file path" })
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true, desc = "Window left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true, desc = "Window down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true, desc = "Window up" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true, desc = "Window right" })
 
 map("i", "<C-h>", "<Left>", { desc = "move left", remap = true })
 map("i", "<C-l>", "<Right>", { desc = "move right", remap = true })
@@ -71,7 +71,7 @@ map("n", "ff", function()
   end
 end, { desc = "Format code" })
 
-map("n", " r", function()
+map("n", "<leader>r", function()
   local runners = {
     lua = "lua",
     python = "python",

@@ -8,9 +8,7 @@ local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
 opt.autoread = true
--- only set clipboard if not in ssh, to make sure the OSC 52
--- integration works automatically.
--- opt.clipboard = vim.env.SSH_CONNECTION and "" or "unnamedplus" -- Sync with system clipboard
+
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 0  -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true    -- Confirm to save changes before exiting modified buffer
@@ -73,19 +71,10 @@ opt.winborder = "rounded"
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
-vim.o.clipboard = "unnamedplus"
-
--- SSH 远程时：yank 通过 OSC52 同步到 macOS 剪贴板，paste 走内部寄存器（避免延迟）
+-- SSH 远程时强制使用 Neovim 内置的 OSC 52 clipboard provider
+-- 注意顺序：先设置 g:clipboard (provider)，再打开 'clipboard' 选项，见 :h g:clipboard
+-- macOS 自带 terminfo 没有 Ms 能力，自动检测会失败，所以必须显式指定 osc52
 if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") then
-  vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-    paste = {
-      ["+"] = function() end,
-      ["*"] = function() end,
-    },
-  }
+  vim.g.clipboard = "osc52"
 end
+vim.o.clipboard = "unnamedplus"

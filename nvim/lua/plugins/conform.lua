@@ -6,7 +6,7 @@ function M.setup()
   conform.setup({
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "ruff_format" },
+      python = { { "ruff_format", extra_args = { "--line-length", "160" } } },
       json = { "jq" },
       yaml = { "prettier" },
       markdown = { "prettier" },
@@ -15,8 +15,8 @@ function M.setup()
   })
 
   vim.keymap.set("n", "<leader>cf", function()
-    conform.format({ async = false, lsp_format = "never" })
-  end, { desc = "Format with Conform" })
+    conform.format({ async = true })
+  end, { desc = "Format" })
 end
 
 return M

@@ -18,14 +18,13 @@ end
 function M.setup()
   local last_line = -1
   local last_open_ms = 0
-  local float_throttle_ms = 500
+  local float_throttle_ms = 800
 
   local skip_filetypes = {
     "TelescopePrompt",
     "checkhealth",
     "grug-far",
     "help",
-    "lazy",
     "lspinfo",
     "neo-tree",
     "noice",
@@ -101,7 +100,7 @@ function M.setup()
           end
           last_open_ms = now
           vim.diagnostic.open_float(nil, {
-            focus = false,
+            focus = true,
             scope = "cursor",
             close_events = { "CursorMoved", "CursorMovedI", "BufLeave", "InsertEnter", "FocusLost" },
           })
