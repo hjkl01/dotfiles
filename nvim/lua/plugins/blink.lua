@@ -55,6 +55,10 @@ function M.setup()
       documentation = { auto_show = true },
     },
     cmdline = {
+      -- 搜索 (/ ?) 时不弹补全菜单，避免自动插入已有单词
+      enabled = function()
+        return vim.fn.getcmdtype() ~= "/" and vim.fn.getcmdtype() ~= "?"
+      end,
       keymap = {
         preset = "cmdline",
         ["<CR>"] = { "select_accept_and_enter", "fallback" },
