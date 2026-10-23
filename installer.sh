@@ -63,6 +63,11 @@ InstallNeovim() {
   ln -sf "$HOME/.dotfiles/nvim" "$CONFIG_DIR/nvim"
   ln -sf "$HOME/.dotfiles/config/pycodestyle" "$CONFIG_DIR/pycodestyle"
 
+  if ! command -v python3 >/dev/null 2>&1; then
+    echo "python3 not found, skipping python venv setup"
+    return
+  fi
+
   if [ ! -d "$HOME/.venv/py3" ]; then
     python3 -m venv "$HOME/.venv/py3"
     "$HOME/.venv/py3/bin/pip" install --upgrade pip uv -i https://mirrors.cernet.edu.cn/pypi/web/simple
