@@ -24,7 +24,6 @@ M.specs = {
   { src = "https://github.com/neovim/nvim-lspconfig",                       name = "nvim-lspconfig" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter",             name = "nvim-treesitter" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", name = "nvim-treesitter-textobjects" },
-  { src = "https://github.com/windwp/nvim-ts-autotag",                      name = "nvim-ts-autotag" },
   { src = "https://github.com/mfussenegger/nvim-lint",                      name = "nvim-lint" },
   { src = "https://github.com/folke/trouble.nvim",                          name = "trouble.nvim" },
 
@@ -32,14 +31,11 @@ M.specs = {
   { src = "https://github.com/Saghen/blink.cmp",                            name = "blink.cmp",                  version = "v1.10.2" },
   { src = "https://github.com/stevearc/conform.nvim",                       name = "conform.nvim" },
   { src = "https://github.com/rafamadriz/friendly-snippets",                name = "friendly-snippets" },
-  { src = "https://github.com/folke/ts-comments.nvim",                      name = "ts-comments.nvim" },
   { src = "https://github.com/nvim-mini/mini.nvim",                         name = "mini.nvim" },
   { src = "https://github.com/LunarVim/bigfile.nvim",                       name = "bigfile.nvim" },
 
   -- Search / project tools
   { src = "https://github.com/nvim-telescope/telescope.nvim",               name = "telescope.nvim" },
-  -- { src = "https://github.com/folke/todo-comments.nvim", name = "todo-comments.nvim" },
-  { src = "https://github.com/folke/snacks.nvim",                           name = "snacks.nvim" },
 
   -- Git / session
   { src = "https://github.com/lewis6991/gitsigns.nvim",                     name = "gitsigns.nvim" },
@@ -49,8 +45,6 @@ M.specs = {
 
   -- AI / language helpers
   { src = "https://github.com/folke/lazydev.nvim",                          name = "lazydev.nvim" },
-  -- { src = "https://github.com/Exafunction/windsurf.vim",                    name = "windsurf.vim" },
-  -- { src = "https://github.com/github/copilot.vim",                          name = "copilot.vim",                version = "release" },
 
   -- Utility
   { src = "https://github.com/voldikss/vim-translator",                     name = "vim-translator" },

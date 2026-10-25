@@ -4,14 +4,12 @@ local highlight_match_id = nil
 local highlight_skip_filetypes = {
   "TelescopePrompt",
   "checkhealth",
-  "grug-far",
   "help",
   "lspinfo",
   "neo-tree",
   "noice",
   "notify",
   "qf",
-  "snacks_dashboard",
   "trouble",
 }
 

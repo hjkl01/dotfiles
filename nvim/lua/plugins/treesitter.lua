@@ -24,8 +24,6 @@ function M.setup()
     "markdown",
     "markdown_inline",
     "python",
-    "tsx",
-    "typescript",
     "vim",
     "yaml",
   }
@@ -87,32 +85,57 @@ function M.setup()
     end, ts_config.get_available())
   end
 
-  treesitter.setup({
-    ensure_installed = ensure_installed,
-    auto_install = true,
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false,
-      disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100KB 更激进
-        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-        return ok and stats and stats.size > max_filesize
-      end,
-    },
-    indent = { enable = true },
-    textobjects = {
-      select = {
-        enable = true,
-        lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-        },
-      },
-    },
+  -- nvim-treesitter 已迁移到 main 分支的新 API：
+  --   * require('nvim-treesitter').setup() 只接受 install_dir，不再处理
+  --     ensure_installed / highlight / indent / textobjects；
+  --   * 安装 parser 用 require('nvim-treesitter').install()，但它需要 PATH 中存在
+  --     0.26.1+ 的 tree-sitter CLI（brew 的 tree-sitter 仅含库，CLI 是 tree-sitter-cli）；
+  --   * 高亮由 Neovim 内置的 vim.treesitter.start() 负责；
+  --   * textobjects 需要单独 require('nvim-treesitter-textobjects').setup()。
+  if vim.fn.executable("tree-sitter") == 1 then
+    treesitter.install(ensure_installed)
+  else
+    vim.schedule(function()
+      vim.notify_once(
+        "nvim-treesitter: 未找到 tree-sitter CLI，已跳过 parser 自动安装。\n请安装 tree-sitter-cli（brew install tree-sitter-cli）后重试，或手动 :TSInstall <lang>。",
+        vim.log.levels.WARN
+      )
+    end)
+  end
+
+  local ts_group = vim.api.nvim_create_augroup("hjkl01_treesitter", { clear = true })
+
+  -- 为有 parser 的 filetype 开启 treesitter 高亮（大文件跳过）
+  vim.api.nvim_create_autocmd("FileType", {
+    group = ts_group,
+    callback = function(args)
+      local buf = args.buf
+      local name = vim.api.nvim_buf_get_name(buf)
+      local ok_stat, stats = pcall(vim.uv.fs_stat, name)
+      if ok_stat and stats and stats.size and stats.size > 100 * 1024 then
+        return -- 100KB 以上不做 treesitter 高亮
+      end
+      pcall(vim.treesitter.start, buf)
+    end,
   })
+
+  -- textobjects（新 API 需要手动映射）
+  local ok_textobjects, textobjects = pcall(require, "nvim-treesitter-textobjects")
+  if ok_textobjects then
+    textobjects.setup({ select = { lookahead = true } })
+    local select_textobject = require("nvim-treesitter-textobjects.select").select_textobject
+    local selects = {
+      ["af"] = { "@function.outer", "Function outer" },
+      ["if"] = { "@function.inner", "Function inner" },
+      ["ac"] = { "@class.outer", "Class outer" },
+      ["ic"] = { "@class.inner", "Class inner" },
+    }
+    for lhs, spec in pairs(selects) do
+      vim.keymap.set({ "x", "o" }, lhs, function()
+        select_textobject(spec[1], "textobjects")
+      end, { desc = spec[2] })
+    end
+  end
 
   local function register_install_commands()
     pcall(vim.api.nvim_del_user_command, "TSInstall")

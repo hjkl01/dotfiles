@@ -61,7 +61,6 @@ function M.setup()
       },
       bufferline = true,
       telescope = true,
-      snacks = true,
       neotree = true,
       flash = true,
       which_key = true,
