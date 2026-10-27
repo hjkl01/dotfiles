@@ -27,6 +27,17 @@ SoftLinks() {
   ln -sf "$HOME/.dotfiles/config/gitconfig" "$HOME/.gitconfig"
   ln -sf "$HOME/.dotfiles/config/gitignore" "$HOME/.gitignore"
 
+  # zellij：config.kdl + layouts（layouts 里的 zjstatus 布局依赖 plugins/*.wasm，缺失会警告）
+  mkdir -p "$CONFIG_DIR/zellij/plugins"
+  backup_if_exists "$CONFIG_DIR/zellij/config.kdl"
+  backup_if_exists "$CONFIG_DIR/zellij/layouts"
+  ln -sfn "$HOME/.dotfiles/config/zellij.kdl" "$CONFIG_DIR/zellij/config.kdl"
+  ln -sfn "$HOME/.dotfiles/config/layouts" "$CONFIG_DIR/zellij/layouts"
+  for p in zjstatus zjframes; do
+    [ -f "$CONFIG_DIR/zellij/plugins/$p.wasm" ] ||
+      echo "WARN: missing $CONFIG_DIR/zellij/plugins/$p.wasm (zellij 状态栏/边框会不生效)"
+  done
+
   if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     mkdir -p "$HOME/.ssh"
     ssh-keygen -q -t rsa -b 4096 -C "dotfiles@$(hostname)" -f "$HOME/.ssh/id_rsa" -N ""
