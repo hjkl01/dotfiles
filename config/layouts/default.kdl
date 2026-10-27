@@ -1,12 +1,12 @@
 // zjstatus - 对齐 tmux 的状态栏（catppuccin-mocha，状态栏置顶）
-// 插件二进制位于 ~/.config/zellij/plugins/zjstatus.wasm
+// 使用 Zellij 在线加载插件，初始化时无需预先下载 zjstatus.wasm
 // 边框/frame 控制由 zjframes 后台插件负责(在 config.kdl 的 load_plugins 中加载)
 // 配色取自 catppuccin-mocha：mantle #181825 / surface0 #313244 / surface1 #45475a
 layout {
     default_tab_template {
         // 放在 children 之前 => 状态栏在顶部（tmux 的 status-position top）
         pane size=1 borderless=true {
-            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+            plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
                 format_left  "#[fg=#cdd6f4,bg=#313244]{mode}#[fg=#cdd6f4,bg=#181825]{tabs}"
                 format_right "#[fg=#94e2d5,bg=#313244]  {command_cpu}#[fg=#fab387,bg=#313244]{datetime}"
                 format_space "#[bg=#181825]"
