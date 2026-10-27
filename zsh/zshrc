@@ -71,7 +71,29 @@ if [[ -n "$ZELLIJ" ]]; then
   add-zsh-hook precmd _zellij_tab_cwd
 fi
 
-alias run_zellij='zellij attach main || zellij -s main'
-if [[ "${START_ZELLIJ:-0}" == "1" && -z "$ZELLIJ" ]] && command -v zellij &>/dev/null; then
-  zellij attach main || zellij -s main
+# 优先进入已有的 Zellij 会话；没有会话时创建 main。
+# --short 只输出会话名，避免解析普通列表中的状态信息。
+run_zellij() {
+  command -v zellij >/dev/null 2>&1 || {
+    echo "错误：未找到 zellij" >&2
+    return 127
+  }
+
+  if [[ -n "$ZELLIJ" ]]; then
+    echo "当前已在 Zellij 会话中。" >&2
+    return 0
+  fi
+
+  local session
+  session=$(zellij list-sessions --short 2>/dev/null | head -n 1)
+
+  if [[ -n "$session" ]]; then
+    zellij attach "$session"
+  else
+    zellij -s main
+  fi
+}
+
+if [[ "${START_ZELLIJ:-0}" == "1" && -z "$ZELLIJ" ]] && command -v zellij >/dev/null 2>&1; then
+  run_zellij
 fi
