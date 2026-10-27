@@ -581,9 +581,8 @@ show_startup_tips false
 // client_async_worker_tasks 4
 
 // zjframes - 后台插件,负责单 pane 时隐藏 frame 边框
-// 插件二进制位于 ~/.config/zellij/plugins/zjframes.wasm
 load_plugins {
-    "file:~/.config/zellij/plugins/zjframes.wasm" {
+    "file:~/.dotfiles/config/zjframes.wasm" {
         hide_frame_for_single_pane "true"
         hide_frame_except_for_search "false"
         hide_frame_except_for_scroll "false"
