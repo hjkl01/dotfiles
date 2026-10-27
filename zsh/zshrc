@@ -57,6 +57,20 @@ if [[ "${START_TMUX:-0}" == "1" && -z "$TMUX" ]]; then
   fi
 fi
 
+# zellij: tab 名跟随当前目录（等价 tmux 的 automatic-rename + pane_current_path）
+# 注：rename-tab 只能改「当前聚焦的 tab」，后台 shell 跑完命令重命名可能落到别的 tab；
+# 缓存同名目录时新 tab 首次不会刷新（下一个不同目录生效）
+if [[ -n "$ZELLIJ" ]]; then
+  autoload -Uz add-zsh-hook
+  _zellij_tab_cwd() {
+    local name=${PWD:t}
+    [[ -n "$name" && "$name" != "$_zellij_tab_last" ]] || return
+    _zellij_tab_last=$name
+    zellij action rename-tab "$name" 2>/dev/null
+  }
+  add-zsh-hook precmd _zellij_tab_cwd
+fi
+
 alias run_zellij='zellij attach main || zellij -s main'
 if [[ "${START_ZELLIJ:-0}" == "1" && -z "$ZELLIJ" ]] && command -v zellij &>/dev/null; then
   zellij attach main || zellij -s main
