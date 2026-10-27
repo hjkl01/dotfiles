@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# 状态栏 CPU 使用率，给 zellij 的 zjstatus command 模块用（对齐 tmux 的 tmux-cpu 模块）
+
+if [[ $(uname) == Darwin ]]; then
+    # macOS: top 要采样两次，第一次是开机以来的平均值
+    cpu=$(top -l 2 -n 0 | awk -F'[ %]+' '/^CPU usage/{u=$3+$5}END{print u}')
+else
+    # Linux: top 第二次采样是 0.3s 内的实时值，$8 是 idle
+    cpu=$(top -bn2 -d 0.3 | awk '/^%Cpu/{u=100-$8}END{print u}')
+fi
+
+# 取不到就什么都不打印，别显示一个假的 0%
+[[ -z $cpu ]] && exit 0
+# 只输出百分比；图标和配色由 zellij 状态栏的 format 负责（同 tmux 的 cpu 模块）
+printf '%3.1f%%' "$cpu"

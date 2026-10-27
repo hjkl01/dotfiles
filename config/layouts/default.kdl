@@ -1,16 +1,40 @@
-// zjstatus - tmux 风格状态栏
+// zjstatus - 对齐 tmux 的状态栏（catppuccin-mocha，状态栏置顶）
 // 插件二进制位于 ~/.config/zellij/plugins/zjstatus.wasm
 // 边框/frame 控制由 zjframes 后台插件负责(在 config.kdl 的 load_plugins 中加载)
+// 配色取自 catppuccin-mocha：mantle #181825 / surface0 #313244 / surface1 #45475a
 layout {
     default_tab_template {
+        // 放在 children 之前 => 状态栏在顶部（tmux 的 status-position top）
         pane size=1 borderless=true {
-            plugin location="https://gh.hjkl01.cn/proxy/https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
-                format_left  "#[fg=0,bg=10][{session}]  {tabs}"
-                format_right "#[fg=0,bg=10]{datetime}"
-                format_space "#[bg=10]"
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                format_left  "#[fg=#cdd6f4,bg=#313244]{mode}#[fg=#cdd6f4,bg=#181825]{tabs}"
+                format_right "#[fg=#94e2d5,bg=#313244]  {command_cpu}#[fg=#fab387,bg=#313244]{datetime}"
+                format_space "#[bg=#181825]"
 
-                tab_normal   "{index}:{name}  "
-                tab_active   "{index}:{name}* "
+                // 左侧 {mode}：参照 tmux catppuccin 的 status-left，只换文字颜色
+                mode_normal        "#[fg=#a6e3a1,bg=#313244] NORMAL "
+                mode_locked        "#[fg=#f38ba8,bg=#313244] LOCKED "
+                mode_pane          "#[fg=#fab387,bg=#313244] PANE "
+                mode_tab           "#[fg=#fab387,bg=#313244] TAB "
+                mode_resize        "#[fg=#f9e2af,bg=#313244] RESIZE "
+                mode_move          "#[fg=#fab387,bg=#313244] MOVE "
+                mode_scroll        "#[fg=#89b4fa,bg=#313244] SCROLL "
+                mode_enter_search  "#[fg=#89b4fa,bg=#313244] SEARCH "
+                mode_search        "#[fg=#89b4fa,bg=#313244] SEARCH "
+                mode_rename_tab    "#[fg=#cba6f7,bg=#313244] RENAME "
+                mode_rename_pane   "#[fg=#cba6f7,bg=#313244] RENAME "
+                mode_session       "#[fg=#cba6f7,bg=#313244] SESSION "
+                mode_prompt        "#[fg=#94e2d5,bg=#313244] PROMPT "
+                mode_tmux          "#[fg=#94e2d5,bg=#313244] PREFIX "
+
+                // 非当前 tab：整块 surface0 底，数字 overlay0，名字 text
+                tab_normal   " #[fg=#cdd6f4,bg=#181825] #[fg=#7f849c,bg=#313244]{index} #[fg=#cdd6f4,bg=#313244]{name} #[fg=#cdd6f4,bg=#181825] "
+                // 当前 tab：整块 mauve 高亮，crust 文字
+                tab_active   " #[fg=#cdd6f4,bg=#181825] #[fg=#11111b,bg=#cba6f7] {index} {name} #[fg=#cdd6f4,bg=#181825] "
+
+                command_cpu_command  "sh -c \"~/.dotfiles/bin/zcpu\""
+                command_cpu_format   "{stdout}"
+                command_cpu_interval "2"
 
                 datetime          " {format} "
                 datetime_format   "%H:%M %d-%b-%y"
