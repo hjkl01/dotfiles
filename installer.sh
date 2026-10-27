@@ -38,6 +38,22 @@ SoftLinks() {
       echo "WARN: missing $CONFIG_DIR/zellij/plugins/$p.wasm (zellij 状态栏/边框会不生效)"
   done
 
+  # zjstatus 是后台插件，首次请求权限时部分 Zellij 版本无法正常显示授权弹窗。
+  # 预先写入 Zellij 权限缓存，避免每次启动都手动确认。
+  local permissions_file="$HOME/.cache/zellij/permissions.kdl"
+  local zjstatus_url="file:$HOME/.dotfiles/config/zjstatus.wasm"
+  mkdir -p "$(dirname "$permissions_file")"
+  if ! grep -Fq "\"$zjstatus_url\"" "$permissions_file" 2>/dev/null; then
+    cat >> "$permissions_file" <<EOF
+
+"$zjstatus_url" {
+    ReadApplicationState
+    ChangeApplicationState
+    RunCommands
+}
+EOF
+  fi
+
   if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     mkdir -p "$HOME/.ssh"
     ssh-keygen -q -t rsa -b 4096 -C "dotfiles@$(hostname)" -f "$HOME/.ssh/id_rsa" -N ""
