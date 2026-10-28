@@ -74,7 +74,15 @@ vim.g.markdown_recommended_style = 0
 -- SSH 远程时强制使用 Neovim 内置的 OSC 52 clipboard provider
 -- 注意顺序：先设置 g:clipboard (provider)，再打开 'clipboard' 选项，见 :h g:clipboard
 -- macOS 自带 terminfo 没有 Ms 能力，自动检测会失败，所以必须显式指定 osc52
+--
+-- 但 OSC 52 provider 的“读”需要向终端发查询并等待回应（1s + 9s 后超时），
+-- 而 zellij 只会转发 OSC 52 的“写”，读取查询会被吞掉，导致每次 p 卡 10 秒且粘不出内容。
+-- 所以 SSH 下只保留 OSC 52 用于写（"+y 复制到本机剪贴板），'clipboard' 不设 unnamedplus：
+--   * p/P 走 nvim 内部寄存器，瞬时完成
+--   * 需要从本机粘进 nvim 时用终端粘贴快捷键（走 bracketed paste，zellij 会透传）
 if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") then
   vim.g.clipboard = "osc52"
+  vim.o.clipboard = ""
+else
+  vim.o.clipboard = "unnamedplus"
 end
-vim.o.clipboard = "unnamedplus"
