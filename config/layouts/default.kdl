@@ -42,5 +42,10 @@ layout {
             }
         }
         children
+        // 底部提示栏：显示当前模式与可用快捷键提示（zellij 内置 status-bar）
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+
     }
 }
