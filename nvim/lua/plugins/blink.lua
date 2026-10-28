@@ -22,15 +22,20 @@ function M.setup()
       enabled = true,
       keymap = {
         preset = "cmdline",
-        ["<CR>"] = { "select_accept_and_enter", "fallback" },
+        -- 不要用 select_accept_and_enter：菜单打开时它会“选中第一项再回车”，
+        -- 导致输入 :w 回车变成 :wq。改成只在用户显式选中时才接受。
+        ["<CR>"] = { "accept_and_enter", "fallback" },
         ["<TAB>"] = { "select_and_accept", "fallback" },
         ["<C-e>"] = { "cancel", "fallback" },
       },
       completion = {
         list = {
           selection = {
-            preselect = true,
-            auto_insert = true,
+            -- 关闭预选和自动插入：否则输入 :w 时会把历史/命令补全的首项
+            -- （通常是 :wq）直接写进命令行，回车即执行 :wq。
+            -- 需要补全时用 <TAB> 或 <C-n>/<C-p> 选择。
+            preselect = false,
+            auto_insert = false,
           },
         },
         menu = {
