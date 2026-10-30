@@ -3,27 +3,11 @@ export LC_ALL="${LC_CTYPE:-zh_CN.UTF-8}"
 
 source ~/.dotfiles/.env
 
-# ── Zsh 启动缓存优化 ──────────────────────────────────────────────
-# 缓存 glob 结果，避免每次启动都遍历文件系统
-ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
-mkdir -p "$ZSH_CACHE_DIR"
-
-ZSH_SOURCES_CACHE="$ZSH_CACHE_DIR/sources.zsh"
-ZSHRC_MTIME=$(stat -c %Y ~/.dotfiles/zsh/zshrc 2>/dev/null || stat -f %m ~/.dotfiles/zsh/zshrc 2>/dev/null)
-
-# 如果缓存不存在或 zshrc 比缓存新，则重新生成
-if [[ ! -f "$ZSH_SOURCES_CACHE" || ! -f "$ZSH_CACHE_DIR/zshrc.zwc" || "$ZSHRC_MTIME" -gt $(stat -c %Y "$ZSH_SOURCES_CACHE" 2>/dev/null || stat -f %m "$ZSH_SOURCES_CACHE" 2>/dev/null || echo 0) ]]; then
-  : >| "$ZSH_SOURCES_CACHE"
-  for file in ~/.dotfiles/zsh/*.sh(N); do
-    [[ -f "$file" ]] && echo "source '$file'" >> "$ZSH_SOURCES_CACHE"
-  done
-fi
-
-source "$ZSH_SOURCES_CACHE"
-
-# 预编译 zshrc 和 alias.zsh 加速加载
-[[ ~/.dotfiles/zsh/zshrc -nt "$ZSH_CACHE_DIR/zshrc.zwc" ]] && zcompile -R "$ZSH_CACHE_DIR/zshrc.zwc" ~/.dotfiles/zsh/zshrc 2>/dev/null
-[[ ~/.dotfiles/zsh/alias.zsh -nt "$ZSH_CACHE_DIR/alias.zwc" ]] && zcompile -R "$ZSH_CACHE_DIR/alias.zwc" ~/.dotfiles/zsh/alias.zsh 2>/dev/null
+# 直接加载配置片段，避免启动时通过 stat、命令替换和缓存生成创建额外子进程。
+# Zsh 的 (N) glob qualifier 在目录无匹配文件时返回空列表。
+for file in ~/.dotfiles/zsh/*.sh(N); do
+  [[ -f "$file" ]] && source "$file"
+done
 
 # ZSH config
 bindkey '^n' end-of-line
