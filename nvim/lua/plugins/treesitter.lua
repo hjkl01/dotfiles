@@ -12,6 +12,14 @@ function M.setup()
     return
   end
 
+  -- nvim-treesitter(main) 把高亮/缩进查询放在插件根的 runtime/queries 下，
+  -- 而 vim.pack 只把插件根加进 rtp，导致 queries 找不到、treesitter 静默不高亮。
+  for _, dir in ipairs(vim.api.nvim_list_runtime_paths()) do
+    if dir:find("nvim%-treesitter") and vim.uv.fs_stat(dir .. "/runtime/queries") then
+      vim.opt.rtp:append(dir .. "/runtime")
+    end
+  end
+
   local ensure_installed = {
     "bash",
     "c",
