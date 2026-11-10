@@ -80,9 +80,29 @@ vim.g.markdown_recommended_style = 0
 -- 所以 SSH 下只保留 OSC 52 用于写（"+y 复制到本机剪贴板），'clipboard' 不设 unnamedplus：
 --   * p/P 走 nvim 内部寄存器，瞬时完成
 --   * 需要从本机粘进 nvim 时用终端粘贴快捷键（走 bracketed paste，zellij 会透传）
+
+-- vim.o.clipboard = "unnamedplus"
+-- if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") then
+--   vim.g.clipboard = "osc52"
+--   vim.o.clipboard = ""
+-- else
+--   vim.o.clipboard = "unnamedplus"
+-- end
+
 if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") then
-  vim.g.clipboard = "osc52"
-  vim.o.clipboard = ""
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    -- 不读系统剪贴板，避免卡住
+    paste = {
+      ["+"] = function() return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") } end,
+      ["*"] = function() return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") } end,
+    },
+  }
+  vim.o.clipboard = "unnamedplus" -- 让 yy 自动进 +
 else
   vim.o.clipboard = "unnamedplus"
 end
