@@ -90,3 +90,13 @@ killport() {
 }
 
 alias playradio='mpv --no-video --quiet "http://ngcdn001.cnr.cn/live/yyzs/index.m3u8"'
+
+# bin/brew re-exports TMUX as HOMEBREW_TMUX, so `brew services` aborts with
+# "cannot run under tmux!" whenever pbpaste fails (tmux over ssh).
+brew() {
+  if [[ $1 == services ]]; then
+    command env -u TMUX brew services "${@:2}"
+  else
+    command brew "$@"
+  fi
+}
