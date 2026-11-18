@@ -21,6 +21,10 @@ beforeInstall() {
   backup_if_exists "$HOME/.zshrc"
   backup_if_exists "$CONFIG_DIR/nvim"
   mkdir -p "$HOME/.dotfiles/bin"
+
+  # 全局 pip 镜像，避免每次 pip install 都手动加 -i
+  mkdir -p "$CONFIG_DIR/pip"
+  ln -sfn "$HOME/.dotfiles/config/pip.conf" "$CONFIG_DIR/pip/pip.conf"
 }
 
 SoftLinks() {
@@ -56,13 +60,15 @@ EOF
 
   if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     mkdir -p "$HOME/.ssh"
-    ssh-keygen -q -t rsa -b 4096 -C "dotfiles@$(hostname)" -f "$HOME/.ssh/id_rsa" -N ""
+    # Arch 默认没有 hostname 命令，给个默认值
+    ssh-keygen -q -t rsa -b 4096 -C "dotfiles@$(hostname 2>/dev/null || echo localhost)" -f "$HOME/.ssh/id_rsa" -N ""
   fi
 }
 
 InstallOhMyZsh() {
-  grep -qxF 'source ~/.dotfiles/zsh/zshrc' ~/.zshrc ||
-    echo 'source ~/.dotfiles/zsh/zshrc' >> ~/.zshrc
+  # 原 .zshrc 已被移进备份，文件可能不存在
+  [ -f "$HOME/.zshrc" ] && grep -qxF 'source ~/.dotfiles/zsh/zshrc' "$HOME/.zshrc" ||
+    echo 'source ~/.dotfiles/zsh/zshrc' >>"$HOME/.zshrc"
   echo ": 1700000000:0;ps aux | grep ssh" >>"$HOME/.zsh_history"
 
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
